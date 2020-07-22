@@ -3,7 +3,7 @@
     <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>ndarray数组基本结构和操作 | star2dust</title>
-<link rel="shortcut icon" href="https://star2dust.github.io/favicon.ico?v=1595418341290">
+<link rel="shortcut icon" href="https://star2dust.github.io/favicon.ico?v=1595420033181">
 <link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
 <link rel="stylesheet" href="https://star2dust.github.io/styles/main.css">
 <link rel="alternate" type="application/atom+xml" title="ndarray数组基本结构和操作 | star2dust - Atom Feed" href="https://star2dust.github.io/atom.xml">
@@ -12,8 +12,6 @@
 
 
     <meta name="description" content="
-
-
 写在前面
 一、创建ndarray（四种）
 二、属性操作（六个）
@@ -28,7 +26,7 @@
 五、统计方法（七类）
 六、随机数np.random
 
-1. 创建随机ndarr..." />
+1. 创建随机ndarray..." />
     <meta name="keywords" content="Python" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
     <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
@@ -38,7 +36,7 @@
       <div class="main-content">
         <div class="site-header">
   <a href="https://star2dust.github.io">
-  <img class="avatar" src="https://star2dust.github.io/images/avatar.png?v=1595418341290" alt="">
+  <img class="avatar" src="https://star2dust.github.io/images/avatar.png?v=1595420033181" alt="">
   </a>
   <h1 class="site-title">
     star2dust
@@ -124,8 +122,6 @@
             <div class="post-content-wrapper">
               <div class="post-content">
                 <p><ul class="markdownIt-TOC">
-<li>
-<ul>
 <li><a href="#%E5%86%99%E5%9C%A8%E5%89%8D%E9%9D%A2">写在前面</a></li>
 <li><a href="#%E4%B8%80-%E5%88%9B%E5%BB%BAndarray%E5%9B%9B%E7%A7%8D">一、创建ndarray（四种）</a></li>
 <li><a href="#%E4%BA%8C-%E5%B1%9E%E6%80%A7%E6%93%8D%E4%BD%9C%E5%85%AD%E4%B8%AA">二、属性操作（六个）</a></li>
@@ -159,10 +155,8 @@
 </ul>
 </li>
 </ul>
-</li>
-</ul>
 </p>
-<h2 id="写在前面">写在前面</h2>
+<h1 id="写在前面">写在前面</h1>
 <blockquote>
 <p>人生苦短，我用python。</p>
 </blockquote>
@@ -176,14 +170,14 @@
 <pre><code class="language-python"># 使用前导入库文件
 import numpy as np
 </code></pre>
-<h2 id="一-创建ndarray四种">一、创建ndarray（四种）</h2>
+<h1 id="一-创建ndarray四种">一、创建ndarray（四种）</h1>
 <ul>
 <li><code>np.array(list)</code>：从list/tuple创建</li>
 <li><code>np.arrange(start,stop,interval)</code>：创建序列</li>
 <li><code>np.zero([d1,d2,...])</code>：创建指定维度的全0矩阵（<strong>浮点</strong>）</li>
 <li><code>np.ones([d1,d2,...])</code>：创建指定维度的全1矩阵（<strong>浮点</strong>）</li>
 </ul>
-<h2 id="二-属性操作六个">二、属性操作（六个）</h2>
+<h1 id="二-属性操作六个">二、属性操作（六个）</h1>
 <ul>
 <li><code>arr.size</code>：数组形状，即<code>(x,y,z)</code>（返回元组）</li>
 <li><code>arr.dtype</code>：数据类型</li>
@@ -192,22 +186,22 @@ import numpy as np
 <li><code>arr.astype(np.int64)</code>：改变数据类型</li>
 <li><code>arr.reshap(m,n)</code>：改变形状</li>
 </ul>
-<h2 id="三-基本运算七个">三、基本运算（七个）</h2>
+<h1 id="三-基本运算七个">三、基本运算（七个）</h1>
 <ul>
 <li><code>+</code>加， <code>-</code>减， <code>*</code>乘， <code>/</code>除， <code>//</code>向下取整除，<code>%</code>模， <code>**</code>乘方</li>
 <li>标量和ndarray数组之间的运算（所有元素进行运算）</li>
 <li>两个ndarray数组之间的运算（对应位置元素进行运算）</li>
 <li><code>/</code>还可以当作分隔符，分隔但不中断语句</li>
 </ul>
-<h2 id="四-索引和切片">四、索引和切片</h2>
-<h3 id="1-一维数组">1. 一维数组</h3>
+<h1 id="四-索引和切片">四、索引和切片</h1>
+<h2 id="1-一维数组">1. 一维数组</h2>
 <ul>
 <li>一维数组跟Python列表的功能类似</li>
 <li><strong>区别</strong>：数组切片还是指向原来的内存区域</li>
 <li>将值赋值给一个切片时，该值会自动传播到整个切片</li>
 <li><strong>如何复制数据？</strong>：使用 <strong><code>arr=np.copy(arr)</code></strong></li>
 </ul>
-<h3 id="2-多维数组">2. 多维数组</h3>
+<h2 id="2-多维数组">2. 多维数组</h2>
 <ul>
 <li>在多维数组中，各索引位置上的元素不再是标量而是多维数组</li>
 <li>以逗号隔开的索引列表来选取单个元素：<strong><code>arr[a][b]</code>等价于<code>arr[a,b]</code></strong></li>
@@ -216,12 +210,12 @@ import numpy as np
 <pre><code class="language-python"># 使用for语句生成列表 a = [0, 2, 4]
 a = [k for k in range(0, 6, 2)]
 </code></pre>
-<h3 id="3-查找索引">3. 查找索引</h3>
+<h2 id="3-查找索引">3. 查找索引</h2>
 <pre><code class="language-python">a = np.array([1,2,3,4,2,4,3,3,4])
 max_a = a.max() # 返回第一个索引
 np.where(a==max_a) # 返回全部索引的元组
 </code></pre>
-<h2 id="五-统计方法七类">五、统计方法（七类）</h2>
+<h1 id="五-统计方法七类">五、统计方法（七类）</h1>
 <p>对整个数组或某个轴向的数据进行统计计算。<br>
 （<em>以下方法既可以当做数组的实例方法，也可以当做Numpy函数使用</em>）</p>
 <ul>
@@ -246,8 +240,8 @@ arr.max(axis=0)
 # 沿着第1维求最小值，也就是将[1, 2, 3]求最小值等于1，[4, 5, 6]求最小值等于4，[7, 8, 9]求最小值等于7
 arr.min(axis=1)
 </code></pre>
-<h2 id="六-随机数nprandom">六、随机数np.random</h2>
-<h3 id="1-创建随机ndarray数组">1. 创建随机ndarray数组</h3>
+<h1 id="六-随机数nprandom">六、随机数np.random</h1>
+<h2 id="1-创建随机ndarray数组">1. 创建随机ndarray数组</h2>
 <ul>
 <li>设置随机数种子</li>
 </ul>
@@ -273,7 +267,7 @@ a = np.random.randn(3, 3)
 # 生成正态分布随机数，指定均值loc和方差scale
 a = np.random.normal(loc = 1.0, scale = 1.0, size = (3,3))
 </code></pre>
-<h3 id="2-随机打乱ndarray数组">2. 随机打乱ndarray数组</h3>
+<h2 id="2-随机打乱ndarray数组">2. 随机打乱ndarray数组</h2>
 <ul>
 <li>随机打乱1维ndarray数组顺序，发现所有元素位置都被打乱了</li>
 </ul>
@@ -292,14 +286,14 @@ a = a.reshape(10, 3)
 # 打乱一维数组顺序
 np.random.shuffle(a)
 </code></pre>
-<h3 id="3-随机选取元素一维">3. 随机选取元素（一维）</h3>
+<h2 id="3-随机选取元素一维">3. 随机选取元素（一维）</h2>
 <pre><code class="language-python"># 随机选取部分元素（30选5）
 a = np.arange(30)
 b = np.random.choice(a, size=5)
 # 随机选取部分元素（30选1）
 c = np.random.choice(30)
 </code></pre>
-<h2 id="七-线性代数">七、线性代数</h2>
+<h1 id="七-线性代数">七、线性代数</h1>
 <p>线性代数（如矩阵乘法、矩阵分解、行列式以及其他方阵数学等）是任何数组库的重要组成部分，Numpy中实现了线性代数中常用的各种操作，并形成了<code>numpy.linalg</code>线性代数相关的模块。</p>
 <ul>
 <li><code>diag</code>：以一维数组的形式返回方阵的对角线（或非对角线）元素，或将一维数组转换为方阵（非对角线元素为0）。</li>
@@ -316,8 +310,8 @@ c = a.reshape([4, 3])
 # 矩阵b的第二维大小，必须等于矩阵c的第一维大小
 d = b.dot(c) # 等价于 np.dot(b, c)
 </code></pre>
-<h2 id="八-文件读写与保存">八、文件读写与保存</h2>
-<h3 id="1-文本读取">1. 文本读取</h3>
+<h1 id="八-文件读写与保存">八、文件读写与保存</h1>
+<h2 id="1-文本读取">1. 文本读取</h2>
 <p>Numpy可以方便的进行文件读写，如下面这种格式的文本文件：</p>
 <figure data-type="image" tabindex="1"><img src="https://star2dust.github.io/post-images/1595412752442.png" alt="文本数据" loading="lazy"></figure>
 <pre><code class="language-python"># 使用np.fromfile从文本文件'housing.data'读入数据
@@ -325,7 +319,7 @@ d = b.dot(c) # 等价于 np.dot(b, c)
 # 空格或者回车都属于空白字符，读入的数据被转化成1维数组
 d = np.fromfile('./work/housing.data', sep = ' ')
 </code></pre>
-<h3 id="2-文件保存">2. 文件保存</h3>
+<h2 id="2-文件保存">2. 文件保存</h2>
 <p>Numpy提供了save和load接口，直接将数组保存成文件(保存为.npy格式)，或者从.npy文件中读取数组。</p>
 <pre><code class="language-python"># 产生随机数组a
 a = np.random.rand(3,3)
@@ -337,8 +331,8 @@ b = np.load('a.npy')
 # 检查a和b的数值是否一样
 check = (a == b).all()
 </code></pre>
-<h2 id="九-numpy应用举例">九、Numpy应用举例</h2>
-<h3 id="1-计算激活函数sigmoid和relu">1. 计算激活函数Sigmoid和ReLU</h3>
+<h1 id="九-numpy应用举例">九、Numpy应用举例</h1>
+<h2 id="1-计算激活函数sigmoid和relu">1. 计算激活函数Sigmoid和ReLU</h2>
 <p>使用ndarray数组可以很方便的构建数学函数，并利用其底层的矢量计算能力快速实现计算。下面以神经网络中比较常用激活函数Sigmoid和ReLU为例，介绍代码实现过程。</p>
 <pre><code class="language-python"># ReLU和Sigmoid激活函数示意图
 import numpy as np
@@ -356,7 +350,7 @@ s = 1.0 / (1 + np.exp(- x))
 # 计算ReLU函数
 y = np.clip(x, a_min = 0., a_max = None)
 
-#########################################################
+#############################
 # 以下部分为画图程序
 
 # 设置两个子图窗口，将Sigmoid的函数图像画在左边
@@ -384,7 +378,7 @@ currentAxis.yaxis.set_label_text('y', fontsize=15)
 plt.show()
 </code></pre>
 <figure data-type="image" tabindex="2"><img src="https://star2dust.github.io/post-images/1595412819021.png" alt="relu和sigmoid函数图像" loading="lazy"></figure>
-<h3 id="2-图像翻转和裁剪">2. 图像翻转和裁剪</h3>
+<h2 id="2-图像翻转和裁剪">2. 图像翻转和裁剪</h2>
 <p>图像是由像素点构成的矩阵，其数值可以用ndarray来表示。将上述介绍的操作用在图像数据对应的ndarray上，可以很轻松的实现图片的翻转、裁剪和亮度调整，具体代码和效果如下所示。</p>
 <pre><code class="language-python"># 导入需要的包
 import numpy as np
@@ -477,8 +471,6 @@ print(image10.shape) # (240, 160, 3)
               </div>
               <div class="toc-container">
                 <ul class="markdownIt-TOC">
-<li>
-<ul>
 <li><a href="#%E5%86%99%E5%9C%A8%E5%89%8D%E9%9D%A2">写在前面</a></li>
 <li><a href="#%E4%B8%80-%E5%88%9B%E5%BB%BAndarray%E5%9B%9B%E7%A7%8D">一、创建ndarray（四种）</a></li>
 <li><a href="#%E4%BA%8C-%E5%B1%9E%E6%80%A7%E6%93%8D%E4%BD%9C%E5%85%AD%E4%B8%AA">二、属性操作（六个）</a></li>
@@ -509,8 +501,6 @@ print(image10.shape) # (240, 160, 3)
 <ul>
 <li><a href="#1-%E8%AE%A1%E7%AE%97%E6%BF%80%E6%B4%BB%E5%87%BD%E6%95%B0sigmoid%E5%92%8Crelu">1. 计算激活函数Sigmoid和ReLU</a></li>
 <li><a href="#2-%E5%9B%BE%E5%83%8F%E7%BF%BB%E8%BD%AC%E5%92%8C%E8%A3%81%E5%89%AA">2. 图像翻转和裁剪</a></li>
-</ul>
-</li>
 </ul>
 </li>
 </ul>

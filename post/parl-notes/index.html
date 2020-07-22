@@ -3,7 +3,7 @@
     <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>强化学习从零实践入门心得 | star2dust</title>
-<link rel="shortcut icon" href="https://star2dust.github.io/favicon.ico?v=1595416696512">
+<link rel="shortcut icon" href="https://star2dust.github.io/favicon.ico?v=1595418341290">
 <link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
 <link rel="stylesheet" href="https://star2dust.github.io/styles/main.css">
 <link rel="alternate" type="application/atom+xml" title="强化学习从零实践入门心得 | star2dust - Atom Feed" href="https://star2dust.github.io/atom.xml">
@@ -37,7 +37,7 @@ Sarsa和Q-learning
       <div class="main-content">
         <div class="site-header">
   <a href="https://star2dust.github.io">
-  <img class="avatar" src="https://star2dust.github.io/images/avatar.png?v=1595416696512" alt="">
+  <img class="avatar" src="https://star2dust.github.io/images/avatar.png?v=1595418341290" alt="">
   </a>
   <h1 class="site-title">
     star2dust
@@ -166,15 +166,15 @@ Sarsa和Q-learning
 </blockquote>
 <h3 id="初识强化学习">初识强化学习</h3>
 <p>强化学习（Reinforcement learning，简称RL）是机器学习中的一个领域，强调如何基于环境而行动，以取得最大化的预期利益。核心思想是：智能体（agent）在环境（environment）中学习，根据环境的状态（state）或观测（observation），执行动作（action），并根据环境的反馈 （reward）来指导更好的动作。</p>
-<img src="figures/rl_basic.png" alt="强化学习核心思想" width="450"/>
+<figure data-type="image" tabindex="1"><img src="https://star2dust.github.io/post-images/1595416829986.png" alt="强化学习核心思想" loading="lazy"></figure>
 <p>作为机器学习三巨头之一，强化学习和监督学习以及非监督学习关系如下图。</p>
-<img src="figures/ml_big3.png" alt="机器学习三巨头" width="350"/>
+<figure data-type="image" tabindex="2"><img src="https://star2dust.github.io/post-images/1595416878231.png" alt="机器学习三巨头" loading="lazy"></figure>
 <p><strong>监督学习关注的是认知，而强化学习关注的是决策</strong>。简单的说，前者学习经验，后者运用经验。同样都是一张小熊的图片，监督学习输出的是灰熊、熊猫还是老虎，强化学习输出的是装死、逃跑还是干一架。</p>
-<img src="figures/bear_how_to_do.png" alt="熊来了怎么办？强化学习告诉你" width="450"/>
+<figure data-type="image" tabindex="3"><img src="https://star2dust.github.io/post-images/1595417013041.png" alt="熊来了怎么办？强化学习告诉你" loading="lazy"></figure>
 <h3 id="强化学习的分类和方法">强化学习的分类和方法</h3>
-<img src="figures/rl_categories.png" alt="强化学习的分类" width="450"/>
+<figure data-type="image" tabindex="4"><img src="https://star2dust.github.io/post-images/1595417062501.png" alt="强化学习的分类" loading="lazy"></figure>
 <p>强化学习主要关注的是无模型的问题，在未知的环境中进行探索学习，在生活中有广泛的应用。</p>
-<img src="figures/rl_applications.png" alt="强化学习应用" width="450" />
+<figure data-type="image" tabindex="5"><img src="https://star2dust.github.io/post-images/1595417136885.png" alt="强化学习应用" loading="lazy"></figure>
 <p>其探索方案有二：</p>
 <ul>
 <li>基于价值的方法（Q函数）<br>
@@ -182,14 +182,14 @@ Sarsa和Q-learning
 <li>基于策略的方法（Policy）<br>
 制定出多个策略，策略里的每个动作都有一定的概率，并让每一条策略走到底,最后查看哪个策略是最优的。基于策略是随机性的。</li>
 </ul>
-<img src="figures/rl_methods.png" alt="强化学习方法" width="450"/>
+<figure data-type="image" tabindex="6"><img src="https://star2dust.github.io/post-images/1595417207264.png" alt="强化学习方法" loading="lazy"></figure>
 <h3 id="parl框架和gym环境">PARL框架和GYM环境</h3>
 <ul>
 <li>强化学习经典<strong>环境库GYM</strong>将环境（Env）交互接口规范化为：重置环境<code>reset()</code>、交互<code>step()</code>、渲染<code>render()</code>。</li>
 <li>强化学习<strong>框架库PARL</strong>将强化学习框架抽象为: <code>Model</code>、<code>Algorithm</code>、<code>Agent</code>三层，使得强化学习算法的实现和调试更方便和灵活。（前两者有神经网络才用得上）</li>
 </ul>
 <p><code>Agent</code>的训练（Train）和测试（Test）过程直接上图展示如下。</p>
-<img src="figures/gym.png" alt="gym中agent训练和测试过程" width="450"/>
+<figure data-type="image" tabindex="7"><img src="https://star2dust.github.io/post-images/1595417256567.png" alt="gym中agent训练和测试过程" loading="lazy"></figure>
 <p>本文所需全部依赖库代码如下，paddlepaddle默认使用CPU版本，可自行选用GPU版本，这里不再赘述。</p>
 <pre><code class="language-shell"># 可以直接 pip install -r requirements.txt
 pip install paddlepaddle==1.6.3
@@ -205,28 +205,28 @@ pip install rlschool==0.3.1
 <h3 id="序列决策的经典表达mdp">序列决策的经典表达（MDP）</h3>
 <p>某一状态信息包含了所有相关的历史，只要当前状态可知，所有的历史信息都不再需要，当前状态就可以决定未来，则认为该状态具有<strong>马尔科夫性</strong>。<strong>马尔可夫决策过程</strong>（MDP）是序列决策的数学模型，它是一个无记忆的随机过程，可以用一个元组&lt;S,P&gt;表示，其中S是有限数量的状态集，P是状态转移概率矩阵。</p>
 <p>强化学习中我们引入奖励R和动作A来描述环境，构成MDP五元组&lt;S,A,P,R,<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>γ</mi></mrow><annotation encoding="application/x-tex">\gamma</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.19444em;"></span><span class="mord mathdefault" style="margin-right:0.05556em;">γ</span></span></span></span>&gt;，其中P函数表示环境的随机性，R函数其实是P函数的一部分，表示获得的收益，<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>γ</mi></mrow><annotation encoding="application/x-tex">\gamma</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.19444em;"></span><span class="mord mathdefault" style="margin-right:0.05556em;">γ</span></span></span></span>是衰减因子以适当的减少对未来收益的考虑。</p>
-<img src="figures/bear_tree.png" alt="熊问题树形图" width="450"/>
+<figure data-type="image" tabindex="8"><img src="https://star2dust.github.io/post-images/1595417319990.png" alt="熊问题树形图" loading="lazy"></figure>
 <p>同样以熊问题为例，对应的是Model-free的情况，即P函数和R函数都未知的情况。这时我们用价值V代表某一状态的好坏，用Q函数来代表某个状态下哪个动作更好，即状态动作价值。</p>
-<img src="figures/model_free.png" alt="熊问题model-free" width="450"/>
+<figure data-type="image" tabindex="9"><img src="https://star2dust.github.io/post-images/1595417397753.png" alt="熊问题model-free" loading="lazy"></figure>
 <p>现实世界中，奖励R往往是延迟的，所以一般会从当前时间点开始，对后续可能得到的收益累加，以此来计算当前的价值。但是有时候目光不要放得太长远，<strong>对远一些的东西当作近视看不见就好</strong>。适当地引入一个衰减因子<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>γ</mi></mrow><annotation encoding="application/x-tex">\gamma</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.19444em;"></span><span class="mord mathdefault" style="margin-right:0.05556em;">γ</span></span></span></span>，再去计算未来的总收益，<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>γ</mi></mrow><annotation encoding="application/x-tex">\gamma</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.19444em;"></span><span class="mord mathdefault" style="margin-right:0.05556em;">γ</span></span></span></span>的值在0-1之间，时间点越久远，对当前的影响也就越小。</p>
 <h3 id="状态动作价值q的求解">状态动作价值（Q）的求解</h3>
 <p>假设人走在树林里，先看到树上有熊爪后看到熊，接着就看到熊发怒了，经过很多次之后，原来要见到熊才瑟瑟发抖的，后来只要见到树上有熊爪就会有晕眩和害怕的感觉。也就是说，在不断地训练之后，下一个状态的价值可以不断地强化、影响上一个状态的价值。</p>
 <p>这样的迭代状态价值的强化方式被称为时序差分（Temporal Difference）。单步求解Q函数，用<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>Q</mi><mo>(</mo><msub><mi>S</mi><mrow><mi>t</mi><mo>+</mo><mn>1</mn></mrow></msub><mo separator="true">,</mo><msub><mi>A</mi><mrow><mi>t</mi><mo>+</mo><mn>1</mn></mrow></msub><mo>)</mo></mrow><annotation encoding="application/x-tex">Q(S_{t+1},A_{t+1})</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault">Q</span><span class="mopen">(</span><span class="mord"><span class="mord mathdefault" style="margin-right:0.05764em;">S</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.301108em;"><span style="top:-2.5500000000000003em;margin-left:-0.05764em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">t</span><span class="mbin mtight">+</span><span class="mord mtight">1</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.208331em;"><span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord"><span class="mord mathdefault">A</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.301108em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">t</span><span class="mbin mtight">+</span><span class="mord mtight">1</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.208331em;"><span></span></span></span></span></span></span><span class="mclose">)</span></span></span></span>来近似<span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>G</mi><mrow><mi>t</mi><mo>+</mo><mn>1</mn></mrow></msub></mrow><annotation encoding="application/x-tex">G_{t+1}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.891661em;vertical-align:-0.208331em;"></span><span class="mord"><span class="mord mathdefault">G</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.301108em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">t</span><span class="mbin mtight">+</span><span class="mord mtight">1</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.208331em;"><span></span></span></span></span></span></span></span></span></span>，以迭代的方式简化数学公式，最终使得<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>Q</mi><mo>(</mo><msub><mi>S</mi><mi>t</mi></msub><mo separator="true">,</mo><msub><mi>A</mi><mi>t</mi></msub><mo>)</mo></mrow><annotation encoding="application/x-tex">Q(S_t,A_t)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault">Q</span><span class="mopen">(</span><span class="mord"><span class="mord mathdefault" style="margin-right:0.05764em;">S</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.2805559999999999em;"><span style="top:-2.5500000000000003em;margin-left:-0.05764em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">t</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord"><span class="mord mathdefault">A</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.2805559999999999em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">t</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mclose">)</span></span></span></span>逼近目标值<span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>G</mi><mi>t</mi></msub></mrow><annotation encoding="application/x-tex">G_t</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.83333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathdefault">G</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.2805559999999999em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">t</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>。这里的目标值Target就是前面提到的未来收益的累加。</p>
-<img src="figures/q_td.png" alt="Q表格TD单步更新" width="400"/>
+<figure data-type="image" tabindex="10"><img src="https://star2dust.github.io/post-images/1595417455942.png" alt="Q表格TD单步更新" loading="lazy"></figure>
 <h3 id="sarsa和q-learning">Sarsa和Q-learning</h3>
 <p><strong>Sarsa</strong>全称是state-action-reward-state’-action’，目的是学习特定的state下，特定action的价值Q，最终建立和优化一个Q表格，以state为行，action为列，根据与环境交互得到的reward来更新Q表格，更新公式即为上面的迭代公式。Sarsa在训练中为了更好的探索环境，采用ε-greedy方式（如下图）来训练，有一定概率随机选择动作输出。</p>
-<img src="figures/e_greedy.png" alt="e_greedy" width="350"/>
+<figure data-type="image" tabindex="11"><img src="https://star2dust.github.io/post-images/1595417521961.png" alt="e_greedy" loading="lazy"></figure>
 <p><strong>Q-learning</strong>也是采用Q表格的方式存储Q值，探索部分与Sarsa是一样的，采用ε-greedy方式增加探索。</p>
 <ul>
 <li>Q-learning跟Sarsa不一样的地方是更新Q表格的方式，即learn()函数。</li>
 <li>Sarsa是on-policy，先做出动作再learn，Q-learning是off-policy，learn时无需获取下一步动作。</li>
 </ul>
 <p>二者更新Q表格的方式分别为：</p>
-<img src="figures/qlearning_sarsa_learn.png" alt="sarsa和qlearning更新Q表格方式对比" width="400"/>
+<figure data-type="image" tabindex="12"><img src="https://star2dust.github.io/post-images/1595417538287.png" alt="sarsa和qlearning更新Q表格方式对比" loading="lazy"></figure>
 <p>二者算法对比如下图所示，有三处不同点。</p>
-<img src="figures/qlearning_sarsa.png" alt="sarsa和qlearning算法对比" width="500"/>
+<figure data-type="image" tabindex="13"><img src="https://star2dust.github.io/post-images/1595417548868.png" alt="sarsa和qlearning算法对比" loading="lazy"></figure>
 <p>on-policy优化的是目标策略，用下一步一定会执行的动作来优化Q表格；off-policy实际上有两种不同的策略，期望得到的目标策略和大胆探索的行为策略，在目标策略的基础上用行为策略获得更多的经验。</p>
-<img src="figures/on_off_policy.png" alt="离线在线之争" width="450"/>
+<figure data-type="image" tabindex="14"><img src="https://star2dust.github.io/post-images/1595417559359.png" alt="离线在线之争" loading="lazy"></figure>
 <h3 id="代码构建与演示">代码构建与演示</h3>
 <pre><code class="language-python">import numpy as np
 </code></pre>
@@ -410,9 +410,9 @@ python .\train.py
 </code></pre>
 <p>最终结果如下面的GIF所示。可以看出来Sarsa比较保守，会选择下限最高的路线，即尽可能远离悬崖的路线，虽然路程远了，但至少掉下悬崖的风险就小了很多；而Q-learning比较激进，会选择上限最高的路线，即路程最近的路线，但存在些微扰动便可能掉下悬崖。</p>
 <p>Sarsa训练图：</p>
-<img src="figures/sarsa.gif" alt="Sarsa训练图" width="250"/>
+<figure data-type="image" tabindex="15"><img src="https://star2dust.github.io/post-images/1595417809738.gif" alt="Sarsa训练图" loading="lazy"></figure>
 <p>Q-learning训练图：</p>
-<img src="figures/q_learning.gif" alt="QLearning训练图" width="250" />
+<figure data-type="image" tabindex="16"><img src="https://star2dust.github.io/post-images/1595417820699.gif" alt="QLearning训练图" loading="lazy"></figure>
 <h2 id="基于神经网络方法求解rl">基于神经网络方法求解RL</h2>
 <blockquote>
 <p>选择（A）有限，而人生（S）无限。</p>
@@ -420,7 +420,7 @@ python .\train.py
 <h3 id="神经网络近似q函数">神经网络近似Q函数</h3>
 <p>前面提到的悬崖问题，状态（S）总量很少，但实际生活中，很多常见问题的状态都是数量庞大的，如象棋、围棋等。即使用Q表格装下所有状态，表格可能占用极大内存，表格的查找也相当费时。我们就可以用带参数的Q函数来近似Q表格，比如可以用多项式函数或者神经网络，优势是<strong>只需要输出少量参数，同时能实现状态泛化</strong>。</p>
 <p>神经网络结构如下图所示。</p>
-<img src="figures/neural_network.png" alt="神经网络结构" width="550" />
+<figure data-type="image" tabindex="17"><img src="https://star2dust.github.io/post-images/1595417909622.png" alt="神经网络结构" loading="lazy"></figure>
 <ul>
 <li><strong>神经元</strong>：神经网络中每个节点称为神经元，由两部分组成：
 <ul>
@@ -435,9 +435,9 @@ python .\train.py
 <p>由此可见，神经网络的本质是一个含有很多参数的“大公式”。</p>
 <h3 id="dqn入门deep-rl">DQN：入门deep RL</h3>
 <p>DQN本质上是一个Q-learning算法，但使用神经网络来近似替代Q表格。</p>
-<img src="figures/dqn_flow.png" alt="DQN流程" width="450" />
+<figure data-type="image" tabindex="18"><img src="https://star2dust.github.io/post-images/1595418122575.png" alt="DQN流程" loading="lazy"></figure>
 <p>类比监督学习的训练，DQN的训练过程也非常地类似，它输入的是一批状态（S），输出的是对应的Q。计算输出的Q与Target Q的均方差，进行优化，以此更新神经网络参数。</p>
-<img src="figures/dqn_supervised.png" alt="DQN类比监督学习" width="550" />
+<figure data-type="image" tabindex="19"><img src="https://star2dust.github.io/post-images/1595418135390.png" alt="DQN类比监督学习" loading="lazy"></figure>
 <p>在Q-learning的基础上，DQN提出了两个技巧使得Q网络的更新迭代更稳定:</p>
 <ul>
 <li><strong>经验回放</strong> （Experience Replay）：主要解决样本关联性和利用效率的问题。使用一个经验池（buffer）存储多条经验（s,a,r,s’），再从中随机抽取一批（batch）数据送去训练。</li>
@@ -788,9 +788,9 @@ python .\train.py
 </code></pre>
 <p>最终DQN结果如下面的GIF所示。</p>
 <p>倒立摆（CartPole）：</p>
-<img src="figures/cartpole.gif" alt="cartpole训练图" width="250"/>
+<figure data-type="image" tabindex="20"><img src="https://star2dust.github.io/post-images/1595418264689.gif" alt="cartpole训练图" loading="lazy"></figure>
 <p>小车上山（MountainCar）：</p>
-<img src="figures/mountaincar.gif" alt="mountaincar训练图" width="250"/>
+<figure data-type="image" tabindex="21"><img src="https://star2dust.github.io/post-images/1595418274795.gif" alt="mountaincar训练图" loading="lazy"></figure>
 <h2 id="总结">总结</h2>
 <p>框架库PARL将强化学习框架抽象为: <code>Model</code>、<code>Algorithm</code>、<code>Agent</code>三层，使得强化学习算法的实现和调试更方便和灵活。前两者尤其针对deep RL的情况，有神经网络时直接调用paddle的api可以很方便的进行网络和算法的构建。本文由强化学习经典算法Sarsa和Q-learning扩展到deep RL的DQN算法，并以DQN为例讲解了PARL的使用方法。下篇文章我会讲基于policy的PG算法和用于连续状态控制的DDPG，敬请期待。</p>
 

@@ -1,22 +1,128 @@
-<?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom">
-    <id>https://star2dust.github.io</id>
-    <title>star2dust</title>
-    <updated>2020-07-22T11:18:50.302Z</updated>
-    <generator>https://github.com/jpmonette/feed</generator>
-    <link rel="alternate" href="https://star2dust.github.io"/>
-    <link rel="self" href="https://star2dust.github.io/atom.xml"/>
-    <subtitle>每天进步一点点</subtitle>
-    <logo>https://star2dust.github.io/images/avatar.png</logo>
-    <icon>https://star2dust.github.io/favicon.ico</icon>
-    <rights>All rights reserved 2020, star2dust</rights>
-    <entry>
-        <title type="html"><![CDATA[强化学习从零实践入门心得]]></title>
-        <id>https://star2dust.github.io/post/parl-notes/</id>
-        <link href="https://star2dust.github.io/post/parl-notes/">
-        </link>
-        <updated>2020-07-22T10:29:41.000Z</updated>
-        <content type="html"><![CDATA[<p><ul class="markdownIt-TOC">
+<html>
+  <head>
+    <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>强化学习从零实践入门心得 | star2dust</title>
+<link rel="shortcut icon" href="https://star2dust.github.io/favicon.ico?v=1595416696512">
+<link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
+<link rel="stylesheet" href="https://star2dust.github.io/styles/main.css">
+<link rel="alternate" type="application/atom+xml" title="强化学习从零实践入门心得 | star2dust - Atom Feed" href="https://star2dust.github.io/atom.xml">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700">
+
+
+
+    <meta name="description" content="
+
+
+写在前面
+强化学习——从尝试到决策
+
+初识强化学习
+强化学习的分类和方法
+PARL框架和GYM环境
+
+
+基于表格型方法求解RL
+
+序列决策的经典表达（MDP）
+状态动作价值（Q）的求解
+Sarsa和Q-learning
+代码构建与演示..." />
+    <meta name="keywords" content="RL" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+    <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+  </head>
+  <body>
+    <div class="main">
+      <div class="main-content">
+        <div class="site-header">
+  <a href="https://star2dust.github.io">
+  <img class="avatar" src="https://star2dust.github.io/images/avatar.png?v=1595416696512" alt="">
+  </a>
+  <h1 class="site-title">
+    star2dust
+  </h1>
+  <p class="site-description">
+    每天进步一点点
+  </p>
+  <div class="menu-container">
+    
+      
+        <a href="/" class="menu">
+          首页
+        </a>
+      
+    
+      
+        <a href="/archives" class="menu">
+          归档
+        </a>
+      
+    
+      
+        <a href="/tags" class="menu">
+          标签
+        </a>
+      
+    
+      
+        <a href="/post/about" class="menu">
+          关于
+        </a>
+      
+    
+  </div>
+  <div class="social-container">
+    
+      
+        <a href="https://github.com/star2dust" target="_blank">
+          <i class="ri-github-line"></i>
+        </a>
+      
+    
+      
+    
+      
+        <a href="https://weibo.com/u/2473019655/" target="_blank">
+          <i class="ri-weibo-line"></i>
+        </a>
+      
+    
+      
+        <a href="https://www.zhihu.com/people/dong-nan-che" target="_blank">
+          <i class="ri-zhihu-line"></i>
+        </a>
+      
+    
+      
+    
+  </div>
+</div>
+
+        <div class="post-detail">
+          <article class="post">
+            <h2 class="post-title">
+              强化学习从零实践入门心得
+            </h2>
+            <div class="post-info">
+              <span>
+                2020-07-22
+              </span>
+              <span>
+                27 min read
+              </span>
+              
+                <a href="https://star2dust.github.io/tag/MrGQeZPqZ/" class="post-tag">
+                  # RL
+                </a>
+              
+            </div>
+            
+              <img class="post-feature-image" src="https://star2dust.github.io/post-images/parl-notes.png" alt="">
+            
+            <div class="post-content-wrapper">
+              <div class="post-content">
+                <p><ul class="markdownIt-TOC">
 <li>
 <ul>
 <li><a href="#%E5%86%99%E5%9C%A8%E5%89%8D%E9%9D%A2">写在前面</a></li>
@@ -687,364 +793,107 @@ python .\train.py
 <img src="figures/mountaincar.gif" alt="mountaincar训练图" width="250"/>
 <h2 id="总结">总结</h2>
 <p>框架库PARL将强化学习框架抽象为: <code>Model</code>、<code>Algorithm</code>、<code>Agent</code>三层，使得强化学习算法的实现和调试更方便和灵活。前两者尤其针对deep RL的情况，有神经网络时直接调用paddle的api可以很方便的进行网络和算法的构建。本文由强化学习经典算法Sarsa和Q-learning扩展到deep RL的DQN算法，并以DQN为例讲解了PARL的使用方法。下篇文章我会讲基于policy的PG算法和用于连续状态控制的DDPG，敬请期待。</p>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[ndarray数组基本结构和操作]]></title>
-        <id>https://star2dust.github.io/post/ndarray-notes/</id>
-        <link href="https://star2dust.github.io/post/ndarray-notes/">
-        </link>
-        <updated>2020-07-22T09:33:08.000Z</updated>
-        <content type="html"><![CDATA[<p><ul class="markdownIt-TOC">
+
+              </div>
+              <div class="toc-container">
+                <ul class="markdownIt-TOC">
 <li>
 <ul>
 <li><a href="#%E5%86%99%E5%9C%A8%E5%89%8D%E9%9D%A2">写在前面</a></li>
-<li><a href="#%E4%B8%80-%E5%88%9B%E5%BB%BAndarray%E5%9B%9B%E7%A7%8D">一、创建ndarray（四种）</a></li>
-<li><a href="#%E4%BA%8C-%E5%B1%9E%E6%80%A7%E6%93%8D%E4%BD%9C%E5%85%AD%E4%B8%AA">二、属性操作（六个）</a></li>
-<li><a href="#%E4%B8%89-%E5%9F%BA%E6%9C%AC%E8%BF%90%E7%AE%97%E4%B8%83%E4%B8%AA">三、基本运算（七个）</a></li>
-<li><a href="#%E5%9B%9B-%E7%B4%A2%E5%BC%95%E5%92%8C%E5%88%87%E7%89%87">四、索引和切片</a>
+<li><a href="#%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0%E4%BB%8E%E5%B0%9D%E8%AF%95%E5%88%B0%E5%86%B3%E7%AD%96">强化学习——从尝试到决策</a>
 <ul>
-<li><a href="#1-%E4%B8%80%E7%BB%B4%E6%95%B0%E7%BB%84">1. 一维数组</a></li>
-<li><a href="#2-%E5%A4%9A%E7%BB%B4%E6%95%B0%E7%BB%84">2. 多维数组</a></li>
-<li><a href="#3-%E6%9F%A5%E6%89%BE%E7%B4%A2%E5%BC%95">3. 查找索引</a></li>
+<li><a href="#%E5%88%9D%E8%AF%86%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0">初识强化学习</a></li>
+<li><a href="#%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0%E7%9A%84%E5%88%86%E7%B1%BB%E5%92%8C%E6%96%B9%E6%B3%95">强化学习的分类和方法</a></li>
+<li><a href="#parl%E6%A1%86%E6%9E%B6%E5%92%8Cgym%E7%8E%AF%E5%A2%83">PARL框架和GYM环境</a></li>
 </ul>
 </li>
-<li><a href="#%E4%BA%94-%E7%BB%9F%E8%AE%A1%E6%96%B9%E6%B3%95%E4%B8%83%E7%B1%BB">五、统计方法（七类）</a></li>
-<li><a href="#%E5%85%AD-%E9%9A%8F%E6%9C%BA%E6%95%B0nprandom">六、随机数np.random</a>
+<li><a href="#%E5%9F%BA%E4%BA%8E%E8%A1%A8%E6%A0%BC%E5%9E%8B%E6%96%B9%E6%B3%95%E6%B1%82%E8%A7%A3rl">基于表格型方法求解RL</a>
 <ul>
-<li><a href="#1-%E5%88%9B%E5%BB%BA%E9%9A%8F%E6%9C%BAndarray%E6%95%B0%E7%BB%84">1. 创建随机ndarray数组</a></li>
-<li><a href="#2-%E9%9A%8F%E6%9C%BA%E6%89%93%E4%B9%B1ndarray%E6%95%B0%E7%BB%84">2. 随机打乱ndarray数组</a></li>
-<li><a href="#3-%E9%9A%8F%E6%9C%BA%E9%80%89%E5%8F%96%E5%85%83%E7%B4%A0%E4%B8%80%E7%BB%B4">3. 随机选取元素（一维）</a></li>
+<li><a href="#%E5%BA%8F%E5%88%97%E5%86%B3%E7%AD%96%E7%9A%84%E7%BB%8F%E5%85%B8%E8%A1%A8%E8%BE%BEmdp">序列决策的经典表达（MDP）</a></li>
+<li><a href="#%E7%8A%B6%E6%80%81%E5%8A%A8%E4%BD%9C%E4%BB%B7%E5%80%BCq%E7%9A%84%E6%B1%82%E8%A7%A3">状态动作价值（Q）的求解</a></li>
+<li><a href="#sarsa%E5%92%8Cq-learning">Sarsa和Q-learning</a></li>
+<li><a href="#%E4%BB%A3%E7%A0%81%E6%9E%84%E5%BB%BA%E4%B8%8E%E6%BC%94%E7%A4%BA">代码构建与演示</a></li>
 </ul>
 </li>
-<li><a href="#%E4%B8%83-%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0">七、线性代数</a></li>
-<li><a href="#%E5%85%AB-%E6%96%87%E4%BB%B6%E8%AF%BB%E5%86%99%E4%B8%8E%E4%BF%9D%E5%AD%98">八、文件读写与保存</a>
+<li><a href="#%E5%9F%BA%E4%BA%8E%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E6%96%B9%E6%B3%95%E6%B1%82%E8%A7%A3rl">基于神经网络方法求解RL</a>
 <ul>
-<li><a href="#1-%E6%96%87%E6%9C%AC%E8%AF%BB%E5%8F%96">1. 文本读取</a></li>
-<li><a href="#2-%E6%96%87%E4%BB%B6%E4%BF%9D%E5%AD%98">2. 文件保存</a></li>
+<li><a href="#%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E8%BF%91%E4%BC%BCq%E5%87%BD%E6%95%B0">神经网络近似Q函数</a></li>
+<li><a href="#dqn%E5%85%A5%E9%97%A8deep-rl">DQN：入门deep RL</a></li>
+<li><a href="#%E4%BB%A3%E7%A0%81%E6%9E%84%E5%BB%BA%E4%B8%8E%E6%BC%94%E7%A4%BA-2">代码构建与演示</a></li>
 </ul>
 </li>
-<li><a href="#%E4%B9%9D-numpy%E5%BA%94%E7%94%A8%E4%B8%BE%E4%BE%8B">九、Numpy应用举例</a>
-<ul>
-<li><a href="#1-%E8%AE%A1%E7%AE%97%E6%BF%80%E6%B4%BB%E5%87%BD%E6%95%B0sigmoid%E5%92%8Crelu">1. 计算激活函数Sigmoid和ReLU</a></li>
-<li><a href="#2-%E5%9B%BE%E5%83%8F%E7%BF%BB%E8%BD%AC%E5%92%8C%E8%A3%81%E5%89%AA">2. 图像翻转和裁剪</a></li>
+<li><a href="#%E6%80%BB%E7%BB%93">总结</a></li>
 </ul>
 </li>
 </ul>
-</li>
-</ul>
-</p>
-<h2 id="写在前面">写在前面</h2>
-<blockquote>
-<p>人生苦短，我用python。</p>
-</blockquote>
-<p>为什么使用ndarray：</p>
-<ul>
-<li>基础数据结构</li>
-<li>效率比list高，底层C</li>
-<li>支持矩阵运算</li>
-<li>广播机制，兼容不同维度数组的加法</li>
-</ul>
-<pre><code class="language-python"># 使用前导入库文件
-import numpy as np
-</code></pre>
-<h2 id="一-创建ndarray四种">一、创建ndarray（四种）</h2>
-<ul>
-<li><code>np.array(list)</code>：从list/tuple创建</li>
-<li><code>np.arrange(start,stop,interval)</code>：创建序列</li>
-<li><code>np.zero([d1,d2,...])</code>：创建指定维度的全0矩阵（<strong>浮点</strong>）</li>
-<li><code>np.ones([d1,d2,...])</code>：创建指定维度的全1矩阵（<strong>浮点</strong>）</li>
-</ul>
-<h2 id="二-属性操作六个">二、属性操作（六个）</h2>
-<ul>
-<li><code>arr.size</code>：数组形状，即<code>(x,y,z)</code>（返回元组）</li>
-<li><code>arr.dtype</code>：数据类型</li>
-<li><code>arr.size</code>：元素个数，即<code>x*y*z</code></li>
-<li><code>arr.ndim</code>：维度大小，即<code>len(x,y,z)</code></li>
-<li><code>arr.astype(np.int64)</code>：改变数据类型</li>
-<li><code>arr.reshap(m,n)</code>：改变形状</li>
-</ul>
-<h2 id="三-基本运算七个">三、基本运算（七个）</h2>
-<ul>
-<li><code>+</code>加， <code>-</code>减， <code>*</code>乘， <code>/</code>除， <code>//</code>向下取整除，<code>%</code>模， <code>**</code>乘方</li>
-<li>标量和ndarray数组之间的运算（所有元素进行运算）</li>
-<li>两个ndarray数组之间的运算（对应位置元素进行运算）</li>
-<li><code>/</code>还可以当作分隔符，分隔但不中断语句</li>
-</ul>
-<h2 id="四-索引和切片">四、索引和切片</h2>
-<h3 id="1-一维数组">1. 一维数组</h3>
-<ul>
-<li>一维数组跟Python列表的功能类似</li>
-<li><strong>区别</strong>：数组切片还是指向原来的内存区域</li>
-<li>将值赋值给一个切片时，该值会自动传播到整个切片</li>
-<li><strong>如何复制数据？</strong>：使用 <strong><code>arr=np.copy(arr)</code></strong></li>
-</ul>
-<h3 id="2-多维数组">2. 多维数组</h3>
-<ul>
-<li>在多维数组中，各索引位置上的元素不再是标量而是多维数组</li>
-<li>以逗号隔开的索引列表来选取单个元素：<strong><code>arr[a][b]</code>等价于<code>arr[a,b]</code></strong></li>
-<li>在多维数组中，如果省略了后面的索引，则返回对象会是一个低维数组</li>
-</ul>
-<pre><code class="language-python"># 使用for语句生成列表 a = [0, 2, 4]
-a = [k for k in range(0, 6, 2)]
-</code></pre>
-<h3 id="3-查找索引">3. 查找索引</h3>
-<pre><code class="language-python">a = np.array([1,2,3,4,2,4,3,3,4])
-max_a = a.max() # 返回第一个索引
-np.where(a==max_a) # 返回全部索引的元组
-</code></pre>
-<h2 id="五-统计方法七类">五、统计方法（七类）</h2>
-<p>对整个数组或某个轴向的数据进行统计计算。<br>
-（<em>以下方法既可以当做数组的实例方法，也可以当做Numpy函数使用</em>）</p>
-<ul>
-<li><code>mean</code>：计算算术平均数，零长度数组的mean为NaN。</li>
-<li><code>std</code>和<code>var</code>：计算标准差和方差，自由度可调（默认为n）。</li>
-<li><code>sum</code>：对数组中全部或某轴向的元素求和，零长度数组的sum为0。</li>
-<li><code>max</code>和<code>min</code>：计算最大值和最小值。</li>
-<li><code>argmin</code>和<code>argmax</code>：分别为最大和最小元素的索引。</li>
-<li><code>cumsum</code>：计算所有元素的累加。</li>
-<li><code>cumprod</code>：计算所有元素的累积。</li>
-</ul>
-<pre><code class="language-python"># 计算均值，使用arr.mean() 或 np.mean(arr)，二者是等价的
-arr = np.array([[1,2,3], [4,5,6], [7,8,9]])
-arr.mean(), np.mean(arr)
-# 指定计算的维度
-# 沿着第1维求平均，也就是将[1, 2, 3]取平均等于2，[4, 5, 6]取平均等于5，[7, 8, 9]取平均等于8
-arr.mean(axis = 1)
-# 沿着第0维求和，也就是将[1, 4, 7]求和等于12，[2, 5, 8]求和等于15，[3, 6, 9]求和等于18
-arr.sum(axis=0)
-# 沿着第0维求最大值，也就是将[1, 4, 7]求最大值等于7，[2, 5, 8]求最大值等于8，[3, 6, 9]求最大值等于9
-arr.max(axis=0)
-# 沿着第1维求最小值，也就是将[1, 2, 3]求最小值等于1，[4, 5, 6]求最小值等于4，[7, 8, 9]求最小值等于7
-arr.min(axis=1)
-</code></pre>
-<h2 id="六-随机数nprandom">六、随机数np.random</h2>
-<h3 id="1-创建随机ndarray数组">1. 创建随机ndarray数组</h3>
-<ul>
-<li>设置随机数种子</li>
-</ul>
-<pre><code class="language-python"># 多次运行，程序输出结果一致
-# 如果不设置随机数种子，多次运行输出结果不一致
-np.random.seed(10)
-a = np.random.rand(3, 3)
-</code></pre>
-<ul>
-<li>均匀分布</li>
-</ul>
-<pre><code class="language-python"># 生成均匀分布随机数，随机数取值范围在[0, 1)之间
-a = np.random.rand(3, 3)
-# 生成均匀分布随机数，指定随机数取值范围和数组形状
-# 未指定形状则返回一个数字，即rand()等价于uniform(0,1)
-a = np.random.uniform(low = -1.0, high = 1.0, size=(2,2))
-</code></pre>
-<ul>
-<li>正态分布</li>
-</ul>
-<pre><code class="language-python"># 生成标准正态分布随机数
-a = np.random.randn(3, 3)
-# 生成正态分布随机数，指定均值loc和方差scale
-a = np.random.normal(loc = 1.0, scale = 1.0, size = (3,3))
-</code></pre>
-<h3 id="2-随机打乱ndarray数组">2. 随机打乱ndarray数组</h3>
-<ul>
-<li>随机打乱1维ndarray数组顺序，发现所有元素位置都被打乱了</li>
-</ul>
-<pre><code class="language-python"># 生成一维数组
-a = np.arange(0, 30)
-# 打乱一维数组顺序
-np.random.shuffle(a)
-</code></pre>
-<ul>
-<li>随机打乱2维ndarray数组顺序，发现只有行的顺序被打乱了，列顺序不变</li>
-</ul>
-<pre><code class="language-python"># 生成一维数组
-a = np.arange(0, 30)
-# 将一维数组转化成2维数组
-a = a.reshape(10, 3)
-# 打乱一维数组顺序
-np.random.shuffle(a)
-</code></pre>
-<h3 id="3-随机选取元素一维">3. 随机选取元素（一维）</h3>
-<pre><code class="language-python"># 随机选取部分元素（30选5）
-a = np.arange(30)
-b = np.random.choice(a, size=5)
-# 随机选取部分元素（30选1）
-c = np.random.choice(30)
-</code></pre>
-<h2 id="七-线性代数">七、线性代数</h2>
-<p>线性代数（如矩阵乘法、矩阵分解、行列式以及其他方阵数学等）是任何数组库的重要组成部分，Numpy中实现了线性代数中常用的各种操作，并形成了<code>numpy.linalg</code>线性代数相关的模块。</p>
-<ul>
-<li><code>diag</code>：以一维数组的形式返回方阵的对角线（或非对角线）元素，或将一维数组转换为方阵（非对角线元素为0）。</li>
-<li><code>dot</code>：矩阵乘法。注意：<strong><code>b.dot(c)</code>等价于<code>np.dot(b,c)</code></strong>。</li>
-<li><code>trace</code>：计算对角线元素的和。</li>
-<li><code>linalg.det</code>：计算矩阵行列式。</li>
-<li><code>linalg.eig</code>：计算方阵的特征值和特征向量。</li>
-<li><code>linalg.inv</code>：计算方阵的逆。</li>
-</ul>
-<pre><code class="language-python"># 矩阵相乘
-a = np.arange(12)
-b = a.reshape([3, 4])
-c = a.reshape([4, 3])
-# 矩阵b的第二维大小，必须等于矩阵c的第一维大小
-d = b.dot(c) # 等价于 np.dot(b, c)
-</code></pre>
-<h2 id="八-文件读写与保存">八、文件读写与保存</h2>
-<h3 id="1-文本读取">1. 文本读取</h3>
-<p>Numpy可以方便的进行文件读写，如下面这种格式的文本文件：</p>
-<figure data-type="image" tabindex="1"><img src="https://star2dust.github.io/post-images/1595412752442.png" alt="文本数据" loading="lazy"></figure>
-<pre><code class="language-python"># 使用np.fromfile从文本文件'housing.data'读入数据
-# 这里要设置参数sep = ' '，表示使用空白字符来分隔数据
-# 空格或者回车都属于空白字符，读入的数据被转化成1维数组
-d = np.fromfile('./work/housing.data', sep = ' ')
-</code></pre>
-<h3 id="2-文件保存">2. 文件保存</h3>
-<p>Numpy提供了save和load接口，直接将数组保存成文件(保存为.npy格式)，或者从.npy文件中读取数组。</p>
-<pre><code class="language-python"># 产生随机数组a
-a = np.random.rand(3,3)
-np.save('a.npy', a)
 
-# 从磁盘文件'a.npy'读入数组
-b = np.load('a.npy')
+              </div>
+            </div>
+          </article>
+        </div>
 
-# 检查a和b的数值是否一样
-check = (a == b).all()
-</code></pre>
-<h2 id="九-numpy应用举例">九、Numpy应用举例</h2>
-<h3 id="1-计算激活函数sigmoid和relu">1. 计算激活函数Sigmoid和ReLU</h3>
-<p>使用ndarray数组可以很方便的构建数学函数，并利用其底层的矢量计算能力快速实现计算。下面以神经网络中比较常用激活函数Sigmoid和ReLU为例，介绍代码实现过程。</p>
-<pre><code class="language-python"># ReLU和Sigmoid激活函数示意图
-import numpy as np
-import matplotlib.pyplot as plt
-import matplotlib.patches as patches
+        
+          <div class="next-post">
+            <div class="next">下一篇</div>
+            <a href="https://star2dust.github.io/post/ndarray-notes/">
+              <h3 class="post-title">
+                ndarray数组基本结构和操作
+              </h3>
+            </a>
+          </div>
+        
 
-#设置图片大小
-plt.figure(figsize=(8, 3))
+        
 
-# x是1维数组，数组大小是从-10. 到10.的实数，每隔0.1取一个点
-x = np.arange(-10, 10, 0.1)
-# 计算 Sigmoid函数
-s = 1.0 / (1 + np.exp(- x))
+        <div class="site-footer">
+  Copyright &copy;<span>star2dust</span> &nbsp;  Powered by &nbsp;  <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
+  <a class="rss" href="https://star2dust.github.io/atom.xml" target="_blank">
+    <i class="ri-rss-line"></i> RSS
+  </a>
+</div>
 
-# 计算ReLU函数
-y = np.clip(x, a_min = 0., a_max = None)
+      </div>
+    </div>
 
-#########################################################
-# 以下部分为画图程序
+    <script>
+      hljs.initHighlightingOnLoad()
 
-# 设置两个子图窗口，将Sigmoid的函数图像画在左边
-f = plt.subplot(121)
-# 画出函数曲线
-plt.plot(x, s, color='r')
-# 添加文字说明
-plt.text(-5., 0.9, r'$y=\sigma(x)$', fontsize=13)
-# 设置坐标轴格式
-currentAxis=plt.gca()
-currentAxis.xaxis.set_label_text('x', fontsize=15)
-currentAxis.yaxis.set_label_text('y', fontsize=15)
+      let mainNavLinks = document.querySelectorAll(".markdownIt-TOC a");
 
-# 将ReLU的函数图像画在右边
-f = plt.subplot(122)
-# 画出函数曲线
-plt.plot(x, y, color='g')
-# 添加文字说明
-plt.text(-3.0, 9, r'$y=ReLU(x)$', fontsize=13)
-# 设置坐标轴格式
-currentAxis=plt.gca()
-currentAxis.xaxis.set_label_text('x', fontsize=15)
-currentAxis.yaxis.set_label_text('y', fontsize=15)
+      // This should probably be throttled.
+      // Especially because it triggers during smooth scrolling.
+      // https://lodash.com/docs/4.17.10#throttle
+      // You could do like...
+      // window.addEventListener("scroll", () => {
+      //    _.throttle(doThatStuff, 100);
+      // });
+      // Only not doing it here to keep this Pen dependency-free.
 
-plt.show()
-</code></pre>
-<figure data-type="image" tabindex="2"><img src="https://star2dust.github.io/post-images/1595412819021.png" alt="relu和sigmoid函数图像" loading="lazy"></figure>
-<h3 id="2-图像翻转和裁剪">2. 图像翻转和裁剪</h3>
-<p>图像是由像素点构成的矩阵，其数值可以用ndarray来表示。将上述介绍的操作用在图像数据对应的ndarray上，可以很轻松的实现图片的翻转、裁剪和亮度调整，具体代码和效果如下所示。</p>
-<pre><code class="language-python"># 导入需要的包
-import numpy as np
-import matplotlib.pyplot as plt
-from PIL import Image
+      window.addEventListener("scroll", event => {
+        let fromTop = window.scrollY;
 
-# 读入图片
-image = Image.open('bus.png')
-image = np.array(image)
-# 查看数据形状，其形状是[H, W, 3]，
-# 其中H代表高度， W是宽度，3代表RGB三个通道
-image.shape #(612, 612, 3)
-# 原始图片
-plt.imshow(image)
-</code></pre>
-<figure data-type="image" tabindex="3"><img src="https://star2dust.github.io/post-images/1595412844732.jpg" alt="lotus" loading="lazy"></figure>
-<pre><code class="language-python"># 垂直方向翻转
-# 这里使用数组切片的方式来完成，
-# 相当于将图片最后一行挪到第一行，
-# 倒数第二行挪到第二行，..., 
-# 第一行挪到倒数第一行
-# 对于行指标，使用::-1来表示切片，
-# 负数步长表示以最后一个元素为起点，向左走寻找下一个点
-# 对于列指标和RGB通道，仅使用:表示该维度不改变
-image1 = image[::-1, :, :]
-plt.imshow(image1)
-</code></pre>
-<figure data-type="image" tabindex="4"><img src="https://star2dust.github.io/post-images/1595412860189.png" alt="lotus_01" loading="lazy"></figure>
-<pre><code class="language-python"># 水平方向翻转
-image2 = image[:, ::-1, :]
-plt.imshow(image2)
-# 保存图片
-im2 = Image.fromarray(image2)
-im2.save('im2.jpg')
-</code></pre>
-<figure data-type="image" tabindex="5"><img src="https://star2dust.github.io/post-images/1595412875647.png" alt="lotus_02" loading="lazy"></figure>
-<pre><code class="language-python">#  高度方向裁剪
-H, W = image.shape[0], image.shape[1]
-# 注意此处用整除，H_start必须为整数
-H1 = H // 2 
-H2 = H
-image3 = image[H1:H2, :, :]
-plt.imshow(image3)
-</code></pre>
-<figure data-type="image" tabindex="6"><img src="https://star2dust.github.io/post-images/1595412893373.png" alt="lotus_03" loading="lazy"></figure>
-<pre><code class="language-python">#  宽度方向裁剪
-W1 = W//6
-W2 = W//3 * 2
-image4 = image[:, W1:W2, :]
-plt.imshow(image4)
-</code></pre>
-<figure data-type="image" tabindex="7"><img src="https://star2dust.github.io/post-images/1595412908064.png" alt="lotus_04" loading="lazy"></figure>
-<pre><code class="language-python"># 两个方向同时裁剪
-image5 = image[H1:H2, \
-               W1:W2, :]
-plt.imshow(image5)
-</code></pre>
-<figure data-type="image" tabindex="8"><img src="https://star2dust.github.io/post-images/1595412920053.png" alt="lotus_05" loading="lazy"></figure>
-<pre><code class="language-python"># 调整亮度
-image6 = image * 0.5
-plt.imshow(image6.astype('uint8'))
-</code></pre>
-<figure data-type="image" tabindex="9"><img src="https://star2dust.github.io/post-images/1595412932862.png" alt="lotus_06" loading="lazy"></figure>
-<pre><code class="language-python"># 调整亮度
-image7 = image * 2.0
-# 由于图片的RGB像素值必须在0-255之间，
-# 此处使用np.clip进行数值裁剪
-image7 = np.clip(image7, \
-        a_min=None, a_max=255.)
-plt.imshow(image7.astype('uint8'))
-</code></pre>
-<figure data-type="image" tabindex="10"><img src="https://star2dust.github.io/post-images/1595412951944.png" alt="lotus_07" loading="lazy"></figure>
-<pre><code class="language-python">#高度方向每隔一行取像素点
-image8 = image[::2, :, :]
-plt.imshow(image8)
-</code></pre>
-<figure data-type="image" tabindex="11"><img src="https://star2dust.github.io/post-images/1595412965422.png" alt="lotus_08" loading="lazy"></figure>
-<pre><code class="language-python">#宽度方向每隔一列取像素点
-image9 = image[:, ::2, :]
-plt.imshow(image9)
-</code></pre>
-<figure data-type="image" tabindex="12"><img src="https://star2dust.github.io/post-images/1595412981877.png" alt="lotus_09" loading="lazy"></figure>
-<pre><code class="language-python">#间隔行列采样，图像尺寸会减半，清晰度变差
-image10 = image[::2, ::2, :]
-plt.imshow(image10)
-print(image10.shape) # (240, 160, 3)
-</code></pre>
-<figure data-type="image" tabindex="13"><img src="https://star2dust.github.io/post-images/1595412995167.png" alt="lotus_10" loading="lazy"></figure>
-]]></content>
-    </entry>
-</feed>
+        mainNavLinks.forEach((link, index) => {
+          let section = document.getElementById(decodeURI(link.hash).substring(1));
+          let nextSection = null
+          if (mainNavLinks[index + 1]) {
+            nextSection = document.getElementById(decodeURI(mainNavLinks[index + 1].hash).substring(1));
+          }
+          if (section.offsetTop <= fromTop) {
+            if (nextSection) {
+              if (nextSection.offsetTop > fromTop) {
+                link.classList.add("current");
+              } else {
+                link.classList.remove("current");    
+              }
+            } else {
+              link.classList.add("current");
+            }
+          } else {
+            link.classList.remove("current");
+          }
+        });
+      });
+
+    </script>
+  </body>
+</html>

@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://star2dust.github.io</id>
     <title>star2dust</title>
-    <updated>2020-07-23T03:47:40.195Z</updated>
+    <updated>2020-07-23T03:53:23.528Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://star2dust.github.io"/>
     <link rel="self" href="https://star2dust.github.io/atom.xml"/>
@@ -16,7 +16,36 @@
         <link href="https://star2dust.github.io/post/python-grammers/">
         </link>
         <updated>2020-07-23T03:42:51.000Z</updated>
-        <content type="html"><![CDATA[<h1 id="一-基础语法">一、基础语法</h1>
+        <content type="html"><![CDATA[<p><ul class="markdownIt-TOC">
+<li><a href="#%E4%B8%80-%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95">一、基础语法</a>
+<ul>
+<li><a href="#1-%E6%AF%94%E8%BE%83%E6%93%8D%E4%BD%9C%E7%AC%A6">1. 比较操作符</a></li>
+<li><a href="#2-%E9%80%BB%E8%BE%91%E6%93%8D%E4%BD%9C%E7%AC%A6">2. 逻辑操作符</a></li>
+<li><a href="#3-if-else%E8%AF%AD%E5%8F%A5">3. if else语句</a></li>
+</ul>
+</li>
+<li><a href="#%E4%BA%8C-for%E5%BE%AA%E7%8E%AF">二、for循环</a>
+<ul>
+<li><a href="#1-%E6%9E%9A%E4%B8%BE">1. 枚举</a></li>
+<li><a href="#2-%E8%AE%A1%E6%95%B0">2. 计数</a></li>
+<li><a href="#3-%E6%93%8D%E4%BD%9C%E5%BE%AA%E7%8E%AF">3. 操作循环</a></li>
+</ul>
+</li>
+<li><a href="#%E4%B8%89-%E5%87%BD%E6%95%B0%E8%AF%AD%E6%B3%95">三、函数语法</a>
+<ul>
+<li><a href="#1-%E5%88%9B%E5%BB%BA%E5%87%BD%E6%95%B0">1. 创建函数</a></li>
+<li><a href="#2-%E5%87%BD%E6%95%B0%E5%8F%82%E6%95%B0">2. 函数参数</a></li>
+</ul>
+</li>
+<li><a href="#%E5%9B%9B-%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1">四、面向对象</a>
+<ul>
+<li><a href="#1-%E5%88%9B%E5%BB%BA%E5%AF%B9%E8%B1%A1">1. 创建对象</a></li>
+<li><a href="#2-%E5%AE%9E%E4%BE%8B%E6%96%B9%E6%B3%95">2. 实例方法</a></li>
+</ul>
+</li>
+</ul>
+</p>
+<h1 id="一-基础语法">一、基础语法</h1>
 <h2 id="1-比较操作符">1. 比较操作符</h2>
 <p>【&lt;=】【&gt;=】【==】【!=】</p>
 <h2 id="2-逻辑操作符">2. 逻辑操作符</h2>
@@ -100,7 +129,11 @@ for num in range(1,5)
         <link href="https://star2dust.github.io/post/pip-packages/">
         </link>
         <updated>2020-07-23T03:40:40.000Z</updated>
-        <content type="html"><![CDATA[<h1 id="一-pip国内的一些镜像">一、pip国内的一些镜像</h1>
+        <content type="html"><![CDATA[<p><ul class="markdownIt-TOC">
+<li><a href="#%E4%B8%80-pip%E5%9B%BD%E5%86%85%E7%9A%84%E4%B8%80%E4%BA%9B%E9%95%9C%E5%83%8F">一、pip国内的一些镜像</a></li>
+</ul>
+</p>
+<h1 id="一-pip国内的一些镜像">一、pip国内的一些镜像</h1>
 <ul>
 <li>阿里云 http://mirrors.aliyun.com/pypi/simple/</li>
 <li>中科大 https://pypi.mirrors.ustc.edu.cn/simple/</li>

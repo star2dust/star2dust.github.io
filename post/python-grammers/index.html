@@ -3,7 +3,7 @@
     <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Python四大语法 | star2dust</title>
-<link rel="shortcut icon" href="https://star2dust.github.io/favicon.ico?v=1595475988720">
+<link rel="shortcut icon" href="https://star2dust.github.io/favicon.ico?v=1595476389006">
 <link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
 <link rel="stylesheet" href="https://star2dust.github.io/styles/main.css">
 <link rel="alternate" type="application/atom+xml" title="Python四大语法 | star2dust - Atom Feed" href="https://star2dust.github.io/atom.xml">
@@ -11,19 +11,31 @@
 
 
 
-    <meta name="description" content="一、基础语法
-1. 比较操作符
-【&lt;=】【&gt;=】【==】【!=】
-2. 逻辑操作符
-and，or，not
-3. if else语句
-注意末尾加冒号【:】
+    <meta name="description" content="
+一、基础语法
 
-elif可以无数个
-else只能有一个
+1. 比较操作符
+2. 逻辑操作符
+3. if else语句
+
 
 二、for循环
-注意末尾加冒号..." />
+
+1. 枚举
+2. 计数
+3. 操作循环
+
+
+三、函数语法
+
+1. 创建函数
+2. 函数参数
+
+
+四、面向对象
+
+1. 创建对象
+2. 实例..." />
     <meta name="keywords" content="Python" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
     <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
@@ -33,7 +45,7 @@ else只能有一个
       <div class="main-content">
         <div class="site-header">
   <a href="https://star2dust.github.io">
-  <img class="avatar" src="https://star2dust.github.io/images/avatar.png?v=1595475988720" alt="">
+  <img class="avatar" src="https://star2dust.github.io/images/avatar.png?v=1595476389006" alt="">
   </a>
   <h1 class="site-title">
     star2dust
@@ -116,7 +128,36 @@ else只能有一个
             
             <div class="post-content-wrapper">
               <div class="post-content">
-                <h1 id="一-基础语法">一、基础语法</h1>
+                <p><ul class="markdownIt-TOC">
+<li><a href="#%E4%B8%80-%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95">一、基础语法</a>
+<ul>
+<li><a href="#1-%E6%AF%94%E8%BE%83%E6%93%8D%E4%BD%9C%E7%AC%A6">1. 比较操作符</a></li>
+<li><a href="#2-%E9%80%BB%E8%BE%91%E6%93%8D%E4%BD%9C%E7%AC%A6">2. 逻辑操作符</a></li>
+<li><a href="#3-if-else%E8%AF%AD%E5%8F%A5">3. if else语句</a></li>
+</ul>
+</li>
+<li><a href="#%E4%BA%8C-for%E5%BE%AA%E7%8E%AF">二、for循环</a>
+<ul>
+<li><a href="#1-%E6%9E%9A%E4%B8%BE">1. 枚举</a></li>
+<li><a href="#2-%E8%AE%A1%E6%95%B0">2. 计数</a></li>
+<li><a href="#3-%E6%93%8D%E4%BD%9C%E5%BE%AA%E7%8E%AF">3. 操作循环</a></li>
+</ul>
+</li>
+<li><a href="#%E4%B8%89-%E5%87%BD%E6%95%B0%E8%AF%AD%E6%B3%95">三、函数语法</a>
+<ul>
+<li><a href="#1-%E5%88%9B%E5%BB%BA%E5%87%BD%E6%95%B0">1. 创建函数</a></li>
+<li><a href="#2-%E5%87%BD%E6%95%B0%E5%8F%82%E6%95%B0">2. 函数参数</a></li>
+</ul>
+</li>
+<li><a href="#%E5%9B%9B-%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1">四、面向对象</a>
+<ul>
+<li><a href="#1-%E5%88%9B%E5%BB%BA%E5%AF%B9%E8%B1%A1">1. 创建对象</a></li>
+<li><a href="#2-%E5%AE%9E%E4%BE%8B%E6%96%B9%E6%B3%95">2. 实例方法</a></li>
+</ul>
+</li>
+</ul>
+</p>
+<h1 id="一-基础语法">一、基础语法</h1>
 <h2 id="1-比较操作符">1. 比较操作符</h2>
 <p>【&lt;=】【&gt;=】【==】【!=】</p>
 <h2 id="2-逻辑操作符">2. 逻辑操作符</h2>

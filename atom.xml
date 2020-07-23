@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://star2dust.github.io</id>
     <title>star2dust</title>
-    <updated>2020-07-22T12:39:01.683Z</updated>
+    <updated>2020-07-23T03:47:40.195Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://star2dust.github.io"/>
     <link rel="self" href="https://star2dust.github.io/atom.xml"/>
@@ -10,6 +10,286 @@
     <logo>https://star2dust.github.io/images/avatar.png</logo>
     <icon>https://star2dust.github.io/favicon.ico</icon>
     <rights>All rights reserved 2020, star2dust</rights>
+    <entry>
+        <title type="html"><![CDATA[Python四大语法]]></title>
+        <id>https://star2dust.github.io/post/python-grammers/</id>
+        <link href="https://star2dust.github.io/post/python-grammers/">
+        </link>
+        <updated>2020-07-23T03:42:51.000Z</updated>
+        <content type="html"><![CDATA[<h1 id="一-基础语法">一、基础语法</h1>
+<h2 id="1-比较操作符">1. 比较操作符</h2>
+<p>【&lt;=】【&gt;=】【==】【!=】</p>
+<h2 id="2-逻辑操作符">2. 逻辑操作符</h2>
+<p><code>and</code>，<code>or</code>，<code>not</code></p>
+<h2 id="3-if-else语句">3. if else语句</h2>
+<p>注意末尾加冒号【:】</p>
+<ul>
+<li><code>elif</code>可以无数个</li>
+<li><code>else</code>只能有一个</li>
+</ul>
+<h1 id="二-for循环">二、for循环</h1>
+<p>注意末尾加冒号【:】</p>
+<h2 id="1-枚举">1. 枚举</h2>
+<pre><code class="language-python"># 用列表枚举
+for ind,elm in enumerate(list) 
+for tuple in enumerate(list)
+# 用字典枚举
+for key,val in enumerate(dict)
+for key in enumerate(dict)
+</code></pre>
+<h2 id="2-计数">2. 计数</h2>
+<pre><code class="language-python"># 用列表计数
+for num in [1,2,3,4,5] 
+# 用元组计数
+for num in 1,2,3,4,5
+# 用range计数
+for num in range(1,5)
+</code></pre>
+<ul>
+<li>range是一个新数据结构，不是列表</li>
+<li>三种方法中列表最慢</li>
+</ul>
+<h2 id="3-操作循环">3. 操作循环</h2>
+<ul>
+<li><code>continue</code>跳过不跳出</li>
+<li><code>break</code>跳出不跳过</li>
+<li>只有<code>break</code>能结束<code>while</code>循环</li>
+</ul>
+<h1 id="三-函数语法">三、函数语法</h1>
+<h2 id="1-创建函数">1. 创建函数</h2>
+<ul>
+<li>关键字<code>def</code>标记函数头的开始</li>
+<li>用于唯一标识它的函数名称</li>
+<li>参数（可选）</li>
+<li>冒号（:）标记函数头的结尾</li>
+<li>文档字符串（docstring）通常使用三引号，以便docstring可以扩展到多行</li>
+<li>python语句，必须具有相同的缩进级别（通常为4个空格）</li>
+<li>用于从函数返回值的return语句（可选，没有返回None）</li>
+</ul>
+<h2 id="2-函数参数">2. 函数参数</h2>
+<ul>
+<li>使用赋值运算符（=）为参数提供默认值</li>
+<li>没有默认值的参数在调用期间是必需的</li>
+<li>任意数量的参数都可以具有默认值</li>
+<li>一旦有一个默认参数，它右边的所有参数也必须有默认值</li>
+<li>使用关键字参数调用函数，可以更改参数的顺序</li>
+<li>参数名称前使用星号（*）来表示任意参数</li>
+</ul>
+<h1 id="四-面向对象">四、面向对象</h1>
+<h2 id="1-创建对象">1. 创建对象</h2>
+<ul>
+<li>使用<code>class</code>创建一个类</li>
+<li>添加该类的名称（使用骆驼命名法，以大写字母开头）</li>
+<li>使用<code>__init __(self,attr)</code>方法提供实例的初始属性</li>
+<li>【实例属性】特定于每个对象</li>
+<li>【类属性】对所有实例都相同，直接写在<code>__init __(self,attr)</code>之前</li>
+<li>使用<code>==</code>进行实例比较</li>
+<li>使用<code>type(obj)</code>查看实例类型</li>
+</ul>
+<h2 id="2-实例方法">2. 实例方法</h2>
+<ul>
+<li>第一个参数始终是self</li>
+<li>实例方法可修改实例属性</li>
+<li>使用<code>instance(child,parent)</code>确定前者（实例）是否为后者（类）的子类</li>
+</ul>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[ pip包管理]]></title>
+        <id>https://star2dust.github.io/post/pip-packages/</id>
+        <link href="https://star2dust.github.io/post/pip-packages/">
+        </link>
+        <updated>2020-07-23T03:40:40.000Z</updated>
+        <content type="html"><![CDATA[<h1 id="一-pip国内的一些镜像">一、pip国内的一些镜像</h1>
+<ul>
+<li>阿里云 http://mirrors.aliyun.com/pypi/simple/</li>
+<li>中科大 https://pypi.mirrors.ustc.edu.cn/simple/</li>
+<li>豆瓣 http://pypi.douban.com/simple/</li>
+<li>清华大学 https://pypi.tuna.tsinghua.edu.cn/simple/</li>
+<li>百度 https://mirror.baidu.com/pypi/simple</li>
+</ul>
+<pre><code class="language-shell">pip install [pkg] -i https://pypi.tuna.tsinghua.edu.cn/simple
+</code></pre>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Python三大数据类型]]></title>
+        <id>https://star2dust.github.io/post/python-data-types/</id>
+        <link href="https://star2dust.github.io/post/python-data-types/">
+        </link>
+        <updated>2020-07-23T02:50:46.000Z</updated>
+        <content type="html"><![CDATA[<p><ul class="markdownIt-TOC">
+<li><a href="#%E4%B8%80-%E5%AD%97%E7%AC%A6%E4%B8%B2">一、字符串</a>
+<ul>
+<li><a href="#1-%E5%AE%9A%E4%B9%89">1. 定义</a></li>
+<li><a href="#2-%E6%93%8D%E4%BD%9C">2. 操作</a></li>
+</ul>
+</li>
+<li><a href="#%E4%BA%8C-%E6%95%B0%E5%AD%97">二、数字</a></li>
+<li><a href="#%E4%B8%89-%E5%B8%83%E5%B0%94%E5%80%BC">三、布尔值</a></li>
+</ul>
+</p>
+<h1 id="一-字符串">一、字符串</h1>
+<h2 id="1-定义">1. 定义</h2>
+<ul>
+<li>三种方式：【’】，【“】，【”“”】（多行）<br>
+（<em>使用【\】以在字符串中使用上述符号</em>）</li>
+<li>特殊用法：<code>\t</code>TAB，<code>\n</code>换行</li>
+<li>输入<code>str = input('description')</code>（assignment）</li>
+<li>输出<code>print(str)</code></li>
+</ul>
+<h2 id="2-操作">2. 操作</h2>
+<ul>
+<li>使用method（<em>后面一定要加括号，使用<code>help()</code>查询</em>）</li>
+<li>大小写操作：<code>str.lower()</code>，<code>str.upper()</code>，<code>str.title()</code></li>
+<li>分隔操作：<code>str.split()</code>
+<ul>
+<li><em>括号中是分隔符（dtr），默认是' '（即空格）</em></li>
+<li><em>返回值是一个字符串列表str list（slt）</em></li>
+</ul>
+</li>
+<li>替换操作：<code>str.replace(char in str, another char)</code></li>
+<li>合并操作
+<ul>
+<li><code>dtr.join(slt)</code>，如果待合并的字符串在一个list中</li>
+<li><code>str1+str2</code>，如果待合并的字符串是独立的</li>
+</ul>
+</li>
+<li>倍数操作：<code>str*num</code>得到<code>str+str+...+str</code> （slt也一样）</li>
+</ul>
+<h1 id="二-数字">二、数字</h1>
+<ul>
+<li>四种类型：普通整数，长整数，浮点数和复数</li>
+<li>整数运算时仅在产生小数时返回浮点数，其余时候返回整数</li>
+<li>乘方运算：【**】</li>
+<li>模运算：【%】</li>
+</ul>
+<h1 id="三-布尔值">三、布尔值</h1>
+<ul>
+<li>普通整数的子类型</li>
+<li><code>True</code>，<code>False</code>（<em>首字母大写</em>）</li>
+</ul>
+]]></content>
+    </entry>
+    <entry>
+        <title type="html"><![CDATA[Python三大数据结构]]></title>
+        <id>https://star2dust.github.io/post/python-data-structures/</id>
+        <link href="https://star2dust.github.io/post/python-data-structures/">
+        </link>
+        <updated>2020-07-23T02:49:03.000Z</updated>
+        <content type="html"><![CDATA[<p><ul class="markdownIt-TOC">
+<li><a href="#%E4%B8%80-%E5%88%97%E8%A1%A8list">一、列表（list）</a>
+<ul>
+<li><a href="#1-%E5%88%97%E8%A1%A8%E7%B4%A2%E5%BC%95index">1. 列表索引（index）</a></li>
+<li><a href="#2-%E5%88%97%E8%A1%A8%E5%88%87%E7%89%87">2. 列表切片</a></li>
+<li><a href="#3-%E5%88%97%E8%A1%A8%E6%93%8D%E4%BD%9C">3. 列表操作</a></li>
+</ul>
+</li>
+<li><a href="#%E4%BA%8C-%E5%AD%97%E5%85%B8dict">二、字典（dict）</a>
+<ul>
+<li><a href="#1-%E6%9F%A5%E6%89%BE%E5%AD%97%E5%85%B8">1. 查找字典</a></li>
+<li><a href="#2-%E6%9B%B4%E6%96%B0%E5%AD%97%E5%85%B8">2. 更新字典</a></li>
+<li><a href="#3-%E9%81%8D%E5%8E%86%E5%AD%97%E5%85%B8">3. 遍历字典</a></li>
+</ul>
+</li>
+<li><a href="#%E4%B8%89-%E5%85%83%E7%BB%84tuple">三、元组（tuple）</a>
+<ul>
+<li><a href="#1-%E5%88%9D%E5%A7%8B%E5%8C%96">1. 初始化</a></li>
+<li><a href="#2-%E8%AE%BF%E9%97%AE%E5%92%8C%E5%88%87%E5%88%86%E5%85%83%E7%BB%84">2. 访问和切分元组</a></li>
+<li><a href="#3-%E5%85%83%E7%BB%84%E6%93%8D%E4%BD%9C">3. 元组操作</a></li>
+<li><a href="#4-%E5%85%83%E7%BB%84%E6%8B%86%E5%8C%85">4. 元组拆包</a></li>
+</ul>
+</li>
+</ul>
+</p>
+<h1 id="一-列表list">一、列表（list）</h1>
+<ul>
+<li>使用[]定义列表</li>
+<li>字符串也是一个列表</li>
+</ul>
+<h2 id="1-列表索引index">1. 列表索引（index）</h2>
+<ul>
+<li>从0开始正向访问</li>
+<li>从-1开始反向访问</li>
+</ul>
+<h2 id="2-列表切片">2. 列表切片</h2>
+<ul>
+<li>使用<code>list[:]</code>类似matlab</li>
+<li>【:】左右为空表示从头开始</li>
+<li>左大于右返回空列表</li>
+<li><code>list[a:b]</code>索引从a到b-1</li>
+</ul>
+<h2 id="3-列表操作">3. 列表操作</h2>
+<ul>
+<li><code>min(list)</code>，<code>max(list)</code>，<code>len(list)</code></li>
+<li><code>sum(list)</code>只能用于数字类型</li>
+<li><code>dtr.join(list)</code>只能合并字符串</li>
+<li><code>list.count(elm)</code>对元素（elm）出现次数计数</li>
+<li><code>list.index(elm)</code>返回元素（elm）第一个索引</li>
+<li><code>list.sort()</code>元素排序小到大</li>
+<li><code>list.sort(reverse = True)</code>元素排序大到小</li>
+<li><code>sorted(list)</code>返回排序后列表</li>
+<li><code>list.append(elm)</code>列表末尾增加元素</li>
+<li><code>list.remove(elm)</code>列表删除指定元素</li>
+<li><code>list.pop(id)</code>按索引删除元素</li>
+<li><code>list.extend(list2)</code>在末尾合并列表</li>
+<li><code>list.insert(id,elm)</code>按索引插入元素</li>
+</ul>
+<h1 id="二-字典dict">二、字典（dict）</h1>
+<ul>
+<li>使用{}定义字典</li>
+<li>键(key)映射到值(value)的无序数据结构</li>
+<li>键(key)不可变</li>
+</ul>
+<h2 id="1-查找字典">1. 查找字典</h2>
+<ul>
+<li><code>dict[key]</code>访问键对应的值</li>
+<li><code>dict.get(key,default)</code>访问键值</li>
+<li>键不存在返回预设default（<em>没有预设返回None</em>）</li>
+</ul>
+<h2 id="2-更新字典">2. 更新字典</h2>
+<ul>
+<li><code>dict['nkey']=nval</code>增加/更新键值</li>
+<li><code>dict.update(ndict)</code>增加/更新键值（通过新字典）</li>
+<li>删除键值</li>
+</ul>
+<pre><code class="language-python">del dict[key]
+</code></pre>
+<ul>
+<li><code>val = dict.pop(key)</code>删除键值，并返回值</li>
+</ul>
+<h2 id="3-遍历字典">3. 遍历字典</h2>
+<ul>
+<li><code>dict.keys()</code>返回所有键</li>
+<li><code>dict..values()</code>返回所有值</li>
+</ul>
+<h1 id="三-元组tuple">三、元组（tuple）</h1>
+<ul>
+<li>使用<code>(,)</code>定义元组</li>
+<li>元组不能更改（不可变）</li>
+</ul>
+<h2 id="1-初始化">1. 初始化</h2>
+<ul>
+<li>空元组<code>()</code>或<code>Tuple()</code></li>
+<li>非空元组用逗号初始化<code>1,2,3</code></li>
+<li>单值元组末尾要加逗号<code>1,</code>或<code>(1,)</code></li>
+</ul>
+<h2 id="2-访问和切分元组">2. 访问和切分元组</h2>
+<ul>
+<li>索引使用方法和列表相同</li>
+</ul>
+<h2 id="3-元组操作">3. 元组操作</h2>
+<ul>
+<li><code>tup1+tup2</code>返回合并的元组</li>
+<li><code>tup.index(elm)</code>返回元素（elm）第一个索引</li>
+<li><code>tup.count(elm)</code>对元素（elm）出现次数计数</li>
+</ul>
+<h2 id="4-元组拆包">4. 元组拆包</h2>
+<pre><code class="language-python">x,y,z = 1,3,4
+'x = {}, y = {}, z = {}'.format(x,y,z)
+</code></pre>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[强化学习从零实践入门心得]]></title>
         <id>https://star2dust.github.io/post/parl-notes/</id>

@@ -1,22 +1,131 @@
-<?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom">
-    <id>https://star2dust.github.io</id>
-    <title>star2dust</title>
-    <updated>2020-07-24T07:31:41.877Z</updated>
-    <generator>https://github.com/jpmonette/feed</generator>
-    <link rel="alternate" href="https://star2dust.github.io"/>
-    <link rel="self" href="https://star2dust.github.io/atom.xml"/>
-    <subtitle>每天进步一点点</subtitle>
-    <logo>https://star2dust.github.io/images/avatar.png</logo>
-    <icon>https://star2dust.github.io/favicon.ico</icon>
-    <rights>All rights reserved 2020, star2dust</rights>
-    <entry>
-        <title type="html"><![CDATA[反馈线性化：具有柔性关节的单连杆操纵臂]]></title>
-        <id>https://star2dust.github.io/post/feedback-linearization/</id>
-        <link href="https://star2dust.github.io/post/feedback-linearization/">
-        </link>
-        <updated>2020-07-23T08:57:18.000Z</updated>
-        <content type="html"><![CDATA[<p><ul class="markdownIt-TOC">
+<html>
+  <head>
+    <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>反馈线性化：具有柔性关节的单连杆操纵臂 | star2dust</title>
+<link rel="shortcut icon" href="https://star2dust.github.io/favicon.ico?v=1595575897959">
+<link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
+<link rel="stylesheet" href="https://star2dust.github.io/styles/main.css">
+<link rel="alternate" type="application/atom+xml" title="反馈线性化：具有柔性关节的单连杆操纵臂 | star2dust - Atom Feed" href="https://star2dust.github.io/atom.xml">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700">
+
+
+
+    <meta name="description" content="
+写在前面
+机械臂模型
+输入-状态反馈线性化
+
+坐标变换和微分同胚
+输入-状态可反馈线性化的条件
+机械臂实例1
+
+
+输入-输出反馈线性化
+
+相对阶和李导数
+输入-输出可反馈线性化的条件
+机械臂实例2
+
+
+
+
+写在前面
+
+通过反馈和坐标变化来..." />
+    <meta name="keywords" content="Control Theory" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.10.0/katex.min.css">
+    <script src="https://cdn.bootcss.com/highlight.js/9.12.0/highlight.min.js"></script>
+  </head>
+  <body>
+    <div class="main">
+      <div class="main-content">
+        <div class="site-header">
+  <a href="https://star2dust.github.io">
+  <img class="avatar" src="https://star2dust.github.io/images/avatar.png?v=1595575897959" alt="">
+  </a>
+  <h1 class="site-title">
+    star2dust
+  </h1>
+  <p class="site-description">
+    每天进步一点点
+  </p>
+  <div class="menu-container">
+    
+      
+        <a href="/" class="menu">
+          首页
+        </a>
+      
+    
+      
+        <a href="/archives" class="menu">
+          归档
+        </a>
+      
+    
+      
+        <a href="/tags" class="menu">
+          标签
+        </a>
+      
+    
+      
+        <a href="/post/about" class="menu">
+          关于
+        </a>
+      
+    
+  </div>
+  <div class="social-container">
+    
+      
+        <a href="https://github.com/star2dust" target="_blank">
+          <i class="ri-github-line"></i>
+        </a>
+      
+    
+      
+    
+      
+        <a href="https://weibo.com/u/2473019655/" target="_blank">
+          <i class="ri-weibo-line"></i>
+        </a>
+      
+    
+      
+        <a href="https://www.zhihu.com/people/dong-nan-che" target="_blank">
+          <i class="ri-zhihu-line"></i>
+        </a>
+      
+    
+      
+    
+  </div>
+</div>
+
+        <div class="post-detail">
+          <article class="post">
+            <h2 class="post-title">
+              反馈线性化：具有柔性关节的单连杆操纵臂
+            </h2>
+            <div class="post-info">
+              <span>
+                2020-07-23
+              </span>
+              <span>
+                9 min read
+              </span>
+              
+                <a href="https://star2dust.github.io/tag/ZHkQDR4tN/" class="post-tag">
+                  # Control Theory
+                </a>
+              
+            </div>
+            
+            <div class="post-content-wrapper">
+              <div class="post-content">
+                <p><ul class="markdownIt-TOC">
 <li><a href="#%E5%86%99%E5%9C%A8%E5%89%8D%E9%9D%A2">写在前面</a></li>
 <li><a href="#%E6%9C%BA%E6%A2%B0%E8%87%82%E6%A8%A1%E5%9E%8B">机械臂模型</a></li>
 <li><a href="#%E8%BE%93%E5%85%A5-%E7%8A%B6%E6%80%81%E5%8F%8D%E9%A6%88%E7%BA%BF%E6%80%A7%E5%8C%96">输入-状态反馈线性化</a>
@@ -151,1348 +260,121 @@ z_4&amp;=-\frac{mgl}{J_l}x_2\cos x_1-\frac{K_s}{J_l}(x_2-x_4)。
 </li>
 </ol>
 </section>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[强化学习从零实践入门心得]]></title>
-        <id>https://star2dust.github.io/post/parl-notes/</id>
-        <link href="https://star2dust.github.io/post/parl-notes/">
-        </link>
-        <updated>2020-06-25T10:29:41.000Z</updated>
-        <content type="html"><![CDATA[<p><ul class="markdownIt-TOC">
+
+              </div>
+              <div class="toc-container">
+                <ul class="markdownIt-TOC">
 <li><a href="#%E5%86%99%E5%9C%A8%E5%89%8D%E9%9D%A2">写在前面</a></li>
-<li><a href="#%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0%E4%BB%8E%E5%B0%9D%E8%AF%95%E5%88%B0%E5%86%B3%E7%AD%96">强化学习——从尝试到决策</a>
+<li><a href="#%E6%9C%BA%E6%A2%B0%E8%87%82%E6%A8%A1%E5%9E%8B">机械臂模型</a></li>
+<li><a href="#%E8%BE%93%E5%85%A5-%E7%8A%B6%E6%80%81%E5%8F%8D%E9%A6%88%E7%BA%BF%E6%80%A7%E5%8C%96">输入-状态反馈线性化</a>
 <ul>
-<li><a href="#%E5%88%9D%E8%AF%86%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0">初识强化学习</a></li>
-<li><a href="#%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0%E7%9A%84%E5%88%86%E7%B1%BB%E5%92%8C%E6%96%B9%E6%B3%95">强化学习的分类和方法</a></li>
-<li><a href="#parl%E6%A1%86%E6%9E%B6%E5%92%8Cgym%E7%8E%AF%E5%A2%83">PARL框架和GYM环境</a></li>
+<li><a href="#%E5%9D%90%E6%A0%87%E5%8F%98%E6%8D%A2%E5%92%8C%E5%BE%AE%E5%88%86%E5%90%8C%E8%83%9A">坐标变换和微分同胚</a></li>
+<li><a href="#%E8%BE%93%E5%85%A5-%E7%8A%B6%E6%80%81%E5%8F%AF%E5%8F%8D%E9%A6%88%E7%BA%BF%E6%80%A7%E5%8C%96%E7%9A%84%E6%9D%A1%E4%BB%B6">输入-状态可反馈线性化的条件</a></li>
+<li><a href="#%E6%9C%BA%E6%A2%B0%E8%87%82%E5%AE%9E%E4%BE%8B1">机械臂实例1</a></li>
 </ul>
 </li>
-<li><a href="#%E5%9F%BA%E4%BA%8E%E8%A1%A8%E6%A0%BC%E5%9E%8B%E6%96%B9%E6%B3%95%E6%B1%82%E8%A7%A3rl">基于表格型方法求解RL</a>
+<li><a href="#%E8%BE%93%E5%85%A5-%E8%BE%93%E5%87%BA%E5%8F%8D%E9%A6%88%E7%BA%BF%E6%80%A7%E5%8C%96">输入-输出反馈线性化</a>
 <ul>
-<li><a href="#%E5%BA%8F%E5%88%97%E5%86%B3%E7%AD%96%E7%9A%84%E7%BB%8F%E5%85%B8%E8%A1%A8%E8%BE%BEmdp">序列决策的经典表达（MDP）</a></li>
-<li><a href="#%E7%8A%B6%E6%80%81%E5%8A%A8%E4%BD%9C%E4%BB%B7%E5%80%BCq%E7%9A%84%E6%B1%82%E8%A7%A3">状态动作价值（Q）的求解</a></li>
-<li><a href="#sarsa%E5%92%8Cq-learning">Sarsa和Q-learning</a></li>
-<li><a href="#%E4%BB%A3%E7%A0%81%E6%9E%84%E5%BB%BA%E4%B8%8E%E6%BC%94%E7%A4%BA">代码构建与演示</a></li>
+<li><a href="#%E7%9B%B8%E5%AF%B9%E9%98%B6%E5%92%8C%E6%9D%8E%E5%AF%BC%E6%95%B0">相对阶和李导数</a></li>
+<li><a href="#%E8%BE%93%E5%85%A5-%E8%BE%93%E5%87%BA%E5%8F%AF%E5%8F%8D%E9%A6%88%E7%BA%BF%E6%80%A7%E5%8C%96%E7%9A%84%E6%9D%A1%E4%BB%B6">输入-输出可反馈线性化的条件</a></li>
+<li><a href="#%E6%9C%BA%E6%A2%B0%E8%87%82%E5%AE%9E%E4%BE%8B2">机械臂实例2</a></li>
 </ul>
 </li>
-<li><a href="#%E5%9F%BA%E4%BA%8E%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E6%96%B9%E6%B3%95%E6%B1%82%E8%A7%A3rl">基于神经网络方法求解RL</a>
-<ul>
-<li><a href="#%E7%A5%9E%E7%BB%8F%E7%BD%91%E7%BB%9C%E8%BF%91%E4%BC%BCq%E5%87%BD%E6%95%B0">神经网络近似Q函数</a></li>
-<li><a href="#dqn%E5%85%A5%E9%97%A8deep-rl">DQN：入门deep RL</a></li>
-<li><a href="#%E4%BB%A3%E7%A0%81%E6%9E%84%E5%BB%BA%E4%B8%8E%E6%BC%94%E7%A4%BA-2">代码构建与演示</a></li>
 </ul>
-</li>
-<li><a href="#%E6%80%BB%E7%BB%93">总结</a></li>
-</ul>
-</p>
-<h1 id="写在前面">写在前面</h1>
-<blockquote>
-<p>不要重复造轮子，学会使用轮子。</p>
-</blockquote>
-<p>本文源于百度AI平台飞桨学院《<a href="https://aistudio.baidu.com/aistudio/education/group/info/1335">世界冠军带你从零实践强化学习</a>》课程中我自己的心得和理解，感谢科科老师这几天精彩的讲解，带我们从小乌龟（Sarsa、Q-learning），到倒立摆（DQN，PG），再到四旋翼飞行器（DDPG），逐步领略强化学习的魅力。本文旨在介绍PARL框架的使用方法，并从模型的理解和代码的构建角度来整理所学内容，不求详尽但求简洁明了，看完都能学会<code>Model</code>、<code>Algorithm</code>、<code>Agent</code>的构建方法。我认为强化学习中对算法每一个概念的理解很重要，你可以不懂公式的推导，但是只要你理解了算法框图中的每一个步骤，那你就能够灵活的应用PARL框架去解决自己的问题。为了让大家理解代码的模块化构建，这篇文章只介绍Sarsa、Q-learning和DQN，前两者只用了一个<code>Agent</code>函数，后者用了PARL的<code>Model</code>、<code>Algorithm</code>、<code>Agent</code>模块，对比两种构建方式的不同，我们就可以很轻松的举一反三，PG和DDPG同样也可以用这三大模块构建。</p>
-<p>依赖库是python初学者永远的痛点，相信很多人都有网上查到代码，本地一运行各种报错的经历，本文在各代码之前列举了所需依赖库，希望大家自己研究代码时能一次跑通。所有课程官方代码和作业答案都已上传至我的<a href="https://github.com/star2dust/parl-notes">GitHub</a>，欢迎大家star一下，文章中有问题或疏漏的地方大家也可以直接查看源码。</p>
-<p>开始之前我希望大家都具有python编程基础，一定程度上掌握Numpy的用法，这个库真的是很有用。没用过的可以参考我之前的文章（<a href="https://star2dust.github.io/post/ndarray-notes/">查看这里</a>）。学习过程中也可以参考大神的文章，推荐<a href="https://www.zhihu.com/people/tiny-tony-5/posts">Tiny Tony</a>、<a href="https://blog.csdn.net/zbp_12138/article/details/106800911">Mr.郑先生_</a>、<a href="https://www.zhihu.com/people/hhhsy-9/posts">hhhsy</a>、<a href="https://www.zhihu.com/people/qqiang00/posts">叶强</a>。</p>
-<h1 id="强化学习从尝试到决策">强化学习——从尝试到决策</h1>
-<blockquote>
-<p>每个人都是过去经验的总和。</p>
-</blockquote>
-<h2 id="初识强化学习">初识强化学习</h2>
-<p>强化学习（Reinforcement learning，简称RL）是机器学习中的一个领域，强调如何基于环境而行动，以取得最大化的预期利益。核心思想是：智能体（agent）在环境（environment）中学习，根据环境的状态（state）或观测（observation），执行动作（action），并根据环境的反馈 （reward）来指导更好的动作。</p>
-<figure data-type="image" tabindex="1"><img src="https://star2dust.github.io/post-images/1595416829986.png" alt="强化学习核心思想" loading="lazy"></figure>
-<p>作为机器学习三巨头之一，强化学习和监督学习以及非监督学习关系如下图。</p>
-<figure data-type="image" tabindex="2"><img src="https://star2dust.github.io/post-images/1595416878231.png" alt="机器学习三巨头" loading="lazy"></figure>
-<p><strong>监督学习关注的是认知，而强化学习关注的是决策</strong>。简单的说，前者学习经验，后者运用经验。同样都是一张小熊的图片，监督学习输出的是灰熊、熊猫还是老虎，强化学习输出的是装死、逃跑还是干一架。</p>
-<figure data-type="image" tabindex="3"><img src="https://star2dust.github.io/post-images/1595417013041.png" alt="熊来了怎么办？强化学习告诉你" loading="lazy"></figure>
-<h2 id="强化学习的分类和方法">强化学习的分类和方法</h2>
-<figure data-type="image" tabindex="4"><img src="https://star2dust.github.io/post-images/1595417062501.png" alt="强化学习的分类" loading="lazy"></figure>
-<p>强化学习主要关注的是无模型的问题，在未知的环境中进行探索学习，在生活中有广泛的应用。</p>
-<figure data-type="image" tabindex="5"><img src="https://star2dust.github.io/post-images/1595417136885.png" alt="强化学习应用" loading="lazy"></figure>
-<p>其探索方案有二：</p>
-<ul>
-<li>基于价值的方法（Q函数）<br>
-给每个状态都赋予一个价值的概念，来代表这个状态是好还是坏，这是一个相对的概念，让智能体往价值最高的方向行进。基于价值是确定性的。</li>
-<li>基于策略的方法（Policy）<br>
-制定出多个策略，策略里的每个动作都有一定的概率，并让每一条策略走到底,最后查看哪个策略是最优的。基于策略是随机性的。</li>
-</ul>
-<figure data-type="image" tabindex="6"><img src="https://star2dust.github.io/post-images/1595417207264.png" alt="强化学习方法" loading="lazy"></figure>
-<h2 id="parl框架和gym环境">PARL框架和GYM环境</h2>
-<ul>
-<li>强化学习经典<strong>环境库GYM</strong>将环境（Env）交互接口规范化为：重置环境<code>reset()</code>、交互<code>step()</code>、渲染<code>render()</code>。</li>
-<li>强化学习<strong>框架库PARL</strong>将强化学习框架抽象为: <code>Model</code>、<code>Algorithm</code>、<code>Agent</code>三层，使得强化学习算法的实现和调试更方便和灵活。（前两者有神经网络才用得上）</li>
-</ul>
-<p><code>Agent</code>的训练（Train）和测试（Test）过程直接上图展示如下。</p>
-<figure data-type="image" tabindex="7"><img src="https://star2dust.github.io/post-images/1595417256567.png" alt="gym中agent训练和测试过程" loading="lazy"></figure>
-<p>本文所需全部依赖库代码如下，paddlepaddle默认使用CPU版本，可自行选用GPU版本，这里不再赘述。</p>
-<pre><code class="language-shell"># 可以直接 pip install -r requirements.txt
-pip install paddlepaddle==1.6.3
-pip install parl==1.3.1
-pip install gym
-pip install atari-py
-pip install rlschool==0.3.1
-</code></pre>
-<h1 id="基于表格型方法求解rl">基于表格型方法求解RL</h1>
-<blockquote>
-<p>没有什么比前人走过的路（Q）更有价值（V）。</p>
-</blockquote>
-<h2 id="序列决策的经典表达mdp">序列决策的经典表达（MDP）</h2>
-<p>某一状态信息包含了所有相关的历史，只要当前状态可知，所有的历史信息都不再需要，当前状态就可以决定未来，则认为该状态具有<strong>马尔科夫性</strong>。<strong>马尔可夫决策过程</strong>（MDP）是序列决策的数学模型，它是一个无记忆的随机过程，可以用一个元组&lt;S,P&gt;表示，其中S是有限数量的状态集，P是状态转移概率矩阵。</p>
-<p>强化学习中我们引入奖励R和动作A来描述环境，构成MDP五元组&lt;S,A,P,R,<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>γ</mi></mrow><annotation encoding="application/x-tex">\gamma</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.19444em;"></span><span class="mord mathdefault" style="margin-right:0.05556em;">γ</span></span></span></span>&gt;，其中P函数表示环境的随机性，R函数其实是P函数的一部分，表示获得的收益，<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>γ</mi></mrow><annotation encoding="application/x-tex">\gamma</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.19444em;"></span><span class="mord mathdefault" style="margin-right:0.05556em;">γ</span></span></span></span>是衰减因子以适当的减少对未来收益的考虑。</p>
-<figure data-type="image" tabindex="8"><img src="https://star2dust.github.io/post-images/1595417319990.png" alt="熊问题树形图" loading="lazy"></figure>
-<p>同样以熊问题为例，对应的是Model-free的情况，即P函数和R函数都未知的情况。这时我们用价值V代表某一状态的好坏，用Q函数来代表某个状态下哪个动作更好，即状态动作价值。</p>
-<figure data-type="image" tabindex="9"><img src="https://star2dust.github.io/post-images/1595417397753.png" alt="熊问题model-free" loading="lazy"></figure>
-<p>现实世界中，奖励R往往是延迟的，所以一般会从当前时间点开始，对后续可能得到的收益累加，以此来计算当前的价值。但是有时候目光不要放得太长远，<strong>对远一些的东西当作近视看不见就好</strong>。适当地引入一个衰减因子<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>γ</mi></mrow><annotation encoding="application/x-tex">\gamma</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.19444em;"></span><span class="mord mathdefault" style="margin-right:0.05556em;">γ</span></span></span></span>，再去计算未来的总收益，<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>γ</mi></mrow><annotation encoding="application/x-tex">\gamma</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.625em;vertical-align:-0.19444em;"></span><span class="mord mathdefault" style="margin-right:0.05556em;">γ</span></span></span></span>的值在0-1之间，时间点越久远，对当前的影响也就越小。</p>
-<h2 id="状态动作价值q的求解">状态动作价值（Q）的求解</h2>
-<p>假设人走在树林里，先看到树上有熊爪后看到熊，接着就看到熊发怒了，经过很多次之后，原来要见到熊才瑟瑟发抖的，后来只要见到树上有熊爪就会有晕眩和害怕的感觉。也就是说，在不断地训练之后，下一个状态的价值可以不断地强化、影响上一个状态的价值。</p>
-<p>这样的迭代状态价值的强化方式被称为时序差分（Temporal Difference）。单步求解Q函数，用<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>Q</mi><mo>(</mo><msub><mi>S</mi><mrow><mi>t</mi><mo>+</mo><mn>1</mn></mrow></msub><mo separator="true">,</mo><msub><mi>A</mi><mrow><mi>t</mi><mo>+</mo><mn>1</mn></mrow></msub><mo>)</mo></mrow><annotation encoding="application/x-tex">Q(S_{t+1},A_{t+1})</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault">Q</span><span class="mopen">(</span><span class="mord"><span class="mord mathdefault" style="margin-right:0.05764em;">S</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.301108em;"><span style="top:-2.5500000000000003em;margin-left:-0.05764em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">t</span><span class="mbin mtight">+</span><span class="mord mtight">1</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.208331em;"><span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord"><span class="mord mathdefault">A</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.301108em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">t</span><span class="mbin mtight">+</span><span class="mord mtight">1</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.208331em;"><span></span></span></span></span></span></span><span class="mclose">)</span></span></span></span>来近似<span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>G</mi><mrow><mi>t</mi><mo>+</mo><mn>1</mn></mrow></msub></mrow><annotation encoding="application/x-tex">G_{t+1}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.891661em;vertical-align:-0.208331em;"></span><span class="mord"><span class="mord mathdefault">G</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.301108em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">t</span><span class="mbin mtight">+</span><span class="mord mtight">1</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.208331em;"><span></span></span></span></span></span></span></span></span></span>，以迭代的方式简化数学公式，最终使得<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>Q</mi><mo>(</mo><msub><mi>S</mi><mi>t</mi></msub><mo separator="true">,</mo><msub><mi>A</mi><mi>t</mi></msub><mo>)</mo></mrow><annotation encoding="application/x-tex">Q(S_t,A_t)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault">Q</span><span class="mopen">(</span><span class="mord"><span class="mord mathdefault" style="margin-right:0.05764em;">S</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.2805559999999999em;"><span style="top:-2.5500000000000003em;margin-left:-0.05764em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">t</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord"><span class="mord mathdefault">A</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.2805559999999999em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">t</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mclose">)</span></span></span></span>逼近目标值<span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>G</mi><mi>t</mi></msub></mrow><annotation encoding="application/x-tex">G_t</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.83333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathdefault">G</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.2805559999999999em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">t</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>。这里的目标值Target就是前面提到的未来收益的累加。</p>
-<figure data-type="image" tabindex="10"><img src="https://star2dust.github.io/post-images/1595417455942.png" alt="Q表格TD单步更新" loading="lazy"></figure>
-<h2 id="sarsa和q-learning">Sarsa和Q-learning</h2>
-<p><strong>Sarsa</strong>全称是state-action-reward-state’-action’，目的是学习特定的state下，特定action的价值Q，最终建立和优化一个Q表格，以state为行，action为列，根据与环境交互得到的reward来更新Q表格，更新公式即为上面的迭代公式。Sarsa在训练中为了更好的探索环境，采用ε-greedy方式（如下图）来训练，有一定概率随机选择动作输出。</p>
-<figure data-type="image" tabindex="11"><img src="https://star2dust.github.io/post-images/1595417521961.png" alt="e_greedy" loading="lazy"></figure>
-<p><strong>Q-learning</strong>也是采用Q表格的方式存储Q值，探索部分与Sarsa是一样的，采用ε-greedy方式增加探索。</p>
-<ul>
-<li>Q-learning跟Sarsa不一样的地方是更新Q表格的方式，即learn()函数。</li>
-<li>Sarsa是on-policy，先做出动作再learn，Q-learning是off-policy，learn时无需获取下一步动作。</li>
-</ul>
-<p>二者更新Q表格的方式分别为：</p>
-<figure data-type="image" tabindex="12"><img src="https://star2dust.github.io/post-images/1595417538287.png" alt="sarsa和qlearning更新Q表格方式对比" loading="lazy"></figure>
-<p>二者算法对比如下图所示，有三处不同点。</p>
-<figure data-type="image" tabindex="13"><img src="https://star2dust.github.io/post-images/1595417548868.png" alt="sarsa和qlearning算法对比" loading="lazy"></figure>
-<p>on-policy优化的是目标策略，用下一步一定会执行的动作来优化Q表格；off-policy实际上有两种不同的策略，期望得到的目标策略和大胆探索的行为策略，在目标策略的基础上用行为策略获得更多的经验。</p>
-<figure data-type="image" tabindex="14"><img src="https://star2dust.github.io/post-images/1595417559359.png" alt="离线在线之争" loading="lazy"></figure>
-<h2 id="代码构建与演示">代码构建与演示</h2>
-<pre><code class="language-python">import numpy as np
-</code></pre>
-<p>Sarsa Agent构建</p>
-<pre><code class="language-python">class SarsaAgent(object):
-    def __init__(self,
-                 obs_n,
-                 act_n,
-                 learning_rate=0.01,
-                 gamma=0.9,
-                 e_greed=0.1):
-        self.act_n = act_n  # 动作维度，有几个动作可选
-        self.lr = learning_rate  # 学习率
-        self.gamma = gamma  # reward的衰减率
-        self.epsilon = e_greed  # 按一定概率随机选动作
-        self.Q = np.zeros((obs_n, act_n))
 
-    # 根据输入观察值，采样输出的动作值，带探索
-    def sample(self, obs):
-        if np.random.uniform(0, 1) &lt; (1.0 - self.epsilon):  #根据table的Q值选动作
-            action = self.predict(obs)
-        else:
-            action = np.random.choice(self.act_n)  #有一定概率随机探索选取一个动作
-        return action
+              </div>
+            </div>
+          </article>
+        </div>
 
-    # 根据输入观察值，预测输出的动作值
-    def predict(self, obs):
-        Q_list = self.Q[obs, :]
-        maxQ = np.max(Q_list)
-        action_list = np.where(Q_list == maxQ)[0]  # maxQ可能对应多个action
-        action = np.random.choice(action_list)
-        return action
-
-    # 学习方法，也就是更新Q-table的方法
-    def learn(self, obs, action, reward, next_obs, next_action, done):
-        &quot;&quot;&quot; on-policy
-            obs: 交互前的obs, s_t
-            action: 本次交互选择的action, a_t
-            reward: 本次动作获得的奖励r
-            next_obs: 本次交互后的obs, s_t+1
-            next_action: 根据当前Q表格, 针对next_obs会选择的动作, a_t+1
-            done: episode是否结束
-        &quot;&quot;&quot;
-        predict_Q = self.Q[obs, action]
-        if done:
-            target_Q = reward  # 没有下一个状态了
-        else:
-            target_Q = reward + self.gamma * self.Q[next_obs,
-                                                    next_action]  # Sarsa
-        self.Q[obs, action] += self.lr * (target_Q - predict_Q)  # 修正q
-</code></pre>
-<p>Q-learning Agent构建</p>
-<pre><code class="language-python">class QLearningAgent(object):
-    def __init__(self,
-                 obs_n,
-                 act_n,
-                 learning_rate=0.01,
-                 gamma=0.9,
-                 e_greed=0.1):
-        self.act_n = act_n  # 动作维度，有几个动作可选
-        self.lr = learning_rate  # 学习率
-        self.gamma = gamma  # reward的衰减率
-        self.epsilon = e_greed  # 按一定概率随机选动作
-        self.Q = np.zeros((obs_n, act_n))
-
-    # 根据输入观察值，采样输出的动作值，带探索
-    def sample(self, obs):
-        # 内容略，和sarsa一样
-        return action
-
-    # 根据输入观察值，预测输出的动作值
-    def predict(self, obs):
-        # 内容略，和sarsa一样
-        return action
-
-    # 学习方法，也就是更新Q-table的方法
-    def learn(self, obs, action, reward, next_obs, done):
-        &quot;&quot;&quot; off-policy
-            obs: 交互前的obs, s_t
-            action: 本次交互选择的action, a_t
-            reward: 本次动作获得的奖励r
-            next_obs: 本次交互后的obs, s_t+1
-            done: episode是否结束
-        &quot;&quot;&quot;
-        predict_Q = self.Q[obs, action]
-        if done:
-            target_Q = reward  # 没有下一个状态了
-        else:
-            target_Q = reward + self.gamma * np.max(
-                self.Q[next_obs, :])  # Q-learning
-        self.Q[obs, action] += self.lr * (target_Q - predict_Q)  # 修正q
-</code></pre>
-<p>训练过程代码如下：</p>
-<pre><code class="language-python"># train.py
-import gym
-from gridworld import CliffWalkingWapper, FrozenLakeWapper
-from agent import SarsaAgent
-import time
-
-
-def run_episode(env, agent, render=False):
-    total_steps = 0  # 记录每个episode走了多少step
-    total_reward = 0
-
-    obs = env.reset()  # 重置环境, 重新开一局（即开始新的一个episode）
-    action = agent.sample(obs)  # 根据算法选择一个动作
-
-    while True:
-        next_obs, reward, done, _ = env.step(action)  # 与环境进行一个交互
-        next_action = agent.sample(next_obs)  # 根据算法选择一个动作
-        # 训练 Sarsa 算法
-        agent.learn(obs, action, reward, next_obs, next_action, done)
-        action = next_action # 存储上一个动作
-        # 训练 q-learing 算法
-        # agent.learn(obs, action, reward, next_obs, done)
         
-        obs = next_obs  # 存储上一个观察值
-        total_reward += reward
-        total_steps += 1  # 计算step数
-        if render:
-            env.render()  #渲染新的一帧图形
-        if done:
-            break
-    return total_reward, total_steps
-
-
-def test_episode(env, agent):
-    total_reward = 0
-    obs = env.reset()
-    while True:
-        action = agent.predict(obs)  # greedy
-        next_obs, reward, done, _ = env.step(action)
-        total_reward += reward
-        obs = next_obs
-        time.sleep(0.5)
-        env.render()
-        if done:
-            print('test reward = %.1f' % (total_reward))
-            break
-
-
-def main():
-    # env = gym.make(&quot;FrozenLake-v0&quot;, is_slippery=False)  # 0 left, 1 down, 2 right, 3 up
-    # env = FrozenLakeWapper(env)
-
-    env = gym.make(&quot;CliffWalking-v0&quot;)  # 0 up, 1 right, 2 down, 3 left
-    env = CliffWalkingWapper(env)
-
-    agent = SarsaAgent(
-        obs_n=env.observation_space.n,
-        act_n=env.action_space.n,
-        learning_rate=0.1,
-        gamma=0.9,
-        e_greed=0.1) # 或 QLearningAgent
-
-    is_render = False
-    for episode in range(500):
-        ep_reward, ep_steps = run_episode(env, agent, is_render)
-        print('Episode %s: steps = %s , reward = %.1f' % (episode, ep_steps,
-                                                          ep_reward))
-
-        # 每隔20个episode渲染一下看看效果
-        if episode % 20 == 0:
-            is_render = True
-        else:
-            is_render = False
-    # 训练结束，查看算法效果
-    test_episode(env, agent)
-
-
-if __name__ == &quot;__main__&quot;:
-    main()
-</code></pre>
-<p>可以看到二者区别全在<code>learn</code>函数，训练过程的差别也仅在<code>learn</code>的输入是否有<code>next_action</code>。大家可以尝试用命令行运行以下演示代码（<a href="https://github.com/star2dust/parl-notes">这里下载</a>），训练环境是悬崖问题（CliffWalking）。作业中的冰湖问题（FrozenLake）见<code>.\tutorials\homework</code>文件夹。</p>
-<pre><code class="language-shell"># sarsa 演示
-cd .\tutorials\lesson2\sarsa
-python .\train.py
-# q-learing 演示
-cd .\tutorials\lesson2\q_learning
-python .\train.py
-</code></pre>
-<p>最终结果如下面的GIF所示。可以看出来Sarsa比较保守，会选择下限最高的路线，即尽可能远离悬崖的路线，虽然路程远了，但至少掉下悬崖的风险就小了很多；而Q-learning比较激进，会选择上限最高的路线，即路程最近的路线，但存在些微扰动便可能掉下悬崖。</p>
-<p>Sarsa训练图：</p>
-<figure data-type="image" tabindex="15"><img src="https://star2dust.github.io/post-images/1595417809738.gif" alt="Sarsa训练图" loading="lazy"></figure>
-<p>Q-learning训练图：</p>
-<figure data-type="image" tabindex="16"><img src="https://star2dust.github.io/post-images/1595417820699.gif" alt="QLearning训练图" loading="lazy"></figure>
-<h1 id="基于神经网络方法求解rl">基于神经网络方法求解RL</h1>
-<blockquote>
-<p>选择（A）有限，而人生（S）无限。</p>
-</blockquote>
-<h2 id="神经网络近似q函数">神经网络近似Q函数</h2>
-<p>前面提到的悬崖问题，状态（S）总量很少，但实际生活中，很多常见问题的状态都是数量庞大的，如象棋、围棋等。即使用Q表格装下所有状态，表格可能占用极大内存，表格的查找也相当费时。我们就可以用带参数的Q函数来近似Q表格，比如可以用多项式函数或者神经网络，优势是<strong>只需要输出少量参数，同时能实现状态泛化</strong>。</p>
-<p>神经网络结构如下图所示。</p>
-<figure data-type="image" tabindex="17"><img src="https://star2dust.github.io/post-images/1595417909622.png" alt="神经网络结构" loading="lazy"></figure>
-<ul>
-<li><strong>神经元</strong>：神经网络中每个节点称为神经元，由两部分组成：
-<ul>
-<li>加权和：将所有输入加权求和。</li>
-<li>非线性变换（<strong>激活函数</strong>）：加权和的结果经过一个非线性函数变换，让神经元计算具备<strong>非线性</strong>的能力。</li>
-</ul>
-</li>
-<li><strong>多层连接：</strong> 大量这样的节点按照不同的层次排布，形成多层的结构连接起来，即称为神经网络。</li>
-<li><strong>前向计算：</strong> 从输入计算输出的过程，顺序从网络前至后。</li>
-<li><strong>计算图：</strong> 以图形化的方式展现神经网络的计算逻辑又称为计算图。我们也可以将神经网络的计算图以公式的方式表达为<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>Y</mi><mo>=</mo><msub><mi>f</mi><mn>3</mn></msub><mo>(</mo><msub><mi>f</mi><mn>2</mn></msub><mo>(</mo><msub><mi>f</mi><mn>1</mn></msub><mo>(</mo><msub><mi>w</mi><mn>1</mn></msub><msub><mi>x</mi><mn>1</mn></msub><mo>+</mo><msub><mi>w</mi><mn>2</mn></msub><msub><mi>x</mi><mn>2</mn></msub><mo>+</mo><msub><mi>w</mi><mn>3</mn></msub><msub><mi>x</mi><mn>3</mn></msub><mo>+</mo><mi>b</mi><mo>)</mo><mo>+</mo><mo>⋯</mo><mtext> </mtext><mo>)</mo><mo>+</mo><mo>⋯</mo><mtext> </mtext><mo>)</mo></mrow><annotation encoding="application/x-tex">Y=f_3(f_2(f_1(w_1x_1+w_2x_2+w_3x_3+b)+\cdots)+\cdots)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.22222em;">Y</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.10764em;">f</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:-0.10764em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">3</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mopen">(</span><span class="mord"><span class="mord mathdefault" style="margin-right:0.10764em;">f</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:-0.10764em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mopen">(</span><span class="mord"><span class="mord mathdefault" style="margin-right:0.10764em;">f</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:-0.10764em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mopen">(</span><span class="mord"><span class="mord mathdefault" style="margin-right:0.02691em;">w</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:-0.02691em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mord"><span class="mord mathdefault">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.73333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.02691em;">w</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:-0.02691em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mord"><span class="mord mathdefault">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.73333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.02691em;">w</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:-0.02691em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">3</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mord"><span class="mord mathdefault">x</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:0em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">3</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault">b</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="minner">⋯</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="minner">⋯</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mclose">)</span></span></span></span></li>
-</ul>
-<p>由此可见，神经网络的本质是一个含有很多参数的“大公式”。</p>
-<h2 id="dqn入门deep-rl">DQN：入门deep RL</h2>
-<p>DQN本质上是一个Q-learning算法，但使用神经网络来近似替代Q表格。</p>
-<figure data-type="image" tabindex="18"><img src="https://star2dust.github.io/post-images/1595418122575.png" alt="DQN流程" loading="lazy"></figure>
-<p>类比监督学习的训练，DQN的训练过程也非常地类似，它输入的是一批状态（S），输出的是对应的Q。计算输出的Q与Target Q的均方差，进行优化，以此更新神经网络参数。</p>
-<figure data-type="image" tabindex="19"><img src="https://star2dust.github.io/post-images/1595418135390.png" alt="DQN类比监督学习" loading="lazy"></figure>
-<p>在Q-learning的基础上，DQN提出了两个技巧使得Q网络的更新迭代更稳定:</p>
-<ul>
-<li><strong>经验回放</strong> （Experience Replay）：主要解决样本关联性和利用效率的问题。使用一个经验池（buffer）存储多条经验（s,a,r,s’），再从中随机抽取一批（batch）数据送去训练。</li>
-<li><strong>固定Q目标</strong> （Fixed-Q-Target）：主要解决算法训练不稳定的问题。每隔一段时间复制一次网络参数（w），保证用于计算Target Q的Q函数不变。</li>
-</ul>
-<h2 id="代码构建与演示-2">代码构建与演示</h2>
-<p>这部分代码构建展示了PARL框架的基本用法，即<code>Model</code>、<code>Algorithm</code>、<code>Agent</code>嵌套。<code>Algorithm</code>是<code>Agent</code>的一部分，<code>Model</code>又是<code>Algorithm</code>的一部分，相比较前文中只有一个<code>Agent</code>的简单代码模块性更好，但理解起来也更复杂，容我慢慢道来。</p>
-<pre><code class="language-python">import parl
-from parl import layers
-import paddle.fluid as fluid
-import copy
-import numpy as np
-</code></pre>
-<ul>
-<li><code>Model</code>用来定义前向(<code>Forward</code>)网络，用户可以自由的定制自己的神经网络结构。</li>
-</ul>
-<pre><code class="language-python">class Model(parl.Model):
-    def __init__(self, act_dim):
-        hid1_size = 128
-        hid2_size = 128
-        # 3层全连接（fc）网络，act选择激活函数，不使用激活函数即线性
-        self.fc1 = layers.fc(size=hid1_size, act='relu')
-        self.fc2 = layers.fc(size=hid2_size, act='relu')
-        self.fc3 = layers.fc(size=act_dim, act=None)
-
-    def value(self, obs):
-        # 前向计算 Q实际上是一个二维数组
-        # 输入state，输出所有action对应的Q，[Q(s,a1), Q(s,a2), Q(s,a3)...]
-        h1 = self.fc1(obs)
-        h2 = self.fc2(h1)
-        Q = self.fc3(h2)
-        return Q
-</code></pre>
-<ul>
-<li><code>Algorithm</code> 定义了具体的算法来更新前向网络(<code>Model</code>)，也就是通过定义损失函数来更新<code>Model</code>，和算法相关的计算都放在<code>algorithm</code>中。</li>
-</ul>
-<pre><code class="language-python"># from parl.algorithms import DQN # 也可以直接从parl库中导入DQN算法
-
-class DQN(parl.Algorithm):
-    def __init__(self, model, act_dim=None, gamma=None, lr=None):
-        &quot;&quot;&quot; DQN algorithm
+          <div class="next-post">
+            <div class="next">下一篇</div>
+            <a href="https://star2dust.github.io/post/parl-notes/">
+              <h3 class="post-title">
+                强化学习从零实践入门心得
+              </h3>
+            </a>
+          </div>
         
-        Args:
-            model (parl.Model): 定义Q函数的前向网络结构
-            act_dim (int): action空间的维度，即有几个action
-            gamma (float): reward的衰减因子
-            lr (float): learning rate 学习率.
-        &quot;&quot;&quot;
-        self.model = model
-        self.target_model = copy.deepcopy(model)
-        # 参数的类型要求，且必须有输入
-        assert isinstance(act_dim, int)
-        assert isinstance(gamma, float)
-        assert isinstance(lr, float)
-        self.act_dim = act_dim
-        self.gamma = gamma
-        self.lr = lr
 
-    def predict(self, obs):
-        &quot;&quot;&quot; 使用self.model的value网络来获取 [Q(s,a1),Q(s,a2),...]
-        &quot;&quot;&quot;
-        return self.model.value(obs)
+        
+          
+            <link rel="stylesheet" href="https://unpkg.com/gitalk/dist/gitalk.css">
+<script src="https://unpkg.com/gitalk/dist/gitalk.min.js"></script>
 
-    def learn(self, obs, action, reward, next_obs, terminal):
-        &quot;&quot;&quot; 使用DQN算法更新self.model的value网络
-        &quot;&quot;&quot;
-        # 从target_model中获取 max Q' 的值，用于计算target_Q
-        next_pred_value = self.target_model.value(next_obs)        
-        # dim=0指最外边的[]，dim增加向内数一个[]
-        # 这里value都自带两个[]，所以dim=1，计算里面那个[]
-        best_v = layers.reduce_max(next_pred_value, dim=1)
-        # 阻止梯度传递保证target不变，否则paddle的优化器默认迭代一步梯度
-        best_v.stop_gradient = True  
-        # 判断是否是最后一条经验
-        terminal = layers.cast(terminal, dtype='float32')
-        target = reward + (1.0 - terminal) * self.gamma * best_v
+<div id="gitalk-container"></div>
 
-        pred_value = self.model.value(obs)  # 获取Q预测值
-        # 将action转onehot向量，比如：3 =&gt; [0,0,0,1,0]
-        action_onehot = layers.one_hot(action, self.act_dim)
-        action_onehot = layers.cast(action_onehot, dtype='float32')
-        # 下面一行是逐元素相乘，拿到action对应的 Q(s,a)
-        # 比如：pred_value = [[2.3, 5.7, 1.2, 3.9, 1.4]], action_onehot = [[0,0,0,1,0]]
-        #  ==&gt; pred_action_value = [[3.9]]
-        pred_action_value = layers.reduce_sum(
-            layers.elementwise_mul(action_onehot, pred_value), dim=1)
+<script>
 
-        # 计算 Q(s,a) 与 target_Q的均方差，得到loss
-        cost = layers.square_error_cost(pred_action_value, target)
-        cost = layers.reduce_mean(cost)
-        optimizer = fluid.optimizer.Adam(learning_rate=self.lr)  # 使用Adam优化器
-        optimizer.minimize(cost)
-        return cost
+  var gitalk = new Gitalk({
+    clientID: '5f35b48460c7b593fee6',
+    clientSecret: '19f3646e71158e91e93151d54f5d1a19b53ce961',
+    repo: 'star2dust.github.io',
+    owner: 'star2dust',
+    admin: ['star2dust'],
+    id: (location.pathname).substring(0, 49),      // Ensure uniqueness and length less than 50
+    distractionFreeMode: false  // Facebook-like distraction free mode
+  })
 
-    def sync_target(self):
-        &quot;&quot;&quot; 把 self.model 的模型参数值同步到 self.target_model
-        &quot;&quot;&quot;
-        # 同步参数就行，比直接copy效率高
-        self.model.sync_weights_to(self.target_model)
-</code></pre>
-<ul>
-<li><code>Agent</code> 负责算法与环境的交互，在交互过程中把生成的数据提供给<code>Algorithm</code>来更新模型(<code>Model</code>)，数据的预处理流程也一般定义在这里。</li>
-</ul>
-<pre><code class="language-python">class Agent(parl.Agent):
-    def __init__(self,
-                 algorithm,
-                 obs_dim,
-                 act_dim,
-                 e_greed=0.1,
-                 e_greed_decrement=0):
-        assert isinstance(obs_dim, int)
-        assert isinstance(act_dim, int)
-        self.obs_dim = obs_dim
-        self.act_dim = act_dim
-        # 将Algorithm传入Agent，即self.alg
-        super(Agent, self).__init__(algorithm)
+  gitalk.render('gitalk-container')
 
-        self.global_step = 0
-        self.update_target_steps = 200  
-        # 每隔200个training steps再把model的参数复制到target_model中
+</script>
 
-        self.e_greed = e_greed  # 有一定概率随机选取动作，探索
-        self.e_greed_decrement = e_greed_decrement  # 随着训练逐步收敛，探索的程度慢慢降低
+          
 
-    def build_program(self):
-        # 这一部分是搭建predict和learn框架，给定数据大小和类型
-        # 至于输入实际数据的代码，在后面的predict和learn函数
-        self.pred_program = fluid.Program()
-        self.learn_program = fluid.Program()
+          
+        
 
-        with fluid.program_guard(self.pred_program):  
-            # 搭建计算图用于 预测动作，定义输入输出变量
-            obs = layers.data(
-                name='obs', shape=[self.obs_dim], dtype='float32')
-            self.value = self.alg.predict(obs)
+        <div class="site-footer">
+  Copyright &copy;<span>star2dust</span> &nbsp;  Powered by &nbsp;  <a href="https://github.com/getgridea/gridea" target="_blank">Gridea</a>
+  <a class="rss" href="https://star2dust.github.io/atom.xml" target="_blank">
+    <i class="ri-rss-line"></i> RSS
+  </a>
+</div>
 
-        with fluid.program_guard(self.learn_program):  
-            # 搭建计算图用于 更新Q网络，定义输入输出变量
-            obs = layers.data(
-                name='obs', shape=[self.obs_dim], dtype='float32')
-            action = layers.data(name='act', shape=[1], dtype='int32')
-            reward = layers.data(name='reward', shape=[], dtype='float32')
-            next_obs = layers.data(
-                name='next_obs', shape=[self.obs_dim], dtype='float32')
-            terminal = layers.data(name='terminal', shape=[], dtype='bool')
-            self.cost = self.alg.learn(obs, action, reward, next_obs, terminal)
+      </div>
+    </div>
 
-    def sample(self, obs):
-        sample = np.random.rand()  # 产生0~1之间的小数
-        if sample &lt; self.e_greed:
-            act = np.random.randint(self.act_dim)  # 探索：每个动作都有概率被选择
-        else:
-            act = self.predict(obs)  # 选择最优动作
-        # 前面和sarsa基本一样，不同的是随着训练逐步收敛，探索的程度慢慢降低
-        self.e_greed = max(
-            0.01, self.e_greed - self.e_greed_decrement)     
-        return act
+    <script>
+      hljs.initHighlightingOnLoad()
 
-    def predict(self, obs):  # 选择最优动作，和sample的else部分一致
-        # 扩展维度，因为obs是[...]，但是Q是[[...]]
-        obs = np.expand_dims(obs, axis=0)
-        pred_Q = self.fluid_executor.run(
-            self.pred_program,
-            feed={'obs': obs.astype('float32')},
-            fetch_list=[self.value])[0]
-        # 降低维度，理由同上
-        pred_Q = np.squeeze(pred_Q, axis=0) # 若axis=0的维度len==1则移除
-        act = np.argmax(pred_Q)  # 选择Q最大的下标，即对应的动作
-        return act
+      let mainNavLinks = document.querySelectorAll(".markdownIt-TOC a");
 
-    def learn(self, obs, act, reward, next_obs, terminal):
-        # 每隔200个training steps同步一次model和target_model的参数
-        if self.global_step % self.update_target_steps == 0:
-            self.alg.sync_target()
-        self.global_step += 1
+      // This should probably be throttled.
+      // Especially because it triggers during smooth scrolling.
+      // https://lodash.com/docs/4.17.10#throttle
+      // You could do like...
+      // window.addEventListener("scroll", () => {
+      //    _.throttle(doThatStuff, 100);
+      // });
+      // Only not doing it here to keep this Pen dependency-free.
 
-        act = np.expand_dims(act, -1)
-        feed = {
-            'obs': obs.astype('float32'),
-            'act': act.astype('int32'),
-            'reward': reward,
-            'next_obs': next_obs.astype('float32'),
-            'terminal': terminal
-        }
-        cost = self.fluid_executor.run(
-            self.learn_program, feed=feed, fetch_list=[self.cost])[0]  # 训练一次网络
-        return cost
-</code></pre>
-<ul>
-<li>经验池<code>replay_memory</code>：用于存储多条经验，实现经验回放。</li>
-</ul>
-<pre><code class="language-python"># replay_memory.py
-import random
-import collections
-import numpy as np
+      window.addEventListener("scroll", event => {
+        let fromTop = window.scrollY;
 
+        mainNavLinks.forEach((link, index) => {
+          let section = document.getElementById(decodeURI(link.hash).substring(1));
+          let nextSection = null
+          if (mainNavLinks[index + 1]) {
+            nextSection = document.getElementById(decodeURI(mainNavLinks[index + 1].hash).substring(1));
+          }
+          if (section.offsetTop <= fromTop) {
+            if (nextSection) {
+              if (nextSection.offsetTop > fromTop) {
+                link.classList.add("current");
+              } else {
+                link.classList.remove("current");    
+              }
+            } else {
+              link.classList.add("current");
+            }
+          } else {
+            link.classList.remove("current");
+          }
+        });
+      });
 
-class ReplayMemory(object):
-    def __init__(self, max_size):
-        self.buffer = collections.deque(maxlen=max_size)
-
-    # 增加一条经验到经验池中
-    def append(self, exp):
-        self.buffer.append(exp)
-
-    # 从经验池中选取N条经验出来
-    def sample(self, batch_size):
-        mini_batch = random.sample(self.buffer, batch_size)
-        obs_batch, action_batch, reward_batch, next_obs_batch, done_batch = [], [], [], [], []
-
-        for experience in mini_batch:
-            s, a, r, s_p, done = experience
-            obs_batch.append(s)
-            action_batch.append(a)
-            reward_batch.append(r)
-            next_obs_batch.append(s_p)
-            done_batch.append(done)
-
-        return np.array(obs_batch).astype('float32'), \
-            np.array(action_batch).astype('float32'), 				np.array(reward_batch).astype('float32'),\
-            np.array(next_obs_batch).astype('float32'), np.array(done_batch).astype('float32')
-
-    def __len__(self):
-        return len(self.buffer)
-</code></pre>
-<p>训练过程代码如下：</p>
-<pre><code class="language-python"># train.py
-import os
-import gym
-import numpy as np
-import parl
-from parl.utils import logger  # 日志打印工具
-
-from model import Model
-from algorithm import DQN  # from parl.algorithms import DQN  # parl &gt;= 1.3.1
-from agent import Agent
-
-from replay_memory import ReplayMemory
-
-LEARN_FREQ = 5  # 训练频率，不需要每一个step都learn，攒一些新增经验后再learn，提高效率
-MEMORY_SIZE = 20000  # replay memory的大小，越大越占用内存
-MEMORY_WARMUP_SIZE = 200  # replay_memory 里需要预存一些经验数据，再从里面sample一个batch的经验让agent去learn
-BATCH_SIZE = 32  # 每次给agent learn的数据数量，从replay memory随机里sample一批数据出来
-LEARNING_RATE = 0.001  # 学习率
-GAMMA = 0.99  # reward 的衰减因子，一般取 0.9 到 0.999 不等
-
-
-# 训练一个episode
-def run_episode(env, agent, rpm):
-    total_reward = 0
-    obs = env.reset()
-    step = 0
-    while True:
-        step += 1
-        action = agent.sample(obs)  # 采样动作，所有动作都有概率被尝试到
-        next_obs, reward, done, _ = env.step(action)
-        rpm.append((obs, action, reward, next_obs, done))
-
-        # train model 每次learn都随机抽样
-        if (len(rpm) &gt; MEMORY_WARMUP_SIZE) and (step % LEARN_FREQ == 0):
-            (batch_obs, batch_action, batch_reward, batch_next_obs,
-             batch_done) = rpm.sample(BATCH_SIZE)
-            train_loss = agent.learn(batch_obs, batch_action, batch_reward,
-                                     batch_next_obs,
-                                     batch_done)  # s,a,r,s',done
-
-        total_reward += reward
-        obs = next_obs
-        if done:
-            break
-    return total_reward
-
-
-# 评估 agent, 跑 5 个episode，总reward求平均
-def evaluate(env, agent, render=False):
-    eval_reward = []
-    for i in range(5):
-        obs = env.reset()
-        episode_reward = 0
-        while True:
-            action = agent.predict(obs)  # 预测动作，只选最优动作
-            obs, reward, done, _ = env.step(action)
-            episode_reward += reward
-            if render:
-                env.render()
-            if done:
-                break
-        eval_reward.append(episode_reward)
-    return np.mean(eval_reward)
-
-
-def main():
-    env = gym.make(
-        'CartPole-v0'
-    )  # CartPole-v0: expected reward &gt; 180                MountainCar-v0 : expected reward &gt; -120
-    action_dim = env.action_space.n  # CartPole-v0: 2
-    obs_shape = env.observation_space.shape  # CartPole-v0: (4,)
-
-    rpm = ReplayMemory(MEMORY_SIZE)  # DQN的经验回放池
-
-    # 根据parl框架构建agent
-    model = Model(act_dim=action_dim)
-    algorithm = DQN(model, act_dim=action_dim, gamma=GAMMA, lr=LEARNING_RATE)
-    agent = Agent(
-        algorithm,
-        obs_dim=obs_shape[0],
-        act_dim=action_dim,
-        e_greed=0.1,  # 有一定概率随机选取动作，探索
-        e_greed_decrement=1e-6)  # 随着训练逐步收敛，探索的程度慢慢降低
-
-    # 加载模型
-    # save_path = './dqn_model.ckpt'
-    # agent.restore(save_path)
-
-    # 先往经验池里存一些数据，避免最开始训练的时候样本丰富度不够
-    while len(rpm) &lt; MEMORY_WARMUP_SIZE:
-        run_episode(env, agent, rpm)
-
-    max_episode = 2000
-
-    # start train
-    episode = 0
-    while episode &lt; max_episode:  # 训练max_episode个回合，test部分不计算入episode数量
-        # train part
-        for i in range(0, 50):
-            total_reward = run_episode(env, agent, rpm)
-            episode += 1
-
-        # test part
-        eval_reward = evaluate(env, agent, render=True)  # render=True 查看显示效果
-        logger.info('episode:{}    e_greed:{}   Test reward:{}'.format(
-            episode, agent.e_greed, eval_reward))
-
-    # 训练结束，保存模型
-    save_path = './dqn_model.ckpt'
-    agent.save(save_path)
-
-
-if __name__ == '__main__':
-    main()
-</code></pre>
-<p>大家可以尝试用命令行运行以下演示代码（<a href="https://github.com/star2dust/parl-notes">这里下载</a>），训练环境是倒立摆问题（CartPole），倒立摆可以说是强化学习中的hello world，入门必备。作业中的小车上山问题（MountainCar）见<code>.\tutorials\homework</code>文件夹。</p>
-<pre><code class="language-python"># DQN 演示
-cd .\tutorials\lesson3\dqn
-python .\train.py
-cd .\tutorials\homework\lesson3\dqn_mountaincar
-python .\train.py
-</code></pre>
-<p>最终DQN结果如下面的GIF所示。</p>
-<p>倒立摆（CartPole）：</p>
-<figure data-type="image" tabindex="20"><img src="https://star2dust.github.io/post-images/1595418264689.gif" alt="cartpole训练图" loading="lazy"></figure>
-<p>小车上山（MountainCar）：</p>
-<figure data-type="image" tabindex="21"><img src="https://star2dust.github.io/post-images/1595418274795.gif" alt="mountaincar训练图" loading="lazy"></figure>
-<h1 id="总结">总结</h1>
-<p>框架库PARL将强化学习框架抽象为: <code>Model</code>、<code>Algorithm</code>、<code>Agent</code>三层，使得强化学习算法的实现和调试更方便和灵活。前两者尤其针对deep RL的情况，有神经网络时直接调用paddle的api可以很方便的进行网络和算法的构建。本文由强化学习经典算法Sarsa和Q-learning扩展到deep RL的DQN算法，并以DQN为例讲解了PARL的使用方法。下篇文章我会讲基于policy的PG算法和用于连续状态控制的DDPG，敬请期待。</p>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[ndarray数组基本结构和操作]]></title>
-        <id>https://star2dust.github.io/post/ndarray-notes/</id>
-        <link href="https://star2dust.github.io/post/ndarray-notes/">
-        </link>
-        <updated>2020-06-24T09:33:08.000Z</updated>
-        <content type="html"><![CDATA[<p><ul class="markdownIt-TOC">
-<li><a href="#%E5%86%99%E5%9C%A8%E5%89%8D%E9%9D%A2">写在前面</a></li>
-<li><a href="#%E4%B8%80-%E5%88%9B%E5%BB%BAndarray%E5%9B%9B%E7%A7%8D">一、创建ndarray（四种）</a></li>
-<li><a href="#%E4%BA%8C-%E5%B1%9E%E6%80%A7%E6%93%8D%E4%BD%9C%E5%85%AD%E4%B8%AA">二、属性操作（六个）</a></li>
-<li><a href="#%E4%B8%89-%E5%9F%BA%E6%9C%AC%E8%BF%90%E7%AE%97%E4%B8%83%E4%B8%AA">三、基本运算（七个）</a></li>
-<li><a href="#%E5%9B%9B-%E7%B4%A2%E5%BC%95%E5%92%8C%E5%88%87%E7%89%87">四、索引和切片</a>
-<ul>
-<li><a href="#1-%E4%B8%80%E7%BB%B4%E6%95%B0%E7%BB%84">1. 一维数组</a></li>
-<li><a href="#2-%E5%A4%9A%E7%BB%B4%E6%95%B0%E7%BB%84">2. 多维数组</a></li>
-<li><a href="#3-%E6%9F%A5%E6%89%BE%E7%B4%A2%E5%BC%95">3. 查找索引</a></li>
-</ul>
-</li>
-<li><a href="#%E4%BA%94-%E7%BB%9F%E8%AE%A1%E6%96%B9%E6%B3%95%E4%B8%83%E7%B1%BB">五、统计方法（七类）</a></li>
-<li><a href="#%E5%85%AD-%E9%9A%8F%E6%9C%BA%E6%95%B0nprandom">六、随机数np.random</a>
-<ul>
-<li><a href="#1-%E5%88%9B%E5%BB%BA%E9%9A%8F%E6%9C%BAndarray%E6%95%B0%E7%BB%84">1. 创建随机ndarray数组</a></li>
-<li><a href="#2-%E9%9A%8F%E6%9C%BA%E6%89%93%E4%B9%B1ndarray%E6%95%B0%E7%BB%84">2. 随机打乱ndarray数组</a></li>
-<li><a href="#3-%E9%9A%8F%E6%9C%BA%E9%80%89%E5%8F%96%E5%85%83%E7%B4%A0%E4%B8%80%E7%BB%B4">3. 随机选取元素（一维）</a></li>
-</ul>
-</li>
-<li><a href="#%E4%B8%83-%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0">七、线性代数</a></li>
-<li><a href="#%E5%85%AB-%E6%96%87%E4%BB%B6%E8%AF%BB%E5%86%99%E4%B8%8E%E4%BF%9D%E5%AD%98">八、文件读写与保存</a>
-<ul>
-<li><a href="#1-%E6%96%87%E6%9C%AC%E8%AF%BB%E5%8F%96">1. 文本读取</a></li>
-<li><a href="#2-%E6%96%87%E4%BB%B6%E4%BF%9D%E5%AD%98">2. 文件保存</a></li>
-</ul>
-</li>
-<li><a href="#%E4%B9%9D-numpy%E5%BA%94%E7%94%A8%E4%B8%BE%E4%BE%8B">九、Numpy应用举例</a>
-<ul>
-<li><a href="#1-%E8%AE%A1%E7%AE%97%E6%BF%80%E6%B4%BB%E5%87%BD%E6%95%B0sigmoid%E5%92%8Crelu">1. 计算激活函数Sigmoid和ReLU</a></li>
-<li><a href="#2-%E5%9B%BE%E5%83%8F%E7%BF%BB%E8%BD%AC%E5%92%8C%E8%A3%81%E5%89%AA">2. 图像翻转和裁剪</a></li>
-</ul>
-</li>
-</ul>
-</p>
-<h1 id="写在前面">写在前面</h1>
-<blockquote>
-<p>人生苦短，我用python。</p>
-</blockquote>
-<p>为什么使用ndarray：</p>
-<ul>
-<li>基础数据结构</li>
-<li>效率比list高，底层C</li>
-<li>支持矩阵运算</li>
-<li>广播机制，兼容不同维度数组的加法</li>
-</ul>
-<pre><code class="language-python"># 使用前导入库文件
-import numpy as np
-</code></pre>
-<h1 id="一-创建ndarray四种">一、创建ndarray（四种）</h1>
-<ul>
-<li><code>np.array(list)</code>：从list/tuple创建</li>
-<li><code>np.arrange(start,stop,interval)</code>：创建序列</li>
-<li><code>np.zero([d1,d2,...])</code>：创建指定维度的全0矩阵（<strong>浮点</strong>）</li>
-<li><code>np.ones([d1,d2,...])</code>：创建指定维度的全1矩阵（<strong>浮点</strong>）</li>
-</ul>
-<h1 id="二-属性操作六个">二、属性操作（六个）</h1>
-<ul>
-<li><code>arr.size</code>：数组形状，即<code>(x,y,z)</code>（返回元组）</li>
-<li><code>arr.dtype</code>：数据类型</li>
-<li><code>arr.size</code>：元素个数，即<code>x*y*z</code></li>
-<li><code>arr.ndim</code>：维度大小，即<code>len(x,y,z)</code></li>
-<li><code>arr.astype(np.int64)</code>：改变数据类型</li>
-<li><code>arr.reshap(m,n)</code>：改变形状</li>
-</ul>
-<h1 id="三-基本运算七个">三、基本运算（七个）</h1>
-<ul>
-<li><code>+</code>加， <code>-</code>减， <code>*</code>乘， <code>/</code>除， <code>//</code>向下取整除，<code>%</code>模， <code>**</code>乘方</li>
-<li>标量和ndarray数组之间的运算（所有元素进行运算）</li>
-<li>两个ndarray数组之间的运算（对应位置元素进行运算）</li>
-<li><code>/</code>还可以当作分隔符，分隔但不中断语句</li>
-</ul>
-<h1 id="四-索引和切片">四、索引和切片</h1>
-<h2 id="1-一维数组">1. 一维数组</h2>
-<ul>
-<li>一维数组跟Python列表的功能类似</li>
-<li><strong>区别</strong>：数组切片还是指向原来的内存区域</li>
-<li>将值赋值给一个切片时，该值会自动传播到整个切片</li>
-<li><strong>如何复制数据？</strong>：使用 <strong><code>arr=np.copy(arr)</code></strong></li>
-</ul>
-<h2 id="2-多维数组">2. 多维数组</h2>
-<ul>
-<li>在多维数组中，各索引位置上的元素不再是标量而是多维数组</li>
-<li>以逗号隔开的索引列表来选取单个元素：<strong><code>arr[a][b]</code>等价于<code>arr[a,b]</code></strong></li>
-<li>在多维数组中，如果省略了后面的索引，则返回对象会是一个低维数组</li>
-</ul>
-<pre><code class="language-python"># 使用for语句生成列表 a = [0, 2, 4]
-a = [k for k in range(0, 6, 2)]
-</code></pre>
-<h2 id="3-查找索引">3. 查找索引</h2>
-<pre><code class="language-python">a = np.array([1,2,3,4,2,4,3,3,4])
-max_a = a.max() # 返回第一个索引
-np.where(a==max_a) # 返回全部索引的元组
-</code></pre>
-<h1 id="五-统计方法七类">五、统计方法（七类）</h1>
-<p>对整个数组或某个轴向的数据进行统计计算。<br>
-（<em>以下方法既可以当做数组的实例方法，也可以当做Numpy函数使用</em>）</p>
-<ul>
-<li><code>mean</code>：计算算术平均数，零长度数组的mean为NaN。</li>
-<li><code>std</code>和<code>var</code>：计算标准差和方差，自由度可调（默认为n）。</li>
-<li><code>sum</code>：对数组中全部或某轴向的元素求和，零长度数组的sum为0。</li>
-<li><code>max</code>和<code>min</code>：计算最大值和最小值。</li>
-<li><code>argmin</code>和<code>argmax</code>：分别为最大和最小元素的索引。</li>
-<li><code>cumsum</code>：计算所有元素的累加。</li>
-<li><code>cumprod</code>：计算所有元素的累积。</li>
-</ul>
-<pre><code class="language-python"># 计算均值，使用arr.mean() 或 np.mean(arr)，二者是等价的
-arr = np.array([[1,2,3], [4,5,6], [7,8,9]])
-arr.mean(), np.mean(arr)
-# 指定计算的维度
-# 沿着第1维求平均，也就是将[1, 2, 3]取平均等于2，[4, 5, 6]取平均等于5，[7, 8, 9]取平均等于8
-arr.mean(axis = 1)
-# 沿着第0维求和，也就是将[1, 4, 7]求和等于12，[2, 5, 8]求和等于15，[3, 6, 9]求和等于18
-arr.sum(axis=0)
-# 沿着第0维求最大值，也就是将[1, 4, 7]求最大值等于7，[2, 5, 8]求最大值等于8，[3, 6, 9]求最大值等于9
-arr.max(axis=0)
-# 沿着第1维求最小值，也就是将[1, 2, 3]求最小值等于1，[4, 5, 6]求最小值等于4，[7, 8, 9]求最小值等于7
-arr.min(axis=1)
-</code></pre>
-<h1 id="六-随机数nprandom">六、随机数np.random</h1>
-<h2 id="1-创建随机ndarray数组">1. 创建随机ndarray数组</h2>
-<ul>
-<li>设置随机数种子</li>
-</ul>
-<pre><code class="language-python"># 多次运行，程序输出结果一致
-# 如果不设置随机数种子，多次运行输出结果不一致
-np.random.seed(10)
-a = np.random.rand(3, 3)
-</code></pre>
-<ul>
-<li>均匀分布</li>
-</ul>
-<pre><code class="language-python"># 生成均匀分布随机数，随机数取值范围在[0, 1)之间
-a = np.random.rand(3, 3)
-# 生成均匀分布随机数，指定随机数取值范围和数组形状
-# 未指定形状则返回一个数字，即rand()等价于uniform(0,1)
-a = np.random.uniform(low = -1.0, high = 1.0, size=(2,2))
-</code></pre>
-<ul>
-<li>正态分布</li>
-</ul>
-<pre><code class="language-python"># 生成标准正态分布随机数
-a = np.random.randn(3, 3)
-# 生成正态分布随机数，指定均值loc和方差scale
-a = np.random.normal(loc = 1.0, scale = 1.0, size = (3,3))
-</code></pre>
-<h2 id="2-随机打乱ndarray数组">2. 随机打乱ndarray数组</h2>
-<ul>
-<li>随机打乱1维ndarray数组顺序，发现所有元素位置都被打乱了</li>
-</ul>
-<pre><code class="language-python"># 生成一维数组
-a = np.arange(0, 30)
-# 打乱一维数组顺序
-np.random.shuffle(a)
-</code></pre>
-<ul>
-<li>随机打乱2维ndarray数组顺序，发现只有行的顺序被打乱了，列顺序不变</li>
-</ul>
-<pre><code class="language-python"># 生成一维数组
-a = np.arange(0, 30)
-# 将一维数组转化成2维数组
-a = a.reshape(10, 3)
-# 打乱一维数组顺序
-np.random.shuffle(a)
-</code></pre>
-<h2 id="3-随机选取元素一维">3. 随机选取元素（一维）</h2>
-<pre><code class="language-python"># 随机选取部分元素（30选5）
-a = np.arange(30)
-b = np.random.choice(a, size=5)
-# 随机选取部分元素（30选1）
-c = np.random.choice(30)
-</code></pre>
-<h1 id="七-线性代数">七、线性代数</h1>
-<p>线性代数（如矩阵乘法、矩阵分解、行列式以及其他方阵数学等）是任何数组库的重要组成部分，Numpy中实现了线性代数中常用的各种操作，并形成了<code>numpy.linalg</code>线性代数相关的模块。</p>
-<ul>
-<li><code>diag</code>：以一维数组的形式返回方阵的对角线（或非对角线）元素，或将一维数组转换为方阵（非对角线元素为0）。</li>
-<li><code>dot</code>：矩阵乘法。注意：<strong><code>b.dot(c)</code>等价于<code>np.dot(b,c)</code></strong>。</li>
-<li><code>trace</code>：计算对角线元素的和。</li>
-<li><code>linalg.det</code>：计算矩阵行列式。</li>
-<li><code>linalg.eig</code>：计算方阵的特征值和特征向量。</li>
-<li><code>linalg.inv</code>：计算方阵的逆。</li>
-</ul>
-<pre><code class="language-python"># 矩阵相乘
-a = np.arange(12)
-b = a.reshape([3, 4])
-c = a.reshape([4, 3])
-# 矩阵b的第二维大小，必须等于矩阵c的第一维大小
-d = b.dot(c) # 等价于 np.dot(b, c)
-</code></pre>
-<h1 id="八-文件读写与保存">八、文件读写与保存</h1>
-<h2 id="1-文本读取">1. 文本读取</h2>
-<p>Numpy可以方便的进行文件读写，如下面这种格式的文本文件：</p>
-<figure data-type="image" tabindex="1"><img src="https://star2dust.github.io/post-images/1595412752442.png" alt="文本数据" loading="lazy"></figure>
-<pre><code class="language-python"># 使用np.fromfile从文本文件'housing.data'读入数据
-# 这里要设置参数sep = ' '，表示使用空白字符来分隔数据
-# 空格或者回车都属于空白字符，读入的数据被转化成1维数组
-d = np.fromfile('./work/housing.data', sep = ' ')
-</code></pre>
-<h2 id="2-文件保存">2. 文件保存</h2>
-<p>Numpy提供了save和load接口，直接将数组保存成文件(保存为.npy格式)，或者从.npy文件中读取数组。</p>
-<pre><code class="language-python"># 产生随机数组a
-a = np.random.rand(3,3)
-np.save('a.npy', a)
-
-# 从磁盘文件'a.npy'读入数组
-b = np.load('a.npy')
-
-# 检查a和b的数值是否一样
-check = (a == b).all()
-</code></pre>
-<h1 id="九-numpy应用举例">九、Numpy应用举例</h1>
-<h2 id="1-计算激活函数sigmoid和relu">1. 计算激活函数Sigmoid和ReLU</h2>
-<p>使用ndarray数组可以很方便的构建数学函数，并利用其底层的矢量计算能力快速实现计算。下面以神经网络中比较常用激活函数Sigmoid和ReLU为例，介绍代码实现过程。</p>
-<pre><code class="language-python"># ReLU和Sigmoid激活函数示意图
-import numpy as np
-import matplotlib.pyplot as plt
-import matplotlib.patches as patches
-
-#设置图片大小
-plt.figure(figsize=(8, 3))
-
-# x是1维数组，数组大小是从-10. 到10.的实数，每隔0.1取一个点
-x = np.arange(-10, 10, 0.1)
-# 计算 Sigmoid函数
-s = 1.0 / (1 + np.exp(- x))
-
-# 计算ReLU函数
-y = np.clip(x, a_min = 0., a_max = None)
-
-#############################
-# 以下部分为画图程序
-
-# 设置两个子图窗口，将Sigmoid的函数图像画在左边
-f = plt.subplot(121)
-# 画出函数曲线
-plt.plot(x, s, color='r')
-# 添加文字说明
-plt.text(-5., 0.9, r'$y=\sigma(x)$', fontsize=13)
-# 设置坐标轴格式
-currentAxis=plt.gca()
-currentAxis.xaxis.set_label_text('x', fontsize=15)
-currentAxis.yaxis.set_label_text('y', fontsize=15)
-
-# 将ReLU的函数图像画在右边
-f = plt.subplot(122)
-# 画出函数曲线
-plt.plot(x, y, color='g')
-# 添加文字说明
-plt.text(-3.0, 9, r'$y=ReLU(x)$', fontsize=13)
-# 设置坐标轴格式
-currentAxis=plt.gca()
-currentAxis.xaxis.set_label_text('x', fontsize=15)
-currentAxis.yaxis.set_label_text('y', fontsize=15)
-
-plt.show()
-</code></pre>
-<figure data-type="image" tabindex="2"><img src="https://star2dust.github.io/post-images/1595412819021.png" alt="relu和sigmoid函数图像" loading="lazy"></figure>
-<h2 id="2-图像翻转和裁剪">2. 图像翻转和裁剪</h2>
-<p>图像是由像素点构成的矩阵，其数值可以用ndarray来表示。将上述介绍的操作用在图像数据对应的ndarray上，可以很轻松的实现图片的翻转、裁剪和亮度调整，具体代码和效果如下所示。</p>
-<pre><code class="language-python"># 导入需要的包
-import numpy as np
-import matplotlib.pyplot as plt
-from PIL import Image
-
-# 读入图片
-image = Image.open('bus.png')
-image = np.array(image)
-# 查看数据形状，其形状是[H, W, 3]，
-# 其中H代表高度， W是宽度，3代表RGB三个通道
-image.shape #(612, 612, 3)
-# 原始图片
-plt.imshow(image)
-</code></pre>
-<figure data-type="image" tabindex="3"><img src="https://star2dust.github.io/post-images/1595412844732.jpg" alt="lotus" loading="lazy"></figure>
-<pre><code class="language-python"># 垂直方向翻转
-# 这里使用数组切片的方式来完成，
-# 相当于将图片最后一行挪到第一行，
-# 倒数第二行挪到第二行，..., 
-# 第一行挪到倒数第一行
-# 对于行指标，使用::-1来表示切片，
-# 负数步长表示以最后一个元素为起点，向左走寻找下一个点
-# 对于列指标和RGB通道，仅使用:表示该维度不改变
-image1 = image[::-1, :, :]
-plt.imshow(image1)
-</code></pre>
-<figure data-type="image" tabindex="4"><img src="https://star2dust.github.io/post-images/1595412860189.png" alt="lotus_01" loading="lazy"></figure>
-<pre><code class="language-python"># 水平方向翻转
-image2 = image[:, ::-1, :]
-plt.imshow(image2)
-# 保存图片
-im2 = Image.fromarray(image2)
-im2.save('im2.jpg')
-</code></pre>
-<figure data-type="image" tabindex="5"><img src="https://star2dust.github.io/post-images/1595412875647.png" alt="lotus_02" loading="lazy"></figure>
-<pre><code class="language-python">#  高度方向裁剪
-H, W = image.shape[0], image.shape[1]
-# 注意此处用整除，H_start必须为整数
-H1 = H // 2 
-H2 = H
-image3 = image[H1:H2, :, :]
-plt.imshow(image3)
-</code></pre>
-<figure data-type="image" tabindex="6"><img src="https://star2dust.github.io/post-images/1595412893373.png" alt="lotus_03" loading="lazy"></figure>
-<pre><code class="language-python">#  宽度方向裁剪
-W1 = W//6
-W2 = W//3 * 2
-image4 = image[:, W1:W2, :]
-plt.imshow(image4)
-</code></pre>
-<figure data-type="image" tabindex="7"><img src="https://star2dust.github.io/post-images/1595412908064.png" alt="lotus_04" loading="lazy"></figure>
-<pre><code class="language-python"># 两个方向同时裁剪
-image5 = image[H1:H2, \
-               W1:W2, :]
-plt.imshow(image5)
-</code></pre>
-<figure data-type="image" tabindex="8"><img src="https://star2dust.github.io/post-images/1595412920053.png" alt="lotus_05" loading="lazy"></figure>
-<pre><code class="language-python"># 调整亮度
-image6 = image * 0.5
-plt.imshow(image6.astype('uint8'))
-</code></pre>
-<figure data-type="image" tabindex="9"><img src="https://star2dust.github.io/post-images/1595412932862.png" alt="lotus_06" loading="lazy"></figure>
-<pre><code class="language-python"># 调整亮度
-image7 = image * 2.0
-# 由于图片的RGB像素值必须在0-255之间，
-# 此处使用np.clip进行数值裁剪
-image7 = np.clip(image7, \
-        a_min=None, a_max=255.)
-plt.imshow(image7.astype('uint8'))
-</code></pre>
-<figure data-type="image" tabindex="10"><img src="https://star2dust.github.io/post-images/1595412951944.png" alt="lotus_07" loading="lazy"></figure>
-<pre><code class="language-python">#高度方向每隔一行取像素点
-image8 = image[::2, :, :]
-plt.imshow(image8)
-</code></pre>
-<figure data-type="image" tabindex="11"><img src="https://star2dust.github.io/post-images/1595412965422.png" alt="lotus_08" loading="lazy"></figure>
-<pre><code class="language-python">#宽度方向每隔一列取像素点
-image9 = image[:, ::2, :]
-plt.imshow(image9)
-</code></pre>
-<figure data-type="image" tabindex="12"><img src="https://star2dust.github.io/post-images/1595412981877.png" alt="lotus_09" loading="lazy"></figure>
-<pre><code class="language-python">#间隔行列采样，图像尺寸会减半，清晰度变差
-image10 = image[::2, ::2, :]
-plt.imshow(image10)
-print(image10.shape) # (240, 160, 3)
-</code></pre>
-<figure data-type="image" tabindex="13"><img src="https://star2dust.github.io/post-images/1595412995167.png" alt="lotus_10" loading="lazy"></figure>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[ pip包管理]]></title>
-        <id>https://star2dust.github.io/post/pip-packages/</id>
-        <link href="https://star2dust.github.io/post/pip-packages/">
-        </link>
-        <updated>2020-06-24T03:40:40.000Z</updated>
-        <content type="html"><![CDATA[<p><ul class="markdownIt-TOC">
-<li><a href="#%E4%B8%80-pip%E5%9B%BD%E5%86%85%E7%9A%84%E4%B8%80%E4%BA%9B%E9%95%9C%E5%83%8F">一、pip国内的一些镜像</a></li>
-</ul>
-</p>
-<h1 id="一-pip国内的一些镜像">一、pip国内的一些镜像</h1>
-<ul>
-<li>阿里云 http://mirrors.aliyun.com/pypi/simple/</li>
-<li>中科大 https://pypi.mirrors.ustc.edu.cn/simple/</li>
-<li>豆瓣 http://pypi.douban.com/simple/</li>
-<li>清华大学 https://pypi.tuna.tsinghua.edu.cn/simple/</li>
-<li>百度 https://mirror.baidu.com/pypi/simple</li>
-</ul>
-<pre><code class="language-shell">pip install [pkg] -i https://pypi.tuna.tsinghua.edu.cn/simple
-</code></pre>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[Python三大数据类型]]></title>
-        <id>https://star2dust.github.io/post/python-data-types/</id>
-        <link href="https://star2dust.github.io/post/python-data-types/">
-        </link>
-        <updated>2020-06-24T02:50:46.000Z</updated>
-        <content type="html"><![CDATA[<p><ul class="markdownIt-TOC">
-<li><a href="#%E4%B8%80-%E5%AD%97%E7%AC%A6%E4%B8%B2">一、字符串</a>
-<ul>
-<li><a href="#1-%E5%AE%9A%E4%B9%89">1. 定义</a></li>
-<li><a href="#2-%E6%93%8D%E4%BD%9C">2. 操作</a></li>
-</ul>
-</li>
-<li><a href="#%E4%BA%8C-%E6%95%B0%E5%AD%97">二、数字</a></li>
-<li><a href="#%E4%B8%89-%E5%B8%83%E5%B0%94%E5%80%BC">三、布尔值</a></li>
-</ul>
-</p>
-<h1 id="一-字符串">一、字符串</h1>
-<h2 id="1-定义">1. 定义</h2>
-<ul>
-<li>三种方式：<code>'</code>，<code>&quot;</code>，<code>&quot;&quot;&quot;</code>（多行）<br>
-（<em>使用<code>\</code>以在字符串中使用上述符号</em>）</li>
-<li>特殊用法：<code>\t</code>TAB，<code>\n</code>换行</li>
-<li>输入<code>str = input('description')</code>（assignment）</li>
-<li>输出<code>print(str)</code></li>
-</ul>
-<h2 id="2-操作">2. 操作</h2>
-<ul>
-<li>使用method（<em>后面一定要加括号，使用<code>help()</code>查询</em>）</li>
-<li>大小写操作：<code>str.lower()</code>，<code>str.upper()</code>，<code>str.title()</code></li>
-<li>分隔操作：<code>str.split()</code>
-<ul>
-<li><em>括号中是分隔符（dtr），默认是' '（即空格）</em></li>
-<li><em>返回值是一个字符串列表str list（slt）</em></li>
-</ul>
-</li>
-<li>替换操作：<code>str.replace(char in str, another char)</code></li>
-<li>合并操作
-<ul>
-<li><code>dtr.join(slt)</code>，如果待合并的字符串在一个list中</li>
-<li><code>str1+str2</code>，如果待合并的字符串是独立的</li>
-</ul>
-</li>
-<li>倍数操作：<code>str*num</code>得到<code>str+str+...+str</code> （slt也一样）</li>
-</ul>
-<h1 id="二-数字">二、数字</h1>
-<ul>
-<li>四种类型：普通整数，长整数，浮点数和复数</li>
-<li>整数运算时仅在产生小数时返回浮点数，其余时候返回整数</li>
-<li>乘方运算：<code>**</code></li>
-<li>模运算：<code>%</code></li>
-</ul>
-<h1 id="三-布尔值">三、布尔值</h1>
-<ul>
-<li>普通整数的子类型</li>
-<li><code>True</code>，<code>False</code>（<em>首字母大写</em>）</li>
-</ul>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[Python三大数据结构]]></title>
-        <id>https://star2dust.github.io/post/python-data-structures/</id>
-        <link href="https://star2dust.github.io/post/python-data-structures/">
-        </link>
-        <updated>2020-06-24T02:49:03.000Z</updated>
-        <content type="html"><![CDATA[<p><ul class="markdownIt-TOC">
-<li><a href="#%E4%B8%80-%E5%88%97%E8%A1%A8list">一、列表（list）</a>
-<ul>
-<li><a href="#1-%E5%88%97%E8%A1%A8%E7%B4%A2%E5%BC%95index">1. 列表索引（index）</a></li>
-<li><a href="#2-%E5%88%97%E8%A1%A8%E5%88%87%E7%89%87">2. 列表切片</a></li>
-<li><a href="#3-%E5%88%97%E8%A1%A8%E6%93%8D%E4%BD%9C">3. 列表操作</a></li>
-</ul>
-</li>
-<li><a href="#%E4%BA%8C-%E5%AD%97%E5%85%B8dict">二、字典（dict）</a>
-<ul>
-<li><a href="#1-%E6%9F%A5%E6%89%BE%E5%AD%97%E5%85%B8">1. 查找字典</a></li>
-<li><a href="#2-%E6%9B%B4%E6%96%B0%E5%AD%97%E5%85%B8">2. 更新字典</a></li>
-<li><a href="#3-%E9%81%8D%E5%8E%86%E5%AD%97%E5%85%B8">3. 遍历字典</a></li>
-</ul>
-</li>
-<li><a href="#%E4%B8%89-%E5%85%83%E7%BB%84tuple">三、元组（tuple）</a>
-<ul>
-<li><a href="#1-%E5%88%9D%E5%A7%8B%E5%8C%96">1. 初始化</a></li>
-<li><a href="#2-%E8%AE%BF%E9%97%AE%E5%92%8C%E5%88%87%E5%88%86%E5%85%83%E7%BB%84">2. 访问和切分元组</a></li>
-<li><a href="#3-%E5%85%83%E7%BB%84%E6%93%8D%E4%BD%9C">3. 元组操作</a></li>
-<li><a href="#4-%E5%85%83%E7%BB%84%E6%8B%86%E5%8C%85">4. 元组拆包</a></li>
-</ul>
-</li>
-</ul>
-</p>
-<h1 id="一-列表list">一、列表（list）</h1>
-<ul>
-<li>使用[]定义列表</li>
-<li>字符串也是一个列表</li>
-</ul>
-<h2 id="1-列表索引index">1. 列表索引（index）</h2>
-<ul>
-<li>从0开始正向访问</li>
-<li>从-1开始反向访问</li>
-</ul>
-<h2 id="2-列表切片">2. 列表切片</h2>
-<ul>
-<li>使用<code>list[:]</code>类似matlab</li>
-<li>【:】左右为空表示从头开始</li>
-<li>左大于右返回空列表</li>
-<li><code>list[a:b]</code>索引从a到b-1</li>
-</ul>
-<h2 id="3-列表操作">3. 列表操作</h2>
-<ul>
-<li><code>min(list)</code>，<code>max(list)</code>，<code>len(list)</code></li>
-<li><code>sum(list)</code>只能用于数字类型</li>
-<li><code>dtr.join(list)</code>只能合并字符串</li>
-<li><code>list.count(elm)</code>对元素（elm）出现次数计数</li>
-<li><code>list.index(elm)</code>返回元素（elm）第一个索引</li>
-<li><code>list.sort()</code>元素排序小到大</li>
-<li><code>list.sort(reverse = True)</code>元素排序大到小</li>
-<li><code>sorted(list)</code>返回排序后列表</li>
-<li><code>list.append(elm)</code>列表末尾增加元素</li>
-<li><code>list.remove(elm)</code>列表删除指定元素</li>
-<li><code>list.pop(id)</code>按索引删除元素</li>
-<li><code>list.extend(list2)</code>在末尾合并列表</li>
-<li><code>list.insert(id,elm)</code>按索引插入元素</li>
-</ul>
-<h1 id="二-字典dict">二、字典（dict）</h1>
-<ul>
-<li>使用{}定义字典</li>
-<li>键(key)映射到值(value)的无序数据结构</li>
-<li>键(key)不可变</li>
-</ul>
-<h2 id="1-查找字典">1. 查找字典</h2>
-<ul>
-<li><code>dict[key]</code>访问键对应的值</li>
-<li><code>dict.get(key,default)</code>访问键值</li>
-<li>键不存在返回预设default（<em>没有预设返回None</em>）</li>
-</ul>
-<h2 id="2-更新字典">2. 更新字典</h2>
-<ul>
-<li><code>dict['nkey']=nval</code>增加/更新键值</li>
-<li><code>dict.update(ndict)</code>增加/更新键值（通过新字典）</li>
-<li>删除键值</li>
-</ul>
-<pre><code class="language-python">del dict[key]
-</code></pre>
-<ul>
-<li><code>val = dict.pop(key)</code>删除键值，并返回值</li>
-</ul>
-<h2 id="3-遍历字典">3. 遍历字典</h2>
-<ul>
-<li><code>dict.keys()</code>返回所有键</li>
-<li><code>dict..values()</code>返回所有值</li>
-</ul>
-<h1 id="三-元组tuple">三、元组（tuple）</h1>
-<ul>
-<li>使用<code>(,)</code>定义元组</li>
-<li>元组不能更改（不可变）</li>
-</ul>
-<h2 id="1-初始化">1. 初始化</h2>
-<ul>
-<li>空元组<code>()</code>或<code>Tuple()</code></li>
-<li>非空元组用逗号初始化<code>1,2,3</code></li>
-<li>单值元组末尾要加逗号<code>1,</code>或<code>(1,)</code></li>
-</ul>
-<h2 id="2-访问和切分元组">2. 访问和切分元组</h2>
-<ul>
-<li>索引使用方法和列表相同</li>
-</ul>
-<h2 id="3-元组操作">3. 元组操作</h2>
-<ul>
-<li><code>tup1+tup2</code>返回合并的元组</li>
-<li><code>tup.index(elm)</code>返回元素（elm）第一个索引</li>
-<li><code>tup.count(elm)</code>对元素（elm）出现次数计数</li>
-</ul>
-<h2 id="4-元组拆包">4. 元组拆包</h2>
-<pre><code class="language-python">x,y,z = 1,3,4
-'x = {}, y = {}, z = {}'.format(x,y,z)
-</code></pre>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[Python四大语法]]></title>
-        <id>https://star2dust.github.io/post/python-grammers/</id>
-        <link href="https://star2dust.github.io/post/python-grammers/">
-        </link>
-        <updated>2020-06-23T03:42:51.000Z</updated>
-        <content type="html"><![CDATA[<p><ul class="markdownIt-TOC">
-<li><a href="#%E4%B8%80-%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95">一、基础语法</a>
-<ul>
-<li><a href="#1-%E6%AF%94%E8%BE%83%E6%93%8D%E4%BD%9C%E7%AC%A6">1. 比较操作符</a></li>
-<li><a href="#2-%E9%80%BB%E8%BE%91%E6%93%8D%E4%BD%9C%E7%AC%A6">2. 逻辑操作符</a></li>
-<li><a href="#3-if-else%E8%AF%AD%E5%8F%A5">3. if else语句</a></li>
-</ul>
-</li>
-<li><a href="#%E4%BA%8C-for%E5%BE%AA%E7%8E%AF">二、for循环</a>
-<ul>
-<li><a href="#1-%E6%9E%9A%E4%B8%BE">1. 枚举</a></li>
-<li><a href="#2-%E8%AE%A1%E6%95%B0">2. 计数</a></li>
-<li><a href="#3-%E6%93%8D%E4%BD%9C%E5%BE%AA%E7%8E%AF">3. 操作循环</a></li>
-</ul>
-</li>
-<li><a href="#%E4%B8%89-%E5%87%BD%E6%95%B0%E8%AF%AD%E6%B3%95">三、函数语法</a>
-<ul>
-<li><a href="#1-%E5%88%9B%E5%BB%BA%E5%87%BD%E6%95%B0">1. 创建函数</a></li>
-<li><a href="#2-%E5%87%BD%E6%95%B0%E5%8F%82%E6%95%B0">2. 函数参数</a></li>
-</ul>
-</li>
-<li><a href="#%E5%9B%9B-%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1">四、面向对象</a>
-<ul>
-<li><a href="#1-%E5%88%9B%E5%BB%BA%E5%AF%B9%E8%B1%A1">1. 创建对象</a></li>
-<li><a href="#2-%E5%AE%9E%E4%BE%8B%E6%96%B9%E6%B3%95">2. 实例方法</a></li>
-</ul>
-</li>
-</ul>
-</p>
-<h1 id="一-基础语法">一、基础语法</h1>
-<h2 id="1-比较操作符">1. 比较操作符</h2>
-<p><code>&lt;=</code>、<code>&gt;=</code>、<code>==</code>、<code>!=</code></p>
-<h2 id="2-逻辑操作符">2. 逻辑操作符</h2>
-<p><code>and</code>，<code>or</code>，<code>not</code></p>
-<h2 id="3-if-else语句">3. if else语句</h2>
-<p>注意末尾加冒号<code>:</code></p>
-<ul>
-<li><code>elif</code>可以无数个</li>
-<li><code>else</code>只能有一个</li>
-</ul>
-<h1 id="二-for循环">二、for循环</h1>
-<p>注意末尾加冒号<code>:</code></p>
-<h2 id="1-枚举">1. 枚举</h2>
-<pre><code class="language-python"># 用列表枚举
-for ind,elm in enumerate(list) 
-for tuple in enumerate(list)
-# 用字典枚举
-for key,val in enumerate(dict)
-for key in enumerate(dict)
-</code></pre>
-<h2 id="2-计数">2. 计数</h2>
-<pre><code class="language-python"># 用列表计数
-for num in [1,2,3,4,5] 
-# 用元组计数
-for num in 1,2,3,4,5
-# 用range计数
-for num in range(1,5)
-</code></pre>
-<ul>
-<li>range是一个新数据结构，不是列表</li>
-<li>三种方法中列表最慢</li>
-</ul>
-<h2 id="3-操作循环">3. 操作循环</h2>
-<ul>
-<li><code>continue</code>跳过不跳出</li>
-<li><code>break</code>跳出不跳过</li>
-<li>只有<code>break</code>能结束<code>while</code>循环</li>
-</ul>
-<h1 id="三-函数语法">三、函数语法</h1>
-<h2 id="1-创建函数">1. 创建函数</h2>
-<ul>
-<li>关键字<code>def</code>标记函数头的开始</li>
-<li>用于唯一标识它的函数名称</li>
-<li>参数（可选）</li>
-<li>冒号标记函数头的结尾</li>
-<li>文档字符串（docstring）通常使用三引号，以便docstring可以扩展到多行</li>
-<li>python语句，必须具有相同的缩进级别（通常为4个空格）</li>
-<li>用于从函数返回值的return语句（可选，没有返回None）</li>
-</ul>
-<h2 id="2-函数参数">2. 函数参数</h2>
-<ul>
-<li>使用赋值运算符<code>(=)</code>为参数提供默认值</li>
-<li>没有默认值的参数在调用期间是必需的</li>
-<li>任意数量的参数都可以具有默认值</li>
-<li>一旦有一个默认参数，它右边的所有参数也必须有默认值</li>
-<li>使用关键字参数调用函数，可以更改参数的顺序</li>
-<li>参数名称前使用星号<code>(*)</code>来表示任意参数</li>
-</ul>
-<h1 id="四-面向对象">四、面向对象</h1>
-<h2 id="1-创建对象">1. 创建对象</h2>
-<ul>
-<li>使用<code>class</code>创建一个类</li>
-<li>添加该类的名称（使用骆驼命名法，以大写字母开头）</li>
-<li>使用<code>__init __(self,attr)</code>方法提供实例的初始属性</li>
-<li><code>实例属性</code>特定于每个对象</li>
-<li><code>类属性</code>对所有实例都相同，直接写在<code>__init __(self,attr)</code>之前</li>
-<li>使用<code>==</code>进行实例比较</li>
-<li>使用<code>type(obj)</code>查看实例类型</li>
-</ul>
-<h2 id="2-实例方法">2. 实例方法</h2>
-<ul>
-<li>第一个参数始终是self</li>
-<li>实例方法可修改实例属性</li>
-<li>使用<code>instance(child,parent)</code>确定前者（实例）是否为后者（类）的子类</li>
-</ul>
-]]></content>
-    </entry>
-</feed>
+    </script>
+  </body>
+</html>

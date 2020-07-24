@@ -3,7 +3,7 @@
     <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>强化学习从零实践入门心得 | star2dust</title>
-<link rel="shortcut icon" href="https://star2dust.github.io/favicon.ico?v=1595476497841">
+<link rel="shortcut icon" href="https://star2dust.github.io/favicon.ico?v=1595575897959">
 <link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
 <link rel="stylesheet" href="https://star2dust.github.io/styles/main.css">
 <link rel="alternate" type="application/atom+xml" title="强化学习从零实践入门心得 | star2dust - Atom Feed" href="https://star2dust.github.io/atom.xml">
@@ -37,7 +37,7 @@ Sarsa和Q-learning
       <div class="main-content">
         <div class="site-header">
   <a href="https://star2dust.github.io">
-  <img class="avatar" src="https://star2dust.github.io/images/avatar.png?v=1595476497841" alt="">
+  <img class="avatar" src="https://star2dust.github.io/images/avatar.png?v=1595575897959" alt="">
   </a>
   <h1 class="site-title">
     star2dust
@@ -106,7 +106,7 @@ Sarsa和Q-learning
             </h2>
             <div class="post-info">
               <span>
-                2020-07-22
+                2020-06-25
               </span>
               <span>
                 27 min read
@@ -155,7 +155,7 @@ Sarsa和Q-learning
 </blockquote>
 <p>本文源于百度AI平台飞桨学院《<a href="https://aistudio.baidu.com/aistudio/education/group/info/1335">世界冠军带你从零实践强化学习</a>》课程中我自己的心得和理解，感谢科科老师这几天精彩的讲解，带我们从小乌龟（Sarsa、Q-learning），到倒立摆（DQN，PG），再到四旋翼飞行器（DDPG），逐步领略强化学习的魅力。本文旨在介绍PARL框架的使用方法，并从模型的理解和代码的构建角度来整理所学内容，不求详尽但求简洁明了，看完都能学会<code>Model</code>、<code>Algorithm</code>、<code>Agent</code>的构建方法。我认为强化学习中对算法每一个概念的理解很重要，你可以不懂公式的推导，但是只要你理解了算法框图中的每一个步骤，那你就能够灵活的应用PARL框架去解决自己的问题。为了让大家理解代码的模块化构建，这篇文章只介绍Sarsa、Q-learning和DQN，前两者只用了一个<code>Agent</code>函数，后者用了PARL的<code>Model</code>、<code>Algorithm</code>、<code>Agent</code>模块，对比两种构建方式的不同，我们就可以很轻松的举一反三，PG和DDPG同样也可以用这三大模块构建。</p>
 <p>依赖库是python初学者永远的痛点，相信很多人都有网上查到代码，本地一运行各种报错的经历，本文在各代码之前列举了所需依赖库，希望大家自己研究代码时能一次跑通。所有课程官方代码和作业答案都已上传至我的<a href="https://github.com/star2dust/parl-notes">GitHub</a>，欢迎大家star一下，文章中有问题或疏漏的地方大家也可以直接查看源码。</p>
-<p>开始之前我希望大家都具有python编程基础，一定程度上掌握Numpy的用法，这个库真的是很有用。没用过的可以参考我之前的文章（<a href="https://star2dust.github.io/numpy-notes/">查看这里</a>）。学习过程中也可以参考大神的文章，推荐<a href="https://www.zhihu.com/people/tiny-tony-5/posts">Tiny Tony</a>、<a href="https://blog.csdn.net/zbp_12138/article/details/106800911">Mr.郑先生_</a>、<a href="https://www.zhihu.com/people/hhhsy-9/posts">hhhsy</a>、<a href="https://www.zhihu.com/people/qqiang00/posts">叶强</a>。</p>
+<p>开始之前我希望大家都具有python编程基础，一定程度上掌握Numpy的用法，这个库真的是很有用。没用过的可以参考我之前的文章（<a href="https://star2dust.github.io/post/ndarray-notes/">查看这里</a>）。学习过程中也可以参考大神的文章，推荐<a href="https://www.zhihu.com/people/tiny-tony-5/posts">Tiny Tony</a>、<a href="https://blog.csdn.net/zbp_12138/article/details/106800911">Mr.郑先生_</a>、<a href="https://www.zhihu.com/people/hhhsy-9/posts">hhhsy</a>、<a href="https://www.zhihu.com/people/qqiang00/posts">叶强</a>。</p>
 <h1 id="强化学习从尝试到决策">强化学习——从尝试到决策</h1>
 <blockquote>
 <p>每个人都是过去经验的总和。</p>

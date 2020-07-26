@@ -6,7 +6,7 @@
 
 <title>ndarray数组基本结构和操作 | star2dust</title>
 
-<link rel="shortcut icon" href="https://star2dust.github.io/favicon.ico?v=1595673081716">
+<link rel="shortcut icon" href="https://star2dust.github.io/favicon.ico?v=1595762800589">
 
 <link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" rel="stylesheet">
 <link rel="stylesheet" href="https://star2dust.github.io/styles/main.css">
@@ -169,6 +169,7 @@ import numpy as np
 <li><code>/</code>还可以当作分隔符，分隔但不中断语句</li>
 </ul>
 <h1 id="四-索引和切片">四、索引和切片</h1>
+<p>索引和切片是数组的最常用操作</p>
 <h2 id="1-一维数组">1. 一维数组</h2>
 <ul>
 <li>一维数组跟Python列表的功能类似</li>
@@ -286,8 +287,9 @@ c = a.reshape([4, 3])
 d = b.dot(c) # 等价于 np.dot(b, c)
 </code></pre>
 <h1 id="八-文件读写与保存">八、文件读写与保存</h1>
+<p>Numpy可以方便的进行文件读写</p>
 <h2 id="1-文本读取">1. 文本读取</h2>
-<p>Numpy可以方便的进行文件读写，如下面这种格式的文本文件：</p>
+<p>如下面这种格式的文本文件：</p>
 <figure data-type="image" tabindex="1"><img src="https://star2dust.github.io/post-images/1595412752442.png" alt="文本数据" loading="lazy"></figure>
 <pre><code class="language-python"># 使用np.fromfile从文本文件'housing.data'读入数据
 # 这里要设置参数sep = ' '，表示使用空白字符来分隔数据

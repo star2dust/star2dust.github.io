@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://star2dust.github.io</id>
     <title>star2dust</title>
-    <updated>2020-07-28T08:02:54.017Z</updated>
+    <updated>2020-07-28T08:18:27.752Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://star2dust.github.io"/>
     <link rel="self" href="https://star2dust.github.io/atom.xml"/>
@@ -63,12 +63,15 @@ git clone -b [branch] --depth=1 [origin]
 <p>分别在上面打开的网站中查找github.com和github.global.ssl.fastly.net的IP地址；</p>
 </li>
 <li>
-<p>将上面的两个IP地址存到本地hosts文件中（该文件的地址一般在C:\Windows\System32\drivers\etc\下）；<br>
-<img src="https://star2dust.github.io/post-images/1595921600765.png" alt="" loading="lazy"></p>
+<p>将上面的两个IP地址存到本地hosts文件中（该文件的地址一般在C:\Windows\System32\drivers\etc\下）；</p>
 </li>
-<li>
-<p>打开cmd，在cmd命令行输入：ipconfig/flushdns（刷新dns）。</p>
-</li>
+</ol>
+<pre><code># 示例如下
+140.82.113.3    github.com
+151.101.185.194    github.global.ssl.fastly.net 
+</code></pre>
+<ol start="4">
+<li>打开cmd，在cmd命令行输入：ipconfig/flushdns（刷新dns）。</li>
 </ol>
 <h2 id="利用gitee同步">利用Gitee同步</h2>
 <ol>

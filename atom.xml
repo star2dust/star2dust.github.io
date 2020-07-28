@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://star2dust.github.io</id>
     <title>star2dust</title>
-    <updated>2020-07-26T11:26:46.020Z</updated>
+    <updated>2020-07-28T08:02:54.017Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://star2dust.github.io"/>
     <link rel="self" href="https://star2dust.github.io/atom.xml"/>
@@ -10,6 +10,170 @@
     <logo>https://star2dust.github.io/images/avatar.png</logo>
     <icon>https://star2dust.github.io/favicon.ico</icon>
     <rights>All rights reserved 2020, star2dust</rights>
+    <entry>
+        <title type="html"><![CDATA[git使用的几个小tips分享]]></title>
+        <id>https://star2dust.github.io/post/git-tips/</id>
+        <link href="https://star2dust.github.io/post/git-tips/">
+        </link>
+        <updated>2020-07-28T07:12:12.000Z</updated>
+        <content type="html"><![CDATA[<p><ul class="markdownIt-TOC">
+<li><a href="#%E5%86%99%E5%9C%A8%E5%89%8D%E9%9D%A2">写在前面</a></li>
+<li><a href="#%E9%97%AE%E9%A2%981github%E4%B8%8A%E9%9D%A2%E7%9A%84%E9%A1%B9%E7%9B%AE%E5%A4%AA%E5%A4%A7%E6%80%8E%E4%B9%88%E5%8A%9E">问题1：Github上面的项目太大怎么办？</a>
+<ul>
+<li><a href="#%E4%BB%85clone%E6%9F%90%E4%B8%AA%E5%88%86%E6%94%AF">仅clone某个分支</a></li>
+<li><a href="#%E4%BB%85clone%E6%9C%80%E6%96%B0%E4%B8%80%E6%AC%A1commit">仅clone最新一次commit</a></li>
+</ul>
+</li>
+<li><a href="#%E9%97%AE%E9%A2%982github%E4%B8%8B%E8%BD%BD%E9%80%9F%E5%BA%A6%E6%85%A2%E6%80%8E%E4%B9%88%E5%8A%9E">问题2：Github下载速度慢怎么办？</a>
+<ul>
+<li><a href="#%E6%9B%B4%E6%94%B9host">更改host</a></li>
+<li><a href="#%E5%88%A9%E7%94%A8gitee%E5%90%8C%E6%AD%A5">利用Gitee同步</a></li>
+</ul>
+</li>
+<li><a href="#%E9%97%AE%E9%A2%983git%E5%A6%82%E4%BD%95%E5%90%8C%E6%AD%A5%E4%BB%A3%E7%A0%81%E5%A4%9A%E4%B8%AA%E8%BF%9C%E7%A8%8B%E4%BB%93%E5%BA%93">问题3：git如何同步代码多个远程仓库？</a>
+<ul>
+<li><a href="#%E5%91%BD%E5%90%8D%E6%96%B9%E5%BC%8F%E5%90%8C%E6%AD%A5">命名方式同步</a></li>
+<li><a href="#%E9%85%8D%E7%BD%AE%E6%96%B9%E5%BC%8F%E5%90%8C%E6%AD%A5">配置方式同步</a></li>
+<li><a href="#%E6%9F%A5%E7%9C%8B%E8%BF%9C%E7%A8%8B%E5%BA%93">查看远程库</a></li>
+</ul>
+</li>
+</ul>
+</p>
+<h1 id="写在前面">写在前面</h1>
+<p>本文是我在使用git过程中总结出来的几个小经验，能够解决初学者在使用远程仓库，如GitHub、Gitee等，可能遇到的几个常见问题。由于本人也在不断探索中，有新的经验也会继续在这里不定期更新。</p>
+<h1 id="问题1github上面的项目太大怎么办">问题1：Github上面的项目太大怎么办？</h1>
+<p>初学者看到好的项目，一般直接git clone下来。但是对于大型项目，通常有很多分支，我们可以轻量的clone项目。</p>
+<h2 id="仅clone某个分支">仅clone某个分支</h2>
+<pre><code class="language-shell"># [branch]是要clone的分支名，[origin]是项目地址
+git clone -b [branch] [origin]
+</code></pre>
+<h2 id="仅clone最新一次commit">仅clone最新一次commit</h2>
+<pre><code class="language-shell">git clone --depth=1 [origin]
+# 当然也可以二者结合
+git clone -b [branch] --depth=1 [origin]
+</code></pre>
+<h1 id="问题2github下载速度慢怎么办">问题2：Github下载速度慢怎么办？</h1>
+<p>由于GitHub服务器在国外，本人经常遇到项目clone一半就断掉的情况。解决这个问题，网上常用的是两个方法<sup class="footnote-ref"><a href="#fn1" id="fnref1">[1]</a></sup>：</p>
+<h2 id="更改host">更改host</h2>
+<ol>
+<li>
+<p>打开网站<a href="https://www.ipaddress.com/">https://www.ipaddress.com/</a> ；</p>
+</li>
+<li>
+<p>分别在上面打开的网站中查找github.com和github.global.ssl.fastly.net的IP地址；</p>
+</li>
+<li>
+<p>将上面的两个IP地址存到本地hosts文件中（该文件的地址一般在C:\Windows\System32\drivers\etc\下）；<br>
+<img src="https://star2dust.github.io/post-images/1595921600765.png" alt="" loading="lazy"></p>
+</li>
+<li>
+<p>打开cmd，在cmd命令行输入：ipconfig/flushdns（刷新dns）。</p>
+</li>
+</ol>
+<h2 id="利用gitee同步">利用Gitee同步</h2>
+<ol>
+<li>
+<p>打开码云<a href="https://gitee.com/">https://gitee.com/</a> 并注册登录；</p>
+</li>
+<li>
+<p>创建仓库；</p>
+</li>
+<li>
+<p>在新建仓库页选择 “导入已有仓库”；</p>
+</li>
+<li>
+<p>复制你需要下载的git链接，如https://github.com/star2dust/parl-notes.git 放到导入已有仓库中；</p>
+</li>
+<li>
+<p>点击创建，然后下载。</p>
+</li>
+</ol>
+<h1 id="问题3git如何同步代码多个远程仓库">问题3：git如何同步代码多个远程仓库？</h1>
+<p>当GitHub的龟速逼着我们使用多个远程仓库时，问题又来了。怎么同步多个远程仓库呢？</p>
+<p>如果只在GitHub和Gitee之间同步，还是比较容易的。首先Gitee可以完美搬运GitHub仓库并同步，但反过来就比较麻烦了，毕竟GitHub没这功能。那么我们就需要如下步骤：</p>
+<ol>
+<li>本地clone一下Gitee仓库；</li>
+</ol>
+<pre><code class="language-shell">git clone [gitee origin]
+</code></pre>
+<ol start="2">
+<li>删除origin默认远程库；</li>
+</ol>
+<pre><code class="language-shell">git remote rm origin
+</code></pre>
+<ol start="3">
+<li>再关联GitHub远程库；</li>
+</ol>
+<pre><code class="language-shell">git remote add origin [github origin]
+</code></pre>
+<ol start="4">
+<li>最后push origin就可以了。</li>
+</ol>
+<p>对于多个远程库中，需要用不同的名称来标识不同的远程库，而git给远程库起的默认名称是origin。所以我们需要修改、配置名称，以关联不同远程库。有两种方式<sup class="footnote-ref"><a href="#fn2" id="fnref2">[2]</a></sup>:</p>
+<h2 id="命名方式同步">命名方式同步</h2>
+<ol>
+<li>先删除已关联的名为origin的远程库；</li>
+</ol>
+<pre><code class="language-shell">git remote rm origin
+</code></pre>
+<ol start="2">
+<li>然后，再关联GitHub的远程库；</li>
+</ol>
+<pre><code class="language-shell">git remote add github [github origin]
+</code></pre>
+<ol start="3">
+<li>接着，再关联码云的远程库。</li>
+</ol>
+<pre><code class="language-shell">git remote add gitee [gitee origin]
+</code></pre>
+<h2 id="配置方式同步">配置方式同步</h2>
+<p>修改.git文件夹内的config文件：</p>
+<pre><code>[core]
+    repositoryformatversion = 0
+    filemode = true
+    bare = false
+    logallrefupdates = true
+[remote &quot;origin&quot;]
+    url = git@github.com:user/demo.git
+    fetch = +refs/heads/*:refs/remotes/github/*
+[branch &quot;master&quot;]
+    remote = origin
+    merge = refs/heads/master
+</code></pre>
+<p>将上述文件内容[remote &quot;origin&quot;]内容复制，修改origin名称，内容如下：</p>
+<pre><code>[core]
+    repositoryformatversion = 0
+    filemode = true
+    bare = false
+    logallrefupdates = true
+[remote &quot;github&quot;]
+    url = git@github.com:user/demo.git
+    fetch = +refs/heads/*:refs/remotes/github/*
+[remote &quot;gitee&quot;]
+    url = git@gitee.com:user/demo.git
+    fetch = +refs/heads/*:refs/remotes/gitee/*
+[branch &quot;master&quot;]
+    remote = origin
+    merge = refs/heads/master
+</code></pre>
+<h2 id="查看远程库">查看远程库</h2>
+<p>通过以上两种方式的任一种方式配置完成后，我们用git remote -v查看远程库信息：</p>
+<pre><code class="language-shell">gitee   git@gitee.com:user/demo.git (fetch)
+gitee   git@gitee.com:user/demo.git (push)
+github  git@github.com:user/demo.git (fetch)
+github  git@github.com:user/demo.git (push)
+</code></pre>
+<hr class="footnotes-sep">
+<section class="footnotes">
+<ol class="footnotes-list">
+<li id="fn1" class="footnote-item"><p>解决访问github等网站慢或下载失败的问题。<a href="https://www.cnblogs.com/USTC-ZCC/p/11163292.html">https://www.cnblogs.com/USTC-ZCC/p/11163292.html</a> <a href="#fnref1" class="footnote-backref">↩︎</a></p>
+</li>
+<li id="fn2" class="footnote-item"><p>git同步代码至github和gitee(码云)。<a href="https://zhuanlan.zhihu.com/p/71163868">https://zhuanlan.zhihu.com/p/71163868</a> <a href="#fnref2" class="footnote-backref">↩︎</a></p>
+</li>
+</ol>
+</section>
+]]></content>
+    </entry>
     <entry>
         <title type="html"><![CDATA[反馈线性化：具有柔性关节的单连杆操纵臂控制]]></title>
         <id>https://star2dust.github.io/post/feedback-linearization/</id>
@@ -40,8 +204,8 @@
 <blockquote>
 <p>通过反馈和坐标变化来消除系统非线性的控制方法，称为反馈线性化。</p>
 </blockquote>
-<p><strong>反馈线性化</strong>(feedback linearization)是用来设计<strong>非线性系统</strong>(nonlinear systems)控制器的主要方法之一。本文由机械臂控制实例出发，介绍反馈线性化的基本概念。一些术语的中文翻译不一定准确，我将必要的英文原文写在后面，实际翻译以专业的参考书为准。</p>
-<p>本文并不涉及<strong>模型不确定性</strong>(model uncertainty)的处理方法，以及<strong>不可反馈线性化</strong>(not feedback linearizable)的非线性系统控制方法。前者通常以<strong>自适应</strong>(adaptive)的方法处理，后者可以使用<strong>反步法</strong>(backstepping)，这两块我有空会在后续文章里详细讲解。</p>
+<p><strong>反馈线性化</strong>(feedback linearization)是用来设计<strong>非线性系统</strong>(nonlinear systems)控制器的主要方法之一。本文由具有柔性关节的单连杆操纵臂控制实例出发，介绍反馈线性化的基本概念。通过选取不同的系统输出，具有柔性关节的单连杆操纵臂可以是一个相对阶为4没有内部动力学的系统，也可以是相对阶为2的最小相位系统。一个实例足以覆盖本文全部讲解内容，这也是我选择这个实例的原因。一些术语的中文翻译不一定准确，我将必要的英文原文写在后面，实际翻译以专业的参考书为准。</p>
+<p>本文并不涉及<strong>模型不确定性</strong>(model uncertainty)的处理方法，以及<strong>不可反馈线性化</strong>(not feedback linearizable)的非线性系统控制方法。前者通常以<strong>自适应</strong>(adaptive)的方法处理，后者可以使用<strong>反步法</strong>(backstepping)，这两块如果我以后有空会在后续文章里详细讲解。</p>
 <h1 id="机械臂模型">机械臂模型</h1>
 <p>考虑竖直平面上的<strong>具有柔性关节的单连杆操纵臂</strong>(the single-link manipulator with flexible joint)<sup class="footnote-ref"><a href="#fn1" id="fnref1">[1]</a></sup>，其拥有2个自由度，即关节角<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>α</mi></mrow><annotation encoding="application/x-tex">\alpha</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.0037em;">α</span></span></span></span>和电机角<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>θ</mi></mrow><annotation encoding="application/x-tex">\theta</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.02778em;">θ</span></span></span></span>。假设连杆末端固定有重物，且连杆本身质量相对重物可以忽略不计，重力零点位于连杆最低点。<br>
 <a name="single_link_flexible_joint"></a><br>

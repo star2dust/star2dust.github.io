@@ -6,7 +6,7 @@
 
 <title>反馈线性化：具有柔性关节的单连杆操纵臂控制 | star2dust</title>
 
-<link rel="shortcut icon" href="https://star2dust.github.io/favicon.ico?v=1595762800589">
+<link rel="shortcut icon" href="https://star2dust.github.io/favicon.ico?v=1595923370220">
 
 <link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" rel="stylesheet">
 <link rel="stylesheet" href="https://star2dust.github.io/styles/main.css">
@@ -120,8 +120,8 @@
 <blockquote>
 <p>通过反馈和坐标变化来消除系统非线性的控制方法，称为反馈线性化。</p>
 </blockquote>
-<p><strong>反馈线性化</strong>(feedback linearization)是用来设计<strong>非线性系统</strong>(nonlinear systems)控制器的主要方法之一。本文由机械臂控制实例出发，介绍反馈线性化的基本概念。一些术语的中文翻译不一定准确，我将必要的英文原文写在后面，实际翻译以专业的参考书为准。</p>
-<p>本文并不涉及<strong>模型不确定性</strong>(model uncertainty)的处理方法，以及<strong>不可反馈线性化</strong>(not feedback linearizable)的非线性系统控制方法。前者通常以<strong>自适应</strong>(adaptive)的方法处理，后者可以使用<strong>反步法</strong>(backstepping)，这两块我有空会在后续文章里详细讲解。</p>
+<p><strong>反馈线性化</strong>(feedback linearization)是用来设计<strong>非线性系统</strong>(nonlinear systems)控制器的主要方法之一。本文由具有柔性关节的单连杆操纵臂控制实例出发，介绍反馈线性化的基本概念。通过选取不同的系统输出，具有柔性关节的单连杆操纵臂可以是一个相对阶为4没有内部动力学的系统，也可以是相对阶为2的最小相位系统。一个实例足以覆盖本文全部讲解内容，这也是我选择这个实例的原因。一些术语的中文翻译不一定准确，我将必要的英文原文写在后面，实际翻译以专业的参考书为准。</p>
+<p>本文并不涉及<strong>模型不确定性</strong>(model uncertainty)的处理方法，以及<strong>不可反馈线性化</strong>(not feedback linearizable)的非线性系统控制方法。前者通常以<strong>自适应</strong>(adaptive)的方法处理，后者可以使用<strong>反步法</strong>(backstepping)，这两块如果我以后有空会在后续文章里详细讲解。</p>
 <h1 id="机械臂模型">机械臂模型</h1>
 <p>考虑竖直平面上的<strong>具有柔性关节的单连杆操纵臂</strong>(the single-link manipulator with flexible joint)<sup class="footnote-ref"><a href="#fn1" id="fnref1">[1]</a></sup>，其拥有2个自由度，即关节角<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>α</mi></mrow><annotation encoding="application/x-tex">\alpha</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.0037em;">α</span></span></span></span>和电机角<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>θ</mi></mrow><annotation encoding="application/x-tex">\theta</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.02778em;">θ</span></span></span></span>。假设连杆末端固定有重物，且连杆本身质量相对重物可以忽略不计，重力零点位于连杆最低点。<br>
 <a name="single_link_flexible_joint"></a><br>

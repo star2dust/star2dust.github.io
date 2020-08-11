@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://star2dust.github.io</id>
     <title>star2dust</title>
-    <updated>2020-08-02T10:24:10.243Z</updated>
+    <updated>2020-08-11T08:50:56.417Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://star2dust.github.io"/>
     <link rel="self" href="https://star2dust.github.io/atom.xml"/>
@@ -1618,7 +1618,12 @@ print(image10.shape) # (240, 160, 3)
 <li><a href="#2-%E6%93%8D%E4%BD%9C">2. 操作</a></li>
 </ul>
 </li>
-<li><a href="#%E4%BA%8C-%E6%95%B0%E5%AD%97">二、数字</a></li>
+<li><a href="#%E4%BA%8C-%E6%95%B0%E5%AD%97">二、数字</a>
+<ul>
+<li><a href="#1-python-math-%E6%A8%A1%E5%9D%97">1. Python math 模块</a></li>
+<li><a href="#2-python%E9%9A%8F%E6%9C%BA%E6%95%B0">2. Python随机数</a></li>
+</ul>
+</li>
 <li><a href="#%E4%B8%89-%E5%B8%83%E5%B0%94%E5%80%BC">三、布尔值</a></li>
 </ul>
 </p>
@@ -1626,11 +1631,12 @@ print(image10.shape) # (240, 160, 3)
 <p>字符串用于传递数据和注释</p>
 <h2 id="1-定义">1. 定义</h2>
 <ul>
-<li>三种方式：<code>'</code>，<code>&quot;</code>，<code>&quot;&quot;&quot;</code>（多行）<br>
+<li>三种方式：<code>'</code>，<code>&quot;</code>，<code>&quot;&quot;&quot;</code>（多行，可见即可得）<br>
 （<em>使用<code>\</code>以在字符串中使用上述符号</em>）</li>
 <li>特殊用法：<code>\t</code>TAB，<code>\n</code>换行</li>
 <li>输入<code>str = input('description')</code>（assignment）</li>
 <li>输出<code>print(str)</code></li>
+<li>重复输出n次<code>print(str*n)</code></li>
 </ul>
 <h2 id="2-操作">2. 操作</h2>
 <ul>
@@ -1650,6 +1656,7 @@ print(image10.shape) # (240, 160, 3)
 </ul>
 </li>
 <li>倍数操作：<code>str*num</code>得到<code>str+str+...+str</code> （slt也一样）</li>
+<li>判断字符是否在字符串：<code>'s' in str</code> 和 <code>'s' not in str</code></li>
 </ul>
 <h1 id="二-数字">二、数字</h1>
 <ul>
@@ -1658,6 +1665,19 @@ print(image10.shape) # (240, 160, 3)
 <li>乘方运算：<code>**</code></li>
 <li>模运算：<code>%</code></li>
 </ul>
+<h2 id="1-python-math-模块">1. Python math 模块</h2>
+<pre><code class="language-python">import math
+print(math.ceil(4.1))   #返回数字的上入整数
+print(math.floor(4.9))  #返回数字的下舍整数
+print(math.fabs(-10))   #返回数字的绝对值
+print(math.sqrt(9))     #返回数字的平方根
+print(math.exp(1))      #返回e的x次幂
+</code></pre>
+<h2 id="2-python随机数">2. Python随机数</h2>
+<pre><code class="language-python">import random
+ran = random.random() #随机生成一个[0,1)范围内的实数
+ran = random.randint(1,20) #随机生成一个1~20范围内的实数
+</code></pre>
 <h1 id="三-布尔值">三、布尔值</h1>
 <ul>
 <li>普通整数的子类型</li>
@@ -1709,9 +1729,9 @@ print(image10.shape) # (240, 160, 3)
 <h2 id="2-列表切片">2. 列表切片</h2>
 <ul>
 <li>使用<code>list[:]</code>类似matlab</li>
-<li>【:】左右为空表示从头开始</li>
+<li><code>:</code> 左右为空表示从头开始</li>
 <li>左大于右返回空列表</li>
-<li><code>list[a:b]</code>索引从a到b-1</li>
+<li><code>list[a:b]</code>索引从a到b-1(记住：左闭右开)</li>
 </ul>
 <h2 id="3-列表操作">3. 列表操作</h2>
 <ul>

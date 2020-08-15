@@ -6,7 +6,7 @@
 
 <title>用matlab和RTB做2连杆机械臂动力学建模 | star2dust</title>
 
-<link rel="shortcut icon" href="https://star2dust.github.io/favicon.ico?v=1597470708391">
+<link rel="shortcut icon" href="https://star2dust.github.io/favicon.ico?v=1597470898280">
 
 <link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" rel="stylesheet">
 <link rel="stylesheet" href="https://star2dust.github.io/styles/main.css">
@@ -89,6 +89,10 @@
                     <time class="post-time gt-c-content-color-first">
                         · 2020-08-15 ·
                     </time>
+                    
+                        <a href="https://star2dust.github.io/tag/qyRII8eB4/" class="post-tags">
+                            # Robotics
+                        </a>
                     
                 </div>
                 <div class="post-content">
@@ -247,8 +251,8 @@ h = r.plot(ylist(:,1:r.n),plotopt{:});
 <p>实验结果如下图所示。<br>
 <img src="https://star2dust.github.io/post-images/1597463398976.gif" alt="twolinkRTB" loading="lazy"></p>
 <p>下面进行simulink/simscape的双摆仿真，对比实验如下图所示，可以看到前面几乎是同步的。</p>
-<p>如何使用simscape搭建一个双摆系统，可以参考b站<a href="https://www.bilibili.com/video/BV1X741147a5">这个视频</a>。</p>
 <figure data-type="image" tabindex="1"><img src="https://star2dust.github.io/post-images/1597469468222.gif" alt="twolinksim" loading="lazy"></figure>
+<p>如何使用simscape搭建一个双摆系统，可以参考b站<a href="https://www.bilibili.com/video/BV1X741147a5">这个视频</a>。</p>
 <h1 id="源代码">源代码</h1>
 <p>本文所需全部源代码已上传至<a href="https://github.com/star2dust">我的GitHub</a>，点击<a href="https://github.com/star2dust/two-link">这里</a>下载。运行<code>two_link_test.m</code>即可。使用前请确认RTB已经正确安装，下载和安装说明点击<a href="https://github.com/star2dust/Robotics-Toolbox">这里</a>。</p>
 <p>使用simulink/simscape做的双摆仿真也在该仓库里，见<code>link_test.slx</code>，但是需要matlab里有simscape的工具箱，否则打不开。另外matlab版本最好在2018b以上。</p>

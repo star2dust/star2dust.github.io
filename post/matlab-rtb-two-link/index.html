@@ -4,9 +4,9 @@
 <meta name="description" content=""/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
 
-<title>用matlab和RTB做2连杆机械臂动力学建模 | star2dust</title>
+<title>用matlab和RTB做二连杆机械臂动力学建模 | star2dust</title>
 
-<link rel="shortcut icon" href="https://star2dust.github.io/favicon.ico?v=1597470898280">
+<link rel="shortcut icon" href="https://star2dust.github.io/favicon.ico?v=1597482853433">
 
 <link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" rel="stylesheet">
 <link rel="stylesheet" href="https://star2dust.github.io/styles/main.css">
@@ -83,7 +83,7 @@
         <div class="post-detail gt-bg-theme-color-second">
             <article class="gt-post-content">
                 <h2 class="post-title">
-                    用matlab和RTB做2连杆机械臂动力学建模
+                    用matlab和RTB做二连杆机械臂动力学建模
                 </h2>
                 <div class="post-info">
                     <time class="post-time gt-c-content-color-first">
@@ -109,13 +109,13 @@
 <p>听说最近RTB出了10.4，不知道bug修复完没有，有用过的同学可以谈谈感想。个人建议这篇文章最好用我GitHub里的RTE工具箱，下载点<a href="https://github.com/star2dust/Robotics-Toolbox">这里</a>。安装方法见README文件，写的很详细了。</p>
 <p>本文的任务是利用matlab和RTB建模2连杆机械臂的动力学，并与matlab自带的simulink/simscape仿真进行对比，验证RTB建模的正确性。本文并不涉及控制部分，只是教大家如何建模真实的多刚体系统。</p>
 <h1 id="2连杆机械臂">2连杆机械臂</h1>
-<p>如<a href="#twolink">图1</a>所示，我们要研究的是竖直平面上的2连杆机械臂，也可以说是双摆。因为本文不做控制，所以我们要模拟机械臂在重力的作用下运动的过程。</p>
+<p>如<a href="#twolink">图1</a>所示，我们要研究的是竖直平面上的二连杆机械臂，也可以说是双摆。因为本文不做控制，所以我们要模拟机械臂在重力的作用下运动的过程。</p>
 <p><a name="twolink"></a><br>
 <img src="https://star2dust.github.io/post-images/1597455589416.png" alt="2连杆机械臂" loading="lazy"></p>
 <center>
 <p>图1. 竖直平面上的2连杆机械臂</p>
 </center>
-<p>这里给出2连杆机械臂的动力学建模过程<sup class="footnote-ref"><a href="#fn1" id="fnref1">[1]</a></sup>，之后可以代入数值验证代码正确性。</p>
+<p>这里给出二连杆机械臂的动力学建模过程<sup class="footnote-ref"><a href="#fn1" id="fnref1">[1]</a></sup>，之后可以代入数值验证代码正确性。</p>
 <p>机械臂的动能为<br>
 <a name="kinematic_energy"></a></p>
 <p class='katex-block'><span class="katex-display"><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>T</mi><mo>(</mo><mi>θ</mi><mo separator="true">,</mo><mover accent="true"><mi>θ</mi><mo>˙</mo></mover><mo>)</mo><mo>=</mo><mfrac><mn>1</mn><mn>2</mn></mfrac><msub><mi>m</mi><mn>1</mn></msub><mi mathvariant="normal">∥</mi><msub><mi>v</mi><mn>1</mn></msub><msup><mi mathvariant="normal">∥</mi><mn>2</mn></msup><mo>+</mo><mfrac><mn>1</mn><mn>2</mn></mfrac><msubsup><mi>ω</mi><mn>1</mn><mi>T</mi></msubsup><msub><mi mathvariant="script">I</mi><mn>1</mn></msub><msub><mi>ω</mi><mn>1</mn></msub><mo>+</mo><mfrac><mn>1</mn><mn>2</mn></mfrac><msub><mi>m</mi><mn>2</mn></msub><mi mathvariant="normal">∥</mi><msub><mi>v</mi><mn>2</mn></msub><msup><mi mathvariant="normal">∥</mi><mn>2</mn></msup><mo>+</mo><mfrac><mn>1</mn><mn>2</mn></mfrac><msubsup><mi>ω</mi><mn>2</mn><mi>T</mi></msubsup><msub><mi mathvariant="script">I</mi><mn>2</mn></msub><msub><mi>ω</mi><mn>2</mn></msub><mi mathvariant="normal">，</mi><mspace width="2em"/><mo>(</mo><mn>1</mn><mo>)</mo></mrow><annotation encoding="application/x-tex">T(\theta,\dot \theta)=\frac{1}{2}m_1\|v_1\|^2+\frac{1}{2}\omega_1^T\mathcal I_1\omega_1+\frac{1}{2}m_2\|v_2\|^2+\frac{1}{2}\omega_2^T\mathcal I_2\omega_2，\qquad(1)
@@ -227,7 +227,7 @@ dpm = {'a', lx, 'm', rod.mass, 'r', [-lx/2,0,0],...
 r = SerialLink([Revolute(dpm{:}),Revolute(dpm{:})],...
 'name','two-link','gravity',[0 gy 0]);
 </code></pre>
-<p>经过以上步骤，2连杆机械臂建模完成，设置关节角<code>qz</code>，可以画出机械臂，效果如<a href="#twolink">图1</a>所示。</p>
+<p>经过以上步骤，二连杆机械臂建模完成，设置关节角<code>qz</code>，可以画出机械臂，效果如<a href="#twolink">图1</a>所示。</p>
 <pre><code class="language-matlab">ws = [-4 4 -4 4 -4 4]; % 设置工作空间
 plotopt = {'workspace', ws, 'nobase', 'notiles', 'noshading', 'noshadow', 'nowrist','top'}; % 设置绘图参数
 h = r.plot(qz,plotopt{:});

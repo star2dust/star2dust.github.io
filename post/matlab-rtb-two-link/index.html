@@ -6,7 +6,7 @@
 
 <title>用matlab和RTB做二连杆机械臂动力学建模 | star2dust</title>
 
-<link rel="shortcut icon" href="https://star2dust.github.io/favicon.ico?v=1597483729517">
+<link rel="shortcut icon" href="https://star2dust.github.io/favicon.ico?v=1597484505364">
 
 <link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" rel="stylesheet">
 <link rel="stylesheet" href="https://star2dust.github.io/styles/main.css">
@@ -98,7 +98,7 @@
                 <div class="post-content">
                     <p><ul class="markdownIt-TOC">
 <li><a href="#%E5%86%99%E5%9C%A8%E5%89%8D%E9%9D%A2">写在前面</a></li>
-<li><a href="#2%E8%BF%9E%E6%9D%86%E6%9C%BA%E6%A2%B0%E8%87%82">2连杆机械臂</a></li>
+<li><a href="#%E4%BA%8C%E8%BF%9E%E6%9D%86%E6%9C%BA%E6%A2%B0%E8%87%82">二连杆机械臂</a></li>
 <li><a href="#rtb%E5%BB%BA%E6%A8%A1">RTB建模</a></li>
 <li><a href="#%E4%BB%BF%E7%9C%9F%E4%B8%8E%E9%AA%8C%E8%AF%81">仿真与验证</a></li>
 <li><a href="#%E6%BA%90%E4%BB%A3%E7%A0%81">源代码</a></li>
@@ -107,13 +107,13 @@
 <h1 id="写在前面">写在前面</h1>
 <p>本文使用的工具为matlab以及Peter Corke的<a href="https://petercorke.com/toolboxes/robotics-toolbox/">RTB</a>(Robotics Toolbox)。基于RTB 10.3.1版本，我写了<a href="https://github.com/star2dust/Robotics-Toolbox">RTE</a>(Robotics Toolbox Extension)，增加了一些移动机器人、机械臂以及路径规划相关代码。同时，RTE也修复了原RTB的一些小bug。</p>
 <p>听说最近RTB出了10.4，不知道bug修复完没有，有用过的同学可以谈谈感想。个人建议这篇文章最好用我GitHub里的RTE工具箱，下载点<a href="https://github.com/star2dust/Robotics-Toolbox">这里</a>。安装方法见README文件，写的很详细了。</p>
-<p>本文的任务是利用matlab和RTB建模2连杆机械臂的动力学，并与matlab自带的simulink/simscape仿真进行对比，验证RTB建模的正确性。本文并不涉及控制部分，只是教大家如何建模真实的多刚体系统。</p>
-<h1 id="2连杆机械臂">2连杆机械臂</h1>
+<p>本文的任务是利用matlab和RTB建模二连杆机械臂的动力学，并与matlab自带的simulink/simscape仿真进行对比，验证RTB建模的正确性。本文并不涉及控制部分，只是教大家如何建模真实的多刚体系统。</p>
+<h1 id="二连杆机械臂">二连杆机械臂</h1>
 <p>如<a href="#twolink">图1</a>所示，我们要研究的是竖直平面上的二连杆机械臂，也可以说是双摆。因为本文不做控制，所以我们要模拟机械臂在重力的作用下运动的过程。</p>
 <p><a name="twolink"></a><br>
-<img src="https://star2dust.github.io/post-images/1597455589416.png" alt="2连杆机械臂" loading="lazy"></p>
+<img src="https://star2dust.github.io/post-images/1597455589416.png" alt="二连杆机械臂" loading="lazy"></p>
 <center>
-<p>图1. 竖直平面上的2连杆机械臂</p>
+<p>图1. 竖直平面上的二连杆机械臂</p>
 </center>
 <p>这里给出二连杆机械臂的动力学建模过程<sup class="footnote-ref"><a href="#fn1" id="fnref1">[1]</a></sup>，之后可以代入数值验证代码正确性。</p>
 <p>机械臂的动能为<br>
@@ -223,7 +223,7 @@ Irod = Rcyl.R*rod.inertia*Rcyl.R';
 dpm = {'a', lx, 'm', rod.mass, 'r', [-lx/2,0,0],...
  'qlim', [-pi/2, pi/2],'I', Irod,...
     'B', fvis, 'Tc', [fcou -fcou]};
-% 建立2连杆机械臂，设定回转关节和重力
+% 建立二连杆机械臂，设定回转关节和重力
 r = SerialLink([Revolute(dpm{:}),Revolute(dpm{:})],...
 'name','two-link','gravity',[0 gy 0]);
 </code></pre>
@@ -233,7 +233,7 @@ plotopt = {'workspace', ws, 'nobase', 'notiles', 'noshading', 'noshadow', 'nowri
 h = r.plot(qz,plotopt{:});
 </code></pre>
 <h1 id="仿真与验证">仿真与验证</h1>
-<p>我们这里验证2连杆机械臂在重力作用下运动过程，即双摆实验。</p>
+<p>我们这里验证二连杆机械臂在重力作用下运动过程，即双摆实验。</p>
 <pre><code class="language-matlab">% 给定初始关节角位置和速度
 qz = zeros(1,2);
 qd = zeros(1,2);

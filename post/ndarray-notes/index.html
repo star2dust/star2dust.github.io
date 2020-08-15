@@ -6,7 +6,7 @@
 
 <title>ndarray数组基本结构和操作 | star2dust</title>
 
-<link rel="shortcut icon" href="https://star2dust.github.io/favicon.ico?v=1597135852623">
+<link rel="shortcut icon" href="https://star2dust.github.io/favicon.ico?v=1597470395201">
 
 <link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" rel="stylesheet">
 <link rel="stylesheet" href="https://star2dust.github.io/styles/main.css">
@@ -119,8 +119,14 @@
 <li><a href="#%E4%B8%83-%E7%BA%BF%E6%80%A7%E4%BB%A3%E6%95%B0">七、线性代数</a></li>
 <li><a href="#%E5%85%AB-%E6%96%87%E4%BB%B6%E8%AF%BB%E5%86%99%E4%B8%8E%E4%BF%9D%E5%AD%98">八、文件读写与保存</a>
 <ul>
-<li><a href="#1-%E6%96%87%E6%9C%AC%E8%AF%BB%E5%8F%96">1. 文本读取</a></li>
-<li><a href="#2-%E6%96%87%E4%BB%B6%E4%BF%9D%E5%AD%98">2. 文件保存</a></li>
+<li><a href="#1-%E6%96%87%E6%9C%AC%E8%AF%BB%E5%8F%96">1. 文本读取</a>
+<ul>
+<li><a href="#1-python%E8%87%AA%E5%B8%A6%E6%96%87%E4%BB%B6%E6%93%8D%E4%BD%9C">(1) python自带文件操作</a></li>
+<li><a href="#2-numpy%E6%96%87%E4%BB%B6%E6%93%8D%E4%BD%9C">(2) numpy文件操作</a></li>
+</ul>
+</li>
+<li><a href="#2-npy%E6%96%87%E4%BB%B6%E8%AF%BB%E5%8F%96%E5%92%8C%E4%BF%9D%E5%AD%98">2. npy文件读取和保存</a></li>
+<li><a href="#3-json%E6%96%87%E4%BB%B6%E8%AF%BB%E5%8F%96%E5%92%8C%E4%BF%9D%E5%AD%98">3. JSON文件读取和保存</a></li>
 </ul>
 </li>
 <li><a href="#%E4%B9%9D-numpy%E5%BA%94%E7%94%A8%E4%B8%BE%E4%BE%8B">九、Numpy应用举例</a>
@@ -217,6 +223,14 @@ arr.max(axis=0)
 arr.min(axis=1)
 </code></pre>
 <h1 id="六-随机数nprandom">六、随机数np.random</h1>
+<ul>
+<li>除了用numpy之外也可以直接使用基础python的random库</li>
+</ul>
+<pre><code class="language-python">import random as r
+r.random() #随机生成[0,1)的实数
+r.randint(a,b) #随机生成[a,b]的整数
+r.randrange(a) #随机生成[0,a]的整数
+</code></pre>
 <h2 id="1-创建随机ndarray数组">1. 创建随机ndarray数组</h2>
 <ul>
 <li>设置随机数种子</li>
@@ -287,8 +301,38 @@ c = a.reshape([4, 3])
 d = b.dot(c) # 等价于 np.dot(b, c)
 </code></pre>
 <h1 id="八-文件读写与保存">八、文件读写与保存</h1>
-<p>Numpy可以方便的进行文件读写</p>
+<ul>
+<li>Numpy可以方便的进行文件读写，可以直接打开文本，JSON，npy文件</li>
+<li>npy是numpy专用的数据格式，使用save和load接口进行读写</li>
+<li>JSON(JavaScript Object Notation) 是一种轻量级的数据交换格式，易于人阅读和编写</li>
+</ul>
 <h2 id="1-文本读取">1. 文本读取</h2>
+<h3 id="1-python自带文件操作">(1) python自带文件操作</h3>
+<p>在 Python 中，读写文件有 3 个步骤：</p>
+<ul>
+<li>调用 open()函数，返回一个 File 对象。</li>
+<li>调用 File 对象的 read()或 write()方法。</li>
+<li>调用 File 对象的 close()方法，关闭该文件。</li>
+</ul>
+<pre><code class="language-python">f = open(&quot;work/test.txt&quot;,'w')  #变量名=open（文件路径和文件名，打开模式） 模式：w:写，r:只写；a:追加写
+f.write(&quot;hello&quot;)
+f.write(&quot;\npython&quot;)
+f.close()
+</code></pre>
+<pre><code class="language-python">f = open(&quot;work/test.txt&quot;,'r')  #变量名=open（文件路径和文件名，打开模式） 模式：w:写，r:只写；a:追加写
+# print(f.read())     #f.read():从文件中读入整个文件内容，结果为字符串
+# print(f.readline()) #f.readline():从文件中读入一行内容，结果为字符串 
+print(f.readlines()) #f.readlines():从文件中读取所有行，以每行元素形成一个列表
+f.close()
+
+&gt;&gt;&gt; ['hello\n', 'python']
+</code></pre>
+<p>使用open()函数打开的文件对象，必须手动进行关闭，Python 垃圾回收机制无法自动回收打开文件所占用的资源。因此，推荐以下写法：</p>
+<pre><code class="language-python">with open(&quot;work/test.txt&quot;,'a') as  f:
+    f.write(&quot;PadddlePaddle&quot;)
+    f.write(&quot;\nokokok&quot;)
+</code></pre>
+<h3 id="2-numpy文件操作">(2) numpy文件操作</h3>
 <p>如下面这种格式的文本文件：</p>
 <figure data-type="image" tabindex="1"><img src="https://star2dust.github.io/post-images/1595412752442.png" alt="文本数据" loading="lazy"></figure>
 <pre><code class="language-python"># 使用np.fromfile从文本文件'housing.data'读入数据
@@ -296,7 +340,7 @@ d = b.dot(c) # 等价于 np.dot(b, c)
 # 空格或者回车都属于空白字符，读入的数据被转化成1维数组
 d = np.fromfile('./work/housing.data', sep = ' ')
 </code></pre>
-<h2 id="2-文件保存">2. 文件保存</h2>
+<h2 id="2-npy文件读取和保存">2. npy文件读取和保存</h2>
 <p>Numpy提供了save和load接口，直接将数组保存成文件(保存为.npy格式)，或者从.npy文件中读取数组。</p>
 <pre><code class="language-python"># 产生随机数组a
 a = np.random.rand(3,3)
@@ -307,6 +351,45 @@ b = np.load('a.npy')
 
 # 检查a和b的数值是否一样
 check = (a == b).all()
+</code></pre>
+<h2 id="3-json文件读取和保存">3. JSON文件读取和保存</h2>
+<p>json.dumps 用于将 Python 对象编码成 JSON 字符串。</p>
+<pre><code class="language-python">import json
+data = [ { 'b' : 2, 'd' : 4, 'a' : 1, 'c' : 3, 'e' : 5 } ]
+json = json.dumps(data)
+print(json) 
+
+&gt;&gt;&gt;  [{&quot;b&quot;: 2, &quot;d&quot;: 4, &quot;a&quot;: 1, &quot;c&quot;: 3, &quot;e&quot;: 5}]
+</code></pre>
+<p>为了提高可读性，dumps方法提供了一些可选的参数。</p>
+<ul>
+<li>sort_keys=True表示按照字典排序(a到z)输出。</li>
+<li>indent参数，代表缩进的位数</li>
+<li>separators参数的作用是去掉,和:后面的空格，传输过程中数据越精简越好</li>
+</ul>
+<pre><code class="language-python">import json
+data = [ { 'b' : 2, 'd' : 4, 'a' : 1, 'c' : 3, 'e' : 5 } ]
+json = json.dumps(data, sort_keys=True, indent=4,separators=(',', ':'))
+print(json)
+
+&gt;&gt;&gt;
+[
+    {
+        &quot;a&quot;:1,
+        &quot;b&quot;:2,
+        &quot;c&quot;:3,
+        &quot;d&quot;:4,
+        &quot;e&quot;:5
+    }
+]
+</code></pre>
+<p>json.loads 用于解码 JSON 数据。该函数返回 Python 字段的数据类型。</p>
+<pre><code class="language-python">import json
+jsonData = '{&quot;a&quot;:1,&quot;b&quot;:2,&quot;c&quot;:3,&quot;d&quot;:4,&quot;e&quot;:5}'
+text = json.loads(jsonData)  #将string转换为dict
+print(text)
+
+&gt;&gt;&gt; {'a': 1, 'b': 2, 'c': 3, 'd': 4, 'e': 5}
 </code></pre>
 <h1 id="九-numpy应用举例">九、Numpy应用举例</h1>
 <h2 id="1-计算激活函数sigmoid和relu">1. 计算激活函数Sigmoid和ReLU</h2>

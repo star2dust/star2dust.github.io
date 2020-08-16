@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://star2dust.github.io</id>
     <title>star2dust</title>
-    <updated>2020-08-16T07:35:09.222Z</updated>
+    <updated>2020-08-16T07:41:33.198Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://star2dust.github.io"/>
     <link rel="self" href="https://star2dust.github.io/atom.xml"/>
@@ -119,7 +119,7 @@ import numpy as np
 </code></pre>
 <h2 id="3-训练配置">3. 训练配置</h2>
 <p>训练配置过程包含四步，如<a href="#trainconfig">图2</a>所示：</p>
-<p><a name="nnflow"></a><br>
+<p><a name="trainconfig"></a><br>
 <img src="https://star2dust.github.io/post-images/1597555885064.png" alt="训练配置流程示意图" loading="lazy"></p>
 <center>
 <p>图2. 训练配置流程示意图</p>

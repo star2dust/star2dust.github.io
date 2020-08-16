@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://star2dust.github.io</id>
     <title>star2dust</title>
-    <updated>2020-08-16T06:17:27.402Z</updated>
+    <updated>2020-08-16T06:19:48.696Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://star2dust.github.io"/>
     <link rel="self" href="https://star2dust.github.io/atom.xml"/>
@@ -21,7 +21,6 @@
 <li><a href="#%E6%A8%A1%E5%9E%8B%E6%9E%84%E5%BB%BA%E5%9F%BA%E6%9C%AC%E6%B5%81%E7%A8%8B">模型构建基本流程</a></li>
 <li><a href="#%E9%A3%9E%E6%A1%A8%E9%87%8D%E5%86%99%E6%88%BF%E4%BB%B7%E9%A2%84%E6%B5%8B%E6%A8%A1%E5%9E%8B">飞桨重写房价预测模型</a>
 <ul>
-<li><a href="#0-%E5%8A%A0%E8%BD%BD%E6%A1%86%E6%9E%B6">0. 加载框架</a></li>
 <li><a href="#1-%E6%95%B0%E6%8D%AE%E5%A4%84%E7%90%86">1. 数据处理</a></li>
 <li><a href="#2-%E6%A8%A1%E5%9E%8B%E8%AE%BE%E8%AE%A1">2. 模型设计</a></li>
 <li><a href="#3-%E8%AE%AD%E7%BB%83%E9%85%8D%E7%BD%AE">3. 训练配置</a></li>
@@ -43,7 +42,6 @@
 <p>图1. 使用飞桨框架构建神经网络过程</p>
 </center>
 <h1 id="飞桨重写房价预测模型">飞桨重写房价预测模型</h1>
-<h2 id="0-加载框架">0. 加载框架</h2>
 <p>数据处理之前，需要先加载飞桨框架的相关类库。</p>
 <pre><code class="language-python">#加载飞桨、Numpy和相关类库
 import paddle

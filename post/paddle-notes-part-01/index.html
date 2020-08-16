@@ -4,9 +4,9 @@
 <meta name="description" content=""/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
 
-<title>飞桨深度学习从零实践（一）：从房价预测看深度学习流程 | star2dust</title>
+<title>飞桨深度学习从零实践（一）：从房价预测看模型构建 | star2dust</title>
 
-<link rel="shortcut icon" href="https://star2dust.github.io/favicon.ico?v=1597504277855">
+<link rel="shortcut icon" href="https://star2dust.github.io/favicon.ico?v=1597558507565">
 
 <link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" rel="stylesheet">
 <link rel="stylesheet" href="https://star2dust.github.io/styles/main.css">
@@ -83,7 +83,7 @@
         <div class="post-detail gt-bg-theme-color-second">
             <article class="gt-post-content">
                 <h2 class="post-title">
-                    飞桨深度学习从零实践（一）：从房价预测看深度学习流程
+                    飞桨深度学习从零实践（一）：从房价预测看模型构建
                 </h2>
                 <div class="post-info">
                     <time class="post-time gt-c-content-color-first">
@@ -102,17 +102,247 @@
                 <div class="post-content">
                     <p><ul class="markdownIt-TOC">
 <li><a href="#%E5%86%99%E5%9C%A8%E5%89%8D%E9%9D%A2">写在前面</a></li>
-<li></li>
+<li><a href="#%E6%A8%A1%E5%9E%8B%E6%9E%84%E5%BB%BA%E5%9F%BA%E6%9C%AC%E6%B5%81%E7%A8%8B">模型构建基本流程</a></li>
+<li><a href="#%E9%A3%9E%E6%A1%A8%E9%87%8D%E5%86%99%E6%88%BF%E4%BB%B7%E9%A2%84%E6%B5%8B%E6%A8%A1%E5%9E%8B">飞桨重写房价预测模型</a>
+<ul>
+<li><a href="#0-%E5%8A%A0%E8%BD%BD%E6%A1%86%E6%9E%B6">0. 加载框架</a></li>
+<li><a href="#1-%E6%95%B0%E6%8D%AE%E5%A4%84%E7%90%86">1. 数据处理</a></li>
+<li><a href="#2-%E6%A8%A1%E5%9E%8B%E8%AE%BE%E8%AE%A1">2. 模型设计</a></li>
+<li><a href="#3-%E8%AE%AD%E7%BB%83%E9%85%8D%E7%BD%AE">3. 训练配置</a></li>
+<li><a href="#4-%E8%AE%AD%E7%BB%83%E8%BF%87%E7%A8%8B">4. 训练过程</a></li>
+<li><a href="#5-%E4%BF%9D%E5%AD%98%E6%A8%A1%E5%9E%8B">5. 保存模型</a></li>
+</ul>
+</li>
+<li><a href="#%E6%B5%8B%E8%AF%95%E6%A8%A1%E5%9E%8B%E9%A2%84%E6%B5%8B%E6%95%88%E6%9E%9C">测试模型预测效果</a></li>
 </ul>
 </p>
 <h1 id="写在前面">写在前面</h1>
-<h1 id=""></h1>
-<p>softmax函数将输出映射到[0,1]区间，并且放大了最大最小值之间的差距。</p>
+<p>本文源于百度AI平台飞桨学院《<a href="https://aistudio.baidu.com/aistudio/course/introduce/1297">百度架构师手把手带你零基础实践深度学习</a>》课程中我自己的心得和理解。</p>
+<p>本文旨在介绍使用飞桨框架构建神经网络过程，并从房价预测模型的理解和代码的构建角度来整理所学内容，不求详尽但求简洁明了。</p>
+<h1 id="模型构建基本流程">模型构建基本流程</h1>
+<p>飞桨的模型覆盖计算机视觉、自然语言处理和推荐系统等主流应用场景，所有场景的代码结构完全一致，如<a href="#nnflow">图1</a>所示。</p>
+<p><a name="nnflow"></a><br>
+<img src="https://star2dust.github.io/post-images/1597554589992.png" alt="使用飞桨框架构建神经网络过程" loading="lazy"></p>
+<center>
+<p>图1. 使用飞桨框架构建神经网络过程</p>
+</center>
+<h1 id="飞桨重写房价预测模型">飞桨重写房价预测模型</h1>
+<h2 id="0-加载框架">0. 加载框架</h2>
+<p>数据处理之前，需要先加载飞桨框架的相关类库。</p>
+<pre><code class="language-python">#加载飞桨、Numpy和相关类库
+import paddle
+import paddle.fluid as fluid
+# dygraph：动态图的类库
+import paddle.fluid.dygraph as dygraph
+# Linear：神经网络的全连接层函数
+from paddle.fluid.dygraph import Linear 
+import numpy as np
+import os
+import random
+</code></pre>
+<h2 id="1-数据处理">1. 数据处理</h2>
+<p>数据处理包含五个部分：数据导入、数据形状变换、数据集划分、数据归一化处理和封装load data函数。数据预处理后，才能被模型调用。数据处理的代码不依赖paddle框架实现，使用numpy库即可。</p>
+<pre><code class="language-python">def load_data():
+    # 从文件导入数据
+    datafile = './work/housing.data'
+    # 数据以空格分隔
+    data = np.fromfile(datafile, sep=' ')
+
+    # 每条数据包括14项，其中前面13项是影响因素，第14项是相应的房屋价格中位数
+    feature_names = [ 'CRIM', 'ZN', 'INDUS', 'CHAS', 'NOX', 'RM', 'AGE', \
+                      'DIS', 'RAD', 'TAX', 'PTRATIO', 'B', 'LSTAT', 'MEDV' ]
+    feature_num = len(feature_names)
+
+    # 将原始数据进行Reshape，变成[N, 14]这样的形状
+    data = data.reshape([data.shape[0] // feature_num, feature_num])
+
+    # 将原数据集拆分成训练集和测试集
+    # 这里使用80%的数据做训练，20%的数据做测试
+    # 测试集和训练集必须是没有交集的
+    ratio = 0.8
+    offset = int(data.shape[0] * ratio)
+    training_data = data[:offset]
+
+    # 计算train数据集的最大值，最小值，平均值
+    maximums, minimums, avgs = training_data.max(axis=0), training_data.min(axis=0), \
+                                 training_data.sum(axis=0) / training_data.shape[0]
+    
+    # 记录数据的归一化参数，在预测时对数据做归一化
+    global max_values
+    global min_values
+    global avg_values
+    max_values = maximums
+    min_values = minimums
+    avg_values = avgs
+
+    # 对全部数据进行归一化处理，包括train和test
+    for i in range(feature_num):
+        #print(maximums[i], minimums[i], avgs[i])
+        data[:, i] = (data[:, i] - avgs[i]) / (maximums[i] - minimums[i])
+
+    # 数据归一化后按比例重新划分训练集和测试集
+    training_data = data[:offset]
+    test_data = data[offset:]
+    return training_data, test_data
+</code></pre>
+<h2 id="2-模型设计">2. 模型设计</h2>
+<p>模型定义的实质是定义线性回归的网络结构，创建<code>Regressor</code>类，定义<code>init</code>函数和<code>forward</code>函数。</p>
+<pre><code class="language-python">class Regressor(fluid.dygraph.Layer):
+    def __init__(self):
+        super(Regressor, self).__init__()
+        
+        # 定义一层全连接层，输出维度是1，激活函数为None，即不使用激活函数
+        self.fc = Linear(input_dim=13, output_dim=1, act=None)
+    
+    # 网络的前向计算函数
+    def forward(self, inputs):
+        x = self.fc(inputs)
+        return x
+</code></pre>
+<h2 id="3-训练配置">3. 训练配置</h2>
+<p>训练配置过程包含四步，如<a href="#trainconfig">图2</a>所示：</p>
+<p><a name="nnflow"></a><br>
+<img src="https://star2dust.github.io/post-images/1597555885064.png" alt="训练配置流程示意图" loading="lazy"></p>
+<center>
+<p>图2. 训练配置流程示意图</p>
+</center>
+<ul>
+<li>以guard函数指定运行训练的机器资源，表明在with作用域下的程序均执行在本机的CPU资源上。dygraph.guard表示在with作用域下的程序会以飞桨动态图的模式执行（实时执行）。</li>
+<li>声明定义好的回归模型Regressor实例，并将模型的状态设置为训练。</li>
+<li>使用load_data函数加载训练数据和测试数据。</li>
+<li>设置优化算法和学习率，优化算法采用随机梯度下降SGD，学习率设置为0.01。</li>
+</ul>
+<p>训练配置代码如下所示：</p>
+<pre><code class="language-python"># 定义飞桨动态图的工作环境
+with fluid.dygraph.guard():
+    # 声明定义好的线性回归模型
+    model = Regressor()
+    # 开启模型训练模式
+    model.train()
+    # 加载数据
+    training_data, test_data = load_data()
+    # 定义优化算法，这里使用随机梯度下降-SGD
+    # 学习率设置为0.01
+    opt = fluid.optimizer.SGD(learning_rate=0.01, parameter_list=model.parameters())
+</code></pre>
+<h2 id="4-训练过程">4. 训练过程</h2>
+<p>对于一个数据集，我们遍历它一次称为一个epoch。对于一次遍历，我们分批次读取数据，一批称为一个batch。训练过程采用二层循环嵌套方式：</p>
+<ul>
+<li>内层循环： 负责整个数据集的一次遍历，采用分批次方式。</li>
+<li>外层循环： 定义遍历数据集的次数，通过参数EPOCH_NUM设置。</li>
+</ul>
+<p>假设数据集样本数量为1000，一个批次有10个样本，则遍历一次数据集的批次数量是1000/10=100，即内层循环需要执行100次。若数据集需要使用5次，则总循环数为5*100=500。</p>
+<p>每次内层循环都需要执行如下四个步骤，如 <a href="#innerloop">图3</a> 所示<br>
+<a name="innerloop"></a><br>
+<img src="https://star2dust.github.io/post-images/1597556938631.png" alt="内循环计算过程" loading="lazy"></p>
+<center>
+<p>图3. 内循环计算过程</p>
+</center>
+<ul>
+<li>数据准备：将一个批次的数据转变成np.array和内置格式。</li>
+<li>前向计算：将一个批次的样本数据灌入网络中，计算输出结果。</li>
+<li>计算损失函数：以前向计算结果和真实房价作为输入，通过损失函数square_error_cost计算出损失函数值（Loss）。</li>
+<li>反向传播：执行梯度反向传播backward函数，即从后到前逐层计算每一层的梯度，并根据设置的优化算法更新参数opt.minimize。</li>
+</ul>
+<pre><code class="language-python"># 以guard函数指定运行训练的机器资源，表明在with作用域下的程序均执行在本机的CPU资源上
+with dygraph.guard(fluid.CPUPlace()):
+    EPOCH_NUM = 10   # 设置外层循环次数
+    BATCH_SIZE = 10  # 设置batch大小
+    
+    # 定义外层循环
+    for epoch_id in range(EPOCH_NUM):
+        # 在每轮迭代开始之前，将训练数据的顺序随机的打乱
+        np.random.shuffle(training_data)
+        # 将训练数据进行拆分，每个batch包含10条数据
+        mini_batches = [training_data[k:k+BATCH_SIZE] for k in range(0, len(training_data), BATCH_SIZE)]
+        # 定义内层循环
+        for iter_id, mini_batch in enumerate(mini_batches):
+            x = np.array(mini_batch[:, :-1]).astype('float32') # 获得当前批次训练数据
+            y = np.array(mini_batch[:, -1:]).astype('float32') # 获得当前批次训练标签（真实房价）
+            # 将numpy数据转为飞桨动态图variable形式
+            house_features = dygraph.to_variable(x)
+            prices = dygraph.to_variable(y)
+            
+            # 前向计算
+            predicts = model(house_features)
+            
+            # 计算损失
+            loss = fluid.layers.square_error_cost(predicts, label=prices)
+            avg_loss = fluid.layers.mean(loss)
+            if iter_id%20==0:
+                print(&quot;epoch: {}, iter: {}, loss is: {}&quot;.format(epoch_id, iter_id, avg_loss.numpy()))
+            
+            # 反向传播
+            avg_loss.backward()
+            # 最小化loss,更新参数
+            opt.minimize(avg_loss)
+            # 清除梯度
+            model.clear_gradients()
+    # 保存模型
+    fluid.save_dygraph(model.state_dict(), 'LR_model')
+</code></pre>
+<h2 id="5-保存模型">5. 保存模型</h2>
+<p>将模型当前的参数数据model.state_dict()保存到文件中（通过参数指定保存的文件名 LR_model），以备预测或校验的程序调用，代码如下所示。</p>
+<pre><code class="language-python"># 定义飞桨动态图工作环境
+with fluid.dygraph.guard():
+    # 保存模型参数，文件名为LR_model
+    fluid.save_dygraph(model.state_dict(), 'LR_model')
+    print(&quot;模型保存成功，模型参数保存在LR_model中&quot;)
+</code></pre>
+<p>为什么是先保存模型，再加载模型呢？这是因为在实际应用中，训练模型和使用模型往往是不同的场景。模型训练通常使用大量的线下服务器（不对外向企业的客户/用户提供在线服务），而模型预测则通常使用线上提供预测服务的服务器，或者将已经完成的预测模型嵌入手机或其他终端设备中使用。因此先保存再加载方式更贴合真实场景的使用方法。</p>
+<h1 id="测试模型预测效果">测试模型预测效果</h1>
+<p>下面我们选择一条数据样本，测试下模型的预测效果。测试过程和在应用场景中使用模型的过程一致，主要可分成如下三个步骤：</p>
+<ul>
+<li>配置模型预测的机器资源。本案例默认使用本机，因此无需写代码指定。</li>
+<li>将训练好的模型参数加载到模型实例中。由两个语句完成，第一句是从文件中读取模型参数；第二句是将参数内容加载到模型。加载完毕后，需要将模型的状态调整为eval()（校验）。上文中提到，训练状态的模型需要同时支持前向计算和反向传导梯度，模型的实现较为臃肿，而校验和预测状态的模型只需要支持前向计算，模型的实现更加简单，性能更好。</li>
+<li>将待预测的样本特征输入到模型中，打印输出的预测结果。</li>
+</ul>
+<p>通过load_one_example函数实现从数据集中抽一条样本作为测试样本，具体实现代码如下所示。</p>
+<pre><code class="language-python">def load_one_example(data_dir):
+    f = open(data_dir, 'r')
+    datas = f.readlines()
+    # 选择倒数第10条数据用于测试
+    tmp = datas[-10]
+    tmp = tmp.strip().split()
+    one_data = [float(v) for v in tmp]
+
+    # 对数据进行归一化处理
+    for i in range(len(one_data)-1):
+        one_data[i] = (one_data[i] - avg_values[i]) / (max_values[i] - min_values[i])
+
+    data = np.reshape(np.array(one_data[:-1]), [1, -1]).astype(np.float32)
+    label = one_data[-1]
+    return data, label
+</code></pre>
+<pre><code class="language-python">with dygraph.guard():
+    # 参数为保存模型参数的文件地址
+    model_dict, _ = fluid.load_dygraph('LR_model')
+    model.load_dict(model_dict)
+    model.eval()
+
+    # 参数为数据集的文件地址
+    test_data, label = load_one_example('./work/housing.data')
+    # 将数据转为动态图的variable格式
+    test_data = dygraph.to_variable(test_data)
+    results = model(test_data)
+
+    # 对结果做反归一化处理
+    results = results * (max_values[-1] - min_values[-1]) + avg_values[-1]
+    print(&quot;Inference result is {}, the corresponding label is {}&quot;.format(results.numpy(), label))
+</code></pre>
+<p>通过比较“模型预测值”和“真实房价”可见，模型的预测效果与真实房价接近。</p>
 
                 </div>
             </article>
         </div>
 
+        
+            <div class="next-post">
+                <div class="next gt-c-content-color-first">下一篇</div>
+                <a href="https://star2dust.github.io/post/matlab-rtb-two-link/" class="post-title gt-a-link">
+                    用Matlab和RTB做二连杆机械臂动力学建模
+                </a>
+            </div>
         
 
         

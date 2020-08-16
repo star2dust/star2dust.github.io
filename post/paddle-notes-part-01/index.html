@@ -6,7 +6,7 @@
 
 <title>飞桨深度学习从零实践（一）：从房价预测看模型构建 | star2dust</title>
 
-<link rel="shortcut icon" href="https://star2dust.github.io/favicon.ico?v=1597563690832">
+<link rel="shortcut icon" href="https://star2dust.github.io/favicon.ico?v=1597564558176">
 
 <link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" rel="stylesheet">
 <link rel="stylesheet" href="https://star2dust.github.io/styles/main.css">
@@ -300,6 +300,10 @@ with fluid.dygraph.guard(fluid.CPUPlace()):
 <p>从test_data中抽一条样本作为测试样本，具体实现代码如下所示。</p>
 <pre><code class="language-python"># 定义飞桨动态图的工作环境
 with fluid.dygraph.guard(fluid.CPUPlace()):
+    # 测试模型 参数为保存模型参数的文件地址
+    model_dict, _ = fluid.load_dygraph('LR_model')
+    model.load_dict(model_dict)
+    model.eval()
     # 随机抽取一条测试数据
     np.random.shuffle(test_data)
     test_batch = test_data[0:1]

@@ -6,7 +6,7 @@
 
 <title>机械臂协同搬运中的内力建模 | star2dust</title>
 
-<link rel="shortcut icon" href="https://star2dust.github.io/favicon.ico?v=1599215650092">
+<link rel="shortcut icon" href="https://star2dust.github.io/favicon.ico?v=1599223120132">
 
 <link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" rel="stylesheet">
 <link rel="stylesheet" href="https://star2dust.github.io/styles/main.css">
@@ -120,7 +120,32 @@
                     
                 </div>
                 <div class="post-content">
-                    <p></p>
+                    <p><ul class="markdownIt-TOC">
+<li><a href="#%E5%86%99%E5%9C%A8%E5%89%8D%E9%9D%A2">写在前面</a></li>
+<li><a href="#virtual-linkage%E6%A8%A1%E5%9E%8B">virtual linkage模型</a></li>
+</ul>
+</p>
+<h1 id="写在前面">写在前面</h1>
+<p>上一篇文章(<a href="https://star2dust.github.io/post/impedance-control/">机械臂协同搬运中的阻抗控制</a>)有一点遗留部分没有讲，即内力<span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>F</mi><mrow><mi>i</mi><mi>n</mi><mi>t</mi></mrow></msub></mrow><annotation encoding="application/x-tex">F_{int}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.83333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.13889em;">F</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.31166399999999994em;"><span style="top:-2.5500000000000003em;margin-left:-0.13889em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">i</span><span class="mord mathdefault mtight">n</span><span class="mord mathdefault mtight">t</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>应该如何建模。我们知道，<span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>F</mi><mrow><mi>i</mi><mi>n</mi><mi>t</mi></mrow></msub></mrow><annotation encoding="application/x-tex">F_{int}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.83333em;vertical-align:-0.15em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.13889em;">F</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.31166399999999994em;"><span style="top:-2.5500000000000003em;margin-left:-0.13889em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">i</span><span class="mord mathdefault mtight">n</span><span class="mord mathdefault mtight">t</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>在抓持矩阵<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>G</mi></mrow><annotation encoding="application/x-tex">G</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault">G</span></span></span></span>的零空间里，即<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>G</mi><msub><mi>F</mi><mrow><mi>i</mi><mi>n</mi><mi>t</mi></mrow></msub><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">GF_{int}=0</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.83333em;vertical-align:-0.15em;"></span><span class="mord mathdefault">G</span><span class="mord"><span class="mord mathdefault" style="margin-right:0.13889em;">F</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.31166399999999994em;"><span style="top:-2.5500000000000003em;margin-left:-0.13889em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">i</span><span class="mord mathdefault mtight">n</span><span class="mord mathdefault mtight">t</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">0</span></span></span></span>。如何选取一个有实际物理意义的模型，同时能够满足前述等式约束呢？这篇文章就会介绍一个virtual linkage模型<sup class="footnote-ref"><a href="#fn1" id="fnref1">[1]</a></sup>来表示搬运物体的内力。</p>
+<h1 id="virtual-linkage模型">virtual linkage模型</h1>
+<p>考虑如<a href="#multiarm">图1</a>所示的多机械臂搬运场景。</p>
+<p><a name="multiarm"></a><br>
+<img src="https://star2dust.github.io/post-images/1599223075109.PNG" alt="" loading="lazy"></p>
+<center>
+图1. 多机械臂搬运场景
+</center>
+<p>我们定义virtual linkage的运动学结构为接触点相互连结的3个主动(actuated)的棱柱关节，其中接触点处为<strong>被动</strong>(passive)的回转关节，它们形成一个<strong>闭链</strong>(closed-chain)，如<a href="#virtuallinkage">图2</a>所示。</p>
+<p><a name="virtuallinkage"></a><br>
+<img src="https://star2dust.github.io/post-images/1599223087147.PNG" alt="" loading="lazy"></p>
+<center>
+<p>图2. virtual linkage结构</p>
+</center><hr class="footnotes-sep">
+<section class="footnotes">
+<ol class="footnotes-list">
+<li id="fn1" class="footnote-item"><p>Williams, D., &amp; Khatib, O. (1993). Virtual linkage: A model for internal forces in multi-grasp manipulation. In Proceedings - IEEE International Conference on Robotics and Automation (Vol. 1, pp. 1025–1030). Publ by IEEE. https://doi.org/10.1109/robot.1993.292110 <a href="#fnref1" class="footnote-backref">↩︎</a></p>
+</li>
+</ol>
+</section>
 
                 </div>
             </article>

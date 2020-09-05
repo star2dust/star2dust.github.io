@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://star2dust.github.io</id>
     <title>star2dust</title>
-    <updated>2020-09-04T14:52:41.021Z</updated>
+    <updated>2020-09-05T01:00:29.863Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://star2dust.github.io"/>
     <link rel="self" href="https://star2dust.github.io/atom.xml"/>
@@ -31,13 +31,13 @@
 <p><a name="multiarm"></a><br>
 <img src="https://star2dust.github.io/post-images/1599223075109.PNG" style="zoom:50%;" /></p>
 <center>
-图1. 多机械臂搬运场景
+<p>图1. 多机械臂搬运场景</p>
 </center>
 <p>我们定义virtual linkage的运动学结构为接触点相互连结的3个主动(actuated)的棱柱关节，其中接触点处为<strong>被动</strong>(passive)的回转关节，它们形成一个<strong>闭链</strong>(closed-chain)，如<a href="#virtuallinkage">图2</a>所示。</p>
 <p><a name="virtuallinkage"></a><br>
 <img src="https://star2dust.github.io/post-images/1599223087147.PNG" style="zoom:50%;" /></p>
 <center>
-图2. virtual linkage结构
+<p>图2. virtual linkage结构</p>
 </center>
 <p>内力可以表示为棱柱关节上所作用的力。一般的，对任意virtual linkage，如果它的接触点有<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>n</mi></mrow><annotation encoding="application/x-tex">n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">n</span></span></span></span>个，那么需要<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mn>3</mn><mo>(</mo><mi>n</mi><mo>−</mo><mn>2</mn><mo>)</mo></mrow><annotation encoding="application/x-tex">3(n-2)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">3</span><span class="mopen">(</span><span class="mord mathdefault">n</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">2</span><span class="mclose">)</span></span></span></span>个棱柱关节。</p>
 <h1 id="内力的计算">内力的计算</h1>
@@ -76,7 +76,7 @@ I_3&amp;I_3&amp;I_3\\
 <li><span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>E</mi></mrow><annotation encoding="application/x-tex">E</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.05764em;">E</span></span></span></span>位于<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>G</mi></mrow><annotation encoding="application/x-tex">G</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault">G</span></span></span></span>的零空间，即<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>G</mi><msub><mi>F</mi><mrow><mi>i</mi><mi>n</mi><mi>t</mi></mrow></msub><mo>=</mo><mi>G</mi><mi>E</mi><mi>t</mi><mo>=</mo><mn>0</mn></mrow><annotation encoding="application/x-tex">GF_{int}=GEt=0</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.83333em;vertical-align:-0.15em;"></span><span class="mord mathdefault">G</span><span class="mord"><span class="mord mathdefault" style="margin-right:0.13889em;">F</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.31166399999999994em;"><span style="top:-2.5500000000000003em;margin-left:-0.13889em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">i</span><span class="mord mathdefault mtight">n</span><span class="mord mathdefault mtight">t</span></span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault">G</span><span class="mord mathdefault" style="margin-right:0.05764em;">E</span><span class="mord mathdefault">t</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.64444em;vertical-align:0em;"></span><span class="mord">0</span></span></span></span>。</li>
 </ul>
 <h1 id="两个机械臂搬运实例">两个机械臂搬运实例</h1>
-<p>下面我们将virtual linkage应用到两个机械臂搬运任务中，如<a href="twoarm">图4</a>所示。</p>
+<p>下面我们将virtual linkage应用到两个机械臂搬运任务中，如<a href="#twoarm">图4</a>所示。</p>
 <p><a name="twoarm"></a><br>
 <img src="https://star2dust.github.io/post-images/1599230228774.PNG" style="zoom:50%;" /></p>
 <center>

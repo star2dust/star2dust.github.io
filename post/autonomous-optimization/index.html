@@ -4,9 +4,9 @@
 <meta name="description" content=""/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
 
-<title>【论文笔记】具有反馈的自主优化 | star2dust</title>
+<title>【论文笔记】具有反馈控制的自主优化 | star2dust</title>
 
-<link rel="shortcut icon" href="https://star2dust.github.io/favicon.ico?v=1599728873599">
+<link rel="shortcut icon" href="https://star2dust.github.io/favicon.ico?v=1599729162469">
 
 <link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" rel="stylesheet">
 <link rel="stylesheet" href="https://star2dust.github.io/styles/main.css">
@@ -99,7 +99,7 @@
         <div class="post-detail gt-bg-theme-color-second">
             <article class="gt-post-content">
                 <h2 class="post-title">
-                    【论文笔记】具有反馈的自主优化
+                    【论文笔记】具有反馈控制的自主优化
                 </h2>
                 <div class="post-info">
                     <time class="post-time gt-c-content-color-first">
@@ -129,7 +129,7 @@
 <p>本文为近期阅读的论文(Hauswirth 2020)<sup class="footnote-ref"><a href="#fn1" id="fnref1">[1]</a></sup>和其前作(Menta 2018)<sup class="footnote-ref"><a href="#fn2" id="fnref2">[2]</a></sup>的笔记。该论文研究如图1所示互连反馈系统的稳定性，但实际上通过timescale separation假设，直接将物理系统的稳态代入了优化部分，优化部分相当于并未用到状态<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>x</mi></mrow><annotation encoding="application/x-tex">x</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">x</span></span></span></span>的反馈。</p>
 <figure data-type="image" tabindex="1"><img src="https://star2dust.github.io/post-images/1599728840463.PNG" alt="" loading="lazy"></figure>
 <center>
-<p>图1. 互连反馈系统</p>
+图1. 互连反馈系统
 </center>
 <h1 id="问题描述">问题描述</h1>
 <p>这里以线性系统为例。考虑<strong>线性时不变</strong>(LTI)系统</p>
@@ -262,6 +262,13 @@ W(x,u)&amp;:=(x-Ku-Rw)^TP(x-Ku-Rw)。
             </article>
         </div>
 
+        
+            <div class="next-post">
+                <div class="next gt-c-content-color-first">下一篇</div>
+                <a href="https://star2dust.github.io/post/virtual-linkage/" class="post-title gt-a-link">
+                    机械臂协同搬运中的内力建模
+                </a>
+            </div>
         
 
         

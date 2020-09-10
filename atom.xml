@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://star2dust.github.io</id>
     <title>star2dust</title>
-    <updated>2020-09-10T09:12:46.189Z</updated>
+    <updated>2020-09-10T09:14:54.380Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://star2dust.github.io"/>
     <link rel="self" href="https://star2dust.github.io/atom.xml"/>
@@ -31,7 +31,7 @@
 </p>
 <h1 id="写在前面">写在前面</h1>
 <p>本文为近期阅读的论文(Hauswirth 2020)<sup class="footnote-ref"><a href="#fn1" id="fnref1">[1]</a></sup>和其前作(Menta 2018)<sup class="footnote-ref"><a href="#fn2" id="fnref2">[2]</a></sup>的笔记。该论文研究如图1所示互连反馈系统的稳定性，但实际上通过timescale separation假设，直接将物理系统的稳态代入了优化部分，优化部分相当于并未用到状态<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>x</mi></mrow><annotation encoding="application/x-tex">x</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.43056em;vertical-align:0em;"></span><span class="mord mathdefault">x</span></span></span></span>的反馈。</p>
-<figure data-type="image" tabindex="1"><img src="https://star2dust.github.io/post-images/1599728840463.PNG" alt="" loading="lazy"></figure>
+<img src="https://star2dust.github.io/post-images/1599728840463.PNG" style="zoom:67%;" />
 <center>
 图1. 互连反馈系统
 </center>

@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://star2dust.github.io</id>
     <title>star2dust</title>
-    <updated>2020-09-14T04:18:40.359Z</updated>
+    <updated>2020-09-14T04:27:41.523Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://star2dust.github.io"/>
     <link rel="self" href="https://star2dust.github.io/atom.xml"/>
@@ -287,7 +287,7 @@ Fint = @(Xo) (E(Xo)*f12(x))';
 Fcmd = @(Xo,dXo,Xd) (pinv(G(Xo))*(Co(dXo)+Mo*md^-1*Fimp(Xo,dXo,Xd)')+Fint(Xo)')'; 
 </code></pre>
 <p>结果下图所示。</p>
-<figure data-type="image" tabindex="1"><img src="https://star2dust.github.io/post-images/1600057101697.bmp" alt="" loading="lazy"></figure>
+<img src="https://star2dust.github.io/post-images/1600057101697.png" style="zoom:80%;" />
 <h1 id="源代码">源代码</h1>
 <p>本文所需全部源代码已上传至<a href="https://github.com/star2dust">我的GitHub</a>，点击<a href="https://github.com/star2dust/two-link">这里</a>下载。与上一篇文章(<a href="https://star2dust.github.io/post/impedance-control/">机械臂协同搬运中的阻抗控制</a>)相同，运行<code>two_link_object.m</code>和<code>two_link_distributed.m</code>即可。使用前请确认RTB已经正确安装，下载和安装说明点击<a href="https://github.com/star2dust/Robotics-Toolbox">这里</a>。</p>
 <p>如果喜欢，欢迎点赞和fork。</p>

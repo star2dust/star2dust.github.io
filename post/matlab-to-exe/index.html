@@ -4,9 +4,9 @@
 <meta name="description" content=""/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
 
-<title>Matlab app designer生成独立gui(可执行exe)并添加依赖项 | star2dust</title>
+<title>MATLAB App Designer生成独立GUI(可执行exe)并添加依赖项 | star2dust</title>
 
-<link rel="shortcut icon" href="https://star2dust.github.io/favicon.ico?v=1602841653712">
+<link rel="shortcut icon" href="https://star2dust.github.io/favicon.ico?v=1602842510489">
 
 <link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" rel="stylesheet">
 <link rel="stylesheet" href="https://star2dust.github.io/styles/main.css">
@@ -99,7 +99,7 @@
         <div class="post-detail gt-bg-theme-color-second">
             <article class="gt-post-content">
                 <h2 class="post-title">
-                    Matlab app designer生成独立gui(可执行exe)并添加依赖项
+                    MATLAB App Designer生成独立GUI(可执行exe)并添加依赖项
                 </h2>
                 <div class="post-info">
                     <time class="post-time gt-c-content-color-first">
@@ -135,13 +135,14 @@
 <h2 id="编写gui">编写GUI</h2>
 <p>我个人GUI的设计全部采用MATLAB自带的<strong>App Designer</strong>。这是MATLAB 2018b开始有的功能，使用方法已经很人性化了，桥总用过都说好。个人觉得甚至比MATLAB编辑器还好用，稍有GUI经验的人可以轻松上手，这里不再细讲。如果是老版本，也有GUI设计器，这时生成的是m文件，而不是mlapp文件。</p>
 <h2 id="生成exe">生成exe</h2>
-<p>首先，在App Designer中选择**“共享-&gt;独立桌面app”**，进入Application Compiler。</p>
+<p>首先，在App Designer中选择“共享-&gt;独立桌面app”，进入Application Compiler。</p>
 <figure data-type="image" tabindex="1"><img src="https://star2dust.github.io/post-images/1602840746816.png" alt="" loading="lazy"></figure>
 <p>随意设置“Application Information”和“additional installer options”，设置程序名字和图标，写上程序简介，设置默认安装位置，这些信息会在程序<strong>安装时</strong>出现。注意，splash screen会在程序的<strong>每一次启动时</strong>出现，记得选个炫酷的图片。</p>
-<p>然后，“Additional runtime settings”记得两项全勾上(或者全不选)，用于debug，大神可忽略。</p>
+<p>然后，“Additional runtime settings”记得两项全勾上(或者全不选)。debug这档子事，懂的人都懂，大神可忽略。</p>
 <figure data-type="image" tabindex="2"><img src="https://star2dust.github.io/post-images/1602840776527.PNG" alt="" loading="lazy"></figure>
-<p>最后也是最关键的，添加依赖项。在“Files required for your application to run”中，添加依赖的m文件和路径。打包器会自动将相关路径下的所有文件(或选中m文件)添加进exe安装目录，相关依赖文件也会<strong>自动识别</strong>并添加，非常方便。遗憾的是，处于代码保护的考虑，正式安装包将依赖的m文件直接嵌入exe，而非复制到安装目录，无法实时改脚本。</p>
+<p><strong>最后也是最关键的，添加依赖项。</strong> 在“Files required for your application to run”中，添加依赖的m文件和路径。打包器会自动将相关路径下的所有文件(或选中m文件)添加进exe安装目录，相关依赖文件也会<strong>自动识别</strong>并添加，非常方便。</p>
 <figure data-type="image" tabindex="3"><img src="https://star2dust.github.io/post-images/1602840783451.PNG" alt="" loading="lazy"></figure>
+<p>完事之后，会生成3个文件夹，一个是正式安装包，另两个是可执行程序(相当于release和debug)。遗憾的是，处于代码保护的考虑，正式安装包和release程序将依赖的m文件直接嵌入exe，而非复制到安装目录，无法实时改脚本。</p>
 <h1 id="常踩的坑">常踩的坑</h1>
 <ul>
 <li>

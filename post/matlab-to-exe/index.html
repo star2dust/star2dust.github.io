@@ -6,7 +6,7 @@
 
 <title>Matlab app designer生成独立gui(可执行exe)并添加依赖项 | star2dust</title>
 
-<link rel="shortcut icon" href="https://star2dust.github.io/favicon.ico?v=1602841540981">
+<link rel="shortcut icon" href="https://star2dust.github.io/favicon.ico?v=1602841653712">
 
 <link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" rel="stylesheet">
 <link rel="stylesheet" href="https://star2dust.github.io/styles/main.css">
@@ -126,9 +126,9 @@
 </p>
 <h1 id="写在前面">写在前面</h1>
 <p>近期，由于朋友需求以及科研任务要求，我研究了一下MATLAB GUI设计，写了两个小程序。一个是读取excel部门名单生成excel排班表的排班生成器，另一个是用于机器人编队中的控制和优化算法仿真软件。</p>
-<p>程序在MATLAB上跑通很容易，麻烦的是如何生成独立的exe文件，并在没有安装MATLAB的电脑上运行。这篇文章讲一下生成exe的经验。</p>
+<p>程序在MATLAB上跑通很容易，麻烦的是如何将MATLAB GUI程序编译成独立可执行的程序？如何将编译好的独立可执行程序发布在没有安装MATLAB的电脑上？这篇文章讲一下生成exe的经验。</p>
 <h1 id="生成步骤">生成步骤</h1>
-<p>如何将MATLAB GUI程序编译成独立可执行的程序？如何将编译好的独立可执行程序发布在没有安装MATLAB的电脑上？下面将一步步实现：</p>
+<p>生成exe的过程下面将一步步实现：</p>
 <h2 id="设置编译器">设置编译器</h2>
 <p>要保证电脑中有C/C++编译器，MATLAB一般有自带的gcc，但是在Windows系统下建议使用visual studio，我电脑很早装过vs 2013，就直接选它了。MATLAB中也需要有MATLAB Compiler工具箱，否则无法编译。</p>
 <p>设置方法，使用<code>mbuid -setup</code>，选择想要的，一直y即可。</p>
@@ -163,6 +163,13 @@ end
             </article>
         </div>
 
+        
+            <div class="next-post">
+                <div class="next gt-c-content-color-first">下一篇</div>
+                <a href="https://star2dust.github.io/post/layered-affine-formation-control/" class="post-title gt-a-link">
+                    【论文笔记】有向图下的分层仿射队形控制
+                </a>
+            </div>
         
 
         

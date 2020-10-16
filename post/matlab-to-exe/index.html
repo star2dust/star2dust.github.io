@@ -6,7 +6,7 @@
 
 <title>Matlab app designer生成独立gui(可执行exe)并添加依赖项 | star2dust</title>
 
-<link rel="shortcut icon" href="https://star2dust.github.io/favicon.ico?v=1602840820663">
+<link rel="shortcut icon" href="https://star2dust.github.io/favicon.ico?v=1602841540981">
 
 <link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" rel="stylesheet">
 <link rel="stylesheet" href="https://star2dust.github.io/styles/main.css">
@@ -112,35 +112,46 @@
                     
                 </div>
                 <div class="post-content">
-                    <p>[@TOC]</p>
+                    <p><ul class="markdownIt-TOC">
+<li><a href="#%E5%86%99%E5%9C%A8%E5%89%8D%E9%9D%A2">写在前面</a></li>
+<li><a href="#%E7%94%9F%E6%88%90%E6%AD%A5%E9%AA%A4">生成步骤</a>
+<ul>
+<li><a href="#%E8%AE%BE%E7%BD%AE%E7%BC%96%E8%AF%91%E5%99%A8">设置编译器</a></li>
+<li><a href="#%E7%BC%96%E5%86%99gui">编写GUI</a></li>
+<li><a href="#%E7%94%9F%E6%88%90exe">生成exe</a></li>
+</ul>
+</li>
+<li><a href="#%E5%B8%B8%E8%B8%A9%E7%9A%84%E5%9D%91">常踩的坑</a></li>
+</ul>
+</p>
 <h1 id="写在前面">写在前面</h1>
 <p>近期，由于朋友需求以及科研任务要求，我研究了一下MATLAB GUI设计，写了两个小程序。一个是读取excel部门名单生成excel排班表的排班生成器，另一个是用于机器人编队中的控制和优化算法仿真软件。</p>
 <p>程序在MATLAB上跑通很容易，麻烦的是如何生成独立的exe文件，并在没有安装MATLAB的电脑上运行。这篇文章讲一下生成exe的经验。</p>
-<p>#　生成步骤</p>
+<h1 id="生成步骤">生成步骤</h1>
 <p>如何将MATLAB GUI程序编译成独立可执行的程序？如何将编译好的独立可执行程序发布在没有安装MATLAB的电脑上？下面将一步步实现：</p>
-<p>##设置编译器</p>
+<h2 id="设置编译器">设置编译器</h2>
 <p>要保证电脑中有C/C++编译器，MATLAB一般有自带的gcc，但是在Windows系统下建议使用visual studio，我电脑很早装过vs 2013，就直接选它了。MATLAB中也需要有MATLAB Compiler工具箱，否则无法编译。</p>
 <p>设置方法，使用<code>mbuid -setup</code>，选择想要的，一直y即可。</p>
 <h2 id="编写gui">编写GUI</h2>
 <p>我个人GUI的设计全部采用MATLAB自带的<strong>App Designer</strong>。这是MATLAB 2018b开始有的功能，使用方法已经很人性化了，桥总用过都说好。个人觉得甚至比MATLAB编辑器还好用，稍有GUI经验的人可以轻松上手，这里不再细讲。如果是老版本，也有GUI设计器，这时生成的是m文件，而不是mlapp文件。</p>
 <h2 id="生成exe">生成exe</h2>
-<p>首先，在App Designer中选择**“共享-&gt;独立桌面app”<strong>，进入</strong>Application Compiler**。</p>
+<p>首先，在App Designer中选择**“共享-&gt;独立桌面app”**，进入Application Compiler。</p>
 <figure data-type="image" tabindex="1"><img src="https://star2dust.github.io/post-images/1602840746816.png" alt="" loading="lazy"></figure>
-<p>随意设置**“Application Information”<strong>和</strong>“additional installer options”**，设置程序名字和图标，写上程序简介，设置默认安装位置，<strong>这些信息会在程序的安装时出现。<strong>注意，splash screen会在程序的</strong>每一次</strong>启动时出现，记得选个炫酷的图片。</p>
-<p>然后，**“Additional runtime settings”**记得两项全勾上(或者全不选)，用于debug，大神可忽略。</p>
+<p>随意设置“Application Information”和“additional installer options”，设置程序名字和图标，写上程序简介，设置默认安装位置，这些信息会在程序<strong>安装时</strong>出现。注意，splash screen会在程序的<strong>每一次启动时</strong>出现，记得选个炫酷的图片。</p>
+<p>然后，“Additional runtime settings”记得两项全勾上(或者全不选)，用于debug，大神可忽略。</p>
 <figure data-type="image" tabindex="2"><img src="https://star2dust.github.io/post-images/1602840776527.PNG" alt="" loading="lazy"></figure>
-<p>最后也是最关键的，添加依赖项。在**“Files required for your application to run”<strong>中，添加依赖的m文件和路径。打包器会自动将相关路径下的所有文件(或选中m文件)添加进exe安装目录，相关依赖文件也会</strong>自动识别**并添加，非常方便。遗憾的是，处于代码保护的考虑，正式安装包将依赖的m文件直接嵌入exe，而非复制到安装目录，无法实时改脚本。</p>
+<p>最后也是最关键的，添加依赖项。在“Files required for your application to run”中，添加依赖的m文件和路径。打包器会自动将相关路径下的所有文件(或选中m文件)添加进exe安装目录，相关依赖文件也会<strong>自动识别</strong>并添加，非常方便。遗憾的是，处于代码保护的考虑，正式安装包将依赖的m文件直接嵌入exe，而非复制到安装目录，无法实时改脚本。</p>
 <figure data-type="image" tabindex="3"><img src="https://star2dust.github.io/post-images/1602840783451.PNG" alt="" loading="lazy"></figure>
 <h1 id="常踩的坑">常踩的坑</h1>
 <ul>
 <li>
-<p>进入<strong>Application Compiler</strong>之后，记得把工程另存一下。如果对打包生成路径有要求，一定注意先<strong>另存为</strong>打包工程到期望位置，在进行其他选项设置，否则默认在mlapp文件目录下生成resource等文件夹。</p>
+<p>进入Application Compiler之后，记得把工程另存一下。如果对打包生成路径有要求，一定注意先<strong>另存为</strong>打包工程到期望位置，在进行其他选项设置，否则默认在mlapp文件目录下生成resource等文件夹。</p>
 </li>
 <li>
-<p>所有m文件和mlapp文件<strong>不能出现</strong>添加路径和编辑器相关命令，如<code>addpath</code>、<code>mkdir</code>、<code>edit</code>等，如果你非要用，就等着体验程序运行不了，但就是不报错的绝望吧。但是命令行命令是可以的，如<code>cd</code>，也就是说相对路径可以间接利用。</p>
+<p>所有m文件和mlapp文件<strong>不能出现</strong>添加路径和编辑器相关命令，如<code>addpath</code>、<code>mkdir</code>、<code>edit</code>等，如果你非要用，就等着感受程序既不运行也不报错的绝望吧。但是命令行命令是可以的，如<code>cd</code>，也就是说相对路径可以间接利用。</p>
 </li>
 <li>
-<p>如果你的matlab有<code>startup.m</code>文件，使用<code>isdeployed</code>命令移除所有<code>addpath</code>命令，如下所示，同时上述将移除的路径(或m文件)在**“Files required for your application to run”**选项中添加。</p>
+<p>如果你的matlab有<code>startup.m</code>文件，使用<code>isdeployed</code>命令移除所有<code>addpath</code>命令，如下所示，同时上述将移除的路径(或m文件)在“Files required for your application to run”选项中添加。</p>
 </li>
 </ul>
 <pre><code class="language-matlab">if ~isdeployed

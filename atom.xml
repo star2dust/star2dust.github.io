@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://star2dust.github.io</id>
     <title>star2dust</title>
-    <updated>2020-11-02T06:08:02.957Z</updated>
+    <updated>2020-11-02T06:10:41.171Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://star2dust.github.io"/>
     <link rel="self" href="https://star2dust.github.io/atom.xml"/>
@@ -1309,6 +1309,26 @@ t+C=\int dt &amp;=\int \frac{dy}{a(1+y)+b(1+y)^2}\\
 ]]></content>
     </entry>
     <entry>
+        <title type="html"><![CDATA[D.C.函数和D.C.集合]]></title>
+        <id>https://star2dust.github.io/post/difference-of-convex-unctions/</id>
+        <link href="https://star2dust.github.io/post/difference-of-convex-unctions/">
+        </link>
+        <updated>2020-08-21T07:45:13.000Z</updated>
+        <content type="html"><![CDATA[<h1 id="dc函数">D.C.函数</h1>
+<p>凸性的局限在于没有封闭性，也就是说一个凸函数进行简单的运算，比如<strong>数乘</strong>(scalar mutiplication)和<strong>下包络</strong>(lower envelop)，得到的新函数不一定具有凸性。于是，<strong>d.c.结构</strong>(difference of convex functions)，也称<strong>互补凸结构</strong>(complementary convex structure)，作为一种更广义的数学结构被提出。</p>
+<blockquote>
+<p>定义1：函数<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>f</mi><mo>(</mo><mi>x</mi><mo>)</mo></mrow><annotation encoding="application/x-tex">f(x)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.10764em;">f</span><span class="mopen">(</span><span class="mord mathdefault">x</span><span class="mclose">)</span></span></span></span>在凸集<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi mathvariant="normal">Ω</mi><mo>⊂</mo><msup><mi mathvariant="double-struck">R</mi><mi>n</mi></msup></mrow><annotation encoding="application/x-tex">\Omega \subset \mathbb R^n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.72243em;vertical-align:-0.0391em;"></span><span class="mord">Ω</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">⊂</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.68889em;vertical-align:0em;"></span><span class="mord"><span class="mord mathbb">R</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.664392em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">n</span></span></span></span></span></span></span></span></span></span></span>上d.c.，若它能表示为<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>f</mi><mo>(</mo><mi>x</mi><mo>)</mo><mo>=</mo><msub><mi>f</mi><mn>1</mn></msub><mo>(</mo><mi>x</mi><mo>)</mo><mo>−</mo><msub><mi>f</mi><mn>2</mn></msub><mo>(</mo><mi>x</mi><mo>)</mo></mrow><annotation encoding="application/x-tex">f(x)=f_1(x)-f_2(x)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.10764em;">f</span><span class="mopen">(</span><span class="mord mathdefault">x</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.10764em;">f</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:-0.10764em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mopen">(</span><span class="mord mathdefault">x</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.10764em;">f</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:-0.10764em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span><span class="mopen">(</span><span class="mord mathdefault">x</span><span class="mclose">)</span></span></span></span>，其中<span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>f</mi><mn>1</mn></msub></mrow><annotation encoding="application/x-tex">f_1</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.10764em;">f</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:-0.10764em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">1</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>，<span class="katex"><span class="katex-mathml"><math><semantics><mrow><msub><mi>f</mi><mn>2</mn></msub></mrow><annotation encoding="application/x-tex">f_2</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="mord"><span class="mord mathdefault" style="margin-right:0.10764em;">f</span><span class="msupsub"><span class="vlist-t vlist-t2"><span class="vlist-r"><span class="vlist" style="height:0.30110799999999993em;"><span style="top:-2.5500000000000003em;margin-left:-0.10764em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span><span class="vlist-s">​</span></span><span class="vlist-r"><span class="vlist" style="height:0.15em;"><span></span></span></span></span></span></span></span></span></span>在$\Omega $上是凸函数。</p>
+</blockquote>
+<p>显然，d.c.结构并不能保证<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>f</mi><mo>(</mo><mi>x</mi><mo>)</mo></mrow><annotation encoding="application/x-tex">f(x)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.10764em;">f</span><span class="mopen">(</span><span class="mord mathdefault">x</span><span class="mclose">)</span></span></span></span>的凸性，但却保证了d.c.对线性变换的封闭性，即任意有限多个d.c.函数的线性变换仍是d.c.函数。</p>
+<p>因此，**$\Omega <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi mathvariant="normal">上</mi><mi mathvariant="normal">的</mi><mi>d</mi><mi mathvariant="normal">.</mi><mi>c</mi><mi mathvariant="normal">.</mi><mi mathvariant="normal">函</mi><mi mathvariant="normal">数</mi><mi mathvariant="normal">形</mi><mi mathvariant="normal">成</mi><mi mathvariant="normal">包</mi><mi mathvariant="normal">含</mi></mrow><annotation encoding="application/x-tex">上的d.c.函数形成包含</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.69444em;vertical-align:0em;"></span><span class="mord cjk_fallback">上</span><span class="mord cjk_fallback">的</span><span class="mord mathdefault">d</span><span class="mord">.</span><span class="mord mathdefault">c</span><span class="mord">.</span><span class="mord cjk_fallback">函</span><span class="mord cjk_fallback">数</span><span class="mord cjk_fallback">形</span><span class="mord cjk_fallback">成</span><span class="mord cjk_fallback">包</span><span class="mord cjk_fallback">含</span></span></span></span>\Omega <span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi mathvariant="normal">上</mi><mi mathvariant="normal">所</mi><mi mathvariant="normal">有</mi><mi mathvariant="normal">凸</mi><mi mathvariant="normal">函</mi><mi mathvariant="normal">数</mi><mi mathvariant="normal">的</mi><mi mathvariant="normal">最</mi><mi mathvariant="normal">小</mi><mi mathvariant="normal">线</mi><mi mathvariant="normal">性</mi><mi mathvariant="normal">空</mi><mi mathvariant="normal">间</mi><mo>∗</mo><mo>∗</mo><mi mathvariant="normal">。</mi><mi mathvariant="normal">该</mi><mi mathvariant="normal">线</mi><mi mathvariant="normal">性</mi><mi mathvariant="normal">空</mi><mi mathvariant="normal">间</mi><mi mathvariant="normal">用</mi></mrow><annotation encoding="application/x-tex">上所有凸函数的最小线性空间**。该线性空间用</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.46528em;vertical-align:0em;"></span><span class="mord cjk_fallback">上</span><span class="mord cjk_fallback">所</span><span class="mord cjk_fallback">有</span><span class="mord cjk_fallback">凸</span><span class="mord cjk_fallback">函</span><span class="mord cjk_fallback">数</span><span class="mord cjk_fallback">的</span><span class="mord cjk_fallback">最</span><span class="mord cjk_fallback">小</span><span class="mord cjk_fallback">线</span><span class="mord cjk_fallback">性</span><span class="mord cjk_fallback">空</span><span class="mord cjk_fallback">间</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">∗</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:0.46528em;vertical-align:0em;"></span><span class="mord">∗</span><span class="mord cjk_fallback">。</span><span class="mord cjk_fallback">该</span><span class="mord cjk_fallback">线</span><span class="mord cjk_fallback">性</span><span class="mord cjk_fallback">空</span><span class="mord cjk_fallback">间</span><span class="mord cjk_fallback">用</span></span></span></span>DC(\Omega)$表示，它在有限个函数的上下包络的操作下是稳定的。</p>
+<h1 id="dc集合">D.C.集合</h1>
+<blockquote>
+<p>定义2：集合<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>M</mi><mo>⊂</mo><msup><mi mathvariant="double-struck">R</mi><mi>n</mi></msup></mrow><annotation encoding="application/x-tex">M\subset \mathbb R^n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.72243em;vertical-align:-0.0391em;"></span><span class="mord mathdefault" style="margin-right:0.10903em;">M</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">⊂</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.68889em;vertical-align:0em;"></span><span class="mord"><span class="mord mathbb">R</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.664392em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">n</span></span></span></span></span></span></span></span></span></span></span>是d.c.的，若存在凸函数<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>g</mi><mo separator="true">,</mo><mi>h</mi><mo>:</mo><msup><mi mathvariant="double-struck">R</mi><mi>n</mi></msup><mo>→</mo><mi mathvariant="double-struck">R</mi></mrow><annotation encoding="application/x-tex">g,h:\mathbb R^n\to \mathbb R</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8888799999999999em;vertical-align:-0.19444em;"></span><span class="mord mathdefault" style="margin-right:0.03588em;">g</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault">h</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">:</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.68889em;vertical-align:0em;"></span><span class="mord"><span class="mord mathbb">R</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.664392em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">n</span></span></span></span></span></span></span></span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">→</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:0.68889em;vertical-align:0em;"></span><span class="mord mathbb">R</span></span></span></span>使得<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>M</mi><mo>=</mo><mo>{</mo><mi>x</mi><mi mathvariant="normal">∣</mi><mi>g</mi><mo>(</mo><mi>x</mi><mo>)</mo><mo>≤</mo><mn>0</mn><mo separator="true">,</mo><mi>h</mi><mo>(</mo><mi>x</mi><mo>)</mo><mo>≥</mo><mn>0</mn><mo>}</mo></mrow><annotation encoding="application/x-tex">M=\{x|g(x)\leq 0,h(x)\geq 0\}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.10903em;">M</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mopen">{</span><span class="mord mathdefault">x</span><span class="mord">∣</span><span class="mord mathdefault" style="margin-right:0.03588em;">g</span><span class="mopen">(</span><span class="mord mathdefault">x</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">≤</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">0</span><span class="mpunct">,</span><span class="mspace" style="margin-right:0.16666666666666666em;"></span><span class="mord mathdefault">h</span><span class="mopen">(</span><span class="mord mathdefault">x</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">≥</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">0</span><span class="mclose">}</span></span></span></span>。</p>
+</blockquote>
+<p>推论3.4：任意一个<span class="katex"><span class="katex-mathml"><math><semantics><mrow><msup><mi mathvariant="double-struck">R</mi><mi>n</mi></msup></mrow><annotation encoding="application/x-tex">\mathbb R^n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68889em;vertical-align:0em;"></span><span class="mord"><span class="mord mathbb">R</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.664392em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">n</span></span></span></span></span></span></span></span></span></span></span>上的闭集都是一个<span class="katex"><span class="katex-mathml"><math><semantics><mrow><msup><mi mathvariant="double-struck">R</mi><mrow><mi>n</mi><mo>+</mo><mn>1</mn></mrow></msup></mrow><annotation encoding="application/x-tex">\mathbb R^{n+1}</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.8141079999999999em;vertical-align:0em;"></span><span class="mord"><span class="mord mathbb">R</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141079999999999em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight"><span class="mord mathdefault mtight">n</span><span class="mbin mtight">+</span><span class="mord mtight">1</span></span></span></span></span></span></span></span></span></span></span></span>上的d.c.集合向<span class="katex"><span class="katex-mathml"><math><semantics><mrow><msup><mi mathvariant="double-struck">R</mi><mi>n</mi></msup></mrow><annotation encoding="application/x-tex">\mathbb R^n</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68889em;vertical-align:0em;"></span><span class="mord"><span class="mord mathbb">R</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.664392em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mathdefault mtight">n</span></span></span></span></span></span></span></span></span></span></span>上的投影。</p>
+]]></content>
+    </entry>
+    <entry>
         <title type="html"><![CDATA[机械臂协同搬运中的阻抗控制]]></title>
         <id>https://star2dust.github.io/post/impedance-control/</id>
         <link href="https://star2dust.github.io/post/impedance-control/">
@@ -1512,241 +1532,6 @@ Cx1*dx(i,1:2)'+Cx2+Gx+(eye(2)-Mx*md^-1)*F(3*i-2:3*i-1)');
 </li>
 </ol>
 </section>
-]]></content>
-    </entry>
-    <entry>
-        <title type="html"><![CDATA[飞桨深度学习从零实践（一）：从房价预测看模型构建]]></title>
-        <id>https://star2dust.github.io/post/paddle-notes-part-01/</id>
-        <link href="https://star2dust.github.io/post/paddle-notes-part-01/">
-        </link>
-        <updated>2020-08-15T11:56:49.000Z</updated>
-        <content type="html"><![CDATA[<p><ul class="markdownIt-TOC">
-<li><a href="#%E5%86%99%E5%9C%A8%E5%89%8D%E9%9D%A2">写在前面</a></li>
-<li><a href="#%E6%A8%A1%E5%9E%8B%E6%9E%84%E5%BB%BA%E5%9F%BA%E6%9C%AC%E6%B5%81%E7%A8%8B">模型构建基本流程</a></li>
-<li><a href="#%E9%A3%9E%E6%A1%A8%E9%87%8D%E5%86%99%E6%88%BF%E4%BB%B7%E9%A2%84%E6%B5%8B%E6%A8%A1%E5%9E%8B">飞桨重写房价预测模型</a>
-<ul>
-<li><a href="#1-%E6%95%B0%E6%8D%AE%E5%A4%84%E7%90%86">1. 数据处理</a></li>
-<li><a href="#2-%E6%A8%A1%E5%9E%8B%E8%AE%BE%E8%AE%A1">2. 模型设计</a></li>
-<li><a href="#3-%E8%AE%AD%E7%BB%83%E9%85%8D%E7%BD%AE">3. 训练配置</a></li>
-<li><a href="#4-%E8%AE%AD%E7%BB%83%E8%BF%87%E7%A8%8B">4. 训练过程</a></li>
-<li><a href="#5-%E4%BF%9D%E5%AD%98%E6%A8%A1%E5%9E%8B">5. 保存模型</a></li>
-</ul>
-</li>
-<li><a href="#%E6%B5%8B%E8%AF%95%E6%A8%A1%E5%9E%8B%E9%A2%84%E6%B5%8B%E6%95%88%E6%9E%9C">测试模型预测效果</a></li>
-<li><a href="#%E6%BA%90%E4%BB%A3%E7%A0%81">源代码</a></li>
-</ul>
-</p>
-<h1 id="写在前面">写在前面</h1>
-<p>本文源于百度AI平台飞桨学院《<a href="https://aistudio.baidu.com/aistudio/course/introduce/1297">百度架构师手把手带你零基础实践深度学习</a>》课程中我自己的心得和理解。</p>
-<p>本文旨在介绍使用飞桨框架构建神经网络过程，并从房价预测模型的理解和代码的构建角度来整理所学内容，不求详尽但求简洁明了。开始之前默认大家都具有Python编程基础，一定程度上掌握Numpy的用法，没用过的可以参考我之前的文章（<a href="https://star2dust.github.io/post/ndarray-notes/">查看这里</a>）。</p>
-<h1 id="模型构建基本流程">模型构建基本流程</h1>
-<p>飞桨的模型覆盖计算机视觉、自然语言处理和推荐系统等主流应用场景，所有场景的代码结构完全一致，如<a href="#nnflow">图1</a>所示。</p>
-<p><a name="nnflow"></a><br>
-<img src="https://star2dust.github.io/post-images/1597554589992.png" alt="使用飞桨框架构建神经网络过程" loading="lazy"></p>
-<center>
-<p>图1. 使用飞桨框架构建神经网络过程</p>
-</center>
-<h1 id="飞桨重写房价预测模型">飞桨重写房价预测模型</h1>
-<p>数据处理之前，需要先加载飞桨框架的相关类库。</p>
-<pre><code class="language-python">#加载飞桨、Numpy和相关类库
-import paddle.fluid as fluid
-import paddle.fluid.dygraph as dygraph
-from paddle.fluid.dygraph import Linear
-import numpy as np
-</code></pre>
-<h2 id="1-数据处理">1. 数据处理</h2>
-<p>数据处理包含五个部分：数据导入、数据形状变换、数据集划分、数据归一化处理和封装load data函数。数据预处理后，才能被模型调用。数据处理的代码不依赖paddle框架实现，使用numpy库即可。</p>
-<p>对每个特征进行归一化处理，使得每个特征的取值缩放到0~1之间。这样做有两个好处：</p>
-<ul>
-<li>模型训练更高效。</li>
-<li>特征前的权重大小可代表该变量对预测结果的贡献度（因为每个特征值本身的范围相同）。</li>
-</ul>
-<pre><code class="language-python">def load_data():
-    # 从文件读入训练数据
-    datafile = './work/housing.data'
-    # 数据以空格分隔
-    data = np.fromfile(datafile, sep=' ')
-
-    # 每条数据包括14项，其中前面13项是影响因素，第14项是相应的房屋价格中位数
-    feature_names = [ 'CRIM', 'ZN', 'INDUS', 'CHAS', 'NOX', 'RM', 'AGE', \
-                      'DIS', 'RAD', 'TAX', 'PTRATIO', 'B', 'LSTAT', 'MEDV' ]
-    feature_num = len(feature_names)
-
-    # 将原始数据进行Reshape，变成[N, 14]这样的形状
-    data = data.reshape([data.shape[0] // feature_num, feature_num])
-
-    # 将原数据集拆分成训练集和测试集
-    # 这里使用80%的数据做训练，20%的数据做测试
-    # 测试集和训练集必须是没有交集的
-    ratio = 0.8
-    offset = int(data.shape[0] * ratio)
-    training_data = data[:offset]
-
-    # 计算train数据集的最大值，最小值，平均值
-    # \是python的分行符，相当于matlab的...
-    # 注意：\后面一个空格都不能有
-    maximums, minimums, avgs = training_data.max(axis=0), training_data.min(axis=0), \
-                                 training_data.sum(axis=0) / training_data.shape[0]
-    
-    # 记录数据的归一化参数，在预测时对数据做归一化
-    global max_values
-    global min_values
-    global avg_values
-    max_values = maximums
-    min_values = minimums
-    avg_values = avgs
-
-    # 对全部数据进行归一化处理，包括train和test
-    # 测试样本也用训练样本的最大最小值进行归一化
-    # 因为测试模拟的是真实环境，但是真实数据无法获得只能用训练数据
-    for i in range(feature_num):
-        #print(maximums[i], minimums[i], avgs[i])
-        data[:, i] = (data[:, i] - avgs[i]) / (maximums[i] - minimums[i])
-
-    # 数据归一化后按比例重新划分训练集和测试集
-    training_data = data[:offset]
-    test_data = data[offset:]
-    return training_data, test_data
-</code></pre>
-<h2 id="2-模型设计">2. 模型设计</h2>
-<p>模型定义的实质是定义线性回归的网络结构，创建<code>Regressor</code>类，定义<code>init</code>函数和<code>forward</code>函数。</p>
-<pre><code class="language-python">class Regressor(fluid.dygraph.Layer):
-    def __init__(self):
-        super(Regressor, self).__init__() 
-        # 定义一层全连接层，输出维度是1，激活函数为None，即不使用激活函数
-        self.fc = Linear(input_dim=13, output_dim=1, act=None)
-    
-    # 网络的前向计算函数
-    def forward(self, inputs):
-        x = self.fc(inputs)
-        return x
-</code></pre>
-<h2 id="3-训练配置">3. 训练配置</h2>
-<p>训练配置过程包含四步，如<a href="#trainconfig">图2</a>所示：</p>
-<p><a name="trainconfig"></a><br>
-<img src="https://star2dust.github.io/post-images/1597555885064.png" alt="训练配置流程示意图" loading="lazy"></p>
-<center>
-<p>图2. 训练配置流程示意图</p>
-</center>
-<ul>
-<li>以guard函数指定运行训练的机器资源，表明在with作用域下的程序均执行在本机的CPU资源上。dygraph.guard表示在with作用域下的程序会以飞桨动态图的模式执行（实时执行）。</li>
-<li>声明定义好的回归模型Regressor实例，并将模型的状态设置为训练。</li>
-<li>使用load_data函数加载训练数据和测试数据。</li>
-<li>设置优化算法和学习率，优化算法采用随机梯度下降SGD，学习率设置为0.01。</li>
-</ul>
-<p>训练配置代码如下所示：</p>
-<pre><code class="language-python"># 定义飞桨动态图的工作环境
-with fluid.dygraph.guard(fluid.CPUPlace()):
-    # 声明定义好的线性回归模型
-    model = Regressor()
-    # 开启模型训练模式
-    model.train()
-    # 加载数据
-    training_data, test_data = load_data()
-    # 定义优化算法，这里使用随机梯度下降-SGD
-    # 学习率设置为0.01
-    opt = fluid.optimizer.SGD(learning_rate=0.01, parameter_list=model.parameters())
-</code></pre>
-<h2 id="4-训练过程">4. 训练过程</h2>
-<p>对于一个数据集，我们遍历它一次称为一个epoch。对于一次遍历，我们分批次读取数据，一批称为一个batch。训练过程采用二层循环嵌套方式：</p>
-<ul>
-<li>内层循环： 负责整个数据集的一次遍历，采用分批次方式。</li>
-<li>外层循环： 定义遍历数据集的次数，通过参数EPOCH_NUM设置。</li>
-</ul>
-<p>假设数据集样本数量为1000，一个批次有10个样本，则遍历一次数据集的批次数量是1000/10=100，即内层循环需要执行100次。若数据集需要使用5次，则总循环数为5*100=500。</p>
-<p>每次内层循环都需要执行如下四个步骤，如 <a href="#innerloop">图3</a> 所示<br>
-<a name="innerloop"></a><br>
-<img src="https://star2dust.github.io/post-images/1597556938631.png" alt="内循环计算过程" loading="lazy"></p>
-<center>
-<p>图3. 内循环计算过程</p>
-</center>
-<ul>
-<li>数据准备：将一个批次的数据转变成np.array和内置格式。</li>
-<li>前向计算：将一个批次的样本数据灌入网络中，计算输出结果。</li>
-<li>计算损失函数：以前向计算结果和真实房价作为输入，通过损失函数square_error_cost计算出损失函数值（Loss）。</li>
-<li>反向传播：执行梯度反向传播backward函数，即从后到前逐层计算每一层的梯度，并根据设置的优化算法更新参数opt.minimize。</li>
-</ul>
-<pre><code class="language-python"># 定义飞桨动态图工作环境
-with dygraph.guard(fluid.CPUPlace()):
-    EPOCH_NUM = 10   # 设置外层循环次数
-    BATCH_SIZE = 10  # 设置batch大小
-    
-    # 定义外层循环
-    for epoch_id in range(EPOCH_NUM):
-        # 在每轮迭代开始之前，将训练数据的顺序随机的打乱
-        np.random.shuffle(training_data)
-        # 将训练数据进行拆分，每个batch包含10条数据
-        mini_batches = [training_data[k:k+BATCH_SIZE] for k in range(0, len(training_data), BATCH_SIZE)]
-        # 定义内层循环
-        for iter_id, mini_batch in enumerate(mini_batches):
-            x = np.array(mini_batch[:, :-1]).astype('float32') # 获得当前批次训练数据
-            y = np.array(mini_batch[:, -1:]).astype('float32') # 获得当前批次训练标签（真实房价）
-            # 将numpy数据转为飞桨动态图variable形式
-            house_features = dygraph.to_variable(x)
-            prices = dygraph.to_variable(y)
-            
-            # 前向计算
-            predicts = model(house_features)
-            
-            # 计算损失
-            loss = fluid.layers.square_error_cost(predicts, label=prices)
-            avg_loss = fluid.layers.mean(loss)
-            if iter_id%20==0:
-                print(&quot;epoch: {}, iter: {}, loss is: {}&quot;.format(epoch_id, iter_id, avg_loss.numpy()))
-            
-            # 反向传播
-            avg_loss.backward()
-            # 最小化loss,更新参数
-            opt.minimize(avg_loss)
-            # 清除梯度
-            model.clear_gradients()
-</code></pre>
-<h2 id="5-保存模型">5. 保存模型</h2>
-<p>将模型当前的参数数据model.state_dict()保存到文件中（通过参数指定保存的文件名 LR_model），以备预测或校验的程序调用，代码如下所示。</p>
-<pre><code class="language-python"># 定义飞桨动态图工作环境
-with fluid.dygraph.guard(fluid.CPUPlace()):
-    # 保存模型参数，文件名为LR_model
-    fluid.save_dygraph(model.state_dict(), 'LR_model')
-    print(&quot;模型保存成功，模型参数保存在LR_model中&quot;)
-</code></pre>
-<p>为什么是先保存模型，再加载模型呢？这是因为在实际应用中，训练模型和使用模型往往是不同的场景。模型训练通常使用大量的线下服务器（不对外向企业的客户/用户提供在线服务），而模型预测则通常使用线上提供预测服务的服务器，或者将已经完成的预测模型嵌入手机或其他终端设备中使用。因此先保存再加载方式更贴合真实场景的使用方法。</p>
-<h1 id="测试模型预测效果">测试模型预测效果</h1>
-<p>下面我们选择一条数据样本，测试下模型的预测效果。测试过程和在应用场景中使用模型的过程一致，主要可分成如下三个步骤：</p>
-<ul>
-<li>配置模型预测的机器资源。本案例默认使用本机，因此无需写代码指定。</li>
-<li>将训练好的模型参数加载到模型实例中。由两个语句完成，第一句是从文件中读取模型参数；第二句是将参数内容加载到模型。加载完毕后，需要将模型的状态调整为eval()（校验）。上文中提到，训练状态的模型需要同时支持前向计算和反向传导梯度，模型的实现较为臃肿，而校验和预测状态的模型只需要支持前向计算，模型的实现更加简单，性能更好。</li>
-<li>将待预测的样本特征输入到模型中，打印输出的预测结果。</li>
-</ul>
-<p>从test_data中抽一条样本作为测试样本，具体实现代码如下所示。</p>
-<pre><code class="language-python"># 定义飞桨动态图的工作环境
-with fluid.dygraph.guard(fluid.CPUPlace()):
-    # 测试模型 参数为保存模型参数的文件地址
-    model_dict, _ = fluid.load_dygraph('LR_model')
-    model.load_dict(model_dict)
-    model.eval()
-    # 随机抽取一条测试数据
-    np.random.shuffle(test_data)
-    test_batch = test_data[0:1]
-    # 将数据转为动态图的variable格式
-    x = np.array(test_batch[:, :-1]).astype('float32') # 获得当前批次训练数据
-    y = np.array(test_batch[:, -1:]).astype('float32') # 获得当前批次训练标签（真实房价）
-    # 将numpy数据转为飞桨动态图variable形式
-    house_features = dygraph.to_variable(x)
-    x = dygraph.to_variable(house_features)
-    results = model(house_features)
-
-    # 对结果做反归一化处理
-    results = results * (max_values[-1] - min_values[-1]) + avg_values[-1]
-    label = y * (max_values[-1] - min_values[-1]) + avg_values[-1]
-    print(&quot;Inference result is {}, the corresponding label is {}&quot;.format(results.numpy(), label))
-</code></pre>
-<p>通过比较“模型预测值”和“真实房价”可见，模型的预测效果与真实房价接近。</p>
-<h1 id="源代码">源代码</h1>
-<p>本文所有内容的源代码已上传至<a href="https://github.com/star2dust/boston-model">我的GitHub</a>。其中<code>train.py</code>是房价预测模型的纯numpy实现，<code>pdtrain.py</code>是paddlepaddle实现，大家可以对比一下异同。</p>
-<p>如果尚未安装numpy和paddlepaddle，请命令行输入如下代码安装：</p>
-<pre><code class="language-shell">pip install -r requirements.txt
-</code></pre>
-<p>如果喜欢，欢迎点赞和fork。</p>
 ]]></content>
     </entry>
 </feed>

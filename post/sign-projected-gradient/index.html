@@ -4,7 +4,7 @@
 <meta name="description" content=""/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
 
-<title>Python三大数据结构 | star2dust</title>
+<title>【论文笔记】符号投影梯度流：具有线性等式约束的凸优化的连续时间方法 | star2dust</title>
 
 <link rel="shortcut icon" href="https://star2dust.github.io/favicon.ico?v=1604297277293">
 
@@ -99,142 +99,32 @@
         <div class="post-detail gt-bg-theme-color-second">
             <article class="gt-post-content">
                 <h2 class="post-title">
-                    Python三大数据结构
+                    【论文笔记】符号投影梯度流：具有线性等式约束的凸优化的连续时间方法
                 </h2>
                 <div class="post-info">
                     <time class="post-time gt-c-content-color-first">
-                        · 2020-06-24 ·
+                        · 2020-11-02 ·
                     </time>
                     
-                        <a href="https://star2dust.github.io/tag/R0pmglADx/" class="post-tags">
-                            # Python
+                        <a href="https://star2dust.github.io/tag/ZHkQDR4tN/" class="post-tags">
+                            # Control Theory
                         </a>
                     
                 </div>
                 <div class="post-content">
                     <p><ul class="markdownIt-TOC">
-<li><a href="#%E4%B8%80-%E5%88%97%E8%A1%A8list">一、列表（list）</a>
-<ul>
-<li><a href="#1-%E5%88%97%E8%A1%A8%E7%B4%A2%E5%BC%95index">1. 列表索引（index）</a></li>
-<li><a href="#2-%E5%88%97%E8%A1%A8%E5%88%87%E7%89%87">2. 列表切片</a></li>
-<li><a href="#3-%E5%88%97%E8%A1%A8%E6%93%8D%E4%BD%9C">3. 列表操作</a></li>
-</ul>
-</li>
-<li><a href="#%E4%BA%8C-%E5%AD%97%E5%85%B8dict">二、字典（dict）</a>
-<ul>
-<li><a href="#1-%E6%9F%A5%E6%89%BE%E5%AD%97%E5%85%B8">1. 查找字典</a></li>
-<li><a href="#2-%E6%9B%B4%E6%96%B0%E5%AD%97%E5%85%B8">2. 更新字典</a></li>
-<li><a href="#3-%E9%81%8D%E5%8E%86%E5%AD%97%E5%85%B8">3. 遍历字典</a></li>
-</ul>
-</li>
-<li><a href="#%E4%B8%89-%E5%85%83%E7%BB%84tuple">三、元组（tuple）</a>
-<ul>
-<li><a href="#1-%E5%88%9D%E5%A7%8B%E5%8C%96">1. 初始化</a></li>
-<li><a href="#2-%E8%AE%BF%E9%97%AE%E5%92%8C%E5%88%87%E5%88%86%E5%85%83%E7%BB%84">2. 访问和切分元组</a></li>
-<li><a href="#3-%E5%85%83%E7%BB%84%E6%93%8D%E4%BD%9C">3. 元组操作</a></li>
-<li><a href="#4-%E5%85%83%E7%BB%84%E6%8B%86%E5%8C%85">4. 元组拆包</a></li>
-</ul>
-</li>
+<li><a href="#%E5%86%99%E5%9C%A8%E5%89%8D%E9%9D%A2">写在前面</a></li>
+<li><a href="#%E9%97%AE%E9%A2%98%E6%8F%8F%E8%BF%B0">问题描述</a></li>
 </ul>
 </p>
-<h1 id="一-列表list">一、列表（list）</h1>
-<ul>
-<li>使用[]定义列表</li>
-<li>字符串也是一个列表</li>
-</ul>
-<h2 id="1-列表索引index">1. 列表索引（index）</h2>
-<ul>
-<li>从0开始正向访问</li>
-<li>从-1开始反向访问</li>
-</ul>
-<h2 id="2-列表切片">2. 列表切片</h2>
-<ul>
-<li>使用<code>list[:]</code>类似matlab</li>
-<li><code>:</code> 左右为空表示从头开始</li>
-<li>左大于右返回空列表</li>
-<li><code>list[a:b]</code>索引从a到b-1(记住：左闭右开)</li>
-</ul>
-<h2 id="3-列表操作">3. 列表操作</h2>
-<ul>
-<li><code>min(list)</code>，<code>max(list)</code>，<code>len(list)</code></li>
-<li><code>sum(list)</code>只能用于数字类型</li>
-<li><code>dtr.join(list)</code>只能合并字符串</li>
-<li><code>list.count(elm)</code>对元素（elm）出现次数计数</li>
-<li><code>list.index(elm)</code>返回元素（elm）第一个索引</li>
-<li><code>list.sort()</code>元素排序小到大</li>
-<li><code>list.sort(reverse = True)</code>元素排序大到小</li>
-<li><code>sorted(list)</code>返回排序后列表</li>
-<li><code>list.append(elm)</code>列表末尾增加元素</li>
-<li><code>list.remove(elm)</code>列表删除指定元素</li>
-<li><code>list.pop(id)</code>按索引删除元素</li>
-<li><code>list.extend(list2)</code>在末尾合并列表</li>
-<li><code>list.insert(id,elm)</code>按索引插入元素</li>
-</ul>
-<h1 id="二-字典dict">二、字典（dict）</h1>
-<ul>
-<li>使用{}定义字典</li>
-<li>键(key)映射到值(value)的无序数据结构</li>
-<li>键(key)不可变</li>
-</ul>
-<h2 id="1-查找字典">1. 查找字典</h2>
-<ul>
-<li><code>dict[key]</code>访问键对应的值</li>
-<li><code>dict.get(key,default)</code>访问键值</li>
-<li>键不存在返回预设default（<em>没有预设返回None</em>）</li>
-</ul>
-<h2 id="2-更新字典">2. 更新字典</h2>
-<ul>
-<li><code>dict['nkey']=nval</code>增加/更新键值</li>
-<li><code>dict.update(ndict)</code>增加/更新键值（通过新字典）</li>
-<li>删除键值</li>
-</ul>
-<pre><code class="language-python">del dict[key]
-</code></pre>
-<ul>
-<li><code>val = dict.pop(key)</code>删除键值，并返回值</li>
-</ul>
-<h2 id="3-遍历字典">3. 遍历字典</h2>
-<ul>
-<li><code>dict.keys()</code>返回所有键</li>
-<li><code>dict..values()</code>返回所有值</li>
-</ul>
-<h1 id="三-元组tuple">三、元组（tuple）</h1>
-<ul>
-<li>使用<code>(,)</code>定义元组</li>
-<li>元组不能更改（不可变）</li>
-</ul>
-<h2 id="1-初始化">1. 初始化</h2>
-<ul>
-<li>空元组<code>()</code>或<code>Tuple()</code></li>
-<li>非空元组用逗号初始化<code>1,2,3</code></li>
-<li>单值元组末尾要加逗号<code>1,</code>或<code>(1,)</code></li>
-</ul>
-<h2 id="2-访问和切分元组">2. 访问和切分元组</h2>
-<ul>
-<li>索引使用方法和列表相同</li>
-</ul>
-<h2 id="3-元组操作">3. 元组操作</h2>
-<ul>
-<li><code>tup1+tup2</code>返回合并的元组</li>
-<li><code>tup.index(elm)</code>返回元素（elm）第一个索引</li>
-<li><code>tup.count(elm)</code>对元素（elm）出现次数计数</li>
-</ul>
-<h2 id="4-元组拆包">4. 元组拆包</h2>
-<pre><code class="language-python">x,y,z = 1,3,4
-'x = {}, y = {}, z = {}'.format(x,y,z)
-</code></pre>
+<h1 id="写在前面">写在前面</h1>
+<p>原论文：Sign projected gradient flow: A continuous-time approach to convex optimization with linear equality constraints.</p>
+<h1 id="问题描述">问题描述</h1>
 
                 </div>
             </article>
         </div>
 
-        
-            <div class="next-post">
-                <div class="next gt-c-content-color-first">下一篇</div>
-                <a href="https://star2dust.github.io/post/python-grammers/" class="post-title gt-a-link">
-                    Python四大语法
-                </a>
-            </div>
         
 
         

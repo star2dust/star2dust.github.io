@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://star2dust.github.io</id>
     <title>star2dust</title>
-    <updated>2020-11-25T14:25:28.659Z</updated>
+    <updated>2020-11-25T14:26:49.496Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://star2dust.github.io"/>
     <link rel="self" href="https://star2dust.github.io/atom.xml"/>
@@ -130,7 +130,7 @@ cM = [M{:}]*kron(c,eye(size(M{1},2)));
 Omega = H'*diag(w)*H;
 </code></pre>
 <h2 id="静态编队控制源代码">静态编队控制源代码</h2>
-<p>静态编队控制源代码见我的GitHub](https://github.com/star2dust)，见项目<a href="https://github.com/star2dust/paper-simulation">paper-simulation</a>。运行Zhao2018Affine文件夹下的文件<code>affine_formation.m</code>，即可得到下面的仿真结果。</p>
+<p>静态编队控制源代码见我的<a href="https://github.com/star2dust">GitHub</a>，见项目<a href="https://github.com/star2dust/paper-simulation">paper-simulation</a>。运行Zhao2018Affine文件夹下的文件<code>affine_formation.m</code>，即可得到下面的仿真结果。</p>
 <img src="https://star2dust.github.io/post-images/1606313758743.gif"  />
 <h1 id="如何仿真时变轨迹和队形变换">如何仿真时变轨迹和队形变换</h1>
 <p>时变队形有两个难点，一个是轨迹生成，另一个是时变leader控制律。</p>

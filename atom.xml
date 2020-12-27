@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://star2dust.github.io</id>
     <title>star2dust</title>
-    <updated>2020-12-27T09:42:57.609Z</updated>
+    <updated>2020-12-27T10:02:07.481Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://star2dust.github.io"/>
     <link rel="self" href="https://star2dust.github.io/atom.xml"/>
@@ -94,7 +94,7 @@
 </li>
 <li id="fn3" class="footnote-item"><p>Jakovetić, D. (2019). A Unification and Generalization of Exact Distributed First-Order Methods. IEEE Transactions on Signal and Information Processing over Networks, 5(1), 31–46. https://doi.org/10.1109/TSIPN.2018.2846183 <a href="#fnref3" class="footnote-backref">↩︎</a></p>
 </li>
-<li id="fn4" class="footnote-item"><p>Mokhtari, A. and Ribeiro, A. (2016). DSA: Decentralized double stochastic av- eraging gradient algorithm. J. Mach. Learn. Res., vol. 17, pp. 1–35. <a href="#fnref4" class="footnote-backref">↩︎</a></p>
+<li id="fn4" class="footnote-item"><p>Mokhtari, A., &amp; Ribeiro, A. (2016). DSA: Decentralized double stochastic averaging gradient algorithm. J. Mach. Learn. Res., vol. 17, pp. 1–35. <a href="#fnref4" class="footnote-backref">↩︎</a></p>
 </li>
 <li id="fn5" class="footnote-item"><p>Qu, G., &amp; Li, N. (2018). Harnessing smoothness to accelerate distributed optimization. IEEE Transactions on Control of Network Systems, 5(3), 1245–1260. https://doi.org/10.1109/TCNS.2017.2698261 <a href="#fnref5" class="footnote-backref">↩︎</a></p>
 </li>

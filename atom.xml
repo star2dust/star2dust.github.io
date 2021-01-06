@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://star2dust.github.io</id>
     <title>star2dust</title>
-    <updated>2021-01-06T06:36:09.590Z</updated>
+    <updated>2021-01-06T06:39:46.127Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://star2dust.github.io"/>
     <link rel="self" href="https://star2dust.github.io/atom.xml"/>
@@ -11,7 +11,7 @@
     <icon>https://star2dust.github.io/favicon.ico</icon>
     <rights>All rights reserved 2021, star2dust</rights>
     <entry>
-        <title type="html"><![CDATA[【论文笔记】利用平滑度加速分布式优化——梯度跟踪法(gradient tracking)]]></title>
+        <title type="html"><![CDATA[【论文笔记】利用平滑度加速分布式优化——梯度跟踪法(Gradient Tracking)]]></title>
         <id>https://star2dust.github.io/post/gradient-tracking/</id>
         <link href="https://star2dust.github.io/post/gradient-tracking/">
         </link>

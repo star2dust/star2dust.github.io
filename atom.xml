@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://star2dust.github.io</id>
     <title>star2dust</title>
-    <updated>2021-01-17T02:41:57.467Z</updated>
+    <updated>2021-01-17T02:43:29.974Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://star2dust.github.io"/>
     <link rel="self" href="https://star2dust.github.io/atom.xml"/>
@@ -29,7 +29,7 @@
 <ol start="2">
 <li>勾选倒数第二项，“编辑不存在的文件时发出提示”，点击确定。</li>
 </ol>
-<img src="https://star2dust.github.io/post-images/1610851143903.png" style="zoom:67%;" />
+<figure data-type="image" tabindex="1"><img src="https://star2dust.github.io/post-images/1610851401102.png" alt="" loading="lazy"></figure>
 <p>可以看到，对话框提示重新出现了。</p>
 ]]></content>
     </entry>

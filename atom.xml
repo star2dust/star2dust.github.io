@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://star2dust.github.io</id>
     <title>star2dust</title>
-    <updated>2021-01-17T02:40:36.109Z</updated>
+    <updated>2021-01-17T02:41:57.467Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://star2dust.github.io"/>
     <link rel="self" href="https://star2dust.github.io/atom.xml"/>
@@ -18,18 +18,18 @@
         <updated>2021-01-17T02:29:28.000Z</updated>
         <content type="html"><![CDATA[<p>最近解决了一个困扰了我很久的matlab问题，写出来分享一下。</p>
 <p>我们知道用matlab打开一个不存在的文件时，会出现以下对话框。</p>
-<figure data-type="image" tabindex="1"><img src="https://star2dust.github.io/post-images/1610850792492.png" alt="" loading="lazy"></figure>
+<img src="https://star2dust.github.io/post-images/1610850792492.png" style="zoom:67%;" />
 <p>通过点“是”，可以创建一个新文件。</p>
 <p>然后有一天，我手贱勾选了不再提示，问题就来了。每当我想右键打开查看函数源文件定义的时候，经常不小心在当前文件夹新建一个空白文件，非常麻烦但又不知道如何取消。</p>
 <p>现在我终于找到了恢复原设置的方法。</p>
 <ol>
 <li>预设-&gt;常规-&gt;确认对话框，打开确认对话框预设项；</li>
 </ol>
-<figure data-type="image" tabindex="2"><img src="https://star2dust.github.io/post-images/1610851137860.png" alt="" loading="lazy"></figure>
+<img src="https://star2dust.github.io/post-images/1610851137860.png" style="zoom:67%;" />
 <ol start="2">
 <li>勾选倒数第二项，“编辑不存在的文件时发出提示”，点击确定。</li>
 </ol>
-<figure data-type="image" tabindex="3"><img src="https://star2dust.github.io/post-images/1610851143903.png" alt="" loading="lazy"></figure>
+<img src="https://star2dust.github.io/post-images/1610851143903.png" style="zoom:67%;" />
 <p>可以看到，对话框提示重新出现了。</p>
 ]]></content>
     </entry>

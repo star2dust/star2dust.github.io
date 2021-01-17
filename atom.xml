@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://star2dust.github.io</id>
     <title>star2dust</title>
-    <updated>2021-01-17T02:39:40.437Z</updated>
+    <updated>2021-01-17T02:40:36.109Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://star2dust.github.io"/>
     <link rel="self" href="https://star2dust.github.io/atom.xml"/>
@@ -12,8 +12,8 @@
     <rights>All rights reserved 2021, star2dust</rights>
     <entry>
         <title type="html"><![CDATA[MATLAB小tips：确认对话框预设项]]></title>
-        <id>https://star2dust.github.io/post/matlab-xiao-tipsque-ren-dui-hua-kuang-yu-she-xiang/</id>
-        <link href="https://star2dust.github.io/post/matlab-xiao-tipsque-ren-dui-hua-kuang-yu-she-xiang/">
+        <id>https://star2dust.github.io/post/matlab-que-ren-dui-hua-kuang-yu-she-xiang/</id>
+        <link href="https://star2dust.github.io/post/matlab-que-ren-dui-hua-kuang-yu-she-xiang/">
         </link>
         <updated>2021-01-17T02:29:28.000Z</updated>
         <content type="html"><![CDATA[<p>最近解决了一个困扰了我很久的matlab问题，写出来分享一下。</p>

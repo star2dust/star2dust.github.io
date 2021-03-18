@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://star2dust.github.io</id>
     <title>star2dust</title>
-    <updated>2021-03-18T08:28:51.463Z</updated>
+    <updated>2021-03-18T08:34:57.078Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://star2dust.github.io"/>
     <link rel="self" href="https://star2dust.github.io/atom.xml"/>
@@ -11,7 +11,7 @@
     <icon>https://star2dust.github.io/favicon.ico</icon>
     <rights>All rights reserved 2021, star2dust</rights>
     <entry>
-        <title type="html"><![CDATA[【论文笔记】多智能体加权质心跟踪(Weighted Centroid Tracking)的分布式观测控制器设计]]></title>
+        <title type="html"><![CDATA[【论文笔记】分布式加权质心跟踪(Weighted Centroid Tracking)的观测控制器设计]]></title>
         <id>https://star2dust.github.io/post/weighted-centroid-tracking-controller-observer/</id>
         <link href="https://star2dust.github.io/post/weighted-centroid-tracking-controller-observer/">
         </link>

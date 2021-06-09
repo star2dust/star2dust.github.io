@@ -4,7 +4,7 @@
 <meta name="description" content=""/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
 
-<title>MATLAB App Designer生成独立GUI(可执行exe)并添加依赖项 | star2dust</title>
+<title>MATLAB小技巧：确认对话框预设项 | star2dust</title>
 
 <link rel="shortcut icon" href="https://star2dust.github.io/favicon.ico?v=1623249152902">
 
@@ -99,11 +99,11 @@
         <div class="post-detail gt-bg-theme-color-second">
             <article class="gt-post-content">
                 <h2 class="post-title">
-                    MATLAB App Designer生成独立GUI(可执行exe)并添加依赖项
+                    MATLAB小技巧：确认对话框预设项
                 </h2>
                 <div class="post-info">
                     <time class="post-time gt-c-content-color-first">
-                        · 2020-10-16 ·
+                        · 2021-01-17 ·
                     </time>
                     
                         <a href="https://star2dust.github.io/tag/8ENq9b4cN/" class="post-tags">
@@ -112,53 +112,21 @@
                     
                 </div>
                 <div class="post-content">
-                    <p><ul class="markdownIt-TOC">
-<li><a href="#%E5%86%99%E5%9C%A8%E5%89%8D%E9%9D%A2">写在前面</a></li>
-<li><a href="#%E7%94%9F%E6%88%90%E6%AD%A5%E9%AA%A4">生成步骤</a>
-<ul>
-<li><a href="#%E8%AE%BE%E7%BD%AE%E7%BC%96%E8%AF%91%E5%99%A8">设置编译器</a></li>
-<li><a href="#%E7%BC%96%E5%86%99gui">编写GUI</a></li>
-<li><a href="#%E7%94%9F%E6%88%90exe">生成exe</a></li>
-</ul>
-</li>
-<li><a href="#%E5%B8%B8%E8%B8%A9%E7%9A%84%E5%9D%91">常踩的坑</a></li>
-</ul>
-</p>
-<h1 id="写在前面">写在前面</h1>
-<p>近期，由于朋友需求以及科研任务要求，我研究了一下MATLAB GUI设计，写了两个小程序。一个是读取excel部门名单生成excel排班表的排班生成器，另一个是用于机器人编队中的控制和优化算法仿真软件。</p>
-<p>程序在MATLAB上跑通很容易，麻烦的是如何将MATLAB GUI程序编译成独立可执行的程序？如何将编译好的独立可执行程序发布在没有安装MATLAB的电脑上？这篇文章讲一下生成exe的经验。</p>
-<h1 id="生成步骤">生成步骤</h1>
-<p>生成exe的过程下面将一步步实现：</p>
-<h2 id="设置编译器">设置编译器</h2>
-<p>要保证电脑中有C/C++编译器，MATLAB一般有自带的gcc，但是在Windows系统下建议使用visual studio，我电脑很早装过vs 2013，就直接选它了。MATLAB中也需要有MATLAB Compiler工具箱，否则无法编译。</p>
-<p>设置方法，使用<code>mbuid -setup</code>，选择想要的，一直y即可。</p>
-<h2 id="编写gui">编写GUI</h2>
-<p>我个人GUI的设计全部采用MATLAB自带的<strong>App Designer</strong>。这是MATLAB 2018b开始有的功能，使用方法已经很人性化了，桥总用过都说好。个人觉得甚至比MATLAB编辑器还好用，稍有GUI经验的人可以轻松上手，这里不再细讲。如果是老版本，也有GUI设计器，这时生成的是m文件，而不是mlapp文件。</p>
-<h2 id="生成exe">生成exe</h2>
-<p>首先，在App Designer中选择“共享-&gt;独立桌面app”，进入Application Compiler。</p>
-<img src="https://star2dust.github.io/post-images/1602840746816.png" style="zoom:80%;" />
-<p>随意设置“Application Information”和“additional installer options”，设置程序名字和图标，写上程序简介，设置默认安装位置，这些信息会在程序<strong>安装时</strong>出现。注意，splash screen会在程序的<strong>每一次启动时</strong>出现，记得选个炫酷的图片。</p>
-<p>然后，“Additional runtime settings”记得两项全勾上(或者全不选)。debug这档子事，懂的人都懂，大神可忽略。</p>
-<img src="https://star2dust.github.io/post-images/1602840776527.PNG" style="zoom:80%;" />
-<p><strong>最后也是最关键的，添加依赖项。</strong> 在“Files required for your application to run”中，添加依赖的m文件和路径。打包器会自动将相关路径下的所有文件(或选中m文件)添加进exe安装目录，相关依赖文件也会<strong>自动识别</strong>并添加，非常方便。</p>
-<img src="https://star2dust.github.io/post-images/1602840783451.PNG" style="zoom:67%;" />
-<p>完事之后，会生成3个文件夹，一个是正式安装包，另两个是可执行程序(相当于release和debug)。遗憾的是，处于代码保护的考虑，正式安装包和release程序将依赖的m文件直接嵌入exe，而非复制到安装目录，无法实时改脚本。</p>
-<h1 id="常踩的坑">常踩的坑</h1>
-<ul>
-<li>
-<p>进入Application Compiler之后，记得把工程另存一下。如果对打包生成路径有要求，一定注意先<strong>另存为</strong>打包工程到期望位置，在进行其他选项设置，否则默认在mlapp文件目录下生成resource等文件夹。</p>
-</li>
-<li>
-<p>所有m文件和mlapp文件<strong>不能出现</strong>添加路径和编辑器相关命令，如<code>addpath</code>、<code>mkdir</code>、<code>edit</code>等，如果你非要用，就等着感受程序既不运行也不报错的绝望吧。但是命令行命令是可以的，如<code>cd</code>，也就是说相对路径可以间接利用。</p>
-</li>
-<li>
-<p>如果你的matlab有<code>startup.m</code>文件，使用<code>isdeployed</code>命令移除所有<code>addpath</code>命令，如下所示，同时上述将移除的路径(或m文件)在“Files required for your application to run”选项中添加。</p>
-</li>
-</ul>
-<pre><code class="language-matlab">if ~isdeployed
-    addpath('your matlab path');
-end
-</code></pre>
+                    <p>最近解决了一个困扰了我很久的matlab问题，写出来分享一下。</p>
+<p>我们知道用matlab打开一个不存在的文件时，会出现以下对话框。</p>
+<img src="https://star2dust.github.io/post-images/1610850792492.png" style="zoom:67%;" />
+<p>通过点“是”，可以创建一个新文件。</p>
+<p>然后有一天，我手贱勾选了不再提示，问题就来了。每当我想右键打开查看函数源文件定义的时候，经常不小心在当前文件夹新建一个空白文件，非常麻烦但又不知道如何取消。</p>
+<p>现在我终于找到了恢复原设置的方法。</p>
+<ol>
+<li>预设-&gt;常规-&gt;确认对话框，打开确认对话框预设项；</li>
+</ol>
+<img src="https://star2dust.github.io/post-images/1610851137860.png" style="zoom:67%;" />
+<ol start="2">
+<li>勾选倒数第二项，“编辑不存在的文件时发出提示”，点击确定。</li>
+</ol>
+<img src="https://star2dust.github.io/post-images/1610851401102.png" style="zoom:67%;" />
+<p>可以看到，对话框提示重新出现了。</p>
 
                 </div>
             </article>
@@ -167,8 +135,8 @@ end
         
             <div class="next-post">
                 <div class="next gt-c-content-color-first">下一篇</div>
-                <a href="https://star2dust.github.io/post/layered-affine-formation-control/" class="post-title gt-a-link">
-                    【论文笔记】有向图下的分层仿射队形控制
+                <a href="https://star2dust.github.io/post/gradient-tracking/" class="post-title gt-a-link">
+                    【论文笔记】利用平滑度加速分布式优化——梯度跟踪法(Gradient Tracking)
                 </a>
             </div>
         

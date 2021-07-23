@@ -6,7 +6,7 @@
 
 <title>动态规划问题的思考与总结 | star2dust</title>
 
-<link rel="shortcut icon" href="https://star2dust.github.io/favicon.ico?v=1626947697424">
+<link rel="shortcut icon" href="https://star2dust.github.io/favicon.ico?v=1627014070695">
 
 <link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" rel="stylesheet">
 <link rel="stylesheet" href="https://star2dust.github.io/styles/main.css">
@@ -127,12 +127,12 @@
 <ul>
 <li><a href="#%E5%AD%90%E9%97%AE%E9%A2%98%E6%B1%82%E5%92%8C">子问题求和</a></li>
 <li><a href="#%E5%AD%90%E9%97%AE%E9%A2%98%E6%9C%80%E5%80%BC">子问题最值</a></li>
-<li><a href="#%E5%AD%90%E9%97%AE%E9%A2%98%E5%B5%8C%E5%A5%97">子问题嵌套</a></li>
+<li><a href="#%E5%AD%90%E9%97%AE%E9%A2%98%E5%88%86%E6%B2%BB">子问题分治</a></li>
+<li><a href="#%E5%AD%90%E9%97%AE%E9%A2%98%E5%A4%9A%E7%8A%B6%E6%80%81">子问题多状态</a></li>
 <li><a href="#%E9%9D%9E%E6%9C%80%E4%BC%98%E5%AD%90%E7%BB%93%E6%9E%84">非最优子结构</a></li>
 </ul>
 </li>
 <li><a href="#%E8%B4%AA%E5%BF%83%E7%AE%97%E6%B3%95">贪心算法</a></li>
-<li><a href="#kanade-%E7%AE%97%E6%B3%95">Kanade 算法</a></li>
 </ul>
 </p>
 <h1 id="什么是动态规划">什么是动态规划</h1>
@@ -140,8 +140,7 @@
 <ul>
 <li>什么样的题目需要用动态规划？</li>
 </ul>
-<p>动态规划要解决的都是一些问题的<strong>最优解</strong>，即从很多解决问题的方案中找到最优的一个。以<a href="https://leetcode-cn.com/study-plan/dynamic-programming/">力扣动态规划专题</a>为例，题目都是形如最长数组长度、最小花费、最大和等。</p>
-<p>当我们在求一个问题最优解的时候，可以把这个问题分解成多个子问题，然后递归地找到每个子问题的最优解，最后通过一定的数学方法对各个子问题的最优解进行组合得出最终的结果。总结来说就是一个问题的最优解是由它的各个子问题的最优解决定的。</p>
+<p>动态规划要解决的都是一些问题的<strong>最优解</strong>，即从很多解决问题的方案中找到最优的一个。以<a href="https://leetcode-cn.com/study-plan/dynamic-programming/">力扣动态规划专题</a>为例，题目都是形如最长数组长度、最小花费、最大和等。当我们在求一个问题最优解的时候，可以把这个问题分解成多个子问题，然后递归地找到每个子问题的最优解，最后通过一定的数学方法对各个子问题的最优解进行组合得出最终的结果。总结来说就是一个问题的最优解是由它的各个子问题的最优解决定的。</p>
 <p><strong>将子问题的解进行组合可以得到原问题的解是动态规划可行性的关键。<strong>即存在最优子结构，实际上不一定所有的问题的解都能被直接写为子问题的组合。在解题中一般用</strong>状态转移方程</strong>描述这种组合。例如原问题的解为<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>f</mi><mo>(</mo><mi>n</mi><mo>)</mo></mrow><annotation encoding="application/x-tex">f(n)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.10764em;">f</span><span class="mopen">(</span><span class="mord mathdefault">n</span><span class="mclose">)</span></span></span></span>，即状态。状态转移方程形如<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>f</mi><mo>(</mo><mi>n</mi><mo>)</mo><mo>=</mo><mi>f</mi><mo>(</mo><mi>n</mi><mo>−</mo><mn>1</mn><mo>)</mo><mo>+</mo><mi>f</mi><mo>(</mo><mi>n</mi><mo>−</mo><mn>2</mn><mo>)</mo></mrow><annotation encoding="application/x-tex">f(n) = f(n - 1) + f(n - 2)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.10764em;">f</span><span class="mopen">(</span><span class="mord mathdefault">n</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span><span class="mrel">=</span><span class="mspace" style="margin-right:0.2777777777777778em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.10764em;">f</span><span class="mopen">(</span><span class="mord mathdefault">n</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">1</span><span class="mclose">)</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">+</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.10764em;">f</span><span class="mopen">(</span><span class="mord mathdefault">n</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span><span class="mbin">−</span><span class="mspace" style="margin-right:0.2222222222222222em;"></span></span><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord">2</span><span class="mclose">)</span></span></span></span>，即斐波拉契数列递推公式，描述了一种原问题与子问题的组合关系 。找到了<strong>最优子结构</strong>，也就能推导出一个状态转移方程<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>f</mi><mo>(</mo><mi>n</mi><mo>)</mo></mrow><annotation encoding="application/x-tex">f(n)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.10764em;">f</span><span class="mopen">(</span><span class="mord mathdefault">n</span><span class="mclose">)</span></span></span></span>，通过这个状态转移方程，我们能很快的写出问题的递归实现方法。</p>
 <ul>
 <li>为什么不用递归？</li>
@@ -160,7 +159,7 @@
 <li>证明子问题是重叠的（这一步不是动态规划正确性必需的，但是如果子问题无重叠，则效率与一般递归是相同的）。</li>
 </ol>
 <h1 id="解决动态规划问题的步骤">解决动态规划问题的步骤</h1>
-<p>动态规划有两种计算顺序，一种是**自顶向下的、使用备忘录（记忆化）<strong>的递归方法，一种是</strong>自底向上的、使用DP数组（滚动数组）**的循环方法。不过在普通的动态规划题目中，99% 的情况我们都不需要用到备忘录方法，所以我们最好坚持用自底向上的DP数组。</p>
+<p>动态规划有两种计算顺序，一种是自顶向下的、使用备忘录（记忆化）的递归方法，一种是自底向上的、使用DP数组（滚动数组）的循环方法。不过在普通的动态规划题目中，99% 的情况我们都不需要用到备忘录方法，所以我们最好坚持用自底向上的DP数组。同时备忘录方法的空间复杂度会比较高。</p>
 <ul>
 <li>自顶向下</li>
 </ul>
@@ -200,7 +199,7 @@
 }
 </code></pre>
 <h2 id="子问题最值">子问题最值</h2>
-<p>另一种常见递推关系是后一个子问题等于前几个子问题最值，如<a href="https://leetcode-cn.com/problems/min-cost-climbing-stairs/">746. 使用最小花费爬楼梯</a>和<a href="https://leetcode-cn.com/problems/house-robber/">198. 打家劫舍</a>。</p>
+<p>另一种常见递推关系是后一个子问题等于前几个子问题的最值，如<a href="https://leetcode-cn.com/problems/min-cost-climbing-stairs/">746. 使用最小花费爬楼梯</a>和<a href="https://leetcode-cn.com/problems/house-robber/">198. 打家劫舍</a>。</p>
 <blockquote>
 <p><strong>198、打家劫舍</strong>：你是一个专业的小偷，计划偷窃沿街的房屋。每间房内都藏有一定的现金，影响你偷窃的唯一制约因素就是相邻的房屋装有相互连通的防盗系统，如果两间相邻的房屋在同一晚上被小偷闯入，系统会自动报警。给定一个代表每个房屋存放金额的非负整数数组，计算你不触动警报装置的情况下，一夜之内能够偷窃到的最高金额。</p>
 </blockquote>
@@ -227,7 +226,7 @@
     for (int i = 0; i &lt; n; i++){//f(i)表示以第i个数结尾的“连续子数组最大和”
         //i-1结尾的最大和+nums[i]和仅一个nums[i]比较大小
         pre = max(pre + nums[i], nums[i]); //f(i)=max(f(i-1)+nums[i],nums[i])
-        //f(i)=nums[i]+max(f(i-1),0)另一种写法，如果f(i-1)是正的，则相加必然更大，否则从i重新开始
+        //f(i)=nums[i]+max(f(i-1),0)是另一种写法（kadane算法），如果f(i-1)是正的，则相加必然更大，否则从i重新开始
         rmax = max(pre, rmax); //打擂维护最大和
     }
     return rmax;
@@ -249,20 +248,35 @@
     return vmax;
 }
 </code></pre>
-<p>官方题解用了另一种思路：对于每一个j而言，<code>values[j]-j</code>是固定的，那么以j为右边界的最大得分取决于<code>values[i]+i</code>。那么只需要一次遍历，每次找到最大<code>values[i]+i</code>即可。</p>
+<p>官方题解用了另一种思路：对于每一个j而言，<code>values[j]-j</code>是固定的，那么以j为右边界的最大得分取决于<code>values[i]+i</code>。那么只需要一次遍历，每次找到最大<code>values[i]+i</code>即可。这一思路同样可以用于<a href="https://leetcode-cn.com/problems/best-time-to-buy-and-sell-stock/">121. 买卖股票的最佳时机</a>（只能买卖一次）。</p>
 <pre><code class="language-cpp">int maxScoreSightseeingPair(vector&lt;int&gt;&amp; values) {
     int n = values.size();
     //imax为最大values[i]+i
     int imax = values[0] + 0, vmax = 0;
     for (int j = 1; j &lt; n; j++){
-        vmax = max(values[j] - j + imax, vmax);//维护最高得分
-        imax = max(values[j] + j, imax);//维护最大imax
+        vmax = max(values[j] - j + imax, vmax);//维护最高得分（前一个维护要返回的最优解）
+        imax = max(values[j] + j, imax);//维护最大imax（后一个维护j之前的子问题最值）
     }
     return vmax;
 }
 </code></pre>
-<h2 id="子问题嵌套">子问题嵌套</h2>
-<p>动态规划问题可以表示为多个子问题的组合，如果子问题同样也是动态规划问题，则为嵌套。嵌套的子问题通常是上面两类，需要在其中找最优，如<a href="https://leetcode-cn.com/problems/house-robber-ii/">213. 打家劫舍 II</a>（环形打家劫舍）和<a href="https://leetcode-cn.com/problems/maximum-sum-circular-subarray/">918. 环形子数组的最大和</a>。</p>
+<blockquote>
+<p><strong>121、买卖股票的最佳时机</strong>：给定一个数组 prices ，它的第 i 个元素 prices[i] 表示一支给定股票第 i 天的价格。你只能选择 某一天 买入这只股票，并选择在 未来的某一个不同的日子 卖出该股票。设计一个算法来计算你所能获取的最大利润。返回你可以从这笔交易中获取的最大利润。如果你不能获取任何利润，返回 0 。</p>
+</blockquote>
+<pre><code class="language-cpp">int maxProfit(vector&lt;int&gt;&amp; prices) {
+	int n = prices.size();
+    if (n&lt;2) return 0;//注意特判，有些测试用例会给一些特殊情况
+	int pmin = prices[0], rmax = 0;
+	for (int i = 1; i &lt; n; i++){
+		rmax = max(rmax, prices[i] - pmin);//维护利润最大值（pmin是所有以前天数价格最小值）
+		pmin = min(pmin, prices[i]);//维护买入价格最小值
+	}
+	return rmax;
+}
+</code></pre>
+<h2 id="子问题分治">子问题分治</h2>
+<p>分治法的设计思想是：将一个难以直接解决的大问题，分割成一些规模较小的相同问题，以便各个击破，分而治之。</p>
+<p>动态规划问题可以表示为多个子问题的组合，如果子问题同样也是动态规划问题，且解法相同，则可以用分治法，如<a href="https://leetcode-cn.com/problems/house-robber-ii/">213. 打家劫舍 II</a>（环形打家劫舍）和<a href="https://leetcode-cn.com/problems/maximum-sum-circular-subarray/">918. 环形子数组的最大和</a>。一般情况下，除非子问题很明显是已经解决过的老问题，尽量不考虑分治。</p>
 <blockquote>
 <p><strong>213、打家劫舍II</strong>：你是一个专业的小偷，计划偷窃沿街的房屋，每间房内都藏有一定的现金。这个地方所有的房屋都 围成一圈 ，这意味着第一个房屋和最后一个房屋是紧挨着的。同时，相邻的房屋装有相互连通的防盗系统，如果两间相邻的房屋在同一晚上被小偷闯入，系统会自动报警 。给定一个代表每个房屋存放金额的非负整数数组，计算你 在不触动警报装置的情况下 ，今晚能够偷窃到的最高金额。</p>
 </blockquote>
@@ -296,7 +310,7 @@ int robRange(vector&lt;int&gt;&amp; nums, int start, int end){
 	int dp = nums[0];      //初始化dp，以i结尾的最大子序列和
 	int smax = dp;         //非环最大子序列和
 	int sum = dp;          //整个数组的和
-	//求最大子序列和，见53题
+	//求最大子序列和，见53题，kadane算法
 	for (int i = 1; i &lt; nums.size(); i++) {
 		dp = nums[i] + max(dp, 0);
 		smax = max(dp, smax);
@@ -313,13 +327,13 @@ int robRange(vector&lt;int&gt;&amp; nums, int start, int end){
 	return max(sum - smin, smax);
 }
 </code></pre>
-<p>环最大子序列和要么是非环最大子序列和，要么是整个数组的和减[1,n-2]最小序列和，如图下图所示。</p>
+<p>环最大子序列和要么是非环最大子序列和，要么是整个数组的和减[1,n-2]最小序列和，如下图所示（图片来自力扣）。</p>
 <ul>
 <li>不同时包括0和n-1，环最大子序列和是非环最大子序列和，即53题；</li>
 <li>同时包括0和n-1，环最大子序列和是整个数组的和减[1,n-2]最小序列和，因为整个数组总和是一定的，令中间[1,n-2]范围子序列和最小，再减掉，剩下两头部分首尾相连，即为环最大子序列和。</li>
 </ul>
-<figure data-type="image" tabindex="1"><img src="https://star2dust.github.io/post-images/1626937363129.png" alt="" loading="lazy"></figure>
-<p>值得一提的是，有些问题可以经过数据结构转换变成前两类问题，如<a href="https://leetcode-cn.com/problems/delete-and-earn/">740. 删除并获得点数</a>（打家劫舍IV）。</p>
+<img src="https://star2dust.github.io/post-images/1626937363129.png" style="zoom:50%;" />
+<p>值得一提的是，有些问题可以经过数据结构转换变成已解决过的动态规划问题，如<a href="https://leetcode-cn.com/problems/delete-and-earn/">740. 删除并获得点数</a>（打家劫舍IV）。</p>
 <blockquote>
 <p><strong>740、删除并获得点数</strong>：给你一个整数数组 nums ，你可以对它进行一些操作。每次操作中，选择任意一个 nums[i] ，删除它并获得 nums[i] 的点数。之后，你必须删除 所有 等于 nums[i] - 1 和 nums[i] + 1 的元素。开始你拥有 0 个点数。返回你能通过这些操作获得的最大点数。</p>
 </blockquote>
@@ -338,8 +352,79 @@ int deleteAndEarn(vector&lt;int&gt;&amp; nums) {
     return rob(all);//跑一遍打家劫舍
 }
 </code></pre>
+<h2 id="子问题多状态">子问题多状态</h2>
+<p>有些复杂问题不只有一种状态，每一种状态都有相应的子问题递推关系，最后返回所有状态中的最值，如力扣平台上的股票类型的题目：</p>
+<ul>
+<li><a href="https://leetcode-cn.com/problems/best-time-to-buy-and-sell-stock/">121. 买卖股票的最佳时机</a>（只能买卖一次，该问题只需要维护一个状态，见【子问题最值】一节）</li>
+<li><a href="https://leetcode-cn.com/problems/best-time-to-buy-and-sell-stock-ii/">122. 买卖股票的最佳时机 II</a>（可以买卖多次）</li>
+<li><a href="https://leetcode-cn.com/problems/best-time-to-buy-and-sell-stock-iii/">123. 买卖股票的最佳时机 III</a>（最多买卖两次）</li>
+<li><a href="https://leetcode-cn.com/problems/best-time-to-buy-and-sell-stock-iv/">188. 买卖股票的最佳时机 IV</a>（最多买卖k次）</li>
+<li><a href="https://leetcode-cn.com/problems/best-time-to-buy-and-sell-stock-with-cooldown/">309. 最佳买卖股票时机含冷冻期</a>（买卖多次，卖出有一天冷冻期）</li>
+<li><a href="https://leetcode-cn.com/problems/best-time-to-buy-and-sell-stock-with-transaction-fee/">714. 买卖股票的最佳时机含手续费</a>（买卖多次，每次有手续费）</li>
+</ul>
+<blockquote>
+<p><strong>122、买卖股票的最佳时机 II</strong>：给定一个数组 prices ，其中 prices[i] 是一支给定股票第 i 天的价格。设计一个算法来计算你所能获取的最大利润。你可以尽可能地完成更多的交易（多次买卖一支股票）。注意：你不能同时参与多笔交易（你必须在再次购买前出售掉之前的股票）。</p>
+</blockquote>
+<pre><code class="language-cpp">int maxProfit2(vector&lt;int&gt;&amp; prices) {
+	int n = prices.size();
+	if (n &lt; 2) return 0;
+	int p0 = -prices[0], p1 = 0;//两种状态
+    //p0：持有股票时最大利润
+    //p1：不持有股票时最大利润
+	for (int i = 0; i &lt; n; i++){
+		int p0_temp = max(p0, p1 - prices[i]);//继续持有或买入
+		int p1_temp = max(p1, p0 + prices[i]);//继续不持有或卖出
+		p0 = p0_temp;
+		p1 = p1_temp;
+	}
+	return p1;//最后持有不卖没有意义，只需返回不持有时最大利润
+}
+</code></pre>
+<blockquote>
+<p><strong>309、最佳买卖股票时机含冷冻期</strong>：给定一个整数数组，其中第 i 个元素代表了第 i 天的股票价格 。设计一个算法计算出最大利润。在满足以下约束条件下，你可以尽可能地完成更多的交易（多次买卖一支股票）:</p>
+<ul>
+<li>你不能同时参与多笔交易（你必须在再次购买前出售掉之前的股票）。</li>
+<li>卖出股票后，你无法在第二天买入股票 (即冷冻期为 1 天)。</li>
+</ul>
+</blockquote>
+<pre><code class="language-cpp">int maxProfit5(vector&lt;int&gt;&amp; prices) {
+	int n = prices.size();
+	if (n &lt; 2) return 0;
+	int p0 = -prices[0], p1 = 0, p2 = 0;//三种状态
+	// p0: 手上持有股票的最大收益
+	// p1: 手上不持有股票，并且当天结束时处于冷冻期中的累计最大收益（i天卖出）
+	// p2: 手上不持有股票，并且当天结束时不在冷冻期中的累计最大收益（i-1天及之前卖出）
+	for (int i = 1; i &lt; n; i++){
+		int p0_temp = max(p2 - prices[i], p0);//i天买入或者继续持有
+		int p1_temp = p0 + prices[i];//i天卖出
+		int p2_temp = max(p1, p2);//继续不持有
+		p0 = p0_temp, p1 = p1_temp, p2 = p2_temp;
+	}
+	return max(p1, p2);//最后持有不卖没有意义，只需返回不持有时最大利润
+}
+</code></pre>
+<blockquote>
+<p>714、买卖股票的最佳时机含手续费：给定一个整数数组 prices，其中第 i 个元素代表了第 i 天的股票价格 ；整数 fee 代表了交易股票的手续费用。你可以无限次地完成交易，但是你每笔交易都需要付手续费。如果你已经购买了一个股票，在卖出它之前你就不能再继续购买股票了。返回获得利润的最大值。</p>
+<p>注意：这里的一笔交易指买入持有并卖出股票的整个过程，每笔交易你只需要为支付一次手续费。</p>
+</blockquote>
+<pre><code class="language-cpp">int maxProfit6(vector&lt;int&gt;&amp; prices, int fee) {
+    //此题和122几乎一模一样，唯一的区别在于手续费，这里假设每次卖出时收费
+	int n = prices.size();
+	if (n &lt; 2) return 0;
+	int p0 = -prices[0], p1 = 0;//两种状态
+    //p0：持有股票的最大收益
+    //p1：不持有股票的最大收益
+	for (int i = 0; i &lt; n; i++){
+		int p0_temp = max(p0, p1 - prices[i]);//继续持有或买入
+		int p1_temp = max(p1, p0 + prices[i] - fee);//继续不持有或卖出，卖出时收手续费
+		p0 = p0_temp;
+		p1 = p1_temp;
+	}
+	return p1;//返回不持有时最大利润
+}
+</code></pre>
 <h2 id="非最优子结构">非最优子结构</h2>
-<p>有些问题无法通过子问题的组合得到递推关系，即当前位置的最优解未必是由前一个位置的最优解转移得到的，但是也能用动态规划的思想。通常问题是带有交替符号特性的，如<a href="https://leetcode-cn.com/problems/maximum-product-subarray/">152. 乘积最大子数组</a>和<a href="https://leetcode-cn.com/problems/maximum-length-of-subarray-with-positive-product/">1567. 乘积为正数的最长子数组长度</a>。</p>
+<p>有些问题无法通过子问题的组合得到递推关系，但是也能用动态规划的思想，如<a href="https://leetcode-cn.com/problems/maximum-product-subarray/">152. 乘积最大子数组</a>和<a href="https://leetcode-cn.com/problems/maximum-length-of-subarray-with-positive-product/">1567. 乘积为正数的最长子数组长度</a>。通常问题是带有交替符号特性的，还要注意存temp以避免变量覆盖。</p>
 <blockquote>
 <p><strong>152、乘积最大子数组</strong>：给你一个整数数组 <code>nums</code> ，请你找出数组中乘积最大的连续子数组（该子数组中至少包含一个数字），并返回该子数组所对应的乘积。</p>
 </blockquote>
@@ -389,14 +474,67 @@ int deleteAndEarn(vector&lt;int&gt;&amp; nums) {
 }
 </code></pre>
 <h1 id="贪心算法">贪心算法</h1>
-<p>55 45</p>
-<h1 id="kanade-算法">Kanade 算法</h1>
-<p>918</p>
+<p>前面讲了常规的子问题递推方法，下面讲贪心算法。核心思路是，在递推的同时，尽可能保证最大化目标。</p>
+<blockquote>
+<p><strong>55、跳跃游戏</strong>：给定一个非负整数数组 nums ，你最初位于数组的 第一个下标 。数组中的每个元素代表你在该位置可以跳跃的最大长度。判断你是否能够到达最后一个下标。</p>
+</blockquote>
+<p>在本问题中，如果能到达某个位置，那一定能到达它前面的所有位置。对于任意y，只要存在一个x，使得跳跃最大长度<code>x+nums[x]</code>大于等于y，那么y必然可以到达。这样以来，我们依次遍历数组中的每一个位置，并实时维护<strong>最远可以到达的位置</strong>。对于当前遍历到的位置x，如果它在最远可以到达的位置的范围内，那么我们就可以从起点通过若干次跳跃到达该位置，因此我们可以用<code>x+nums[x]</code>更新最远可以到达的位置。遍历的过程中，如果最远可以到达的位置大于等于数组中的最后一个位置，那就说明最后一个位置可达，我们就可以直接返回 True 作为答案。反之，如果在遍历结束后，最后一个位置仍然不可达，我们就返回 False 作为答案。</p>
+<pre><code class="language-cpp">bool canJump(vector&lt;int&gt;&amp; nums) {
+	int n = nums.size(), far = 0; //找到最远能到达的点far
+	for (int i = 0; i &lt;= far; i++){//如果i在最远可以到达的点范围内
+		far = max(far, i + nums[i]);//每到一个位置更新最远能到达的点
+		if (far &gt;= n - 1){//最远位置超过n-1即成功
+			return true;
+		}
+	}
+	return false;
+}
+</code></pre>
+<blockquote>
+<p><strong>45、跳跃游戏 II</strong>：给你一个非负整数数组 nums ，你最初位于数组的第一个位置。数组中的每个元素代表你在该位置可以跳跃的最大长度。你的目标是使用最少的跳跃次数到达数组的最后一个位置。假设你总是可以到达数组的最后一个位置。</p>
+</blockquote>
+<p>在本问题中，我们「贪心」地进行正向查找，找到可到达的最远位置x，在[0,x]之间遍历维护下一步能到达的最远位置y，遍历完毕更新边界为[x,y]并将跳跃次数增加 1，重复遍历过程，直到新的右边界大n-1。</p>
+<pre><code class="language-cpp">int jump(vector&lt;int&gt;&amp; nums) {
+	int n = nums.size(), far = 0, end = 0, cnt = 0;
+	for (int i = 0; i &lt; n - 1; i++){//遍历到n-2避免最后重复跳一次（nums[n-2]必大于0）
+		if (far &gt;= i){
+			far = max(far, i + nums[i]);//一跳最远距离
+			if (i == end){//如果到了右边界end，更新end=far，上一次的end变成左边界）
+				end = far;
+				cnt++;//保证i遍历到end之前只跳一次
+			}
+		}
+	}
+	return cnt;
+}
+</code></pre>
+<p>利用贪心算法，我们也可以给买卖股票问题提供一个新的思路。</p>
+<blockquote>
+<p><strong>122、买卖股票的最佳时机 II</strong>：给定一个数组 prices ，其中 prices[i] 是一支给定股票第 i 天的价格。设计一个算法来计算你所能获取的最大利润。你可以尽可能地完成更多的交易（多次买卖一支股票）。注意：你不能同时参与多笔交易（你必须在再次购买前出售掉之前的股票）</p>
+</blockquote>
+<pre><code class="language-cpp">int maxProfit2(vector&lt;int&gt;&amp; prices) {
+	int n = prices.size();
+	int rmax = 0;
+	for (int i = 1; i &lt; n; i++){
+		if (prices[i] - prices[i - 1] &gt; 0){//只要股票涨一天就加上一天收益，不涨就在前一天卖掉
+			rmax += prices[i] - prices[i - 1];
+		}
+	}
+	return rmax;
+}
+</code></pre>
 
                 </div>
             </article>
         </div>
 
+        
+            <div class="next-post">
+                <div class="next gt-c-content-color-first">下一篇</div>
+                <a href="https://star2dust.github.io/post/distributed-optimization-projection-free-dynamics/" class="post-title gt-a-link">
+                    【论文笔记】用无投影动力学解决分布式优化问题
+                </a>
+            </div>
         
 
         

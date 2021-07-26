@@ -4,7 +4,7 @@
 <meta name="description" content=""/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
 
-<title>MATLAB App Designer生成独立GUI(可执行exe)并添加依赖项 | star2dust</title>
+<title>深度/广度优先搜索算法思路解析和标准模板 | star2dust</title>
 
 <link rel="shortcut icon" href="https://star2dust.github.io/favicon.ico?v=1627298990715">
 
@@ -107,66 +107,83 @@
         <div class="post-detail gt-bg-theme-color-second">
             <article class="gt-post-content">
                 <h2 class="post-title">
-                    MATLAB App Designer生成独立GUI(可执行exe)并添加依赖项
+                    深度/广度优先搜索算法思路解析和标准模板
                 </h2>
                 <div class="post-info">
                     <time class="post-time gt-c-content-color-first">
-                        · 2020-10-16 ·
+                        · 2021-07-26 ·
                     </time>
                     
-                        <a href="https://star2dust.github.io/tag/8ENq9b4cN/" class="post-tags">
-                            # Matlab
+                        <a href="https://star2dust.github.io/tag/DuA8BNEBr/" class="post-tags">
+                            # Algorithm
                         </a>
                     
                 </div>
                 <div class="post-content">
                     <p><ul class="markdownIt-TOC">
-<li><a href="#%E5%86%99%E5%9C%A8%E5%89%8D%E9%9D%A2">写在前面</a></li>
-<li><a href="#%E7%94%9F%E6%88%90%E6%AD%A5%E9%AA%A4">生成步骤</a>
-<ul>
-<li><a href="#%E8%AE%BE%E7%BD%AE%E7%BC%96%E8%AF%91%E5%99%A8">设置编译器</a></li>
-<li><a href="#%E7%BC%96%E5%86%99gui">编写GUI</a></li>
-<li><a href="#%E7%94%9F%E6%88%90exe">生成exe</a></li>
-</ul>
-</li>
-<li><a href="#%E5%B8%B8%E8%B8%A9%E7%9A%84%E5%9D%91">常踩的坑</a></li>
+<li><a href="#%E9%97%AE%E9%A2%98%E6%8F%8F%E8%BF%B0">问题描述</a></li>
+<li><a href="#%E6%B7%B1%E5%BA%A6%E5%B9%BF%E5%BA%A6%E4%BC%98%E5%85%88%E6%90%9C%E7%B4%A2%E7%AE%97%E6%B3%95">深度/广度优先搜索算法</a></li>
+<li><a href="#%E4%B8%A4%E7%A7%8D%E7%AE%97%E6%B3%95%E6%A0%87%E5%87%86%E6%A8%A1%E6%9D%BF">两种算法标准模板</a></li>
 </ul>
 </p>
-<h1 id="写在前面">写在前面</h1>
-<p>近期，由于朋友需求以及科研任务要求，我研究了一下MATLAB GUI设计，写了两个小程序。一个是读取excel部门名单生成excel排班表的排班生成器，另一个是用于机器人编队中的控制和优化算法仿真软件。</p>
-<p>程序在MATLAB上跑通很容易，麻烦的是如何将MATLAB GUI程序编译成独立可执行的程序？如何将编译好的独立可执行程序发布在没有安装MATLAB的电脑上？这篇文章讲一下生成exe的经验。</p>
-<h1 id="生成步骤">生成步骤</h1>
-<p>生成exe的过程下面将一步步实现：</p>
-<h2 id="设置编译器">设置编译器</h2>
-<p>要保证电脑中有C/C++编译器，MATLAB一般有自带的gcc，但是在Windows系统下建议使用visual studio，我电脑很早装过vs 2013，就直接选它了。MATLAB中也需要有MATLAB Compiler工具箱，否则无法编译。</p>
-<p>设置方法，使用<code>mbuid -setup</code>，选择想要的，一直y即可。</p>
-<h2 id="编写gui">编写GUI</h2>
-<p>我个人GUI的设计全部采用MATLAB自带的<strong>App Designer</strong>。这是MATLAB 2018b开始有的功能，使用方法已经很人性化了，桥总用过都说好。个人觉得甚至比MATLAB编辑器还好用，稍有GUI经验的人可以轻松上手，这里不再细讲。如果是老版本，也有GUI设计器，这时生成的是m文件，而不是mlapp文件。</p>
-<h2 id="生成exe">生成exe</h2>
-<p>首先，在App Designer中选择“共享-&gt;独立桌面app”，进入Application Compiler。</p>
-<img src="https://star2dust.github.io/post-images/1602840746816.png" style="zoom:80%;" />
-<p>随意设置“Application Information”和“additional installer options”，设置程序名字和图标，写上程序简介，设置默认安装位置，这些信息会在程序<strong>安装时</strong>出现。注意，splash screen会在程序的<strong>每一次启动时</strong>出现，记得选个炫酷的图片。</p>
-<p>然后，“Additional runtime settings”记得两项全勾上(或者全不选)。debug这档子事，懂的人都懂，大神可忽略。</p>
-<img src="https://star2dust.github.io/post-images/1602840776527.PNG" style="zoom:80%;" />
-<p><strong>最后也是最关键的，添加依赖项。</strong> 在“Files required for your application to run”中，添加依赖的m文件和路径。打包器会自动将相关路径下的所有文件(或选中m文件)添加进exe安装目录，相关依赖文件也会<strong>自动识别</strong>并添加，非常方便。</p>
-<img src="https://star2dust.github.io/post-images/1602840783451.PNG" style="zoom:67%;" />
-<p>完事之后，会生成3个文件夹，一个是正式安装包，另两个是可执行程序(相当于release和debug)。遗憾的是，处于代码保护的考虑，正式安装包和release程序将依赖的m文件直接嵌入exe，而非复制到安装目录，无法实时改脚本。</p>
-<h1 id="常踩的坑">常踩的坑</h1>
+<h1 id="问题描述">问题描述</h1>
+<p>给定一个<strong>图</strong>(graph)，已知起始点<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>S</mi></mrow><annotation encoding="application/x-tex">S</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.05764em;">S</span></span></span></span>和目标点<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>G</mi></mrow><annotation encoding="application/x-tex">G</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault">G</span></span></span></span>，搜索图产生一条<strong>搜索树</strong>(search tree)，那么反向查找即可找到一条从起始点<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>S</mi></mrow><annotation encoding="application/x-tex">S</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.05764em;">S</span></span></span></span>到目标点<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>G</mi></mrow><annotation encoding="application/x-tex">G</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault">G</span></span></span></span>​的路径。</p>
+<figure data-type="image" tabindex="1"><img src="https://star2dust.github.io/post-images/1627265150549.png" alt="" loading="lazy"></figure>
+<p>问题难点在于，如何构建这个搜索树？需要思考几个问题：</p>
 <ul>
-<li>
-<p>进入Application Compiler之后，记得把工程另存一下。如果对打包生成路径有要求，一定注意先<strong>另存为</strong>打包工程到期望位置，在进行其他选项设置，否则默认在mlapp文件目录下生成resource等文件夹。</p>
-</li>
-<li>
-<p>所有m文件和mlapp文件<strong>不能出现</strong>添加路径和编辑器相关命令，如<code>addpath</code>、<code>mkdir</code>、<code>edit</code>等，如果你非要用，就等着感受程序既不运行也不报错的绝望吧。但是命令行命令是可以的，如<code>cd</code>，也就是说相对路径可以间接利用。</p>
-</li>
-<li>
-<p>如果你的matlab有<code>startup.m</code>文件，使用<code>isdeployed</code>命令移除所有<code>addpath</code>命令，如下所示，同时上述将移除的路径(或m文件)在“Files required for your application to run”选项中添加。</p>
-</li>
+<li>是否一定要构建一整个搜索树？如果不是，我们需要遍历哪些点？</li>
+<li>搜索终止条件是什么？如果图是环形的怎么办？</li>
+<li>如何尽快找到目标点<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>G</mi></mrow><annotation encoding="application/x-tex">G</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault">G</span></span></span></span>？</li>
 </ul>
-<pre><code class="language-matlab">if ~isdeployed
-    addpath('your matlab path');
-end
+<p>为了解决这几个问题，我们提出<strong>容器</strong>(container)的概念。如果不需要遍历所有节点，那么只将需要遍历的点放入容器中，容器初始状态放入起始点<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>S</mi></mrow><annotation encoding="application/x-tex">S</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.05764em;">S</span></span></span></span>。搜索终止条件就很明显了，当容器为空即终止。那么图是环形的怎么办呢？我们需要定义一个备忘录，标记以访问节点和未访问节点，避免重复搜索。</p>
+<h1 id="深度广度优先搜索算法">深度/广度优先搜索算法</h1>
+<p>深度优先搜索算法(depth first search)和广度优先搜索算法(breadth first search)用于解决构建搜索树问题的两种算法，他们的区别在于容器的不同。</p>
+<figure data-type="image" tabindex="2"><img src="https://star2dust.github.io/post-images/1627265942074.png" alt="" loading="lazy"></figure>
+<p>深度优先搜索算法的策略是：移除/扩展容器中最深的节点，即后入先出(last in first out)。</p>
+<figure data-type="image" tabindex="3"><img src="https://star2dust.github.io/post-images/1627267339863.png" alt="" loading="lazy"></figure>
+<p>广度优先搜索算法的策略是：移除/扩展容器中最浅的节点，即先入先出(first in first out)。</p>
+<figure data-type="image" tabindex="4"><img src="https://star2dust.github.io/post-images/1627267555658.png" alt="" loading="lazy"></figure>
+<h1 id="两种算法标准模板">两种算法标准模板</h1>
+<p>广度优先搜索算法标准模板：</p>
+<pre><code class="language-cpp">void bfs(){
+    定义队列;
+    定义备忘录，用于记录已经访问的位置;
+    判断边界条件，是否能直接返回;
+    将起始位置加入到队列中;
+    更新备忘录；//必须加入时更新备忘录
+    while (队列不为空){
+        获取当前队列(当前层级)中的元素个数；
+        for (该层元素个数){
+            取出一个位置节点；
+            判断是否到达终点位置，是则返回；//最关键的循环终止条件
+            获取它对应的下一层级所有的节点；
+            for (下层元素个数){
+                if (可行位置且未访问过){
+                    //如果入队时不更新备忘录，此时有可能又搜到上层节点
+					加入该位置到队列；
+                    更新备忘录；
+                }
+            }
+        }
+    }
+    遍历完毕，返回；
+}
 </code></pre>
+<p>深度优先搜索算法标准模板：</p>
+<pre><code class="language-cpp">void dfs(当前位置){
+    判断是否到达终点位置，是则返回；//最关键的递归终止条件(找到为止)
+    获取它对应的下一层级所有的节点；
+    for (下层元素个数){
+        dfs(下层位置)；//对子树做dfs
+    }
+}
+void main(){
+    判断边界条件，是否能直接返回;
+    dfs(起始位置)；
+    遍历完毕，返回；    
+}
+</code></pre>
+<p>当然，深度优先搜索算法也可以按照广度优先搜索算法的模板写，需要把队列改成堆栈。</p>
 
                 </div>
             </article>
@@ -175,8 +192,8 @@ end
         
             <div class="next-post">
                 <div class="next gt-c-content-color-first">下一篇</div>
-                <a href="https://star2dust.github.io/post/layered-affine-formation-control/" class="post-title gt-a-link">
-                    【论文笔记】有向图下的分层仿射队形控制
+                <a href="https://star2dust.github.io/post/dynamic-programing-discussion/" class="post-title gt-a-link">
+                    动态规划问题的思考与总结
                 </a>
             </div>
         

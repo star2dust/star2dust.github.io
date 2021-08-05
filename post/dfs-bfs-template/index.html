@@ -6,7 +6,7 @@
 
 <title>深度/广度优先搜索算法思路解析和标准模板 | star2dust</title>
 
-<link rel="shortcut icon" href="https://star2dust.github.io/favicon.ico?v=1627298990715">
+<link rel="shortcut icon" href="https://star2dust.github.io/favicon.ico?v=1628153754012">
 
 <link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" rel="stylesheet">
 <link rel="stylesheet" href="https://star2dust.github.io/styles/main.css">
@@ -124,11 +124,12 @@
 <li><a href="#%E9%97%AE%E9%A2%98%E6%8F%8F%E8%BF%B0">问题描述</a></li>
 <li><a href="#%E6%B7%B1%E5%BA%A6%E5%B9%BF%E5%BA%A6%E4%BC%98%E5%85%88%E6%90%9C%E7%B4%A2%E7%AE%97%E6%B3%95">深度/广度优先搜索算法</a></li>
 <li><a href="#%E4%B8%A4%E7%A7%8D%E7%AE%97%E6%B3%95%E6%A0%87%E5%87%86%E6%A8%A1%E6%9D%BF">两种算法标准模板</a></li>
+<li><a href="#%E5%9B%9E%E6%BA%AF%E7%AE%97%E6%B3%95">回溯算法</a></li>
 </ul>
 </p>
 <h1 id="问题描述">问题描述</h1>
 <p>给定一个<strong>图</strong>(graph)，已知起始点<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>S</mi></mrow><annotation encoding="application/x-tex">S</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.05764em;">S</span></span></span></span>和目标点<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>G</mi></mrow><annotation encoding="application/x-tex">G</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault">G</span></span></span></span>，搜索图产生一条<strong>搜索树</strong>(search tree)，那么反向查找即可找到一条从起始点<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>S</mi></mrow><annotation encoding="application/x-tex">S</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.05764em;">S</span></span></span></span>到目标点<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>G</mi></mrow><annotation encoding="application/x-tex">G</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault">G</span></span></span></span>​的路径。</p>
-<figure data-type="image" tabindex="1"><img src="https://star2dust.github.io/post-images/1627265150549.png" alt="" loading="lazy"></figure>
+<img src="https://star2dust.github.io/post-images/1627265150549.png" style="zoom: 50%;" />
 <p>问题难点在于，如何构建这个搜索树？需要思考几个问题：</p>
 <ul>
 <li>是否一定要构建一整个搜索树？如果不是，我们需要遍历哪些点？</li>
@@ -138,29 +139,29 @@
 <p>为了解决这几个问题，我们提出<strong>容器</strong>(container)的概念。如果不需要遍历所有节点，那么只将需要遍历的点放入容器中，容器初始状态放入起始点<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>S</mi></mrow><annotation encoding="application/x-tex">S</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:0.68333em;vertical-align:0em;"></span><span class="mord mathdefault" style="margin-right:0.05764em;">S</span></span></span></span>。搜索终止条件就很明显了，当容器为空即终止。那么图是环形的怎么办呢？我们需要定义一个备忘录，标记以访问节点和未访问节点，避免重复搜索。</p>
 <h1 id="深度广度优先搜索算法">深度/广度优先搜索算法</h1>
 <p>深度优先搜索算法(depth first search)和广度优先搜索算法(breadth first search)用于解决构建搜索树问题的两种算法，他们的区别在于容器的不同。</p>
-<figure data-type="image" tabindex="2"><img src="https://star2dust.github.io/post-images/1627265942074.png" alt="" loading="lazy"></figure>
+<img src="https://star2dust.github.io/post-images/1627265942074.png" style="zoom: 50%;" />
 <p>深度优先搜索算法的策略是：移除/扩展容器中最深的节点，即后入先出(last in first out)。</p>
-<figure data-type="image" tabindex="3"><img src="https://star2dust.github.io/post-images/1627267339863.png" alt="" loading="lazy"></figure>
+<img src="https://star2dust.github.io/post-images/1627267339863.png" style="zoom: 50%;" />
 <p>广度优先搜索算法的策略是：移除/扩展容器中最浅的节点，即先入先出(first in first out)。</p>
-<figure data-type="image" tabindex="4"><img src="https://star2dust.github.io/post-images/1627267555658.png" alt="" loading="lazy"></figure>
+<img src="https://star2dust.github.io/post-images/1627267555658.png" style="zoom: 50%;" />
 <h1 id="两种算法标准模板">两种算法标准模板</h1>
 <p>广度优先搜索算法标准模板：</p>
 <pre><code class="language-cpp">void bfs(){
     定义队列;
-    定义备忘录，用于记录已经访问的位置;
+    定义备忘录，用于记录已经访问的节点;
     判断边界条件，是否能直接返回;
-    将起始位置加入到队列中;
+    将起始节点加入到队列中;
     更新备忘录；//必须加入时更新备忘录
     while (队列不为空){
-        获取当前队列(当前层级)中的元素个数；
-        for (该层元素个数){
-            取出一个位置节点；
-            判断是否到达终点位置，是则返回；//最关键的循环终止条件
+        获取当前队列(当前层级)中的节点个数；
+        for (该层节点){
+            取出一个节点；
+            判断是否到达目标节点，是则返回；//最关键的循环终止条件
             获取它对应的下一层级所有的节点；
-            for (下层元素个数){
-                if (可行位置且未访问过){
+            for (下层节点){
+                if (可行节点且未访问过){
                     //如果入队时不更新备忘录，此时有可能又搜到上层节点
-					加入该位置到队列；
+					加入该节点到队列；
                     更新备忘录；
                 }
             }
@@ -170,20 +171,43 @@
 }
 </code></pre>
 <p>深度优先搜索算法标准模板：</p>
-<pre><code class="language-cpp">void dfs(当前位置){
-    判断是否到达终点位置，是则返回；//最关键的递归终止条件(找到为止)
+<pre><code class="language-cpp">void dfs(当前节点){
+    判断是否到达目标节点，是则返回；//最关键的递归终止条件(找到为止)
     获取它对应的下一层级所有的节点；
-    for (下层元素个数){
-        dfs(下层位置)；//对子树做dfs
+    for (下层节点){
+        dfs(下层当前节点)；//对子树做dfs
     }
 }
 void main(){
     判断边界条件，是否能直接返回;
-    dfs(起始位置)；
+    dfs(起始节点)；
     遍历完毕，返回；    
 }
 </code></pre>
 <p>当然，深度优先搜索算法也可以按照广度优先搜索算法的模板写，需要把队列改成堆栈。</p>
+<h1 id="回溯算法">回溯算法</h1>
+<p><strong>回溯算法</strong>(back tracking)也可以叫做回溯搜索法，它是一种搜索的方式。回溯是递归的副产品，只要有递归就会有回溯。</p>
+<p>此外，回溯算法的模板与上面深度优先搜索算法模板几乎完全一致，区别在于递归函数的前后分别有节点处理和撤销处理的两个操作。</p>
+<p>回溯算法标准模板：</p>
+<pre><code class="language-cpp">void backTracking(当前节点){
+    if (终止条件){//通常是到达目标节点
+        存放结果；
+        return；
+    }
+    获取它对应的下一层级所有的节点；
+    for (下层节点){
+        处理节点；
+        backTracking(下层当前节点)；//对子树做bt
+        撤销处理；//回溯
+    }
+}
+void main(){
+    判断边界条件，是否能直接返回;
+    backTracking(起始节点)；
+    遍历完毕，返回；    
+}
+</code></pre>
+<p>回溯算法中，<strong>for循环可以理解是横向遍历，backTracking（递归）就是纵向遍历</strong>，这样就把这棵树全遍历完了。</p>
 
                 </div>
             </article>

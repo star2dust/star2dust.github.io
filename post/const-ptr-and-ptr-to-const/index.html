@@ -4,7 +4,7 @@
 <meta name="description" content=""/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
 
-<title>欢迎来到本站！ | star2dust</title>
+<title>静态指针与指向静态类型的指针 | star2dust</title>
 
 <link rel="shortcut icon" href="https://star2dust.github.io/favicon.ico?v=1628931294990">
 
@@ -107,37 +107,59 @@
         <div class="post-detail gt-bg-theme-color-second">
             <article class="gt-post-content">
                 <h2 class="post-title">
-                    欢迎来到本站！
+                    静态指针与指向静态类型的指针
                 </h2>
                 <div class="post-info">
                     <time class="post-time gt-c-content-color-first">
-                        · 2020-08-01 ·
+                        · 2021-08-14 ·
                     </time>
+                    
+                        <a href="https://star2dust.github.io/tag/-uyrMkpe6/" class="post-tags">
+                            # C++
+                        </a>
                     
                 </div>
                 <div class="post-content">
-                    <blockquote>
-<p>分享技术理论，学习心得，记录成长。🤝</p>
-</blockquote>
-<h2 id="关于本站">🏠 关于本站</h2>
-<p>开这个博客的初衷其实是想把它当作一个笔记本，记录一下平时学的理论知识，通过讲解这些知识可以测试一下自己究竟有没有真正弄懂。同时，由于科研工作中经常需要编程，然后编完时间长了就忘记当时的编程思路，代码也不一定能正常运行。这个博客也充当科研工作中的一些编程代码和技巧的记录，用于提高代码复用性，提醒自己工程上的技巧，以免忘记。</p>
-<h2 id="博主是谁">👨‍💻 博主是谁</h2>
-<p>一个兴趣使然的博士研究生</p>
-<h2 id="兴趣爱好">⛹ 兴趣爱好</h2>
-<p>科研、编程、游戏、看番</p>
-<h2 id="友情链接">🌎 友情链接</h2>
-<ul>
-<li>欢迎关注我的CSDN博客：<a href="https://blog.csdn.net/u010038790">star2dust的博客</a></li>
-<li>欢迎follow和star：<a href="https://github.com/star2dust">我的GitHub</a></li>
-<li>自己码的小游戏：<a href="https://star2dust.github.io/ws-tetris/">俄罗斯方块(JavaScript)</a></li>
-</ul>
-<h2 id="学习资料">📚 学习资料</h2>
-<ul>
-<li><a href="https://www.zhihu.com/column/convex">凸优化</a></li>
-<li><a href="https://github.com/youngyangyang04/leetcode-master">LeetCode 刷题攻略</a></li>
-</ul>
-<h2 id="联系我呀">📬 联系我呀</h2>
-<p>邮箱：wuchu9402@outlook.com</p>
+                    <p>当将const与指针一起使用的时候，一般有两种情况，const被应用到指针指向的那个东西，或者const被应用到存储在指针中的内存地址。</p>
+<h1 id="第一种情况pointer-to-const">第一种情况：pointer to const</h1>
+<p>注意：const修饰符绑定到离他最近的那个东西上。</p>
+<pre><code class="language-c++">const int* u; 
+</code></pre>
+<p>这里u是一个指针，指向一个const int。即为 (const int) (*u);</p>
+<p>也就是说u不是静态的，所以它不需要初始化。</p>
+<p>但需要注意：</p>
+<pre><code class="language-c++">int const* v;
+</code></pre>
+<p>这个表达方式与上面的那个表达式其实是一个意思！即 (int const) *v;</p>
+<p>上面的两种情况会造成理解上的混乱，所以在实际的工作过程中应该坚持只使用第一种写法。</p>
+<h1 id="第二种情况const-pointer">第二种情况：const pointer</h1>
+<p>要使指针本身变成const，你必须将const修饰符放在*的右边，如下所示：</p>
+<pre><code class="language-c++">int d =1;
+int* const w = &amp;d;
+</code></pre>
+<p>w是一个指针，它是const的，指向一个int类型。由于w是静态的，所以必须初始化。</p>
+<p>但现在d是可变的：</p>
+<pre><code class="language-c++">d=2；
+*w=3;
+</code></pre>
+<p>如果你不想指向的内容变化，可以：</p>
+<pre><code class="language-c++">int d =1;
+const int* const x = &amp;d;
+int const* const x2=&amp;d;
+</code></pre>
+<p>现在指针和指向的对象都不能变了，但请注意，只是x与x2的指向和内容不能变了，d还是可以赋值的。</p>
+<h1 id="实例">实例</h1>
+<p>下面是一个实例。</p>
+<pre><code class="language-c++">//*其实是与标示符结合的，虽然我们写成int a;实际上写成int *a;更接近实际。
+int d = 1;
+int* const w = &amp;d;
+const int* const x = &amp;d;
+int const* const x2 = &amp;d;
+const int* u;
+int const* v;
+//*u = *x =&gt; error, *u is read only.
+</code></pre>
+<p>你能将一个non-const的对象的地址赋给一个const的指针，但你不能将一个const的对象的地址赋给一个non-const的指针！</p>
 
                 </div>
             </article>
@@ -146,8 +168,8 @@
         
             <div class="next-post">
                 <div class="next gt-c-content-color-first">下一篇</div>
-                <a href="https://star2dust.github.io/post/product-of-exponentials/" class="post-title gt-a-link">
-                    三维刚体运动与机械臂POE运动学建模
+                <a href="https://star2dust.github.io/post/dfs-bfs-template/" class="post-title gt-a-link">
+                    深度/广度优先搜索算法思路解析和标准模板
                 </a>
             </div>
         

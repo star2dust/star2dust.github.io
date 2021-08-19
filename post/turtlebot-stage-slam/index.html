@@ -4,7 +4,7 @@
 <meta name="description" content=""/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
 
-<title>Python四大语法 | star2dust</title>
+<title>Turtlebot+Stage进行SLAM仿真（ROS Kinetic） | star2dust</title>
 
 <link rel="shortcut icon" href="https://star2dust.github.io/favicon.ico?v=1629375133644">
 
@@ -107,153 +107,46 @@
         <div class="post-detail gt-bg-theme-color-second">
             <article class="gt-post-content">
                 <h2 class="post-title">
-                    Python四大语法
+                    Turtlebot+Stage进行SLAM仿真（ROS Kinetic）
                 </h2>
                 <div class="post-info">
                     <time class="post-time gt-c-content-color-first">
-                        · 2020-06-23 ·
+                        · 2021-08-19 ·
                     </time>
                     
-                        <a href="https://star2dust.github.io/tag/R0pmglADx/" class="post-tags">
-                            # Python
+                        <a href="https://star2dust.github.io/tag/qyRII8eB4/" class="post-tags">
+                            # Robotics
                         </a>
                     
                 </div>
                 <div class="post-content">
                     <p><ul class="markdownIt-TOC">
-<li><a href="#%E4%B8%80-%E5%9F%BA%E7%A1%80%E8%AF%AD%E6%B3%95">一、基础语法</a>
-<ul>
-<li><a href="#1-%E6%AF%94%E8%BE%83%E6%93%8D%E4%BD%9C%E7%AC%A6">1. 比较操作符</a></li>
-<li><a href="#2-%E9%80%BB%E8%BE%91%E6%93%8D%E4%BD%9C%E7%AC%A6">2. 逻辑操作符</a></li>
-<li><a href="#3-if-else%E8%AF%AD%E5%8F%A5">3. if else语句</a></li>
-<li><a href="#4-tryexcept%E8%AF%AD%E5%8F%A5">4. try/except语句</a></li>
-</ul>
-</li>
-<li><a href="#%E4%BA%8C-for%E5%BE%AA%E7%8E%AF">二、for循环</a>
-<ul>
-<li><a href="#1-%E6%9E%9A%E4%B8%BE">1. 枚举</a></li>
-<li><a href="#2-%E8%AE%A1%E6%95%B0">2. 计数</a></li>
-<li><a href="#3-%E6%93%8D%E4%BD%9C%E5%BE%AA%E7%8E%AF">3. 操作循环</a></li>
-</ul>
-</li>
-<li><a href="#%E4%B8%89-%E5%87%BD%E6%95%B0%E8%AF%AD%E6%B3%95">三、函数语法</a>
-<ul>
-<li><a href="#1-%E5%88%9B%E5%BB%BA%E5%87%BD%E6%95%B0">1. 创建函数</a></li>
-<li><a href="#2-%E5%87%BD%E6%95%B0%E5%8F%82%E6%95%B0">2. 函数参数</a></li>
-</ul>
-</li>
-<li><a href="#%E5%9B%9B-%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1">四、面向对象</a>
-<ul>
-<li><a href="#1-%E5%88%9B%E5%BB%BA%E5%AF%B9%E8%B1%A1">1. 创建对象</a></li>
-<li><a href="#2-%E5%AE%9E%E4%BE%8B%E6%96%B9%E6%B3%95">2. 实例方法</a></li>
-</ul>
-</li>
+<li><a href="#stage%E4%BB%8B%E7%BB%8D">Stage介绍</a></li>
+<li><a href="#%E5%AE%89%E8%A3%85%E4%BE%9D%E8%B5%96">安装依赖</a></li>
 </ul>
 </p>
-<h1 id="一-基础语法">一、基础语法</h1>
-<p>基础语法有三种：比较、逻辑和选择</p>
-<h2 id="1-比较操作符">1. 比较操作符</h2>
-<p><code>&lt;=</code>、<code>&gt;=</code>、<code>==</code>、<code>!=</code></p>
-<h2 id="2-逻辑操作符">2. 逻辑操作符</h2>
-<p><code>and</code>，<code>or</code>，<code>not</code></p>
-<h2 id="3-if-else语句">3. if else语句</h2>
-<p>注意末尾加冒号<code>:</code></p>
-<ul>
-<li><code>elif</code>可以无数个</li>
-<li><code>else</code>只能有一个</li>
-</ul>
-<h2 id="4-tryexcept语句">4. try/except语句</h2>
-<p>当Python脚本发生异常时我们需要捕获处理它，否则程序会终止执行。<br>
-捕捉异常可以使用try/except语句。<br>
-try/except语句用来检测try语句块中的错误，从而让except语句捕获异常信息并处理。</p>
-<pre><code class="language-python">try:
-    fh = open(&quot;/home/aistudio1/data/testfile01.txt&quot;, &quot;w&quot;)
-    fh.write(&quot;这是一个测试文件，用于测试异常!!&quot;)
-except IOError:
-    print('Error: 没有找到文件或读取文件失败')
-else:
-    print ('内容写入文件成功')
-    fh.close()
-
-&gt;&gt;&gt; Error: 没有找到文件或读取文件失败
+<h1 id="stage介绍">Stage介绍</h1>
+<p>Stage是Player/Stage项目的一个软件，是一种用于移动机器人和智能传感系统研究的仿真工具。</p>
+<p>Stage在一个二维的位图环境下模拟移动机器人、传感器和障碍物等对象。Stage提供了多种传感器和执行器，包括声纳，激光扫描测距仪，色斑显示器，里程计，抓斗，防撞器/触须器以及移动机器人基座等。</p>
+<p>Stage在设计中就考虑到了多智能体系统的问题，可以提供对多机器人系统的测试仿真。需要了解的是Stage只提供了真正简单，可计算的廉价的设备模式，而无法非常精密地仿真任何具体的设备终端。</p>
+<h1 id="安装依赖">安装依赖</h1>
+<p>首先可以尝试如下命令</p>
+<pre><code class="language-shell">sudo apt-get install ros-kinetic-turtlebot*
 </code></pre>
-<p>finally中的内容，退出try时总会执行</p>
-<pre><code class="language-python">try:
-    f = open(&quot;/home/aistudio/data/testfile02.txt&quot;, &quot;w&quot;)
-    f.write(&quot;这是一个测试文件，用于测试异常!!&quot;)
-finally:
-    print('关闭文件')
-    f.close()
-    
-&gt;&gt;&gt; 关闭文件
+<p>安装完成后尝试运行</p>
+<pre><code class="language-shell">export TURTLEBOT_STAGE_MAP_FILE=&quot;/opt/ros/kinetic/share/turtlebot_stage/maps/maze.yaml&quot;
+export TURTLEBOT_STAGE_WORLD_FILE=&quot;/opt/ros/kinetic/share/turtlebot_stage/maps/stage/maze.world&quot;
+roslaunch turtlebot_stage turtlebot_in_stage.launch
 </code></pre>
-<h1 id="二-for循环">二、for循环</h1>
-<p>注意末尾加冒号<code>:</code></p>
-<h2 id="1-枚举">1. 枚举</h2>
-<pre><code class="language-python"># 用列表枚举
-for ind,elm in enumerate(list) 
-for tuple in enumerate(list)
-# 用字典枚举
-for key,val in enumerate(dict)
-for key in enumerate(dict)
+<p>能够正常运行不报错即正常安装。</p>
+<p>问题1：Rviz报错</p>
+<pre><code>No transform from [wheel_left_link] to [map]
 </code></pre>
-<h2 id="2-计数">2. 计数</h2>
-<pre><code class="language-python"># 用列表计数
-for num in [1,2,3,4,5] 
-# 用元组计数
-for num in 1,2,3,4,5
-# 用range计数
-for num in range(1,5)
+<p>原因：未安装 joint_state_publisher_gui 功能包</p>
+<p>运行命令安装</p>
+<pre><code class="language-shell">sudo apt-get install ros-kinetic-joint-state-publisher-gui
 </code></pre>
-<ul>
-<li>range是一个新数据结构，不是列表</li>
-<li>三种方法中列表最慢</li>
-</ul>
-<h2 id="3-操作循环">3. 操作循环</h2>
-<ul>
-<li><code>continue</code>跳过不跳出</li>
-<li><code>break</code>跳出不跳过</li>
-<li>只有<code>break</code>能结束<code>while</code>循环</li>
-</ul>
-<h1 id="三-函数语法">三、函数语法</h1>
-<p>注意末尾加冒号<code>:</code></p>
-<h2 id="1-创建函数">1. 创建函数</h2>
-<ul>
-<li>关键字<code>def</code>标记函数头的开始</li>
-<li>用于唯一标识它的函数名称</li>
-<li>参数（可选）</li>
-<li>冒号标记函数头的结尾</li>
-<li>文档字符串（docstring）通常使用三引号，以便docstring可以扩展到多行</li>
-<li>python语句，必须具有相同的缩进级别（通常为4个空格）</li>
-<li>用于从函数返回值的return语句（可选，没有返回None）</li>
-</ul>
-<h2 id="2-函数参数">2. 函数参数</h2>
-<ul>
-<li>使用赋值运算符<code>(=)</code>为参数提供默认值</li>
-<li>没有默认值的参数在调用期间是必需的</li>
-<li>任意数量的参数都可以具有默认值</li>
-<li>一旦有一个默认参数，它右边的所有参数也必须有默认值</li>
-<li>使用关键字参数调用函数，可以更改参数的顺序</li>
-<li>参数名称前使用星号<code>(*)</code>来表示任意参数</li>
-</ul>
-<h1 id="四-面向对象">四、面向对象</h1>
-<p>注意末尾加冒号<code>:</code></p>
-<h2 id="1-创建对象">1. 创建对象</h2>
-<ul>
-<li>使用<code>class</code>创建一个类</li>
-<li>添加该类的名称（使用骆驼命名法，以大写字母开头）</li>
-<li>使用<code>__init __(self,attr)</code>方法提供实例的初始属性</li>
-<li><code>实例属性</code>特定于每个对象</li>
-<li><code>类属性</code>对所有实例都相同，直接写在<code>__init __(self,attr)</code>之前</li>
-<li>使用<code>==</code>进行实例比较</li>
-<li>使用<code>type(obj)</code>查看实例类型</li>
-</ul>
-<h2 id="2-实例方法">2. 实例方法</h2>
-<ul>
-<li>第一个参数始终是self</li>
-<li>实例方法可修改实例属性</li>
-<li>使用<code>instance(child,parent)</code>确定前者（实例）是否为后者（类）的子类</li>
-</ul>
+<p><a href="https://blog.csdn.net/caiguanhong/article/details/105347648">ROS问题—Rviz显示URDF模型时报错</a></p>
 
                 </div>
             </article>

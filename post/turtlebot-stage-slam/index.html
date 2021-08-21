@@ -6,7 +6,7 @@
 
 <title>Turtlebot+Stage进行SLAM仿真（ROS Kinetic） | star2dust</title>
 
-<link rel="shortcut icon" href="https://star2dust.github.io/favicon.ico?v=1629375133644">
+<link rel="shortcut icon" href="https://star2dust.github.io/favicon.ico?v=1629522569195">
 
 <link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" rel="stylesheet">
 <link rel="stylesheet" href="https://star2dust.github.io/styles/main.css">
@@ -123,6 +123,8 @@
                     <p><ul class="markdownIt-TOC">
 <li><a href="#stage%E4%BB%8B%E7%BB%8D">Stage介绍</a></li>
 <li><a href="#%E5%AE%89%E8%A3%85%E4%BE%9D%E8%B5%96">安装依赖</a></li>
+<li><a href="#%E5%90%AF%E5%8A%A8stage%E4%BB%BF%E7%9C%9F%E7%8E%AF%E5%A2%83">启动Stage仿真环境</a></li>
+<li><a href="#%E5%90%AF%E5%8A%A8slam">启动SLAM</a></li>
 </ul>
 </p>
 <h1 id="stage介绍">Stage介绍</h1>
@@ -146,7 +148,40 @@ roslaunch turtlebot_stage turtlebot_in_stage.launch
 <p>运行命令安装</p>
 <pre><code class="language-shell">sudo apt-get install ros-kinetic-joint-state-publisher-gui
 </code></pre>
-<p><a href="https://blog.csdn.net/caiguanhong/article/details/105347648">ROS问题—Rviz显示URDF模型时报错</a></p>
+<p>参考：<a href="https://blog.csdn.net/caiguanhong/article/details/105347648">ROS问题—Rviz显示URDF模型时报错</a></p>
+<h1 id="启动stage仿真环境">启动Stage仿真环境</h1>
+<p>打开命令终端，和上节一样输入命令</p>
+<pre><code class="language-shell">roslaunch turtlebot_stage turtlebot_in_stage.launch
+</code></pre>
+<p>turtlebot_stage 仿真分别启动了以下ros包：</p>
+<ul>
+<li>
+<p>stage：仿真世界环境发布各种tf(transform)坐标关系，odom、base_scan等仿真数据</p>
+</li>
+<li>
+<p>map_server：地图服务，加载其提供的仿真世界的地图</p>
+</li>
+<li>
+<p>move_base：导航功能包，接收其他包的数据实现导航功能，调用A*、DWA实现路径规划</p>
+</li>
+<li>
+<p>static map：静态地图</p>
+</li>
+<li>
+<p>amcl：激光定位程序，通过粒子滤波算法实现机器人的实时定位</p>
+</li>
+<li>
+<p>rviz view：Rviz可视化显示机器人状态、传感器数据、导航路线、costmap、设定导航目标点</p>
+</li>
+</ul>
+<p>启动后会显示三个窗口，分别是Stage、rviz和joint_state_publisher，参考：<a href="https://blog.csdn.net/xingdou520/article/details/83716353">Turtlbot仿真之Stage</a></p>
+<p>在rviz界面，点击菜单栏的【2D Nav Goal】 然后在图书中选择一个位置点击鼠标左键并拖到鼠标设定方向终点机器人的方向。</p>
+<p>会发现机器人自动设定了全局路径，并启用DWA算法自动导航到设定的目标位置。</p>
+<h1 id="启动slam">启动SLAM</h1>
+<p>通过键盘控制机器人</p>
+<pre><code class="language-shell">roslaunch turtlebot_teleop keyboard_teleop.launch
+</code></pre>
+<p>启动之后，看终端里的提示进行操作。u、i、o分别代表左转、前进、右转。</p>
 
                 </div>
             </article>

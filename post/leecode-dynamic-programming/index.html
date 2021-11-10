@@ -6,7 +6,7 @@
 
 <title>【力扣刷题】动态规划问题的思考与总结 | star2dust</title>
 
-<link rel="shortcut icon" href="https://star2dust.github.io/favicon.ico?v=1629522569195">
+<link rel="shortcut icon" href="https://star2dust.github.io/favicon.ico?v=1636557257683">
 
 <link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" rel="stylesheet">
 <link rel="stylesheet" href="https://star2dust.github.io/styles/main.css">
@@ -415,6 +415,69 @@ public:
         return dp[m - 1][n - 1];
     }
 };
+</code></pre>
+<blockquote>
+<p><a href="https://leetcode-cn.com/problems/longest-common-subsequence/">1143. 最长公共子序列</a>: 给定两个字符串 text1 和 text2，返回这两个字符串的最长 公共子序列 的长度。如果不存在 公共子序列 ，返回 0 。</p>
+<p>一个字符串的 子序列 是指这样一个新的字符串：它是由原字符串在不改变字符的相对顺序的情况下删除某些字符（也可以不删除任何字符）后组成的新字符串。</p>
+<p>例如，&quot;ace&quot; 是 &quot;abcde&quot; 的子序列，但 &quot;aec&quot; 不是 &quot;abcde&quot; 的子序列。<br>
+两个字符串的 公共子序列 是这两个字符串所共同拥有的子序列。</p>
+</blockquote>
+<pre><code class="language-cpp">class Solution {
+public:
+    int longestCommonSubsequence(string text1, string text2) {
+        int m = text1.length(), n = text2.length();
+        vector&lt;vector&lt;int&gt;&gt; dp(m + 1, vector&lt;int&gt;(n + 1));
+        for (int i = 1; i &lt;= m; i++) {
+            char c1 = text1.at(i - 1);
+            for (int j = 1; j &lt;= n; j++) {
+                char c2 = text2.at(j - 1);
+                if (c1 == c2) {
+                    dp[i][j] = dp[i - 1][j - 1] + 1;
+                } else {
+                    dp[i][j] = max(dp[i - 1][j], dp[i][j - 1]);
+                }
+            }
+        }
+        return dp[m][n];
+    }
+};
+</code></pre>
+<blockquote>
+<p><a href="https://leetcode-cn.com/problems/uncrossed-lines/">1035. 不相交的线</a>: 在两条独立的水平线上按给定的顺序写下 nums1 和 nums2 中的整数。</p>
+<p>现在，可以绘制一些连接两个数字 nums1[i] 和 nums2[j] 的直线，这些直线需要同时满足满足：</p>
+<ul>
+<li>
+<p>nums1[i] == nums2[j]</p>
+</li>
+<li>
+<p>且绘制的直线不与任何其他连线（非水平线）相交。</p>
+</li>
+</ul>
+<p>请注意，连线即使在端点也不能相交：每个数字只能属于一条连线。</p>
+<p>以这种方法绘制线条，并返回可以绘制的最大连线数。</p>
+</blockquote>
+<pre><code class="language-cpp">class Solution {
+public:
+    int maxUncrossedLines(vector&lt;int&gt;&amp; nums1, vector&lt;int&gt;&amp; nums2) {
+        int m = nums1.size(), n = nums2.size();
+        // dp[i][j]表示num1[0:i]和num2[0:j]的最大公共子序列长度（左闭右开）
+        vector&lt;vector&lt;int&gt;&gt; dp(m + 1, vector&lt;int&gt;(n + 1));
+        for (int i = 1; i &lt;= m; i++) {
+            int num1 = nums1[i - 1];
+            for (int j = 1; j &lt;= n; j++) {
+                int num2 = nums2[j - 1];
+                //如果是公共元素则加1
+                if (num1 == num2) {
+                    dp[i][j] = dp[i - 1][j - 1] + 1;
+                } else {
+                    dp[i][j] = max(dp[i - 1][j], dp[i][j - 1]);
+                }
+            }
+        }
+        return dp[m][n];
+    }
+};
+
 </code></pre>
 <h2 id="非最优子结构">非最优子结构</h2>
 <p>有些问题没有最优子结构，无法通过子问题的组合得到递推关系，但是也能通过维护多个状态的思想来应用动态规划算法。通常问题是带有交替符号特性的，还要注意存temp以避免变量覆盖。</p>

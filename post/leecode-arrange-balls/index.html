@@ -4,7 +4,7 @@
 <meta name="description" content=""/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
 
-<title>Turtlebot+Stage进行SLAM仿真（ROS Kinetic） | star2dust</title>
+<title>【力扣刷题】排列小球（DFS） | star2dust</title>
 
 <link rel="shortcut icon" href="https://star2dust.github.io/favicon.ico?v=1636557257683">
 
@@ -107,81 +107,101 @@
         <div class="post-detail gt-bg-theme-color-second">
             <article class="gt-post-content">
                 <h2 class="post-title">
-                    Turtlebot+Stage进行SLAM仿真（ROS Kinetic）
+                    【力扣刷题】排列小球（DFS）
                 </h2>
                 <div class="post-info">
                     <time class="post-time gt-c-content-color-first">
-                        · 2021-08-19 ·
+                        · 2021-11-10 ·
                     </time>
                     
-                        <a href="https://star2dust.github.io/tag/qyRII8eB4/" class="post-tags">
-                            # Robotics
+                        <a href="https://star2dust.github.io/tag/DuA8BNEBr/" class="post-tags">
+                            # Algorithm
                         </a>
                     
                 </div>
                 <div class="post-content">
-                    <p><ul class="markdownIt-TOC">
-<li><a href="#stage%E4%BB%8B%E7%BB%8D">Stage介绍</a></li>
-<li><a href="#%E5%AE%89%E8%A3%85%E4%BE%9D%E8%B5%96">安装依赖</a></li>
-<li><a href="#%E5%90%AF%E5%8A%A8stage%E4%BB%BF%E7%9C%9F%E7%8E%AF%E5%A2%83">启动Stage仿真环境</a></li>
-<li><a href="#%E5%90%AF%E5%8A%A8slam">启动SLAM</a></li>
-</ul>
-</p>
-<h1 id="stage介绍">Stage介绍</h1>
-<p>Stage是Player/Stage项目的一个软件，是一种用于移动机器人和智能传感系统研究的仿真工具。</p>
-<p>Stage在一个二维的位图环境下模拟移动机器人、传感器和障碍物等对象。Stage提供了多种传感器和执行器，包括声纳，激光扫描测距仪，色斑显示器，里程计，抓斗，防撞器/触须器以及移动机器人基座等。</p>
-<p>Stage在设计中就考虑到了多智能体系统的问题，可以提供对多机器人系统的测试仿真。需要了解的是Stage只提供了真正简单，可计算的廉价的设备模式，而无法非常精密地仿真任何具体的设备终端。</p>
-<h1 id="安装依赖">安装依赖</h1>
-<p>首先可以尝试如下命令</p>
-<pre><code class="language-shell">sudo apt-get install ros-kinetic-turtlebot*
+                    <p>力扣链接：https://leetcode-cn.com/leetbook/read/didiglobal2/e7hh2i/</p>
+<p>给定三种类型的小球 P、Q、R，每种小球的数量分别为 np、nq、nr 个。现在想将这些小球排成一条直线，但是不允许相同类型的小球相邻，问有多少种排列方法。如果无法组合出合适的结果，则输出 0。</p>
+<p>格式：</p>
+<blockquote>
+<p>输入：一行以空格相隔的三个数，分别表示为 np，nq，nr。<br>
+输出：排列方法的数量。</p>
+</blockquote>
+<p>示例：</p>
+<blockquote>
+<p>输入：2 1 1<br>
+输出：6<br>
+解释：如若 np=2，nq=1，nr=1 则共有 6 种排列方式：PQRP，QPRP，PRQP，RPQP，PRPQ 以及 PQPR。</p>
+</blockquote>
+<p>解法：通过dfs递归求解。</p>
+<pre><code class="language-cpp">#include&lt;bits/stdc++.h&gt;
+using namespace std;
+
+int dfs(int last_color, int np, int nq, int nr){
+    // if balls of any color run out
+    if (np&lt;0||nq&lt;0||nr&lt;0){
+        return 0;
+    }
+    // if only one ball remains 
+    if (np+nq+nr==1){
+        if (last_color==0) return np;
+        if (last_color==1) return nq;
+        if (last_color==2) return nr;
+    }else{ 
+        // back to n-1
+        if (last_color==0) return dfs(1,np-1,nq,nr)+dfs(2,np-1,nq,nr);
+        if (last_color==1) return dfs(0,np,nq-1,nr)+dfs(2,np,nq-1,nr);
+        if (last_color==2) return dfs(0,np,nq,nr-1)+dfs(1,np,nq,nr-1);
+    }
+    return 0;
+}
+
+int main(){
+    int np, nq, nr;
+    cin&gt;&gt;np&gt;&gt;nq&gt;&gt;nr;
+    // 3 colors 
+    int ans = dfs(0,np,nq,nr)+dfs(1,np,nq,nr)+dfs(2,np,nq,nr);
+    cout&lt;&lt;ans&lt;&lt;endl;
+    return 0;
+}
 </code></pre>
-<p>安装完成后尝试运行</p>
-<pre><code class="language-shell">export TURTLEBOT_STAGE_MAP_FILE=&quot;/opt/ros/kinetic/share/turtlebot_stage/maps/maze.yaml&quot;
-export TURTLEBOT_STAGE_WORLD_FILE=&quot;/opt/ros/kinetic/share/turtlebot_stage/maps/stage/maze.world&quot;
-roslaunch turtlebot_stage turtlebot_in_stage.launch
+<p>很不幸，上面的解法超时了，测试用例通过3/5，那么加个dp数组进行记忆化搜索。</p>
+<pre><code class="language-cpp">#include&lt;bits/stdc++.h&gt;
+using namespace std;
+// 用int不够，改为long long
+typedef long long LL;
+
+LL p,q,r;
+
+inline LL I(int c,int x,int y,int z){
+    return c*(p+1)*(q+1)*(r+1)+x*(q+1)*(r+1)+y*(r+1)+z;
+}
+
+vector&lt;LL&gt; dp;
+
+LL find(int c,int i,int j,int k){
+    if(i&lt;0||j&lt;0||k&lt;0) return 0;
+    LL idx=I(c,i,j,k);
+    if(dp[idx]==-1){
+        dp[idx]=0;
+        if(c==0) dp[idx]+=find(1,i-1,j,k)+find(2,i-1,j,k);
+        if(c==1) dp[idx]+=find(0,i,j-1,k)+find(2,i,j-1,k);
+        if(c==2) dp[idx]+=find(0,i,j,k-1)+find(1,i,j,k-1);
+    }
+    return dp[idx];
+}
+
+int main(){
+    cin&gt;&gt;p&gt;&gt;q&gt;&gt;r;
+    dp.resize(3*(p+1)*(q+1)*(r+1));
+    fill(dp.begin(),dp.end(),-1);
+    dp[I(0,1,0,0)]=1;
+    dp[I(1,0,1,0)]=1;
+    dp[I(2,0,0,1)]=1;
+    cout&lt;&lt;find(0,p,q,r)+find(1,p,q,r)+find(2,p,q,r)&lt;&lt;endl;
+    return 0;
+}
 </code></pre>
-<p>能够正常运行不报错即正常安装。</p>
-<p>问题1：Rviz报错</p>
-<pre><code>No transform from [wheel_left_link] to [map]
-</code></pre>
-<p>原因：未安装 joint_state_publisher_gui 功能包</p>
-<p>运行命令安装</p>
-<pre><code class="language-shell">sudo apt-get install ros-kinetic-joint-state-publisher-gui
-</code></pre>
-<p>参考：<a href="https://blog.csdn.net/caiguanhong/article/details/105347648">ROS问题—Rviz显示URDF模型时报错</a></p>
-<h1 id="启动stage仿真环境">启动Stage仿真环境</h1>
-<p>打开命令终端，和上节一样输入命令</p>
-<pre><code class="language-shell">roslaunch turtlebot_stage turtlebot_in_stage.launch
-</code></pre>
-<p>turtlebot_stage 仿真分别启动了以下ros包：</p>
-<ul>
-<li>
-<p>stage：仿真世界环境发布各种tf(transform)坐标关系，odom、base_scan等仿真数据</p>
-</li>
-<li>
-<p>map_server：地图服务，加载其提供的仿真世界的地图</p>
-</li>
-<li>
-<p>move_base：导航功能包，接收其他包的数据实现导航功能，调用A*、DWA实现路径规划</p>
-</li>
-<li>
-<p>static map：静态地图</p>
-</li>
-<li>
-<p>amcl：激光定位程序，通过粒子滤波算法实现机器人的实时定位</p>
-</li>
-<li>
-<p>rviz view：Rviz可视化显示机器人状态、传感器数据、导航路线、costmap、设定导航目标点</p>
-</li>
-</ul>
-<p>启动后会显示三个窗口，分别是Stage、rviz和joint_state_publisher，参考：<a href="https://blog.csdn.net/xingdou520/article/details/83716353">Turtlbot仿真之Stage</a></p>
-<p>在rviz界面，点击菜单栏的【2D Nav Goal】 然后在图书中选择一个位置点击鼠标左键并拖到鼠标设定方向终点机器人的方向。</p>
-<p>会发现机器人自动设定了全局路径，并启用DWA算法自动导航到设定的目标位置。</p>
-<h1 id="启动slam">启动SLAM</h1>
-<p>通过键盘控制机器人</p>
-<pre><code class="language-shell">roslaunch turtlebot_teleop keyboard_teleop.launch
-</code></pre>
-<p>启动之后，看终端里的提示进行操作。u、i、o分别代表左转、前进、右转。</p>
 
                 </div>
             </article>
@@ -190,8 +210,8 @@ roslaunch turtlebot_stage turtlebot_in_stage.launch
         
             <div class="next-post">
                 <div class="next gt-c-content-color-first">下一篇</div>
-                <a href="https://star2dust.github.io/post/leecode-num-sum/" class="post-title gt-a-link">
-                    【力扣刷题】求和问题
+                <a href="https://star2dust.github.io/post/turtlebot-stage-slam/" class="post-title gt-a-link">
+                    Turtlebot+Stage进行SLAM仿真（ROS Kinetic）
                 </a>
             </div>
         

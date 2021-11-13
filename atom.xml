@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://star2dust.github.io</id>
     <title>star2dust</title>
-    <updated>2021-11-13T08:23:45.947Z</updated>
+    <updated>2021-11-13T14:03:22.969Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://star2dust.github.io"/>
     <link rel="self" href="https://star2dust.github.io/atom.xml"/>
@@ -490,6 +490,13 @@ int const* v;
 <li><a href="#797-%E6%89%80%E6%9C%89%E5%8F%AF%E8%83%BD%E7%9A%84%E8%B7%AF%E5%BE%84%E8%A7%A3%E6%B3%95%E4%BA%8C">797. 所有可能的路径（解法二）</a></li>
 </ul>
 </li>
+<li><a href="#dijkstra%E7%AE%97%E6%B3%95">Dijkstra算法</a>
+<ul>
+<li><a href="#%E5%B8%A6%E5%A4%87%E5%BF%98%E5%BD%95%E7%9A%84%E5%B9%BF%E5%BA%A6%E4%BC%98%E5%85%88%E6%90%9C%E7%B4%A2%E7%AE%97%E6%B3%95">带备忘录的广度优先搜索算法</a></li>
+<li><a href="#dijkstra%E7%AE%97%E6%B3%95%E6%A8%A1%E6%9D%BF">Dijkstra算法模板</a></li>
+<li><a href="#743-%E7%BD%91%E7%BB%9C%E5%BB%B6%E8%BF%9F%E6%97%B6%E9%97%B4">743. 网络延迟时间</a></li>
+</ul>
+</li>
 </ul>
 </p>
 <h1 id="问题描述">问题描述</h1>
@@ -511,9 +518,9 @@ int const* v;
 <img src="https://star2dust.github.io/post-images/1627267555658.png" style="zoom: 50%;" />
 <h2 id="两种算法标准模板">两种算法标准模板</h2>
 <p>广度/深度优先搜索算法标准模板：</p>
-<pre><code class="language-cpp">void bfs(graph, start, goal)/*dfs(graph, start, goal)*/{
+<pre><code class="language-cpp">void bfs(邻接表, 起始节点, 目标节点)/*dfs(邻接表, 起始节点, 目标节点)*/{
     定义队列/*堆栈*/;
-    定义备忘录，用于记录已经访问的节点;
+    定义备忘录，用于记录已经访问的节点;//如果图是树结构，则不需要备忘录
     将全部起始节点加入到队列/*堆栈*/中（空路径后加该节点）;
     更新备忘录；//必须加入时更新备忘录
     while (队列不为空){
@@ -527,10 +534,10 @@ int const* v;
                     继续/返回；//只需一条路径用返回，多条用继续
                 }
             }
-            for (当前节点的所有下层节点){
-                if (可行节点且未访问过){
+            for (邻接节点：邻接表[当前节点]){
+                if (邻接节点可行且未访问过){
                     //如果入队时不更新备忘录，此时有可能又搜到上层节点
-					加入该节点到队列/*堆栈*/（当前路径后加该节点）；
+					加入该邻接节点到队列/*堆栈*/（当前路径后加该邻接节点）；
                     更新备忘录；
                 }
             }
@@ -540,13 +547,17 @@ int const* v;
 }
 </code></pre>
 <p>由于广度优先和深度优先仅取决于容器的不同，所以上面以广度优先搜索为基础，用注释符号标注出了深度优先不同于广度优先的地方。</p>
+<p>注意：该标注模版仅能保证<strong>完全遍历</strong>，但搜索的路径是否满足要求需要具体分析。</p>
 <h2 id="797-所有可能的路径解法一">797. 所有可能的路径（解法一）</h2>
 <p>接下来以力扣题<a href="https://leetcode-cn.com/problems/all-paths-from-source-to-target/">797. 所有可能的路径</a>为例，给出广度/深度优先搜索的题解。</p>
 <blockquote>
 <p>给你一个有 n 个节点的 <strong>有向无环图</strong>（DAG），请你找出所有从节点 0 到节点 n-1 的路径并输出（不要求按特定顺序）</p>
 <p>二维数组的第 i 个数组中的单元都表示有向图中 i 号节点所能到达的下一些节点，空就是没有下一个结点了。</p>
 <p>译者注：有向图是有方向的，即规定了 a→b 你就不能从 b→a 。</p>
-<p>（以下实例为我手撕的面试题，可惜没当场撕出来，该题指定了多个起始点和目标点）</p>
+</blockquote>
+<blockquote>
+<p>以下实例为我手撕的面试题，可惜没当场撕出来。</p>
+<p>该题指定了起始点为{0,3}，目标点为{7,8} ，输出{0,3}到{7,8}的所有路径。</p>
 <p>输入实例：{{1,2},{5},{5},{4},{6},{7,8},{8},{},{}}</p>
 <p>输出实例：{{0,1,5,7},{0,1,5,8},{0,2,5,7},{0,2,5,8},{3,4,6,8}}</p>
 <p>0   3<br>
@@ -701,6 +712,152 @@ int main() {
         }
     }
     return 0;
+}
+</code></pre>
+<h1 id="dijkstra算法">Dijkstra算法</h1>
+<p>前面考虑的是<strong>有向无环无权图</strong>，bfs搜索中不会出现重复遍历，变量<code>depth</code>直接记录了路径的长度。</p>
+<p>但是对于<strong>有向有环加权图</strong>，输出所有路径是不可能的，因为环的存在，每个节点能够重复遍历，所以路径有无数条。</p>
+<p>为了解决环的问题，必须在bfs中引入<strong>备忘录</strong>，可以套用前面的模板，把bfs算法扩展到有向有环图上。</p>
+<h2 id="带备忘录的广度优先搜索算法">带备忘录的广度优先搜索算法</h2>
+<p>还是以力扣题<a href="https://leetcode-cn.com/problems/all-paths-from-source-to-target/">797. 所有可能的路径</a>为例，结合前面的模板，给出以下题解。</p>
+<pre><code class="language-cpp">// 带备忘录的广度优先搜索
+vector&lt;vector&lt;int&gt;&gt; bfsv(vector&lt;vector&lt;int&gt;&gt; graph, vector&lt;int&gt; start, vector&lt;int&gt; goal){
+    queue&lt;Node&gt; q;
+    vector&lt;vector&lt;int&gt;&gt; results;
+    vector&lt;int&gt; visited(graph.size());//备忘录
+    int depth = 0;
+    for (int s: start) {
+        q.push(Node(s));
+        visited[s] = 1;//入队加备忘
+    }
+    while (!q.empty()){
+        int n = q.size();
+        cout&lt;&lt;depth&lt;&lt;&quot; - &quot;;
+        for (int i=0; i&lt;n; i++){
+            Node p = q.front();
+            q.pop();
+            cout&lt;&lt;p.id&lt;&lt;&quot; &quot;;
+            for (int g: goal){
+               if (p.id==g){
+                    results.push_back(p.path);
+                    continue;
+                } 
+            }
+            for (int next: graph[p.id]){
+                if (!visited[next]){
+                    q.push(Node(next,p.path));
+                    visited[next] = 1;//入队加备忘
+                }                
+            }
+        }
+        depth++;
+        cout&lt;&lt;endl;
+    }  
+    return results;
+}
+int main() {
+    // [4,2,5,6,4]、[4,6,4]形成环
+    vector&lt;vector&lt;int&gt;&gt; graph = {{1,2},{5},{5},{4},{2,6},{6,7,8},{4,8},{},{}};
+    vector&lt;int&gt; start = {0,3};
+    vector&lt;int&gt; goal = {7,8};
+    cout&lt;&lt;&quot;算法的遍历顺序：&quot;&lt;&lt;endl;
+    vector&lt;vector&lt;int&gt;&gt; paths;
+    paths = bfsv(graph,start,goal);
+    cout&lt;&lt;&quot;输出的路径：&quot;&lt;&lt;endl;
+    for (auto p: paths) {
+        for (int n: p) cout&lt;&lt;n&lt;&lt;&quot; &quot;; 
+        cout&lt;&lt;endl;
+    }
+    return 0;
+}
+</code></pre>
+<p>得到的输出如下：</p>
+<pre><code class="language-shell">算法的遍历顺序：
+0 - 0 3 
+1 - 1 2 4 
+2 - 5 6 
+3 - 7 8 
+输出的路径：
+0 1 5 7 
+0 1 5 8 
+</code></pre>
+<p>可以看出，对于有环图，在原有bfs算法引入备忘录可以保证将所有节点不重复的全部遍历一遍。</p>
+<p>但是，由于备忘录的存在，节点无法重复遍历，输出的路径变少了。</p>
+<h2 id="dijkstra算法模板">Dijkstra算法模板</h2>
+<p>针对有向有环加权图，考虑边的权值，Dijkstra算法解决两点之间最小权值和的路径，即距离最短路径。</p>
+<p>Dijkstra算法标准模板：</p>
+<pre><code class="language-cpp">数组 dijkstra(邻接表, 起始节点, 目标节点){
+    定义dp数组，记录起始节点到所有节点的距离，初始化为正无穷；
+    dp[起始节点]=0；
+    定义优先队列，按照距离由小到大排序;
+    将[起始节点,起始节点距离(0)]加入到优先队列中;
+    while (优先队列不为空){
+        [当前节点,当前节点距离]=优先队列前端节点；
+        出队优先队列前端节点；
+        if (当前节点==目标节点){//循环终止条件（可选）
+            返回当前节点距离；
+        }
+        if (当前节点距离&gt;dp[当前节点]){//循环继续条件
+             继续；
+        }
+        for (当前节点的所有邻居节点){
+            邻居节点经过当前节点到初始节点的距离=dp[当前节点]+当前节点与邻居节点之间的边权值；
+            if (dp[邻居节点]&gt;邻居节点经过当前节点到初始节点的距离){
+                //更新dp数组
+                dp[邻居节点]=邻居节点经过当前节点到初始节点的距离;
+                将[邻居节点，dp[邻居节点]]加入到优先队列中；
+            }
+        }
+    }
+    遍历完毕，返回dp数组；
+}
+</code></pre>
+<h2 id="743-网络延迟时间">743. 网络延迟时间</h2>
+<p>接下来以力扣题[<a href="https://leetcode-cn.com/problems/network-delay-time/">743. 网络延迟时间</a>为例，给出Dijkstra算法的题解。</p>
+<blockquote>
+<p>有 n 个网络节点，标记为 1 到 n。</p>
+<p>给你一个列表 times，表示信号经过 有向 边的传递时间。 times[i] = (ui, vi, wi)，其中 ui 是源节点，vi 是目标节点， wi 是一个信号从源节点传递到目标节点的时间。</p>
+<p>现在，从某个节点 K 发出一个信号。需要多久才能使所有节点都收到信号？如果不能使所有节点收到信号，返回 -1 。</p>
+</blockquote>
+<pre><code class="language-cpp">int networkDelayTime(vector&lt;vector&lt;int&gt;&gt; &amp;times, int n, int k) {
+    const int inf = INT_MAX / 2;
+    //建图，得到邻接表
+    vector&lt;vector&lt;pair&lt;int, int&gt;&gt;&gt; graph(n);
+    for (auto &amp;t : times) {
+        int x = t[0] - 1, y = t[1] - 1;//-1是因为编号起始于1
+        graph[x].emplace_back(t[2],y);//第一个是权值，第二个是邻居节点
+    }
+    // 记录最短路径的权重，你可以理解为 dp table
+    vector&lt;int&gt; dist(n, inf);
+    // base case，start 到 start 的最短距离就是 0
+    dist[k - 1] = 0;
+    // 优先级队列，distFromStart 较小的排在前面
+    priority_queue&lt;pair&lt;int, int&gt;, vector&lt;pair&lt;int, int&gt;&gt;, greater&lt;&gt;&gt; q;
+    // 从起点 start 开始进行 BFS
+    q.emplace(0, k - 1);
+    while (!q.empty()) {
+        auto p = q.top();
+        q.pop();
+        int time = p.first, x = p.second;
+        if (dist[x] &lt; time) {
+            // 已经有一条更短的路径到达 curNode 节点了
+            continue;
+        }
+        // 将 curNode 的相邻节点装入队列
+        for (auto &amp;edge : graph[x]) {
+            // 看看从 curNode 达到 nextNode 的距离是否会更短
+            int y = edge.second, d = dist[x] + edge.first;
+            if (d &lt; dist[y]) {
+                // 更新 dp table
+                dist[y] = d;
+                // 将这个节点以及距离放入队列
+                q.emplace(d, y);
+            }
+        }
+    }
+    // max_element返回地址指针
+    int ans = *max_element(dist.begin(), dist.end());
+    return ans == inf ? -1 : ans;
 }
 </code></pre>
 ]]></content>

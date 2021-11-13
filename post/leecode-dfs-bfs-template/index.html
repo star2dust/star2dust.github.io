@@ -6,7 +6,7 @@
 
 <title>【力扣刷题】深度/广度优先搜索算法思路解析和标准模板 | star2dust</title>
 
-<link rel="shortcut icon" href="https://star2dust.github.io/favicon.ico?v=1636557257683">
+<link rel="shortcut icon" href="https://star2dust.github.io/favicon.ico?v=1636791775964">
 
 <link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" rel="stylesheet">
 <link rel="stylesheet" href="https://star2dust.github.io/styles/main.css">
@@ -122,9 +122,18 @@
                 <div class="post-content">
                     <p><ul class="markdownIt-TOC">
 <li><a href="#%E9%97%AE%E9%A2%98%E6%8F%8F%E8%BF%B0">问题描述</a></li>
-<li><a href="#%E6%B7%B1%E5%BA%A6%E5%B9%BF%E5%BA%A6%E4%BC%98%E5%85%88%E6%90%9C%E7%B4%A2%E7%AE%97%E6%B3%95">深度/广度优先搜索算法</a></li>
+<li><a href="#%E6%B7%B1%E5%BA%A6%E5%B9%BF%E5%BA%A6%E4%BC%98%E5%85%88%E6%90%9C%E7%B4%A2%E7%AE%97%E6%B3%95">深度/广度优先搜索算法</a>
+<ul>
 <li><a href="#%E4%B8%A4%E7%A7%8D%E7%AE%97%E6%B3%95%E6%A0%87%E5%87%86%E6%A8%A1%E6%9D%BF">两种算法标准模板</a></li>
+<li><a href="#797-%E6%89%80%E6%9C%89%E5%8F%AF%E8%83%BD%E7%9A%84%E8%B7%AF%E5%BE%84%E8%A7%A3%E6%B3%95%E4%B8%80">797. 所有可能的路径（解法一）</a></li>
+</ul>
+</li>
+<li><a href="#%E6%B7%B1%E5%BA%A6%E4%BC%98%E5%85%88%E6%90%9C%E7%B4%A2%E7%9A%84%E9%80%92%E5%BD%92%E5%9B%9E%E6%BA%AF%E7%AE%97%E6%B3%95">深度优先搜索的递归回溯算法</a>
+<ul>
 <li><a href="#%E5%9B%9E%E6%BA%AF%E7%AE%97%E6%B3%95">回溯算法</a></li>
+<li><a href="#797-%E6%89%80%E6%9C%89%E5%8F%AF%E8%83%BD%E7%9A%84%E8%B7%AF%E5%BE%84%E8%A7%A3%E6%B3%95%E4%BA%8C">797. 所有可能的路径（解法二）</a></li>
+</ul>
+</li>
 </ul>
 </p>
 <h1 id="问题描述">问题描述</h1>
@@ -144,24 +153,28 @@
 <img src="https://star2dust.github.io/post-images/1627267339863.png" style="zoom: 50%;" />
 <p>广度优先搜索算法的策略是：移除/扩展容器中最浅的节点，即先入先出(first in first out)。</p>
 <img src="https://star2dust.github.io/post-images/1627267555658.png" style="zoom: 50%;" />
-<h1 id="两种算法标准模板">两种算法标准模板</h1>
-<p>广度优先搜索算法标准模板：</p>
-<pre><code class="language-cpp">void bfs(){
-    定义队列;
+<h2 id="两种算法标准模板">两种算法标准模板</h2>
+<p>广度/深度优先搜索算法标准模板：</p>
+<pre><code class="language-cpp">void bfs(graph, start, goal)/*dfs(graph, start, goal)*/{
+    定义队列/*堆栈*/;
     定义备忘录，用于记录已经访问的节点;
-    判断边界条件，是否能直接返回;
-    将起始节点加入到队列中;
+    将全部起始节点加入到队列/*堆栈*/中（空路径后加该节点）;
     更新备忘录；//必须加入时更新备忘录
     while (队列不为空){
-        获取当前队列(当前层级)中的节点个数；
-        for (该层节点){
-            取出一个节点；
-            判断是否到达目标节点，是则返回；//最关键的循环终止条件
-            获取它对应的下一层级所有的节点；
-            for (下层节点){
+        获取当前队列(当前层级)中的节点个数；//必须在这里读队列长度，因为后面队列长度会变
+        for (该层所有节点){
+            复制当前节点；
+            出队/*出栈*/当前节点；
+            for (全部目标节点){//最关键的循环终止条件
+                if (当前节点==当前目标节点){
+                    存当前路径；
+                    继续/返回；//只需一条路径用返回，多条用继续
+                }
+            }
+            for (当前节点的所有下层节点){
                 if (可行节点且未访问过){
                     //如果入队时不更新备忘录，此时有可能又搜到上层节点
-					加入该节点到队列；
+					加入该节点到队列/*堆栈*/（当前路径后加该节点）；
                     更新备忘录；
                 }
             }
@@ -170,12 +183,109 @@
     遍历完毕，返回；
 }
 </code></pre>
-<p>深度优先搜索算法标准模板：</p>
+<p>由于广度优先和深度优先仅取决于容器的不同，所以上面以广度优先搜索为基础，用注释符号标注出了深度优先不同于广度优先的地方。</p>
+<h2 id="797-所有可能的路径解法一">797. 所有可能的路径（解法一）</h2>
+<p>接下来以力扣题<a href="https://leetcode-cn.com/problems/all-paths-from-source-to-target/">797. 所有可能的路径</a>为例，给出广度/深度优先搜索的题解。</p>
+<blockquote>
+<p>给你一个有 n 个节点的 <strong>有向无环图</strong>（DAG），请你找出所有从节点 0 到节点 n-1 的路径并输出（不要求按特定顺序）</p>
+<p>二维数组的第 i 个数组中的单元都表示有向图中 i 号节点所能到达的下一些节点，空就是没有下一个结点了。</p>
+<p>译者注：有向图是有方向的，即规定了 a→b 你就不能从 b→a 。</p>
+<p>（以下实例为我手撕的面试题，可惜没当场撕出来，该题指定了多个起始点和目标点）</p>
+<p>输入实例：{{1,2},{5},{5},{4},{6},{7,8},{8},{},{}}</p>
+<p>输出实例：{{0,1,5,7},{0,1,5,8},{0,2,5,7},{0,2,5,8},{3,4,6,8}}</p>
+<p>0   3<br>
+/ \  |<br>
+1 2 4<br>
+\ /  |<br>
+5   6<br>
+/ \ /<br>
+7  8</p>
+</blockquote>
+<p>注意到该题为无环图，因此解法等同于<strong>层序遍历多叉森林</strong>，无需备忘录，而终止条件并非为了终止循环，而是为了记录路径。</p>
+<pre><code class="language-cpp">//用于入队、入栈的节点结构
+struct Node{
+    int id;
+    vector&lt;int&gt; path;
+    
+    Node(int id){
+        this-&gt;id = id;
+        this-&gt;path = {id};
+    }
+    
+    Node(int id, vector&lt;int&gt; path){
+        this-&gt;id = id;
+        this-&gt;path = path;
+        this-&gt;path.push_back(id);
+    }
+};
+// 广度优先搜索
+vector&lt;vector&lt;int&gt;&gt; bfs(vector&lt;vector&lt;int&gt;&gt; graph, vector&lt;int&gt; start, vector&lt;int&gt; goal){
+    queue&lt;Node&gt; q;
+    vector&lt;vector&lt;int&gt;&gt; results;
+    int depth = 0;
+    for (int s: start) q.push(Node(s));
+    while (!q.empty()){
+        int n = q.size();
+        for (int i=0; i&lt;n; i++){
+            Node p = q.front();
+            q.pop();
+            for (int g: goal){
+               if (p.id==g){
+                    results.push_back(p.path);
+                    continue;
+                } 
+            }
+            for (int next: graph[p.id]){
+                q.push(Node(next,p.path));
+            }
+        }
+        depth++;
+    }  
+    return results;
+}
+// 深度优先搜索
+vector&lt;vector&lt;int&gt;&gt; dfs(vector&lt;vector&lt;int&gt;&gt; graph, vector&lt;int&gt; start, vector&lt;int&gt; goal){
+    stack&lt;Node&gt; q;//区别1
+    vector&lt;vector&lt;int&gt;&gt; results;
+    int step = 0;
+    for (int s: start) q.push(Node(s));
+    while (!q.empty()){
+        int n = q.size();
+        for (int i=0; i&lt;n; i++){
+            Node p = q.top();//区别2
+            q.pop();
+            for (int g: goal){
+               if (p.id==g){
+                    results.push_back(p.path);
+                    continue;
+                } 
+            }
+            for (int next: graph[p.id]){
+                q.push(Node(next,p.path));
+            }
+        }
+        step++;
+    }  
+    return results;
+}
+int main() {
+    vector&lt;vector&lt;int&gt;&gt; graph = {{1,2},{5},{5},{4},{6},{7,8},{8},{},{}};
+    vector&lt;int&gt; start = {0,3};
+    vector&lt;int&gt; goal = {7,8};
+    vector&lt;vector&lt;int&gt;&gt; paths;
+    paths = bfs(graph,start,goal);
+    // paths = dfs(graph,start,goal);
+    return 0;
+}
+</code></pre>
+<h1 id="深度优先搜索的递归回溯算法">深度优先搜索的递归回溯算法</h1>
+<p>深度优先搜索算法也可以按照递归写，模板如下：</p>
 <pre><code class="language-cpp">void dfs(当前节点){
-    判断是否到达目标节点，是则返回；//最关键的递归终止条件(找到为止)
-    获取它对应的下一层级所有的节点；
-    for (下层节点){
-        dfs(下层当前节点)；//对子树做dfs
+    if (当前节点==目标节点){
+        返回；//找到即返回
+    }
+    for (当前节点的所有下层节点){
+        dfs(下层节点)；//对子树做dfs
     }
 }
 void main(){
@@ -184,21 +294,21 @@ void main(){
     遍历完毕，返回；    
 }
 </code></pre>
-<p>当然，深度优先搜索算法也可以按照广度优先搜索算法的模板写，需要把队列改成堆栈。</p>
-<h1 id="回溯算法">回溯算法</h1>
+<p>通过上述模板，可以实现多叉森林中所有点的遍历，但是会出现重复遍历的现象。相当于搜的过程中发现此路不通，于是走了回头路。</p>
+<p>那么问题来了，如果需要存路径，则必须删除这些回头路，怎么办？于是有了下面的回溯算法。</p>
+<h2 id="回溯算法">回溯算法</h2>
 <p><strong>回溯算法</strong>(back tracking)也可以叫做回溯搜索法，它是一种搜索的方式。回溯是递归的副产品，只要有递归就会有回溯。</p>
-<p>此外，回溯算法的模板与上面深度优先搜索算法模板几乎完全一致，区别在于递归函数的前后分别有节点处理和撤销处理的两个操作。</p>
+<p>回溯算法的模板与上面深度优先搜索算法模板几乎完全一致，区别在于递归函数的前后分别有节点处理和撤销处理的两个操作。</p>
 <p>回溯算法标准模板：</p>
 <pre><code class="language-cpp">void backTracking(当前节点){
-    if (终止条件){//通常是到达目标节点
-        存放结果；
-        return；
+    if (当前节点==目标节点){
+        存当前路径；
+        返回；//找到即返回
     }
-    获取它对应的下一层级所有的节点；
-    for (下层节点){
-        处理节点；
-        backTracking(下层当前节点)；//对子树做bt
-        撤销处理；//回溯
+    for (当前节点的所有下层节点){
+        当前节点加入路径；//节点处理
+        backTracking(下层节点)；//对子树做bt
+        路径中撤销当前节点；//撤销处理
     }
 }
 void main(){
@@ -208,6 +318,35 @@ void main(){
 }
 </code></pre>
 <p>回溯算法中，<strong>for循环可以理解是横向遍历，backTracking（递归）就是纵向遍历</strong>，这样就把这棵树全遍历完了。</p>
+<h2 id="797-所有可能的路径解法二">797. 所有可能的路径（解法二）</h2>
+<p>这里用深度优先递归回溯方法解决力扣题<a href="https://leetcode-cn.com/problems/all-paths-from-source-to-target/">797. 所有可能的路径</a>。</p>
+<pre><code class="language-cpp">void dfsbt(vector&lt;vector&lt;int&gt;&gt;&amp; paths, vector&lt;int&gt;&amp; path, vector&lt;vector&lt;int&gt;&gt; graph, int start, int goal){
+    if (start==goal){
+        paths.push_back(path);
+        return;
+    }
+    for (int next: graph[start]){
+        path.push_back(next);
+        dfsbt(paths,path,graph,next,goal);
+        path.pop_back();//撤销处理
+    }
+}
+
+int main() {
+    vector&lt;vector&lt;int&gt;&gt; graph = {{1,2},{5},{5},{4},{6},{7,8},{8},{},{}};
+    vector&lt;int&gt; start = {0,3};
+    vector&lt;int&gt; goal = {7,8};
+    vector&lt;vector&lt;int&gt;&gt; paths;
+    // 与bfs每一个节点复制并维持一条路径不同，dfs有几条可行路径就维持几条
+    for (int s: start){
+        for (int g: goal){
+            vector&lt;int&gt; path = {s};
+            dfsbt(paths,path,graph,s,g);
+        }
+    }
+    return 0;
+}
+</code></pre>
 
                 </div>
             </article>

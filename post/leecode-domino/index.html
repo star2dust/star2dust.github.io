@@ -4,7 +4,7 @@
 <meta name="description" content=""/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
 
-<title>Hello Gridea | star2dust</title>
+<title>【力扣刷题】推多米诺（双指针） | star2dust</title>
 
 <link rel="shortcut icon" href="https://star2dust.github.io/favicon.ico?v=1636882769918">
 
@@ -107,45 +107,82 @@
         <div class="post-detail gt-bg-theme-color-second">
             <article class="gt-post-content">
                 <h2 class="post-title">
-                    Hello Gridea
+                    【力扣刷题】推多米诺（双指针）
                 </h2>
                 <div class="post-info">
                     <time class="post-time gt-c-content-color-first">
-                        · 2018-12-12 ·
+                        · 2021-09-10 ·
                     </time>
                     
-                        <a href="https://star2dust.github.io/tag/Go1Dbn9Ag/" class="post-tags">
-                            # Gridea
+                        <a href="https://star2dust.github.io/tag/DuA8BNEBr/" class="post-tags">
+                            # Algorithm
                         </a>
                     
                 </div>
                 <div class="post-content">
-                    <p>👏  欢迎使用 <strong>Gridea</strong> ！<br>
-✍️  <strong>Gridea</strong> 一个静态博客写作客户端。你可以用它来记录你的生活、心情、知识、笔记、创意... ...</p>
-<!-- more -->
-<p><a href="https://github.com/getgridea/gridea">Github</a><br>
-<a href="https://gridea.dev/">Gridea 主页</a><br>
-<a href="http://fehey.com/">示例网站</a></p>
-<h2 id="特性">特性👇</h2>
-<p>📝  你可以使用最酷的 <strong>Markdown</strong> 语法，进行快速创作</p>
-<p>🌉  你可以给文章配上精美的封面图和在文章任意位置插入图片</p>
-<p>🏷️  你可以对文章进行标签分组</p>
-<p>📋  你可以自定义菜单，甚至可以创建外部链接菜单</p>
-<p>💻  你可以在 <strong>Windows</strong>，<strong>MacOS</strong> 或 <strong>Linux</strong> 设备上使用此客户端</p>
-<p>🌎  你可以使用 <strong>𝖦𝗂𝗍𝗁𝗎𝖻 𝖯𝖺𝗀𝖾𝗌</strong> 或 <strong>Coding Pages</strong> 向世界展示，未来将支持更多平台</p>
-<p>💬  你可以进行简单的配置，接入 <a href="https://github.com/gitalk/gitalk">Gitalk</a> 或 <a href="https://github.com/SukkaW/DisqusJS">DisqusJS</a> 评论系统</p>
-<p>🇬🇧  你可以使用<strong>中文简体</strong>或<strong>英语</strong></p>
-<p>🌁  你可以任意使用应用内默认主题或任意第三方主题，强大的主题自定义能力</p>
-<p>🖥  你可以自定义源文件夹，利用 OneDrive、百度网盘、iCloud、Dropbox 等进行多设备同步</p>
-<p>🌱 当然 <strong>Gridea</strong> 还很年轻，有很多不足，但请相信，它会不停向前 🏃</p>
-<p>未来，它一定会成为你离不开的伙伴</p>
-<p>尽情发挥你的才华吧！</p>
-<p>😘 Enjoy~</p>
+                    <p>力扣链接：https://leetcode-cn.com/problems/push-dominoes/</p>
+<blockquote>
+<p><a href="https://leetcode-cn.com/problems/push-dominoes/">838. 推多米诺</a>：一行中有 N 张多米诺骨牌，我们将每张多米诺骨牌垂直竖立。在开始时，我们同时把一些多米诺骨牌向左或向右推。每过一秒，倒向左边的多米诺骨牌会推动其左侧相邻的多米诺骨牌。同样地，倒向右边的多米诺骨牌也会推动竖立在其右侧的相邻多米诺骨牌。如果同时有多米诺骨牌落在一张垂直竖立的多米诺骨牌的两边，由于受力平衡， 该骨牌仍然保持不变。就这个问题而言，我们会认为正在下降的多米诺骨牌不会对其它正在下降或已经下降的多米诺骨牌施加额外的力。</p>
+<p>给定表示初始状态的字符串 &quot;S&quot; 。如果第 i 张多米诺骨牌被推向左边，则 S[i] = 'L'；如果第 i 张多米诺骨牌被推向右边，则 S[i] = 'R'；如果第 i 张多米诺骨牌没有被推动，则 S[i] = '.'。</p>
+<p>返回表示最终状态的字符串。</p>
+</blockquote>
+<blockquote>
+<p>以下实例为小马智行（pony.ai）一面coding面试题。<br>
+输入：&quot;.L.R...LR..L..&quot;<br>
+输出：&quot;LL.RR.LLRRLL..&quot;</p>
+<p>// INPUT:   |\ | /|||\ /||\ ||<br>
+// OUTPUT:  \ | //|\ //\ ||</p>
+</blockquote>
+<pre><code class="language-cpp">class Solution {
+public:
+    string pushDominoes(string dominoes) {
+        //左右加上LR不影响最终结果，可以避免判定.是否在两端
+        dominoes = &quot;L&quot;+dominoes+&quot;R&quot;;
+        string res = &quot;&quot;;
+        int n = dominoes.length(); 
+        //双指针
+        int left = 0, right = 1;
+        while (right&lt;n){
+            if (dominoes[right]=='.') {
+                //区块右边界更新
+                right++;
+                continue;
+            }
+            if (left&gt;0){
+                //LR不会改变，会改变的只有.
+                res += dominoes[left];
+            }
+            int block_size = right-left-1;//区块中的.部分，不包括两端
+            if (dominoes[left]==dominoes[right]){
+                //左右相同，倒向相同
+                res += string(block_size, dominoes[left]);
+            }else if (dominoes[left]=='L' &amp;&amp; dominoes[right]=='R'){//左右相异，分两种情况
+                //左L右R，中间不变
+                res += string(block_size,'.');
+            }else{
+                 //左R右L，二分点不变，左边变为R，右边变为L
+                res += string(block_size/2,'R')+string(block_size%2,'.')+string(block_size/2,'L');
+            }
+            //区块左边界更新
+            left = right;
+            right++;
+        }
+        return res;
+    }
+};
+</code></pre>
 
                 </div>
             </article>
         </div>
 
+        
+            <div class="next-post">
+                <div class="next gt-c-content-color-first">下一篇</div>
+                <a href="https://star2dust.github.io/post/turtlebot-stage-slam/" class="post-title gt-a-link">
+                    Turtlebot+Stage进行SLAM仿真（ROS Kinetic）
+                </a>
+            </div>
         
 
         

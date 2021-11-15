@@ -4,7 +4,7 @@
 <meta name="description" content=""/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
 
-<title>MATLAB小技巧：确认对话框预设项 | star2dust</title>
+<title>【力扣刷题】和为奇数的子数组数目（前缀和） | star2dust</title>
 
 <link rel="shortcut icon" href="https://star2dust.github.io/favicon.ico?v=1636938281516">
 
@@ -107,34 +107,60 @@
         <div class="post-detail gt-bg-theme-color-second">
             <article class="gt-post-content">
                 <h2 class="post-title">
-                    MATLAB小技巧：确认对话框预设项
+                    【力扣刷题】和为奇数的子数组数目（前缀和）
                 </h2>
                 <div class="post-info">
                     <time class="post-time gt-c-content-color-first">
-                        · 2021-01-17 ·
+                        · 2021-11-15 ·
                     </time>
                     
-                        <a href="https://star2dust.github.io/tag/8ENq9b4cN/" class="post-tags">
-                            # Matlab
+                        <a href="https://star2dust.github.io/tag/DuA8BNEBr/" class="post-tags">
+                            # Algorithm
                         </a>
                     
                 </div>
                 <div class="post-content">
-                    <p>最近解决了一个困扰了我很久的matlab问题，写出来分享一下。</p>
-<p>我们知道用matlab打开一个不存在的文件时，会出现以下对话框。</p>
-<img src="https://star2dust.github.io/post-images/1610850792492.png" style="zoom:67%;" />
-<p>通过点“是”，可以创建一个新文件。</p>
-<p>然后有一天，我手贱勾选了不再提示，问题就来了。每当我想右键打开查看函数源文件定义的时候，经常不小心在当前文件夹新建一个空白文件，非常麻烦但又不知道如何取消。</p>
-<p>现在我终于找到了恢复原设置的方法。</p>
-<ol>
-<li>预设-&gt;常规-&gt;确认对话框，打开确认对话框预设项；</li>
-</ol>
-<img src="https://star2dust.github.io/post-images/1610851137860.png" style="zoom:67%;" />
-<ol start="2">
-<li>勾选倒数第二项，“编辑不存在的文件时发出提示”，点击确定。</li>
-</ol>
-<img src="https://star2dust.github.io/post-images/1610851401102.png" style="zoom:67%;" />
-<p>可以看到，对话框提示重新出现了。</p>
+                    <blockquote>
+<p><a href="https://leetcode-cn.com/problems/number-of-sub-arrays-with-odd-sum/">1524. 和为奇数的子数组数目</a>：给你一个整数数组 <code>arr</code> 。请你返回和为 <strong>奇数</strong> 的子数组数目。<br>
+由于答案可能会很大，请你将结果对 <code>10^9 + 7</code> 取余后返回。</p>
+</blockquote>
+<blockquote>
+<p>以下实例为小马智行（pony.ai）二面coding面试题。</p>
+<p>输入：arr = [1,3,5]<br>
+输出：4<br>
+解释：所有的子数组为 [[1],[1,3],[1,3,5],[3],[3,5],[5]] 。<br>
+所有子数组的和为 [1,4,9,3,8,5].<br>
+奇数和包括 [1,9,3,5] ，所以答案为 4 。</p>
+</blockquote>
+<p>这里总结一下前缀和的算法思想。给定一个int arr[]数组，我们要计算第i项及以前的和, sum[i]表示从下标0到下标i的和，那么sum[i] = sum[i - 1] + arr[i]，这里的前缀和就是sum[i - 1]。也就是所记录的前缀和应该是[1], [1, 2], [1, 2, 3], [1, 2, 3, 4]...这个样子。</p>
+<p>参考<a href="https://leetcode-cn.com/problems/number-of-sub-arrays-with-odd-sum/solution/c-he-wei-qi-shu-de-zi-shu-zu-shu-mu-qian-zhui-he-b/">yuyangxianyi的题解</a>，如果当前和为奇数的话，例如[1, 2, 3, 4, 5], 计算到第5个数时<strong>和为奇数，我们只要减去前缀和为偶数的</strong>即可，例如减去[1, 2, 3], 这样这个序列就剩下[4, 5]是奇数，也是新增的项，还可以减去[1, 2, 3, 4], 剩下[5], 也是新增的一项，本质为：奇数 - 偶数 = 奇数，意思就是说，<strong>有几个偶前缀和，就新增几项</strong>。相反的，如果当前<strong>和为偶数，只需要减去所有奇数的前缀和</strong>，即为新增的数目，本质为：偶数 - 奇数 = 奇数。最后把当前的和是奇数，令前缀和为奇数的++, 反之亦然。</p>
+<p>起初前缀和是偶数值为1是因为可以理解为默认一个0的存在。</p>
+<pre><code class="language-cpp">class Solution {
+public:
+    typedef long long ll;
+    #define mod 1000000007
+    int numOfSubarrays(vector&lt;int&gt;&amp; arr) {
+        //前缀和为0到i的arr和
+        ll even_pre_sum = 1; // 可以理解为0 + pre_sum
+        ll odd_pre_sum = 0;
+        ll sum = 0;
+        int ans = 0;
+        for (int i = 0; i &lt; arr.size(); i++) {
+            sum += arr[i];
+            if (sum % 2) {//arr和为奇数
+                //如果当前和为奇数，要减去前缀和为偶数的即可
+                ans += even_pre_sum; //即有几个偶前缀和，就新增几项
+                odd_pre_sum++;
+            } else {
+                ans += odd_pre_sum;
+                even_pre_sum++;
+            }
+            ans %= mod;
+        }
+        return ans;
+    }
+};
+</code></pre>
 
                 </div>
             </article>
@@ -143,8 +169,8 @@
         
             <div class="next-post">
                 <div class="next gt-c-content-color-first">下一篇</div>
-                <a href="https://star2dust.github.io/post/gradient-tracking/" class="post-title gt-a-link">
-                    【论文笔记】利用平滑度加速分布式优化——梯度跟踪法(Gradient Tracking)
+                <a href="https://star2dust.github.io/post/leecode-arrange-balls/" class="post-title gt-a-link">
+                    【力扣刷题】排列小球（DFS）
                 </a>
             </div>
         

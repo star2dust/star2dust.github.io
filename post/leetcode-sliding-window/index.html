@@ -1,0 +1,619 @@
+<html>
+<head>
+    <meta charset="utf-8"/>
+<meta name="description" content=""/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+
+<title>【力扣刷题】双指针和滑动窗口 | star2dust</title>
+
+<link rel="shortcut icon" href="https://star2dust.github.io/favicon.ico?v=1638094648462">
+
+<link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://star2dust.github.io/styles/main.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/css/bootstrap.min.css">
+
+<script src="https://cdn.jsdelivr.net/npm/@highlightjs/cdn-assets/highlight.min.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.15.10/languages/dockerfile.min.js"></script>
+<script src="https://cdn.bootcss.com/highlight.js/9.15.10/languages/dart.min.js"></script>
+
+<script src="https://cdn.jsdelivr.net/npm/moment@2.27.0/moment.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/js/bootstrap.min.js"></script>
+
+<!-- DEMO JS -->
+<!--<script src="media/scripts/index.js"></script>-->
+
+
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.css">
+</head>
+<body>
+<div class="main gt-bg-theme-color-first">
+    <nav class="navbar navbar-expand-lg">
+    <div class="navbar-brand">
+        <img class="user-avatar" src="/images/avatar.png" alt="头像">
+        <div class="site-name gt-c-content-color-first">
+            star2dust
+        </div>
+    </div>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <i class="fas fa-bars gt-c-content-color-first" style="font-size: 18px"></i>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <div class="navbar-nav mr-auto" style="text-align: center">
+            
+                <div class="nav-item">
+                    
+                        <a href="/" class="menu gt-a-link">
+                            首页
+                        </a>
+                    
+                </div>
+            
+                <div class="nav-item">
+                    
+                        <a href="/archives" class="menu gt-a-link">
+                            归档
+                        </a>
+                    
+                </div>
+            
+                <div class="nav-item">
+                    
+                        <a href="/tags" class="menu gt-a-link">
+                            标签
+                        </a>
+                    
+                </div>
+            
+                <div class="nav-item">
+                    
+                        <a href="/post/about" class="menu gt-a-link">
+                            关于
+                        </a>
+                    
+                </div>
+            
+                <div class="nav-item">
+                    
+                        <a href="https://blog.csdn.net/u010038790" class="menu gt-a-link" target="_blank">
+                            CSDN博客
+                        </a>
+                    
+                </div>
+            
+                <div class="nav-item">
+                    
+                        <a href="https://github.com/star2dust/paper-simulation" class="menu gt-a-link" target="_blank">
+                            论文复现
+                        </a>
+                    
+                </div>
+            
+                <div class="nav-item">
+                    
+                        <a href="https://github.com/star2dust/Robotics-Toolbox" class="menu gt-a-link" target="_blank">
+                            机器人控制规划库
+                        </a>
+                    
+                </div>
+            
+        </div>
+    </div>
+</nav>
+    <div class="post-container">
+        <div class="post-detail gt-bg-theme-color-second">
+            <article class="gt-post-content">
+                <h2 class="post-title">
+                    【力扣刷题】双指针和滑动窗口
+                </h2>
+                <div class="post-info">
+                    <time class="post-time gt-c-content-color-first">
+                        · 2021-11-28 ·
+                    </time>
+                    
+                        <a href="https://star2dust.github.io/tag/DuA8BNEBr/" class="post-tags">
+                            # Algorithm
+                        </a>
+                    
+                </div>
+                <div class="post-content">
+                    <p><ul class="markdownIt-TOC">
+<li><a href="#%E5%8F%8C%E6%8C%87%E9%92%88">双指针</a>
+<ul>
+<li><a href="#27-%E7%A7%BB%E9%99%A4%E5%85%83%E7%B4%A0">27. 移除元素</a></li>
+<li><a href="#26-%E5%88%A0%E9%99%A4%E6%9C%89%E5%BA%8F%E6%95%B0%E7%BB%84%E4%B8%AD%E7%9A%84%E9%87%8D%E5%A4%8D%E9%A1%B9">26. 删除有序数组中的重复项</a></li>
+<li><a href="#80-%E5%88%A0%E9%99%A4%E6%9C%89%E5%BA%8F%E6%95%B0%E7%BB%84%E4%B8%AD%E7%9A%84%E9%87%8D%E5%A4%8D%E9%A1%B9-ii">80. 删除有序数组中的重复项 II</a></li>
+<li><a href="#844-%E6%AF%94%E8%BE%83%E5%90%AB%E9%80%80%E6%A0%BC%E7%9A%84%E5%AD%97%E7%AC%A6%E4%B8%B2">844. 比较含退格的字符串</a></li>
+<li><a href="#977%E6%9C%89%E5%BA%8F%E6%95%B0%E7%BB%84%E7%9A%84%E5%B9%B3%E6%96%B9">977.有序数组的平方</a></li>
+</ul>
+</li>
+<li><a href="#%E6%BB%91%E5%8A%A8%E7%AA%97%E5%8F%A3">滑动窗口</a>
+<ul>
+<li><a href="#209%E9%95%BF%E5%BA%A6%E6%9C%80%E5%B0%8F%E7%9A%84%E5%AD%90%E6%95%B0%E7%BB%84">209.长度最小的子数组</a></li>
+<li><a href="#904%E6%B0%B4%E6%9E%9C%E6%88%90%E7%AF%AE">904.水果成篮</a></li>
+<li><a href="#76%E6%9C%80%E5%B0%8F%E8%A6%86%E7%9B%96%E5%AD%90%E4%B8%B2">76.最小覆盖子串</a></li>
+</ul>
+</li>
+</ul>
+</p>
+<p>本文总结了双指针和滑动窗口的常见题型。</p>
+<h1 id="双指针">双指针</h1>
+<p>双指针法（快慢指针法）： <strong>通过一个快指针和慢指针在一个for循环下完成两个for循环的工作</strong>，达到减少时间复杂度的作用。</p>
+<p><strong>双指针法在数组和链表的操作中是非常常见的，很多考察数组、链表、字符串等操作的面试题，都使用双指针法。</strong></p>
+<h2 id="27-移除元素">27. 移除元素</h2>
+<blockquote>
+<p><a href="https://leetcode-cn.com/problems/remove-element/">27. 移除元素</a>：给你一个数组 <code>nums</code> 和一个值 <code>val</code>，你需要 <strong><a href="https://baike.baidu.com/item/%E5%8E%9F%E5%9C%B0%E7%AE%97%E6%B3%95">原地</a></strong> 移除所有数值等于 <code>val</code> 的元素，并返回移除后数组的新长度。</p>
+<p>不要使用额外的数组空间，你必须仅使用 <code>O(1)</code> 额外空间并 <strong><a href="https://baike.baidu.com/item/%E5%8E%9F%E5%9C%B0%E7%AE%97%E6%B3%95">原地 </a>修改输入数组</strong>。</p>
+<p>元素的顺序可以改变。你不需要考虑数组中超出新长度后面的元素。</p>
+<p><strong>示例 ：</strong></p>
+<pre><code>输入：nums = [3,2,2,3], val = 3
+输出：2, nums = [2,2]
+解释：函数应该返回新的长度 2, 并且 nums 中的前两个元素均为 2。你不需要考虑数组中超出新长度后面的元素。例如，函数返回的新长度为 2 ，而 nums = [2,2,3,3] 或 nums = [2,2,0,0]，也会被视作正确答案。
+</code></pre>
+</blockquote>
+<p>数组的元素在内存地址中是连续的，不能单独删除数组中的某个元素，只能覆盖。</p>
+<p>数组的基础知识可以看这里<a href="https://programmercarl.com/%E6%95%B0%E7%BB%84%E7%90%86%E8%AE%BA%E5%9F%BA%E7%A1%80.html">程序员算法面试中，必须掌握的数组理论知识</a>。</p>
+<p>本题思路是，设置快慢指针，先同时移动，直到指向第一个要删除的位置，快指针多移动一位。</p>
+<p>之后每次同时移动，做两件事：</p>
+<ul>
+<li>快指针位置的值复制到慢指针位置</li>
+<li>快指针指向要删除位置时，快指针多移动一位</li>
+</ul>
+<p>最后慢指针位置即为数组长度。</p>
+<pre><code class="language-cpp">// 时间复杂度：O(n)
+// 空间复杂度：O(1)
+class Solution {
+public:
+    int removeElement(vector&lt;int&gt;&amp; nums, int val) {
+        int slowIndex = 0;
+        for (int fastIndex = 0; fastIndex &lt; nums.size(); fastIndex++) {
+            if (val != nums[fastIndex]) {
+                nums[slowIndex++] = nums[fastIndex];
+            }
+        }
+        return slowIndex;
+    }
+};
+</code></pre>
+<p>时间复杂度：<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>O</mi><mo>(</mo><mi>n</mi><mo>)</mo></mrow><annotation encoding="application/x-tex">O(n)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathdefault">n</span><span class="mclose">)</span></span></span></span></p>
+<p>空间复杂度：<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>O</mi><mo>(</mo><mn>1</mn><mo>)</mo></mrow><annotation encoding="application/x-tex">O(1)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord">1</span><span class="mclose">)</span></span></span></span></p>
+<h2 id="26-删除有序数组中的重复项">26. 删除有序数组中的重复项</h2>
+<blockquote>
+<p><a href="https://leetcode-cn.com/problems/remove-duplicates-from-sorted-array/">26. 删除有序数组中的重复项</a>：给你一个有序数组 <code>nums</code> ，请你**<a href="http://baike.baidu.com/item/%E5%8E%9F%E5%9C%B0%E7%AE%97%E6%B3%95"> 原地</a>** 删除重复出现的元素，使每个元素 <strong>只出现一次</strong> ，返回删除后数组的新长度。</p>
+<p>不要使用额外的数组空间，你必须在 <strong><a href="https://baike.baidu.com/item/%E5%8E%9F%E5%9C%B0%E7%AE%97%E6%B3%95">原地 </a>修改输入数组</strong> 并在使用 O(1) 额外空间的条件下完成。</p>
+<p><strong>示例 ：</strong></p>
+<pre><code>输入：nums = [1,1,2]
+输出：2, nums = [1,2]
+解释：函数应该返回新的长度 2 ，并且原数组 nums 的前两个元素被修改为 1, 2 。不需要考虑数组中超出新长度后面的元素。
+</code></pre>
+</blockquote>
+<p>注意到数组<strong>有序</strong>，因此重复元素必定相邻，那就简单多了。</p>
+<pre><code class="language-cpp">class Solution {
+public:
+    int removeDuplicates(vector&lt;int&gt;&amp; nums) {
+        // 判空
+        if (nums.size()==0) return 0;
+        // 如果非空，第一个数字不变，从第二个开始
+        int l = 1;
+        for (int r = 1; r &lt; nums.size(); r++){
+            if (nums[r] != nums[l-1]){
+                nums[l++] = nums[r];
+            }
+        }
+        return l;
+    }
+};
+</code></pre>
+<p>时间复杂度：<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>O</mi><mo>(</mo><mi>n</mi><mo>)</mo></mrow><annotation encoding="application/x-tex">O(n)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathdefault">n</span><span class="mclose">)</span></span></span></span></p>
+<p>空间复杂度：<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>O</mi><mo>(</mo><mn>1</mn><mo>)</mo></mrow><annotation encoding="application/x-tex">O(1)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord">1</span><span class="mclose">)</span></span></span></span>​</p>
+<h2 id="80-删除有序数组中的重复项-ii">80. 删除有序数组中的重复项 II</h2>
+<blockquote>
+<p><a href="https://leetcode-cn.com/problems/remove-duplicates-from-sorted-array-ii/">80. 删除有序数组中的重复项 II</a>：给你一个有序数组 <code>nums</code> ，请你**<a href="http://baike.baidu.com/item/%E5%8E%9F%E5%9C%B0%E7%AE%97%E6%B3%95"> 原地</a>** 删除重复出现的元素，使每个元素 <strong>最多出现两次</strong> ，返回删除后数组的新长度。</p>
+<p>不要使用额外的数组空间，你必须在 <strong><a href="https://baike.baidu.com/item/%E5%8E%9F%E5%9C%B0%E7%AE%97%E6%B3%95">原地 </a>修改输入数组</strong> 并在使用 O(1) 额外空间的条件下完成。</p>
+<p><strong>示例 ：</strong></p>
+<pre><code>输入：nums = [1,1,1,2,2,3]
+输出：5, nums = [1,1,2,2,3]
+解释：函数应返回新长度 length = 5, 并且原数组的前五个元素被修改为 1, 1, 2, 2, 3 。 不需要考虑数组中超出新长度后面的元素。
+</code></pre>
+</blockquote>
+<p>本题要求最多出现<code>2</code>次，直接的思路是加个计数项，如果重复个数超过2个就加一次拷贝动作。</p>
+<pre><code class="language-cpp">class Solution {
+public:
+    int removeDuplicates(vector&lt;int&gt;&amp; nums) {
+        if (nums.size()==0) return 0;
+        int l = 1, r = 1, cnt = 0;//计数
+        while (r &lt; nums.size()){
+            if (nums[r] != nums[r-1]){
+                //加一次拷贝动作
+                if (cnt &gt; 0) {
+                    nums[l++] = nums[r-1];
+                    cnt = 0;
+                }
+                nums[l++] = nums[r];
+            }else{
+                cnt++;
+            }
+            r++;
+        }
+        // 结尾还要加一次拷贝动作
+        if (cnt &gt; 0) {
+            nums[l++] = nums[r-1];
+            cnt = 0;
+        }
+        return l;
+    }
+};
+</code></pre>
+<p>扩展一下，如果要求最多重复<code>k</code>次呢？</p>
+<pre><code class="language-cpp">class Solution {
+public:
+    int removeDuplicates(vector&lt;int&gt;&amp; nums, int k) {
+        if (nums.size() &lt;= k) return nums.size();
+        int l = k, r = k;
+        while (r &lt; nums.size()){
+            if (nums[r] != nums[l-k]){
+                nums[l++] = nums[r];
+            }
+            r++;
+        }
+        return l;
+    }
+};
+</code></pre>
+<p>时间复杂度：<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>O</mi><mo>(</mo><mi>n</mi><mo>)</mo></mrow><annotation encoding="application/x-tex">O(n)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathdefault">n</span><span class="mclose">)</span></span></span></span></p>
+<p>空间复杂度：<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>O</mi><mo>(</mo><mn>1</mn><mo>)</mo></mrow><annotation encoding="application/x-tex">O(1)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord">1</span><span class="mclose">)</span></span></span></span></p>
+<h2 id="844-比较含退格的字符串">844. 比较含退格的字符串</h2>
+<blockquote>
+<p><a href="https://leetcode-cn.com/problems/backspace-string-compare/">844. 比较含退格的字符串</a>：给定 <code>s</code> 和 <code>t</code> 两个字符串，当它们分别被输入到空白的文本编辑器后，请你判断二者是否相等。<code>#</code> 代表退格字符。</p>
+<p>如果相等，返回 <code>true</code> ；否则，返回 <code>false</code> 。</p>
+<p>**注意：**如果对空文本输入退格字符，文本继续为空。</p>
+<p><strong>示例 ：</strong></p>
+<pre><code>输入：s = &quot;ab#c&quot;, t = &quot;ad#c&quot;
+输出：true
+解释：S 和 T 都会变成 “ac”。
+</code></pre>
+</blockquote>
+<pre><code class="language-cpp">class Solution {
+public:
+    bool backspaceCompare(string s, string t) {
+	int ps = s.length() - 1, pt = t.length() - 1;
+	int cnts = 0, cntt = 0;
+	while (ps &gt;= 0 || pt &gt;= 0){
+		while (ps &gt;= 0){
+			if (s[ps] == '#'){
+				cnts++; ps--;
+			}
+			else if (cnts &gt; 0){
+				cnts--; ps--;
+			}
+			else{
+				break;
+			}
+		}
+		while (pt &gt;= 0){
+			if (t[pt] == '#'){
+				cntt++; pt--;
+			}
+			else if (cntt &gt; 0){
+				cntt--; pt--;
+			}
+			else{
+				break;
+			}
+		}
+		if (ps &gt;= 0 &amp;&amp; pt &gt;= 0){
+			if (s[ps] != t[pt]){
+				return false;
+			}
+		}
+		else{
+			if (ps &gt;= 0 || pt &gt;= 0){
+				return false;
+			}
+		}
+		ps--; pt--;
+	}
+	return true;
+    }
+};
+</code></pre>
+<h2 id="977有序数组的平方">977.有序数组的平方</h2>
+<blockquote>
+<p><a href="https://leetcode-cn.com/problems/squares-of-a-sorted-array/">977. 有序数组的平方</a>：给你一个按 <strong>非递减顺序</strong> 排序的整数数组 <code>nums</code>，返回 <strong>每个数字的平方</strong> 组成的新数组，要求也按 <strong>非递减顺序</strong> 排序。</p>
+<p><strong>示例 ：</strong></p>
+<pre><code>输入：nums = [-4,-1,0,3,10]
+输出：[0,1,9,16,100]
+解释：平方后，数组变为 [16,1,0,9,100]
+排序后，数组变为 [0,1,9,16,100]
+</code></pre>
+</blockquote>
+<p>数组其实是有序的， 只不过负数平方之后可能成为最大数了。</p>
+<p>那么数组平方的最大值就在数组的两端，不是最左边就是最右边，不可能是中间。</p>
+<p>此时可以考虑双指针法了，i指向起始位置，j指向终止位置。</p>
+<p>定义一个新数组result，和nums数组一样的大小，让k指向result数组终止位置。</p>
+<p>如果<code>nums[i] * nums[i] &lt; nums[j] * nums[j]</code>  那么<code>result[k--] = nums[j] * nums[j];</code>  。</p>
+<p>如果<code>nums[i] * nums[i] &gt;= nums[j] * nums[j]</code> 那么<code>result[k--] = nums[i] * nums[i];</code> 。</p>
+<pre><code class="language-cpp">class Solution {
+public:
+    vector&lt;int&gt; sortedSquares(vector&lt;int&gt;&amp; nums) {
+        int n = nums.size();
+        int l = 0, r = n - 1, k = n - 1;
+        vector&lt;int&gt; res(n);
+        while (k&gt;=0){
+            if (nums[l] * nums[l] &gt; nums[r] * nums[r]){
+                res[k--] = nums[l] * nums[l];
+                l++;
+            }
+            else{
+                res[k--] = nums[r] * nums[r];
+                r--;
+            }
+        }
+        return res;
+    }
+};
+</code></pre>
+<p>此时的时间复杂度为O(n)，相对于暴力排序的解法O(n + nlogn)还是提升不少的。</p>
+<h1 id="滑动窗口">滑动窗口</h1>
+<p>所谓滑动窗口，<strong>就是不断的调节子序列的起始位置和终止位置，从而得出我们要想的结果</strong>。</p>
+<p>滑动窗口也可以理解为双指针法的一种，只不过这种解法更像是一个窗口的移动，所以叫做滑动窗口更适合一些。</p>
+<p>实现滑动窗口，主要确定如下三点：</p>
+<ul>
+<li>窗口内是什么？（题目要求）</li>
+<li>如何移动窗口的起始位置？（判断条件）</li>
+<li>如何移动窗口的结束位置？（遍历指针）</li>
+</ul>
+<h2 id="209长度最小的子数组">209.长度最小的子数组</h2>
+<blockquote>
+<p><a href="https://leetcode-cn.com/problems/minimum-size-subarray-sum/">209.长度最小的子数组</a>：给定一个含有 n 个正整数的数组和一个正整数 s ，找出该数组中满足其和 ≥ s 的长度最小的 连续 子数组，并返回其长度。如果不存在符合条件的子数组，返回 0。</p>
+<p><strong>示例：</strong></p>
+<pre><code>输入：s = 7, nums = [2,3,1,2,4,3]
+输出：2
+解释：子数组 [4,3] 是该条件下的长度最小的子数组。
+</code></pre>
+</blockquote>
+<p>本题中的窗口就是 满足其和 ≥ s 的长度最小的 连续 子数组。</p>
+<p>窗口的起始位置如何移动：如果当前窗口的值<strong>大于s</strong>了，窗口就要向前移动了（也就是该缩小了）。</p>
+<p>窗口的结束位置如何移动：窗口的<strong>结束位置就是遍历数组的指针</strong>，窗口的起始位置设置为数组的起始位置就可以了。</p>
+<p>由于结束位置直接跟着循环跑，不用自己移动，所以滑动窗口也可以看作单指针。</p>
+<p>可以发现<strong>滑动窗口的精妙之处在于根据当前子序列和大小的情况，不断调节子序列的起始位置。从而将O(n^2)的暴力解法降为O(n)。</strong></p>
+<p>C++代码如下：</p>
+<pre><code class="language-CPP">class Solution {
+public:
+    int minSubArrayLen(int s, vector&lt;int&gt;&amp; nums) {
+        int result = INT32_MAX;
+        int sum = 0; // 滑动窗口数值之和
+        int i = 0; // 滑动窗口起始位置
+        int subLength = 0; // 滑动窗口的长度
+        for (int j = 0; j &lt; nums.size(); j++) {
+            sum += nums[j];
+            // 注意这里使用while，每次更新 i（起始位置），并不断比较子序列是否符合条件
+            while (sum &gt;= s) {
+                subLength = (j - i + 1); // 取子序列的长度
+                result = result &lt; subLength ? result : subLength;
+                sum -= nums[i++]; // 这里体现出滑动窗口的精髓之处，不断变更i（子序列的起始位置）
+            }
+        }
+        // 如果result没有被赋值的话，就返回0，说明没有符合条件的子序列
+        return result == INT32_MAX ? 0 : result;
+    }
+};
+</code></pre>
+<p>时间复杂度：<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>O</mi><mo>(</mo><mi>n</mi><mo>)</mo></mrow><annotation encoding="application/x-tex">O(n)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathdefault">n</span><span class="mclose">)</span></span></span></span></p>
+<p>空间复杂度：<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>O</mi><mo>(</mo><mn>1</mn><mo>)</mo></mrow><annotation encoding="application/x-tex">O(1)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord">1</span><span class="mclose">)</span></span></span></span></p>
+<p><strong>为什么时间复杂度是O(n)</strong>。</p>
+<p>不要以为for里放一个while就以为是<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>O</mi><mo>(</mo><msup><mi>n</mi><mn>2</mn></msup><mo>)</mo></mrow><annotation encoding="application/x-tex">O(n^2)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1.064108em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord"><span class="mord mathdefault">n</span><span class="msupsub"><span class="vlist-t"><span class="vlist-r"><span class="vlist" style="height:0.8141079999999999em;"><span style="top:-3.063em;margin-right:0.05em;"><span class="pstrut" style="height:2.7em;"></span><span class="sizing reset-size6 size3 mtight"><span class="mord mtight">2</span></span></span></span></span></span></span></span><span class="mclose">)</span></span></span></span>， 主要是看每一个元素被操作的次数，每个元素在滑动窗后进来操作一次，出去操作一次，每个元素都是被被操作两次，所以时间复杂度是2 * n 也就是<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>O</mi><mo>(</mo><mi>n</mi><mo>)</mo></mrow><annotation encoding="application/x-tex">O(n)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathdefault">n</span><span class="mclose">)</span></span></span></span>。</p>
+<h2 id="904水果成篮">904.水果成篮</h2>
+<blockquote>
+<p><a href="https://leetcode-cn.com/problems/fruit-into-baskets/">904. 水果成篮</a>：在一排树中，第 <code>i</code> 棵树产生 <code>tree[i]</code> 型的水果。</p>
+<p>你可以<strong>从你选择的任何树开始</strong>，然后重复执行以下步骤：</p>
+<ol>
+<li>把这棵树上的水果放进你的篮子里。如果你做不到，就停下来。</li>
+<li>移动到当前树右侧的下一棵树。如果右边没有树，就停下来。</li>
+</ol>
+<p>请注意，在选择一颗树后，你没有任何选择：你必须执行步骤 1，然后执行步骤 2，然后返回步骤 1，然后执行步骤 2，依此类推，直至停止。</p>
+<p>你有两个篮子，每个篮子可以携带任何数量的水果，但你希望每个篮子只携带一种类型的水果。</p>
+<p>用这个程序你能收集的水果树的最大总量是多少？</p>
+<p><strong>示例 ：</strong></p>
+<pre><code>输入：[0,1,2,2]
+输出：3
+解释：我们可以收集 [1,2,2]
+如果我们从第一棵树开始，我们将只能收集到 [0, 1]。
+</code></pre>
+</blockquote>
+<p>本题需要记录不同类型水果个数，使用哈希表当篮子。</p>
+<p>本题中的窗口就是 两个装有不同类型水果的篮子。</p>
+<p>窗口的起始位置如何移动：如果当前篮子数目<strong>大于2</strong>了，窗口就要向前移动了，同时依次减持水果，直到篮子数目重回2。</p>
+<p>窗口的结束位置如何移动：窗口的<strong>结束位置就是遍历数组的指针</strong>，窗口的起始位置设置为数组的起始位置就可以了。</p>
+<pre><code class="language-cpp">class Solution {
+public:
+    int totalFruit(vector&lt;int&gt;&amp; fruits) {
+        unordered_map&lt;int, int&gt; basket;
+        int result = 0, len = 0;
+        int left = 0;
+        for (int i = 0; i &lt; fruits.size(); i++) {
+            basket[fruits[i]]++;
+            len++;
+            while (basket.size() &gt; 2) {
+                basket[fruits[left]]--; //减掉left是因为采果子必须按顺序连续采
+                if (basket[fruits[left]] == 0) basket.erase(fruits[left]); //直到某一个篮子为空
+                left++;
+                len--;
+            }
+            // 结束位置每移动一次，维护一次最大值
+            result = max(result,len);
+        }
+        return result;
+    }
+};
+</code></pre>
+<p>时间复杂度：<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>O</mi><mo>(</mo><mi>n</mi><mo>)</mo></mrow><annotation encoding="application/x-tex">O(n)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathdefault">n</span><span class="mclose">)</span></span></span></span></p>
+<p>空间复杂度：<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>O</mi><mo>(</mo><mi>n</mi><mo>)</mo></mrow><annotation encoding="application/x-tex">O(n)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathdefault">n</span><span class="mclose">)</span></span></span></span></p>
+<h2 id="76最小覆盖子串">76.最小覆盖子串</h2>
+<blockquote>
+<p><a href="https://leetcode-cn.com/problems/minimum-window-substring/">76. 最小覆盖子串</a>： 给你一个字符串 <code>s</code> 、一个字符串 <code>t</code> 。返回 <code>s</code> 中涵盖 <code>t</code> 所有字符的最小子串。如果 <code>s</code> 中不存在涵盖 <code>t</code> 所有字符的子串，则返回空字符串 <code>&quot;&quot;</code> 。</p>
+<p><strong>注意：</strong></p>
+<ul>
+<li>对于 <code>t</code> 中重复字符，我们寻找的子字符串中该字符数量必须不少于 <code>t</code> 中该字符数量。</li>
+<li>如果 <code>s</code> 中存在这样的子串，我们保证它是唯一的答案。</li>
+</ul>
+<p><strong>示例 ：</strong></p>
+<pre><code>输入：s = &quot;ADOBECODEBANC&quot;, t = &quot;ABC&quot;
+输出：&quot;BANC&quot;
+</code></pre>
+</blockquote>
+<p>本题由于<code>t</code>中存在重复字符，需要通过计数，确定字符是否找齐。</p>
+<p>用<code>j</code>,<code>i</code>表示滑动窗口的左边界和右边界，当这个窗口包含的元素满足条件，即包含字符串<code>t</code>的所有元素，记录下这个滑动窗口的长度<code>i-j+1</code>，这些长度中的最小值就是要求的结果。</p>
+<p><strong>步骤一</strong><br>
+不断增加<code>i</code>使滑动窗口增大，直到窗口包含了<code>t</code>的所有元素（通过计数判断）</p>
+<p><strong>步骤二</strong><br>
+不断增加<code>j</code>使滑动窗口缩小，因为是要求最小字串，所以将不必要的元素排除在外，使长度减小，直到碰到一个必须包含的元素，记录此时滑动窗口的长度，并保存最小值</p>
+<p><strong>步骤三</strong><br>
+让<code>j</code>再增加一个位置，这个时候滑动窗口肯定不满足条件了，那么继续从步骤一开始执行，寻找新的满足条件的滑动窗口，如此反复，直到<code>i</code>超出了字符串<code>s</code>范围。</p>
+<pre><code class="language-cpp">class Solution {
+public:
+    string minWindow(string s, string t) {
+        int n = s.size(), m = t.size();
+        vector&lt;int&gt; hash(128);
+        for (char c : t) hash[c]--;
+        string res = &quot;&quot;;
+        for (int i = 0, j = 0, cnt = 0; i &lt; n; i++) {
+            hash[s[i]]++;
+            // 计数，t中的字符有几个被找到
+            if (hash[s[i]] &lt;= 0) cnt++;
+            // 找齐之后，要缩减一次长度，移动起始位置
+            while (cnt == m &amp;&amp; hash[s[j]] &gt; 0) hash[s[j++]]--;
+            // 缩减之后，比较并存最短长度
+            if (cnt == m){
+                if (res == &quot;&quot; || res.size() &gt; i - j + 1){
+                    res = &quot;&quot;;
+                    // 取[j,i]的子字符串
+                    for (int k = j; k &lt;= i; k++){
+                        res += s[k];
+                    }
+                }
+            }   
+        }
+        return res;
+    }
+};
+</code></pre>
+<p>时间复杂度：<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>O</mi><mo>(</mo><mi>n</mi><mo>)</mo></mrow><annotation encoding="application/x-tex">O(n)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathdefault">n</span><span class="mclose">)</span></span></span></span></p>
+<p>空间复杂度：<span class="katex"><span class="katex-mathml"><math><semantics><mrow><mi>O</mi><mo>(</mo><mi>n</mi><mo>)</mo></mrow><annotation encoding="application/x-tex">O(n)</annotation></semantics></math></span><span class="katex-html" aria-hidden="true"><span class="base"><span class="strut" style="height:1em;vertical-align:-0.25em;"></span><span class="mord mathdefault" style="margin-right:0.02778em;">O</span><span class="mopen">(</span><span class="mord mathdefault">n</span><span class="mclose">)</span></span></span></span></p>
+
+                </div>
+            </article>
+        </div>
+
+        
+            <div class="next-post">
+                <div class="next gt-c-content-color-first">下一篇</div>
+                <a href="https://star2dust.github.io/post/leetcode-acm-io/" class="post-title gt-a-link">
+                    【牛客刷题】输入输出练习
+                </a>
+            </div>
+        
+
+        
+
+        
+            
+                <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk/dist/gitalk.min.css">
+<script src="https://cdn.jsdelivr.net/npm/gitalk/dist/gitalk.min.js"></script>
+<script>
+    // md5.min.js
+    !function(n){
+        "use strict";
+        function d(n,t){var r=(65535&n)+(65535&t);return(n>>16)+(t>>16)+(r>>16)<<16|65535&r}
+        function f(n,t,r,e,o,u){return d((c=d(d(t,n),d(e,u)))<<(f=o)|c>>>32-f,r);var c,f}
+        function l(n,t,r,e,o,u,c){return f(t&r|~t&e,n,t,o,u,c)}
+        function v(n,t,r,e,o,u,c){return f(t&e|r&~e,n,t,o,u,c)}
+        function g(n,t,r,e,o,u,c){return f(t^r^e,n,t,o,u,c)}
+        function m(n,t,r,e,o,u,c){return f(r^(t|~e),n,t,o,u,c)}
+        function i(n,t){var r,e,o,u,c;n[t>>5]|=128<<t%32,n[14+(t+64>>>9<<4)]=t;var f=1732584193,i=-271733879,a=-1732584194,h=271733878;for(r=0;r<n.length;r+=16)f=l(e=f,o=i,u=a,c=h,n[r],7,-680876936),h=l(h,f,i,a,n[r+1],12,-389564586),a=l(a,h,f,i,n[r+2],17,606105819),i=l(i,a,h,f,n[r+3],22,-1044525330),f=l(f,i,a,h,n[r+4],7,-176418897),h=l(h,f,i,a,n[r+5],12,1200080426),a=l(a,h,f,i,n[r+6],17,-1473231341),i=l(i,a,h,f,n[r+7],22,-45705983),f=l(f,i,a,h,n[r+8],7,1770035416),h=l(h,f,i,a,n[r+9],12,-1958414417),a=l(a,h,f,i,n[r+10],17,-42063),i=l(i,a,h,f,n[r+11],22,-1990404162),f=l(f,i,a,h,n[r+12],7,1804603682),h=l(h,f,i,a,n[r+13],12,-40341101),a=l(a,h,f,i,n[r+14],17,-1502002290),f=v(f,i=l(i,a,h,f,n[r+15],22,1236535329),a,h,n[r+1],5,-165796510),h=v(h,f,i,a,n[r+6],9,-1069501632),a=v(a,h,f,i,n[r+11],14,643717713),i=v(i,a,h,f,n[r],20,-373897302),f=v(f,i,a,h,n[r+5],5,-701558691),h=v(h,f,i,a,n[r+10],9,38016083),a=v(a,h,f,i,n[r+15],14,-660478335),i=v(i,a,h,f,n[r+4],20,-405537848),f=v(f,i,a,h,n[r+9],5,568446438),h=v(h,f,i,a,n[r+14],9,-1019803690),a=v(a,h,f,i,n[r+3],14,-187363961),i=v(i,a,h,f,n[r+8],20,1163531501),f=v(f,i,a,h,n[r+13],5,-1444681467),h=v(h,f,i,a,n[r+2],9,-51403784),a=v(a,h,f,i,n[r+7],14,1735328473),f=g(f,i=v(i,a,h,f,n[r+12],20,-1926607734),a,h,n[r+5],4,-378558),h=g(h,f,i,a,n[r+8],11,-2022574463),a=g(a,h,f,i,n[r+11],16,1839030562),i=g(i,a,h,f,n[r+14],23,-35309556),f=g(f,i,a,h,n[r+1],4,-1530992060),h=g(h,f,i,a,n[r+4],11,1272893353),a=g(a,h,f,i,n[r+7],16,-155497632),i=g(i,a,h,f,n[r+10],23,-1094730640),f=g(f,i,a,h,n[r+13],4,681279174),h=g(h,f,i,a,n[r],11,-358537222),a=g(a,h,f,i,n[r+3],16,-722521979),i=g(i,a,h,f,n[r+6],23,76029189),f=g(f,i,a,h,n[r+9],4,-640364487),h=g(h,f,i,a,n[r+12],11,-421815835),a=g(a,h,f,i,n[r+15],16,530742520),f=m(f,i=g(i,a,h,f,n[r+2],23,-995338651),a,h,n[r],6,-198630844),h=m(h,f,i,a,n[r+7],10,1126891415),a=m(a,h,f,i,n[r+14],15,-1416354905),i=m(i,a,h,f,n[r+5],21,-57434055),f=m(f,i,a,h,n[r+12],6,1700485571),h=m(h,f,i,a,n[r+3],10,-1894986606),a=m(a,h,f,i,n[r+10],15,-1051523),i=m(i,a,h,f,n[r+1],21,-2054922799),f=m(f,i,a,h,n[r+8],6,1873313359),h=m(h,f,i,a,n[r+15],10,-30611744),a=m(a,h,f,i,n[r+6],15,-1560198380),i=m(i,a,h,f,n[r+13],21,1309151649),f=m(f,i,a,h,n[r+4],6,-145523070),h=m(h,f,i,a,n[r+11],10,-1120210379),a=m(a,h,f,i,n[r+2],15,718787259),i=m(i,a,h,f,n[r+9],21,-343485551),f=d(f,e),i=d(i,o),a=d(a,u),h=d(h,c);return[f,i,a,h]}
+        function a(n){var t,r="",e=32*n.length;for(t=0;t<e;t+=8)r+=String.fromCharCode(n[t>>5]>>>t%32&255);return r}
+        function h(n){var t,r=[];for(r[(n.length>>2)-1]=void 0,t=0;t<r.length;t+=1)r[t]=0;var e=8*n.length;for(t=0;t<e;t+=8)r[t>>5]|=(255&n.charCodeAt(t/8))<<t%32;return r}
+        function e(n){var t,r,e="0123456789abcdef",o="";for(r=0;r<n.length;r+=1)t=n.charCodeAt(r),o+=e.charAt(t>>>4&15)+e.charAt(15&t);return o}
+        function r(n){return unescape(encodeURIComponent(n))}
+        function o(n){return a(i(h(t=r(n)),8*t.length));var t}
+        function u(n,t){return function(n,t){var r,e,o=h(n),u=[],c=[];for(u[15]=c[15]=void 0,16<o.length&&(o=i(o,8*n.length)),r=0;r<16;r+=1)u[r]=909522486^o[r],c[r]=1549556828^o[r];return e=i(u.concat(h(t)),512+8*t.length),a(i(c.concat(e),640))}(r(n),r(t))}
+        function t(n,t,r){return t?r?u(t,n):e(u(t,n)):r?o(n):e(o(n))}
+        "function"==typeof define&&define.amd?define(function(){return t}):"object"==typeof module&&module.exports?module.exports=t:n.md5=t;
+    }(this);
+</script>
+
+
+<div id="gitalk-container"></div>
+
+<script>
+
+  var gitalk = new Gitalk({
+    clientID: '5f35b48460c7b593fee6',
+    clientSecret: '19f3646e71158e91e93151d54f5d1a19b53ce961',
+    repo: 'star2dust.github.io',
+    owner: 'star2dust',
+    admin: ['star2dust'],
+    id: md5(location.pathname),      // Ensure uniqueness and length less than 50
+    distractionFreeMode: false       // Facebook-like distraction free mode
+  })
+
+  gitalk.render('gitalk-container')
+
+</script>
+
+            
+
+            
+        
+
+        
+
+        <div class="site-footer gt-c-content-color-first">
+    <div class="slogan gt-c-content-color-first">每天进步一点点</div>
+    <div class="social-container">
+        
+            
+                <a href="https://github.com/star2dust" target="_blank">
+                    <i class="fab fa-github gt-c-content-color-first"></i>
+                </a>
+            
+        
+            
+        
+            
+                <a href="https://weibo.com/u/2473019655" target="_blank">
+                    <i class="fab fa-weibo gt-c-content-color-first"></i>
+                </a>
+            
+        
+            
+                <a href="https://www.zhihu.com/people/dong-nan-che" target="_blank">
+                    <i class="fab fa-zhihu gt-c-content-color-first"></i>
+                </a>
+            
+        
+            
+        
+            
+        
+    </div>
+    <div class="footer-info">
+        Copyright &copy;<span>star2dust</span>
+    </div>
+    <div>
+        Theme by <a href="https://imhanjie.com/" target="_blank">imhanjie</a>, Powered by <a
+                href="https://github.com/getgridea/gridea" target="_blank">Gridea | <a href="https://star2dust.github.io/atom.xml" target="_blank">RSS</a></a>
+    </div>
+</div>
+
+<script>
+    hljs.initHighlightingOnLoad()
+</script>
+
+    </div>
+</div>
+</body>
+</html>

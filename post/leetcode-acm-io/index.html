@@ -1,11 +1,10 @@
 <html>
-
 <head>
     <meta charset="utf-8"/>
 <meta name="description" content=""/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
 
-<title>友情链接 - star2dust</title>
+<title>【牛客刷题】输入输出练习 | star2dust</title>
 
 <link rel="shortcut icon" href="https://star2dust.github.io/favicon.ico?v=1638070855230">
 
@@ -27,12 +26,11 @@
 
 
 
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.12.0/dist/katex.css">
 </head>
-
 <body>
-    <div class="main">
-        <div class="main-content">
-            <nav class="navbar navbar-expand-lg">
+<div class="main gt-bg-theme-color-first">
+    <nav class="navbar navbar-expand-lg">
     <div class="navbar-brand">
         <img class="user-avatar" src="/images/avatar.png" alt="头像">
         <div class="site-name gt-c-content-color-first">
@@ -105,23 +103,172 @@
         </div>
     </div>
 </nav>
-            <div class="post-container">
-                <div class="post-detail gt-bg-theme-color-second">
-                    <article class="gt-post-content">
-                        <h2 class="post-title">友情链接</h2>
-
-                        <!-- <div class="post-content-wrapper"> -->
-                            <div class="post-content">
-                                
-                                    
-                                
-                            </div>
-                        <!-- </div> -->
-                    </article>
-                </div>
-                
+    <div class="post-container">
+        <div class="post-detail gt-bg-theme-color-second">
+            <article class="gt-post-content">
+                <h2 class="post-title">
+                    【牛客刷题】输入输出练习
+                </h2>
+                <div class="post-info">
+                    <time class="post-time gt-c-content-color-first">
+                        · 2021-11-27 ·
+                    </time>
                     
-                        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk/dist/gitalk.min.css">
+                        <a href="https://star2dust.github.io/tag/-uyrMkpe6/" class="post-tags">
+                            # C++
+                        </a>
+                    
+                </div>
+                <div class="post-content">
+                    <p>牛客链接：https://ac.nowcoder.com/acm/contest/5657#question</p>
+<h1 id="带空格的字符串整数">带空格的字符串（整数）</h1>
+<blockquote>
+<p>输入：</p>
+<p>多个测试用例，每个测试用例一行。</p>
+<p>每行通过空格隔开，有n个字符，n＜100</p>
+</blockquote>
+<blockquote>
+<p>输出：</p>
+<p>对于每组测试用例，输出一行排序过的字符串，每个字符串通过空格隔开</p>
+</blockquote>
+<p>示例：</p>
+<pre><code>input:
+a c bb
+f dddd
+nowcoder
+
+output:
+a bb c
+dddd f
+nowcoder
+</code></pre>
+<p>C++：</p>
+<pre><code class="language-cpp">//#include&lt;bits/stdc++.h&gt;
+#include&lt;iostream&gt;
+#include&lt;vector&gt;
+#include&lt;algorithm&gt;
+using namespace std;
+
+int main(){
+    string s;
+    vector&lt;string&gt; str;
+    while (cin&gt;&gt;s){
+        str.push_back(s);
+        if (cin.get()=='\n'){
+            sort(str.begin(),str.end());
+            for (auto ss: str) cout &lt;&lt; ss &lt;&lt; &quot; &quot;;
+            cout &lt;&lt; endl;
+            str.clear();
+        }
+    }
+    return 0;
+}
+</code></pre>
+<p>可以看出，思路是【直接输入+判断换行】。</p>
+<p>实际上只要是用空格分隔，都可以用这个模板，整数处理也一样。参考如下输出要求。</p>
+<blockquote>
+<p>输出：</p>
+<p>对于每组测试用例，输出求和的结果。</p>
+</blockquote>
+<p>示例：</p>
+<pre><code>input:
+1 2 3
+4 5
+0 0 0 0 0
+
+output:
+6
+9
+0
+</code></pre>
+<p>C++：</p>
+<pre><code class="language-cpp">#include&lt;iostream&gt;
+using namespace std;
+
+int main(){
+    int a, sum = 0;
+    while (cin &gt;&gt; a){
+        sum += a;
+        if (cin.get()=='\n'){
+            cout &lt;&lt; sum &lt;&lt; endl;
+            sum = 0;
+        }
+    }
+    return 0;
+}
+</code></pre>
+<h1 id="带逗号的字符串">带逗号的字符串</h1>
+<p>还是上面的问题，所有的空格改为逗号。</p>
+<blockquote>
+<p>输入：</p>
+<p>多个测试用例，每个测试用例一行。</p>
+<p>每行通过<strong>逗号</strong>隔开，有n个字符，n＜100</p>
+</blockquote>
+<blockquote>
+<p>输出：</p>
+<p>对于每组测试用例，输出一行排序过的字符串，每个字符串通过<strong>逗号</strong>隔开</p>
+</blockquote>
+<p>示例：</p>
+<pre><code>input:
+a c bb
+f dddd
+nowcoder
+
+output:
+a bb c
+dddd f
+nowcoder
+</code></pre>
+<p>C++：</p>
+<pre><code class="language-cpp">#include&lt;iostream&gt;
+#include&lt;sstream&gt;
+#include&lt;vector&gt;
+#include&lt;algorithm&gt;
+using namespace std;
+
+int main(){
+    string s;
+    vector&lt;string&gt; str;
+    while (getline(cin,s)){
+        stringstream ss(s);
+        string tmp;
+        while (getline(ss,tmp,',')){
+            str.push_back(tmp);
+        }
+        sort(str.begin(),str.end());
+        for (int i=0; i&lt;str.size(); i++){
+            cout &lt;&lt; str[i];
+            if (i==str.size()-1) {
+                cout &lt;&lt; endl;
+            }else{
+                cout &lt;&lt; &quot;,&quot;;
+            }
+        }
+        str.clear();
+    }
+    return 0;
+}
+</code></pre>
+<p>由于不能直接判断换行，思路是先【读取整行】，再【按逗号分割】，后面都是一样的。</p>
+
+                </div>
+            </article>
+        </div>
+
+        
+            <div class="next-post">
+                <div class="next gt-c-content-color-first">下一篇</div>
+                <a href="https://star2dust.github.io/post/leecode-subarrays-with-odd-sum/" class="post-title gt-a-link">
+                    【力扣刷题】和为奇数的子数组数目（前缀和）
+                </a>
+            </div>
+        
+
+        
+
+        
+            
+                <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/gitalk/dist/gitalk.min.css">
 <script src="https://cdn.jsdelivr.net/npm/gitalk/dist/gitalk.min.js"></script>
 <script>
     // md5.min.js
@@ -164,15 +311,14 @@
 
 </script>
 
-                    
+            
 
-                    
-                
-            </div>
+            
+        
 
+        
 
-
-            <div class="site-footer gt-c-content-color-first">
+        <div class="site-footer gt-c-content-color-first">
     <div class="slogan gt-c-content-color-first">每天进步一点点</div>
     <div class="social-container">
         
@@ -214,8 +360,7 @@
     hljs.initHighlightingOnLoad()
 </script>
 
-        </div>
     </div>
+</div>
 </body>
-
 </html>

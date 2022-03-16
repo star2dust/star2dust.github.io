@@ -4,7 +4,7 @@
 <meta name="description" content=""/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
 
-<title>Python三大数据类型 | star2dust</title>
+<title>Installing MATLAB 2018a in Linux | star2dust</title>
 
 <link rel="shortcut icon" href="https://star2dust.github.io/favicon.ico?v=1647430708339">
 
@@ -107,91 +107,91 @@
         <div class="post-detail gt-bg-theme-color-second">
             <article class="gt-post-content">
                 <h2 class="post-title">
-                    Python三大数据类型
+                    Installing MATLAB 2018a in Linux
                 </h2>
                 <div class="post-info">
                     <time class="post-time gt-c-content-color-first">
-                        · 2020-06-24 ·
+                        · 2022-03-16 ·
                     </time>
                     
-                        <a href="https://star2dust.github.io/tag/R0pmglADx/" class="post-tags">
-                            # Python
+                        <a href="https://star2dust.github.io/tag/8ENq9b4cN/" class="post-tags">
+                            # Matlab
                         </a>
                     
                 </div>
                 <div class="post-content">
-                    <p><ul class="markdownIt-TOC">
-<li><a href="#%E4%B8%80-%E5%AD%97%E7%AC%A6%E4%B8%B2">一、字符串</a>
-<ul>
-<li><a href="#1-%E5%AE%9A%E4%B9%89">1. 定义</a></li>
-<li><a href="#2-%E6%93%8D%E4%BD%9C">2. 操作</a></li>
-</ul>
-</li>
-<li><a href="#%E4%BA%8C-%E6%95%B0%E5%AD%97">二、数字</a>
-<ul>
-<li><a href="#1-python-math-%E6%A8%A1%E5%9D%97">1. Python math 模块</a></li>
-<li><a href="#2-python%E9%9A%8F%E6%9C%BA%E6%95%B0">2. Python随机数</a></li>
-</ul>
-</li>
-<li><a href="#%E4%B8%89-%E5%B8%83%E5%B0%94%E5%80%BC">三、布尔值</a></li>
-</ul>
-</p>
-<h1 id="一-字符串">一、字符串</h1>
-<p>字符串用于传递数据和注释</p>
-<h2 id="1-定义">1. 定义</h2>
-<ul>
-<li>三种方式：<code>'</code>，<code>&quot;</code>，<code>&quot;&quot;&quot;</code>（多行，可见即可得）<br>
-（<em>使用<code>\</code>以在字符串中使用上述符号</em>）</li>
-<li>特殊用法：<code>\t</code>TAB，<code>\n</code>换行</li>
-<li>输入<code>str = input('description')</code>（assignment）</li>
-<li>输出<code>print(str)</code></li>
-<li>重复输出n次<code>print(str*n)</code></li>
-</ul>
-<h2 id="2-操作">2. 操作</h2>
-<ul>
-<li>使用method（<em>后面一定要加括号，使用<code>help()</code>查询</em>）</li>
-<li>大小写操作：<code>str.lower()</code>，<code>str.upper()</code>，<code>str.title()</code></li>
-<li>分隔操作：<code>str.split()</code>
-<ul>
-<li><em>括号中是分隔符（dtr），默认是' '（即空格）</em></li>
-<li><em>返回值是一个字符串列表str list（slt）</em></li>
-</ul>
-</li>
-<li>替换操作：<code>str.replace(char in str, another char)</code></li>
-<li>合并操作
-<ul>
-<li><code>dtr.join(slt)</code>，如果待合并的字符串在一个list中</li>
-<li><code>str1+str2</code>，如果待合并的字符串是独立的</li>
-</ul>
-</li>
-<li>倍数操作：<code>str*num</code>得到<code>str+str+...+str</code> （slt也一样）</li>
-<li>判断字符是否在字符串：<code>'s' in str</code> 和 <code>'s' not in str</code></li>
-</ul>
-<h1 id="二-数字">二、数字</h1>
-<ul>
-<li>四种类型：普通整数，长整数，浮点数和复数</li>
-<li>整数运算时仅在产生小数时返回浮点数，其余时候返回整数</li>
-<li>乘方运算：<code>**</code></li>
-<li>模运算：<code>%</code></li>
-</ul>
-<h2 id="1-python-math-模块">1. Python math 模块</h2>
-<pre><code class="language-python">import math
-print(math.ceil(4.1))   #返回数字的上入整数
-print(math.floor(4.9))  #返回数字的下舍整数
-print(math.fabs(-10))   #返回数字的绝对值
-print(math.sqrt(9))     #返回数字的平方根
-print(math.exp(1))      #返回e的x次幂
+                    <h1 id="1-download-matlab">1. Download MATLAB</h1>
+<p>Follow the website here:</p>
+<p><a href="https://blog.csdn.net/ouening/article/details/79751393">First website</a></p>
+<p><a href="https://www.macxin.com/archives/4722.html">Second website</a></p>
+<h1 id="2-install-matlab-by-commands">2. Install MATLAB by Commands</h1>
+<p>(1) In the download files directory, open a terminal and type</p>
+<pre><code class="language-shell">sudo mkdir /mnt/matlab
+sudo mount -o loop R2018a_glnxa64_dvd1.iso /mnt/matlab
+cd /mnt/
+sudo ./mnt/matlab/install
 </code></pre>
-<h2 id="2-python随机数">2. Python随机数</h2>
-<pre><code class="language-python">import random
-ran = random.random() #随机生成一个[0,1)范围内的实数
-ran = random.randint(1,20) #随机生成一个1~20范围内的实数
+<p>Default installation path is <em>/usr/local/MATLAB/R2018a/</em>.</p>
+<p>(2) After the installation process approaches about 60%, type</p>
+<pre><code class="language-shell">sudo mount -o loop R2018a_glnxa64_dvd2.iso /mnt/matlab
 </code></pre>
-<h1 id="三-布尔值">三、布尔值</h1>
-<ul>
-<li>普通整数的子类型</li>
-<li><code>True</code>，<code>False</code>（<em>首字母大写</em>）</li>
-</ul>
+<p>(3) Replace the files in <em>/usr/local/MATLAB/R2018a/bin</em> by the files in <code>Crack.rar</code>.</p>
+<pre><code class="language-shell">sudo cp -rvf R2018a/bin /usr/local/MATLAB/R2018a/
+</code></pre>
+<h1 id="3-launch-matlab">3. Launch MATLAB</h1>
+<p>Open MATLAB in directory <em>/usr/local/MATLAB/R2018a/bin</em> by typing</p>
+<pre><code class="language-shell">sudo ./matlab
+</code></pre>
+<p>Add the license in <code>Crack.rar</code>.</p>
+<h2 id="31-by-desktop-shortcut">3.1 By Desktop Shortcut</h2>
+<p>Type</p>
+<pre><code class="language-shell">sudo gedit /usr/share/application/matlab.desktop
+</code></pre>
+<p>and write down the following codes in the file</p>
+<pre><code class="language-shell">[Desktop Entry]
+Type=Application
+Name=Matlab
+GenericName=MATLAB
+Comment=Matlab:The Language of Technical Computing
+Exec=sh /usr/local/MATLAB/R2018a/bin/matlab -desktop
+Icon=/usr/local/MATLAB/R2018a/toolbox/nnet/nnresource/icons/matlab.png
+StartupNotify=true
+Terminal=false
+Categories=Development;Matlab;
+</code></pre>
+<p>Then go to application 'files' to search 'matlab', and drag the icon to the desktop.</p>
+<p>If there is a message “The desktop configuration was not saved successfully” in matlab, then type</p>
+<pre><code class="language-shell">sudo chmod a+w -R /home/&lt;username&gt;/.matlab/R2018a
+</code></pre>
+<h2 id="32-by-command">3.2 By Command</h2>
+<p>First add path by typing</p>
+<pre><code class="language-shell">export PATH=$PATH:/usr/local/MATLAB/R2018a/bin/
+</code></pre>
+<p>Then start MATLAB without desktop (only calculation)</p>
+<pre><code class="language-shell">matlab -nojvm -nodisplay -nosplash
+</code></pre>
+<p>If you want <code>gcf</code> support, try to use</p>
+<pre><code class="language-shell">matlab -nodesktop -nosplash
+</code></pre>
+<h1 id="4-add-matlab-to-path">4. Add MATLAB to PATH</h1>
+<p>Type</p>
+<pre><code class="language-shell">sudo gedit ~/.bashrc
+</code></pre>
+<p>Add one sentence to the end</p>
+<pre><code class="language-shell">export PATH=$PATH:/usr/local/MATLAB/R2018a/bin/
+</code></pre>
+<p>This change is valid in every newly-opened terminal and can only be used by current user.</p>
+<p>By the way, <code>.file</code> means hidden file, we can use 'ctrl+h' to show/hide these files.</p>
+<h1 id="5-set-path-in-matlab">5. Set Path in MATLAB</h1>
+<h2 id="set-matlabpath">Set MATLABPATH:</h2>
+<p>HOME=&gt;ENVIRONMENT=&gt;Set Path</p>
+<p>Click <strong>add folder</strong> to add matlabpath permanently.</p>
+<p>Same with <code>addpath</code> + <code>savepath</code>.</p>
+<h2 id="set-userpath">Set USERPATH:</h2>
+<p>HOME=&gt;ENVIRONMENT=&gt;Preference</p>
+<p>Click <strong>General</strong> and add userpath in <strong>Initial working folder</strong>.</p>
+<p>Same with <code>userpath</code>.</p>
+<p>Create a <code>startup.m</code> in userpath and this script runs everytime matlab starts.</p>
 
                 </div>
             </article>
@@ -200,8 +200,8 @@ ran = random.randint(1,20) #随机生成一个1~20范围内的实数
         
             <div class="next-post">
                 <div class="next gt-c-content-color-first">下一篇</div>
-                <a href="https://star2dust.github.io/post/python-data-structures/" class="post-title gt-a-link">
-                    Python三大数据结构
+                <a href="https://star2dust.github.io/post/proximal-operator/" class="post-title gt-a-link">
+                    近端算子求解分布式约束优化问题
                 </a>
             </div>
         

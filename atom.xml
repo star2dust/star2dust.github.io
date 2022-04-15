@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://star2dust.github.io</id>
     <title>star2dust</title>
-    <updated>2022-03-16T11:42:29.680Z</updated>
+    <updated>2022-04-15T09:37:35.887Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://star2dust.github.io"/>
     <link rel="self" href="https://star2dust.github.io/atom.xml"/>
@@ -79,11 +79,11 @@ Categories=Development;Matlab;
 <p>This change is valid in every newly-opened terminal and can only be used by current user.</p>
 <p>By the way, <code>.file</code> means hidden file, we can use 'ctrl+h' to show/hide these files.</p>
 <h1 id="5-set-path-in-matlab">5. Set Path in MATLAB</h1>
-<h2 id="set-matlabpath">Set MATLABPATH:</h2>
+<p>(1) Set MATLABPATH:</p>
 <p>HOME=&gt;ENVIRONMENT=&gt;Set Path</p>
 <p>Click <strong>add folder</strong> to add matlabpath permanently.</p>
 <p>Same with <code>addpath</code> + <code>savepath</code>.</p>
-<h2 id="set-userpath">Set USERPATH:</h2>
+<p>(2) Set USERPATH:</p>
 <p>HOME=&gt;ENVIRONMENT=&gt;Preference</p>
 <p>Click <strong>General</strong> and add userpath in <strong>Initial working folder</strong>.</p>
 <p>Same with <code>userpath</code>.</p>

@@ -4,7 +4,7 @@
 <meta name="description" content=""/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
 
-<title>Installing MATLAB 2018a in Linux | star2dust</title>
+<title>基于VSCode和CMake进行C/C++开发 | star2dust</title>
 
 <link rel="shortcut icon" href="https://star2dust.github.io/favicon.ico?v=1650108892888">
 
@@ -107,95 +107,206 @@
         <div class="post-detail gt-bg-theme-color-second">
             <article class="gt-post-content">
                 <h2 class="post-title">
-                    Installing MATLAB 2018a in Linux
+                    基于VSCode和CMake进行C/C++开发
                 </h2>
                 <div class="post-info">
                     <time class="post-time gt-c-content-color-first">
-                        · 2022-03-16 ·
+                        · 2022-04-16 ·
                     </time>
                     
                         <a href="https://star2dust.github.io/tag/06tPc0WGt/" class="post-tags">
                             # Linux
                         </a>
                     
-                        <a href="https://star2dust.github.io/tag/8ENq9b4cN/" class="post-tags">
-                            # Matlab
+                        <a href="https://star2dust.github.io/tag/-uyrMkpe6/" class="post-tags">
+                            # C++
                         </a>
                     
                 </div>
                 <div class="post-content">
-                    <h1 id="1-download-matlab">1. Download MATLAB</h1>
-<p>Follow the website here:</p>
-<p><a href="https://blog.csdn.net/ouening/article/details/79751393">First website</a></p>
-<p><a href="https://www.macxin.com/archives/4722.html">Second website</a></p>
-<h1 id="2-install-matlab-by-commands">2. Install MATLAB by Commands</h1>
-<p>(1) In the download files directory, open a terminal and type</p>
-<pre><code class="language-shell">sudo mkdir /mnt/matlab
-sudo mount -o loop R2018a_glnxa64_dvd1.iso /mnt/matlab
-cd /mnt/
-sudo ./mnt/matlab/install
+                    <h1 id="写在前面">写在前面</h1>
+<p>本文为Linux下的C/C++开发笔记，参考b站视频<a href="https://www.bilibili.com/video/BV1fy4y1b7TC">BV1fy4y1b7TC</a>。</p>
+<h1 id="linux指令">Linux指令</h1>
+<ul>
+<li><code>man</code>和<code>help</code> 查看指南（man = manual）</li>
+<li><code>ls</code>和<code>tree</code> 查看文件</li>
+</ul>
+<pre><code class="language-shell">ls -lah # 显示文件
+# -l 表示列表显示
+# -a 表示全部显示（包括隐藏文件）
+# -h 表示可读显示（h = human-readable）
+tree # 树形显示
 </code></pre>
-<p>Default installation path is <em>/usr/local/MATLAB/R2018a/</em>.</p>
-<p>(2) After the installation process approaches about 60%, type</p>
-<pre><code class="language-shell">sudo mount -o loop R2018a_glnxa64_dvd2.iso /mnt/matlab
+<h1 id="开发环境搭建">开发环境搭建</h1>
+<ul>
+<li>安装GCC、GDB（通常是自带的）</li>
+</ul>
+<pre><code class="language-shell"># 更新源
+sudo apt update
+# 通过以下命令安装
+sudo apt install build-essential gdb
+# 确认安装成功（-v = --version）
+gcc -v
+g++ -v
+gdb -v
 </code></pre>
-<p>(3) Replace the files in <em>/usr/local/MATLAB/R2018a/bin</em> by the files in <code>Crack.rar</code>.</p>
-<pre><code class="language-shell">sudo cp -rvf R2018a/bin /usr/local/MATLAB/R2018a/
+<ul>
+<li>安装CMake</li>
+</ul>
+<pre><code class="language-shell"># 通过以下命令安装
+sudo apt install cmake
+# 确认安装成功（-v = --version）
+cmake -v
 </code></pre>
-<h1 id="3-launch-matlab">3. Launch MATLAB</h1>
-<p>Open MATLAB in directory <em>/usr/local/MATLAB/R2018a/bin</em> by typing</p>
-<pre><code class="language-shell">sudo ./matlab
+<h1 id="gcc编译器">GCC编译器</h1>
+<p>VSCode通过调用GCC编译器实现C/C++编译：</p>
+<ul>
+<li>gcc编译C</li>
+<li>g++编译C++</li>
+</ul>
+<h2 id="编译过程">编译过程</h2>
+<ul>
+<li>预处理（Pre-Processing）</li>
+</ul>
+<pre><code class="language-shell"># -E 选项指示编译器仅对输入文件进行预处理，生成.i文件
+g++ -E test.cpp -o test.i
 </code></pre>
-<p>Add the license in <code>Crack.rar</code>.</p>
-<h2 id="31-by-desktop-shortcut">3.1 By Desktop Shortcut</h2>
-<p>Type</p>
-<pre><code class="language-shell">sudo gedit /usr/share/application/matlab.desktop
+<ul>
+<li>编译（Compiling）</li>
+</ul>
+<pre><code class="language-shell"># -S 选项指示编译器为C++代码产生汇编语言文件后停止编译，生成.s文件
+g++ -S test.i -o test.s
 </code></pre>
-<p>and write down the following codes in the file</p>
-<pre><code class="language-shell">[Desktop Entry]
-Type=Application
-Name=Matlab
-GenericName=MATLAB
-Comment=Matlab:The Language of Technical Computing
-Exec=sh /usr/local/MATLAB/R2018a/bin/matlab -desktop
-Icon=/usr/local/MATLAB/R2018a/toolbox/nnet/nnresource/icons/matlab.png
-StartupNotify=true
-Terminal=false
-Categories=Development;Matlab;
+<ul>
+<li>汇编（Assembling）</li>
+</ul>
+<pre><code class="language-shell"># -c 选项指示编译器把源代码编译成机器语言的目标代码，生成.o文件
+g++ -c test.s -o test.o
 </code></pre>
-<p>Then go to application 'files' to search 'matlab', and drag the icon to the desktop.</p>
-<p>If there is a message “The desktop configuration was not saved successfully” in matlab, then type</p>
-<pre><code class="language-shell">sudo chmod a+w -R /home/&lt;username&gt;/.matlab/R2018a
+<ul>
+<li>链接（Linking）</li>
+</ul>
+<pre><code class="language-shell"># -o 选项指示编译器生成可执行的二进制文件
+g++ test.o -o test
 </code></pre>
-<h2 id="32-by-command">3.2 By Command</h2>
-<p>First add path by typing</p>
-<pre><code class="language-shell">export PATH=$PATH:/usr/local/MATLAB/R2018a/bin/
+<figure data-type="image" tabindex="1"><img src="https://star2dust.github.io/post-images/1650096869267.jpg" alt="编译过程" title="GCC编译过程" loading="lazy"></figure>
+<p>以上4个步骤可以一次性完成</p>
+<pre><code class="language-shell"># g++后面可以接多个.cpp文件
+g++ test.cpp -o test
 </code></pre>
-<p>Then start MATLAB without desktop (only calculation)</p>
-<pre><code class="language-shell">matlab -nojvm -nodisplay -nosplash
+<h2 id="重要编译参数">重要编译参数</h2>
+<ul>
+<li><code>-g</code> 编译输出带调试信息的可执行文件</li>
+</ul>
+<pre><code class="language-shell">g++ -g test.cpp
 </code></pre>
-<p>If you want <code>gcf</code> support, try to use</p>
-<pre><code class="language-shell">matlab -nodesktop -nosplash
+<ul>
+<li><code>-O[n]</code> 优化源代码，n越大越快（n常为0-3）</li>
+</ul>
+<pre><code class="language-shell"># 使用-O2优化源代码（-O = -O1）
+g++ -O2 test.cpp
+# 量化运行时间
+time ./test
 </code></pre>
-<h1 id="4-add-matlab-to-path">4. Add MATLAB to PATH</h1>
-<p>Type</p>
-<pre><code class="language-shell">sudo gedit ~/.bashrc
+<ul>
+<li><code>-l</code>/<code>-L</code> 指定库文件/库文件路径</li>
+</ul>
+<pre><code class="language-shell"># -l紧接库名，-L紧接库路径
+# 在/lib和/usr/lib和/usr/local/lib里的库可直接用-l链接
+
+# 链接glog库
+g++ -lglog test.cpp
+
+# 如果库文件不在上面三个目录里，需要用-L链接
+# 链接libtest库，在/home/user/libfolder目录下
+g++ -L/home/user/libfolder -llibtest test.cpp
 </code></pre>
-<p>Add one sentence to the end</p>
-<pre><code class="language-shell">export PATH=$PATH:/usr/local/MATLAB/R2018a/bin/
+<ul>
+<li><code>-I</code> 指定头文件搜索目录（大写i）</li>
+</ul>
+<pre><code class="language-shell"># 如果头文件不在/usr/include目录里，需要用-I指定
+# 如-I/home/user/include，当前目录用-I.指定
+g++ -I/home/user/include test.cpp
 </code></pre>
-<p>This change is valid in every newly-opened terminal and can only be used by current user.</p>
-<p>By the way, <code>.file</code> means hidden file, we can use 'ctrl+h' to show/hide these files.</p>
-<h1 id="5-set-path-in-matlab">5. Set Path in MATLAB</h1>
-<p>(1) Set MATLABPATH:</p>
-<p>HOME=&gt;ENVIRONMENT=&gt;Set Path</p>
-<p>Click <strong>add folder</strong> to add matlabpath permanently.</p>
-<p>Same with <code>addpath</code> + <code>savepath</code>.</p>
-<p>(2) Set USERPATH:</p>
-<p>HOME=&gt;ENVIRONMENT=&gt;Preference</p>
-<p>Click <strong>General</strong> and add userpath in <strong>Initial working folder</strong>.</p>
-<p>Same with <code>userpath</code>.</p>
-<p>Create a <code>startup.m</code> in userpath and this script runs everytime matlab starts.</p>
+<ul>
+<li><code>-Wall</code>/<code>-w</code>  打印/关闭警告信息</li>
+</ul>
+<pre><code class="language-shell"># 打印警告
+g++ -Wall test.cpp
+# 关闭警告
+g++ -w test.cpp
+</code></pre>
+<ul>
+<li><code>-std=c++11</code> 设置编译标准</li>
+</ul>
+<pre><code class="language-shell"># 使用c++11标准编译
+g++  -std=c++11 test .cpp
+</code></pre>
+<ul>
+<li><code>-o</code> 指定输出文件名</li>
+</ul>
+<pre><code class="language-shell"># 指定输出文件名为test（不指定默认为a.out）
+g++ test.cpp -o test
+</code></pre>
+<ul>
+<li><code>-D</code> 定义宏</li>
+</ul>
+<p>常用场景：<br>
+<code>-DDEBUG</code> 定义DEBUG宏，用-DDEBUG开启或关闭DEBUG</p>
+<pre><code class="language-c"># include &lt;stdio.h&gt;
+
+int main(){
+    #ifdef DEBUG
+        printf(&quot;DEBUG LOG\n&quot;);
+    #endif
+        printf(&quot;in\n&quot;);
+}
+</code></pre>
+<pre><code class="language-shell"># main.c中#ifdef DEBUG部分内容可被执行
+gcc -DDEBUG main.c
+</code></pre>
+<h2 id="编译和链接静态动态库">编译和链接静态/动态库</h2>
+<p>假设目录结构如下：</p>
+<pre><code>include/Swap.h
+main.cpp
+src/Swap.cpp
+</code></pre>
+<ul>
+<li>直接链接</li>
+</ul>
+<pre><code class="language-shell">g++ main.cpp src/Swap.cpp -Iinclude
+</code></pre>
+<ul>
+<li>静态库</li>
+</ul>
+<pre><code class="language-shell"># 进入src
+cd src
+# 汇编，生成Swap.o (默认)
+g++ Swap.cpp -c -I../include 
+# 生成静态库libSwap.a（ar = archive）
+ar rs libSwap.a Swap.o # lib开头就行
+cd ..
+# 链接，生成可执行文件static
+g++ main.cpp -Iinclude -Lsrc -lSwap -o  static
+</code></pre>
+<ul>
+<li>动态库</li>
+</ul>
+<pre><code class="language-shell"># 进入src
+cd src
+# 生成动态库libSwap.so（PIC = position independent code）
+g++ Swap.cpp -I../include -fPIC -shared -o libSwap.so
+## 上面的命令等价于以下两条命令
+# g++ Swap.cpp -I../include -c -fPIC
+# g++ -shared -o libSwap.so Swap.o
+cd ..
+# 链接，生成可执行文件shared
+g++ main.cpp -Iinclude -Lsrc -lSwap -o shared
+</code></pre>
+<p>注意：运行动态库链接的可执行文件与前两种不同，需要指定库路径</p>
+<pre><code class="language-shell"># 运行动态库链接的可执行文件
+LD_LIBRARY_PATH=src ./shared
+</code></pre>
 
                 </div>
             </article>
@@ -204,8 +315,8 @@ Categories=Development;Matlab;
         
             <div class="next-post">
                 <div class="next gt-c-content-color-first">下一篇</div>
-                <a href="https://star2dust.github.io/post/proximal-operator/" class="post-title gt-a-link">
-                    近端算子求解分布式约束优化问题
+                <a href="https://star2dust.github.io/post/installing-matlab-2018a-in-linux/" class="post-title gt-a-link">
+                    Installing MATLAB 2018a in Linux
                 </a>
             </div>
         

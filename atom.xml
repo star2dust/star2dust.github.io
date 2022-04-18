@@ -2,7 +2,7 @@
 <feed xmlns="http://www.w3.org/2005/Atom">
     <id>https://star2dust.github.io</id>
     <title>star2dust</title>
-    <updated>2022-04-17T05:21:12.758Z</updated>
+    <updated>2022-04-18T14:17:23.648Z</updated>
     <generator>https://github.com/jpmonette/feed</generator>
     <link rel="alternate" href="https://star2dust.github.io"/>
     <link rel="self" href="https://star2dust.github.io/atom.xml"/>
@@ -157,7 +157,7 @@ int main(){
 <pre><code class="language-shell"># main.c中#ifdef DEBUG部分内容可被执行
 gcc -DDEBUG main.c
 </code></pre>
-<h2 id="编译和链接静态动态库">编译和链接静态/动态库</h2>
+<h2 id="编译和链接静态共享库">编译和链接静态/共享库</h2>
 <p>假设目录结构如下：</p>
 <pre><code>include/Swap.h
 main.cpp
@@ -182,11 +182,11 @@ cd ..
 g++ main.cpp -Iinclude -Lsrc -lSwap -o  static
 </code></pre>
 <ul>
-<li>动态库</li>
+<li>共享库</li>
 </ul>
 <pre><code class="language-shell"># 进入src
 cd src
-# 生成动态库libSwap.so（PIC = position independent code）
+# 生成共享库libSwap.so（PIC = position independent code）
 g++ Swap.cpp -I../include -fPIC -shared -o libSwap.so
 ## 上面的命令等价于以下两条命令
 # g++ Swap.cpp -I../include -c -fPIC
@@ -195,10 +195,200 @@ cd ..
 # 链接，生成可执行文件shared
 g++ main.cpp -Iinclude -Lsrc -lSwap -o shared
 </code></pre>
-<p>注意：运行动态库链接的可执行文件与前两种不同，需要指定库路径</p>
-<pre><code class="language-shell"># 运行动态库链接的可执行文件
+<p>注意：运行共享库链接的可执行文件与前两种不同，需要指定库路径</p>
+<pre><code class="language-shell"># 运行共享库链接的可执行文件
 LD_LIBRARY_PATH=src ./shared
 </code></pre>
+<h2 id="gdb调试器">GDB调试器</h2>
+<ul>
+<li>编译时使用<code>-g</code>参数</li>
+<li>调试时执行<code>gdb [可执行文件名]</code></li>
+<li>回车键重复上一命令</li>
+</ul>
+<pre><code class="language-shell">$(gdb)run(r) # 重新开始运行文件
+# run argv[1] argv[2] 调试时命令行传参
+$(gdb)list(l) [行号] # 查看某行为中心的源代码
+# list [函数名]查看函数
+# list 查看当前行为中心的源代码，再次list查看后续代码
+
+$(gdb)break(b) [行号] # 在某行加入断点
+$(gdb)delete(d) [断点号]# 删除断点
+$(gdb)continue(c) # 继续循环
+$(gdb)print(p) [变量名] # 打印值及地址
+$(gdb)display [变量名] # 追踪查看变量
+$(gdb)undisplay [追踪号] # 追踪查看变量
+$(gdb)watch [变量名] # 设置观察变量，发生修改时打印
+
+$(gdb)info(i) breakpoints(b) # 查看断点
+$(gdb)info(i) display # 查看追踪点
+$(gdb)info(i) watch # 查看观察点
+
+$(gdb)next(n) # 单步调试，逐过程
+$(gdb)step(s) # 单步调试，逐语句
+$(gdb)finish # 跳出当前函数
+$(gdb)quit(q) # 退出调试
+</code></pre>
+<h1 id="cmake">CMake</h1>
+<ul>
+<li>基本语法格式：指令(参数1 参数2)</li>
+<li>变量使用<code>${}</code>方式取值，但IF语句中直接使用变量名</li>
+</ul>
+<pre><code class="language-cmake">set(HELLO hello.cpp) # 设置变量
+add_executable(hello main.cpp ${HELLO}) # 使用变量
+# IF语句中使用 IF(HELLO)
+</code></pre>
+<ul>
+<li>指令大小写无关，参数和变量大小写相关</li>
+</ul>
+<h2 id="重要指令">重要指令</h2>
+<p>假设目录结构如下：</p>
+<pre><code class="language-cmake">include/libHelloSLAM.h
+src/libHelloSLAM.cpp
+useHello.cpp
+</code></pre>
+<ul>
+<li><code>cmake_minimum_required</code> 声明要求的 cmake 最低版本</li>
+</ul>
+<pre><code class="language-cmake"># 声明要求的 cmake 最低版本
+cmake_minimum_required(VERSION 2.8)
+</code></pre>
+<ul>
+<li><code>project</code> 声明一个 cmake 工程</li>
+</ul>
+<pre><code class="language-cmake"># 声明一个 cmake 工程
+# 语法：project(工程名 [支持的编程语言])
+project(HelloSLAM)
+</code></pre>
+<ul>
+<li><code>set</code> 定义变量</li>
+</ul>
+<pre><code class="language-cmake"># 语法：set(变量名 值1 值2 ...)
+# 设置编译模式（Debug相当于-g，Release相当于-O3）
+set(CMAKE_BUILD_TYPE &quot;Debug&quot;)
+# 追加编译参数 
+set(CMAKE_CXX_FLAGS &quot;${CMAKE_CXX_FLAGS} -std=c++11&quot;)
+# 指定C++编译器
+set(CMAKE_CXX_COMPILER &quot;/usr/local/gcc/bin/g++&quot;)
+# 可执行文件输出的存放路径（${PROJECT_SOURCE_DIR}为最近的CMakeLists.txt所在位置）
+set(EXECUTABLE_OUTPUT_PATH ${PROJECT_SOURCE_DIR}/bin)
+# 库文件输出的存放路径（也可以用${CMAKE_SOURCE_DIR}）
+set(LIBRARY_OUTPUT_PATH ${PROJECT_SOURCE_DIR}/lib)
+</code></pre>
+<ul>
+<li><code>include_directories</code> 添加头文件搜索路径（相当于g++的-I参数）</li>
+</ul>
+<pre><code class="language-cmake"># 添加头文件搜索路径（相当于g++的-I参数）
+include_directories(./include)
+</code></pre>
+<ul>
+<li><code>link_directories</code> 添加库文件搜索路径（相当于g++的-L参数）</li>
+</ul>
+<pre><code class="language-cmake"># 添加库文件搜索路径（相当于g++的-L参数）
+link_directories(./lib) # 搜索额外的库文件
+</code></pre>
+<ul>
+<li><code>add_library</code> 添加库</li>
+</ul>
+<pre><code class="language-cmake"># 共享库 （不加SHARED是静态库）
+add_library(hello_shared SHARED ./src/libHelloSLAM.cpp)
+</code></pre>
+<ul>
+<li><code>add_executable</code> 添加可执行程序</li>
+</ul>
+<pre><code class="language-cmake"># 添加可执行程序调用hello库中函数
+# 语法：add_executable( 程序名 源代码文件 )
+add_executable(useHello useHello.cpp)
+</code></pre>
+<ul>
+<li><code>target_link_libraries</code> 将共享库文件链接到可执行程序上</li>
+</ul>
+<pre><code class="language-cmake"># 将库文件链接到可执行程序上
+target_link_libraries(useHello hello_shared)
+</code></pre>
+<h1 id="编译指令">编译指令</h1>
+<pre><code class="language-shell"># 创建build文件夹
+mkdir build
+cd build
+# 配置cmake（CMakeLists目录下）
+cmake ..
+# 编译
+make
+</code></pre>
+<p>最后得到的目录结构</p>
+<pre><code>include/libHelloSLAM.h
+src/libHelloSLAM.cpp
+build/....(省略)
+bin/useHello
+lib/libhello_shared.so
+useHello.cpp
+</code></pre>
+<h1 id="vscode调试">VSCode调试</h1>
+<p>（1）如果前面已经编译好了，只需创建launch.json文件</p>
+<ul>
+<li>Ctrl+Shift+D，点创建launch.json，选择C++(lldb/gdb)</li>
+<li>Add configurations选择模板C/C++: (gdb) Launch</li>
+<li>cwd改为“${workspaceFolder}”，即VSCode当前工作目录</li>
+</ul>
+<pre><code class="language-json">{
+    &quot;version&quot;: &quot;0.2.0&quot;,
+    &quot;configurations&quot;: [
+        {
+            &quot;name&quot;: &quot;let's debug&quot;,          // debug 文件名
+            &quot;type&quot;: &quot;cppdbg&quot;,
+            &quot;request&quot;: &quot;launch&quot;,
+            &quot;program&quot;: &quot;${workspaceFolder}/bin/useHello&quot;,  // 构建后的可执行文件
+            // ${workspaceFolder}是VSCode当前工作目录
+            &quot;cwd&quot;: &quot;${workspaceFolder}&quot;,
+            // 前面如果已经编译好了，前置任务可以注释掉
+            &quot;preLaunchTask&quot;: &quot;let's build&quot;,  // 执行调试的前置任务名
+            &quot;MIMode&quot;: &quot;gdb&quot;,               // Linux填gdb（与哪个 debugger 通信）
+        }
+    ]
+}
+</code></pre>
+<p>（2）如果前面没有编译，可以执行前置任务，创建task.json文件</p>
+<ul>
+<li>Terminal=&gt;Configure Default Build Task，选择模板others</li>
+</ul>
+<pre><code class="language-json">{
+    &quot;version&quot;: &quot;2.0.0&quot;,
+    &quot;tasks&quot;: [
+        {// 任务1——cmake
+            &quot;type&quot;: &quot;shell&quot;,
+            &quot;label&quot;: &quot;let's cmake&quot;,  // 任务名
+            &quot;command&quot;: &quot;cmake&quot;,      // 命令行调用
+            &quot;args&quot;: [                // 命令行参数
+                &quot;../&quot;
+            ],
+            &quot;options&quot;: {
+                &quot;cwd&quot;: &quot;${workspaceFolder}/build&quot;  // 在 build/ 目录中执行
+            }
+        },
+        {// 任务2——make
+            &quot;type&quot;: &quot;shell&quot;,
+            &quot;label&quot;: &quot;let's make&quot;,   // 任务名
+            &quot;command&quot;: &quot;make&quot;,       // 命令行调用
+            &quot;options&quot;: {
+                &quot;cwd&quot;: &quot;${workspaceFolder}/build&quot;  // 在 build/ 目录中执行
+            },
+        },
+        {// 任务1和2——build
+            &quot;label&quot;: &quot;let's build&quot;,
+            &quot;dependsOrder&quot;: &quot;sequence&quot;, // 按列出的顺序执行
+            &quot;dependsOn&quot;:[ // 依赖哪个任务的执行结果
+                &quot;let's cmake&quot;, 
+                &quot;let's make&quot;
+            ]
+        }
+    ]
+}
+</code></pre>
+<p>（3）配置好launch.json文件和task.json文件之后，可以直接F5一键编译加调试</p>
+<ul>
+<li>F5进入调试/继续调试</li>
+<li>F10单步逐过程，F11单步逐语句</li>
+<li>shift+F11跳出</li>
+</ul>
 ]]></content>
     </entry>
     <entry>

@@ -1,373 +1,312 @@
 <html>
-<head>
-    <meta charset="utf-8"/>
-<meta name="description" content=""/>
-<meta name="viewport" content="width=device-width, initial-scale=1"/>
-
+  <head>
+  <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>Python | star2dust</title>
-
-<link rel="shortcut icon" href="https://star2dust.github.io/favicon.ico?v=1652610309086">
-
-<link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" rel="stylesheet">
+<link rel="shortcut icon" href="https://star2dust.github.io/favicon.ico?v=1653562569417">
+<link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
 <link rel="stylesheet" href="https://star2dust.github.io/styles/main.css">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/css/bootstrap.min.css">
-
-<script src="https://cdn.jsdelivr.net/npm/@highlightjs/cdn-assets/highlight.min.js"></script>
-<script src="https://cdn.bootcss.com/highlight.js/9.15.10/languages/dockerfile.min.js"></script>
-<script src="https://cdn.bootcss.com/highlight.js/9.15.10/languages/dart.min.js"></script>
-
-<script src="https://cdn.jsdelivr.net/npm/moment@2.27.0/moment.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/js/bootstrap.min.js"></script>
-
-<!-- DEMO JS -->
-<!--<script src="media/scripts/index.js"></script>-->
+<link rel="alternate" type="application/atom+xml" title="Python | star2dust - Atom Feed" href="https://star2dust.github.io/atom.xml">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700">
 
 
 
-</head>
-<body>
-<div class="main gt-bg-theme-color-first">
-    <div class="main-content">
-        <nav class="navbar navbar-expand-lg">
-    <div class="navbar-brand">
-        <img class="user-avatar" src="/images/avatar.png" alt="头像">
-        <div class="site-name gt-c-content-color-first">
-            star2dust
-        </div>
-    </div>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <i class="fas fa-bars gt-c-content-color-first" style="font-size: 18px"></i>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <div class="navbar-nav mr-auto" style="text-align: center">
-            
-                <div class="nav-item">
-                    
-                        <a href="/" class="menu gt-a-link">
-                            首页
-                        </a>
-                    
-                </div>
-            
-                <div class="nav-item">
-                    
-                        <a href="/archives" class="menu gt-a-link">
-                            归档
-                        </a>
-                    
-                </div>
-            
-                <div class="nav-item">
-                    
-                        <a href="/tags" class="menu gt-a-link">
-                            标签
-                        </a>
-                    
-                </div>
-            
-                <div class="nav-item">
-                    
-                        <a href="/post/about" class="menu gt-a-link">
-                            关于
-                        </a>
-                    
-                </div>
-            
-                <div class="nav-item">
-                    
-                        <a href="https://blog.csdn.net/u010038790" class="menu gt-a-link" target="_blank">
-                            CSDN博客
-                        </a>
-                    
-                </div>
-            
-                <div class="nav-item">
-                    
-                        <a href="https://github.com/star2dust/paper-simulation" class="menu gt-a-link" target="_blank">
-                            论文复现
-                        </a>
-                    
-                </div>
-            
-                <div class="nav-item">
-                    
-                        <a href="https://github.com/star2dust/Robotics-Toolbox" class="menu gt-a-link" target="_blank">
-                            机器人控制规划库
-                        </a>
-                    
-                </div>
-            
-        </div>
-    </div>
-</nav>
+  <meta name="description" content="每天进步一点点" />
+  </head>
+  <body>
+    <div class="main">
+      <div class="main-content">
+        <div class="site-header">
+  <a href="https://star2dust.github.io">
+  <img class="avatar" src="https://star2dust.github.io/images/avatar.png?v=1653562569417" alt="">
+  </a>
+  <h1 class="site-title">
+    star2dust
+  </h1>
+  <p class="site-description">
+    每天进步一点点
+  </p>
+  <div class="menu-container">
+    
+      
+        <a href="/" class="menu">
+          首页
+        </a>
+      
+    
+      
+        <a href="/archives" class="menu">
+          归档
+        </a>
+      
+    
+      
+        <a href="/tags" class="menu">
+          标签
+        </a>
+      
+    
+      
+        <a href="/post/about" class="menu">
+          关于
+        </a>
+      
+    
+      
+        <a href="https://blog.csdn.net/u010038790" class="menu" target="_blank">
+          博客
+        </a>
+      
+    
+      
+        <a href="https://github.com/star2dust/paper-simulation" class="menu" target="_blank">
+          论文复现
+        </a>
+      
+    
+      
+        <a href="https://github.com/star2dust/Robotics-Toolbox" class="menu" target="_blank">
+          工具箱
+        </a>
+      
+    
+  </div>
+  <div class="social-container">
+    
+      
+        <a href="https://github.com/star2dust" target="_blank">
+          <i class="ri-github-line"></i>
+        </a>
+      
+    
+      
+    
+      
+        <a href="https://weibo.com/u/2473019655/" target="_blank">
+          <i class="ri-weibo-line"></i>
+        </a>
+      
+    
+      
+        <a href="https://www.zhihu.com/people/dong-nan-che" target="_blank">
+          <i class="ri-zhihu-line"></i>
+        </a>
+      
+    
+      
+    
+  </div>
+</div>
+
         <div class="current-tag-container">
-            <h2 class="title gt-c-content-color-first">
-                #Python
-            </h2>
+            <h2 class="title">
+                标签：# Python
+            </h2> 
         </div>
-        <div class="post-list-container">
-    <div class="post-inner">
+        <div class="post-container">
+  
+    <article class="post">
+      <a href="https://star2dust.github.io/post/paddle-notes-boston/">
+        <h2 class="post-title">飞桨深度学习从零实践（一）：从房价预测看模型构建</h2>
+      </a>
+      <div class="post-info">
+        <span>
+          2020-08-15
+        </span>
+        <span>
+          11 min read
+        </span>
         
-            <div class="post gt-bg-theme-color-second">
-                <div class="post-left">
-                    <div>
-                        
-                        <a href="https://star2dust.github.io/post/paddle-notes-boston/">
-                            <span class="post-title gt-c-content-color-first">飞桨深度学习从零实践（一）：从房价预测看模型构建</span>
-                        </a>
-                    </div>
-                    <div class="gt-post-content post-abstract gt-c-content-color-second">
-                        
-                    </div>
-                    <div class="post-info">
-                        <time class="post-time gt-c-content-color-first">
-                            发布于 · 2020-08-15 ·
-                        </time>
-                        
-                            <a href="https://star2dust.github.io/tag/06rxjzcS5/" class="post-tag">
-                                # Deep Learning
-                            </a>
-                        
-                            <a href="https://star2dust.github.io/tag/R0pmglADx/" class="post-tag">
-                                # Python
-                            </a>
-                        
-                    </div>
-                </div>
-                
-            </div>
+          <a href="https://star2dust.github.io/tag/06rxjzcS5/" class="post-tag">
+            # Deep Learning
+          </a>
         
-            <div class="post gt-bg-theme-color-second">
-                <div class="post-left">
-                    <div>
-                        
-                        <a href="https://star2dust.github.io/post/parl-notes/">
-                            <span class="post-title gt-c-content-color-first">飞桨强化学习从零实践（一）：基于价值的方法</span>
-                        </a>
-                    </div>
-                    <div class="gt-post-content post-abstract gt-c-content-color-second">
-                        
-                    </div>
-                    <div class="post-info">
-                        <time class="post-time gt-c-content-color-first">
-                            发布于 · 2020-06-25 ·
-                        </time>
-                        
-                            <a href="https://star2dust.github.io/tag/cXfWoOnM-/" class="post-tag">
-                                # Reinforcement Learning
-                            </a>
-                        
-                            <a href="https://star2dust.github.io/tag/R0pmglADx/" class="post-tag">
-                                # Python
-                            </a>
-                        
-                    </div>
-                </div>
-                
-                    <a href="https://star2dust.github.io/post/parl-notes/" class="post-feature-image"
-                       style="background-image: url('https://star2dust.github.io/post-images/parl-notes.png')">
-                    </a>
-                
-            </div>
+          <a href="https://star2dust.github.io/tag/R0pmglADx/" class="post-tag">
+            # Python
+          </a>
         
-            <div class="post gt-bg-theme-color-second">
-                <div class="post-left">
-                    <div>
-                        
-                        <a href="https://star2dust.github.io/post/ndarray-notes/">
-                            <span class="post-title gt-c-content-color-first">ndarray数组基本结构和操作</span>
-                        </a>
-                    </div>
-                    <div class="gt-post-content post-abstract gt-c-content-color-second">
-                        
-                    </div>
-                    <div class="post-info">
-                        <time class="post-time gt-c-content-color-first">
-                            发布于 · 2020-06-24 ·
-                        </time>
-                        
-                            <a href="https://star2dust.github.io/tag/R0pmglADx/" class="post-tag">
-                                # Python
-                            </a>
-                        
-                    </div>
-                </div>
-                
-                    <a href="https://star2dust.github.io/post/ndarray-notes/" class="post-feature-image"
-                       style="background-image: url('https://star2dust.github.io/post-images/ndarray-notes.png')">
-                    </a>
-                
-            </div>
+      </div>
+      
+      <div class="post-abstract">
         
-            <div class="post gt-bg-theme-color-second">
-                <div class="post-left">
-                    <div>
-                        
-                        <a href="https://star2dust.github.io/post/pip-packages/">
-                            <span class="post-title gt-c-content-color-first"> pip包管理</span>
-                        </a>
-                    </div>
-                    <div class="gt-post-content post-abstract gt-c-content-color-second">
-                        
-                    </div>
-                    <div class="post-info">
-                        <time class="post-time gt-c-content-color-first">
-                            发布于 · 2020-06-24 ·
-                        </time>
-                        
-                            <a href="https://star2dust.github.io/tag/R0pmglADx/" class="post-tag">
-                                # Python
-                            </a>
-                        
-                    </div>
-                </div>
-                
-                    <a href="https://star2dust.github.io/post/pip-packages/" class="post-feature-image"
-                       style="background-image: url('https://star2dust.github.io/post-images/pip-packages.png')">
-                    </a>
-                
-            </div>
+      </div>
+    </article>
+  
+    <article class="post">
+      <a href="https://star2dust.github.io/post/parl-notes/">
+        <h2 class="post-title">飞桨强化学习从零实践（一）：基于价值的方法</h2>
+      </a>
+      <div class="post-info">
+        <span>
+          2020-06-25
+        </span>
+        <span>
+          27 min read
+        </span>
         
-            <div class="post gt-bg-theme-color-second">
-                <div class="post-left">
-                    <div>
-                        
-                        <a href="https://star2dust.github.io/post/python-data-types/">
-                            <span class="post-title gt-c-content-color-first">Python三大数据类型</span>
-                        </a>
-                    </div>
-                    <div class="gt-post-content post-abstract gt-c-content-color-second">
-                        
-                    </div>
-                    <div class="post-info">
-                        <time class="post-time gt-c-content-color-first">
-                            发布于 · 2020-06-24 ·
-                        </time>
-                        
-                            <a href="https://star2dust.github.io/tag/R0pmglADx/" class="post-tag">
-                                # Python
-                            </a>
-                        
-                    </div>
-                </div>
-                
-                    <a href="https://star2dust.github.io/post/python-data-types/" class="post-feature-image"
-                       style="background-image: url('https://star2dust.github.io/post-images/python-data-types.png')">
-                    </a>
-                
-            </div>
+          <a href="https://star2dust.github.io/tag/cXfWoOnM-/" class="post-tag">
+            # Reinforcement Learning
+          </a>
         
-            <div class="post gt-bg-theme-color-second">
-                <div class="post-left">
-                    <div>
-                        
-                        <a href="https://star2dust.github.io/post/python-data-structures/">
-                            <span class="post-title gt-c-content-color-first">Python三大数据结构</span>
-                        </a>
-                    </div>
-                    <div class="gt-post-content post-abstract gt-c-content-color-second">
-                        
-                    </div>
-                    <div class="post-info">
-                        <time class="post-time gt-c-content-color-first">
-                            发布于 · 2020-06-24 ·
-                        </time>
-                        
-                            <a href="https://star2dust.github.io/tag/R0pmglADx/" class="post-tag">
-                                # Python
-                            </a>
-                        
-                    </div>
-                </div>
-                
-                    <a href="https://star2dust.github.io/post/python-data-structures/" class="post-feature-image"
-                       style="background-image: url('https://star2dust.github.io/post-images/python-data-structures.png')">
-                    </a>
-                
-            </div>
+          <a href="https://star2dust.github.io/tag/R0pmglADx/" class="post-tag">
+            # Python
+          </a>
         
-            <div class="post gt-bg-theme-color-second">
-                <div class="post-left">
-                    <div>
-                        
-                        <a href="https://star2dust.github.io/post/python-grammers/">
-                            <span class="post-title gt-c-content-color-first">Python四大语法</span>
-                        </a>
-                    </div>
-                    <div class="gt-post-content post-abstract gt-c-content-color-second">
-                        
-                    </div>
-                    <div class="post-info">
-                        <time class="post-time gt-c-content-color-first">
-                            发布于 · 2020-06-23 ·
-                        </time>
-                        
-                            <a href="https://star2dust.github.io/tag/R0pmglADx/" class="post-tag">
-                                # Python
-                            </a>
-                        
-                    </div>
-                </div>
-                
-                    <a href="https://star2dust.github.io/post/python-grammers/" class="post-feature-image"
-                       style="background-image: url('https://star2dust.github.io/post-images/python-grammers.png')">
-                    </a>
-                
-            </div>
+      </div>
+      
+        <a href="https://star2dust.github.io/post/parl-notes/" class="post-feature-image" style="background-image: url('https://star2dust.github.io/post-images/parl-notes.png')">
+        </a>
+      
+      <div class="post-abstract">
         
-    </div>
+      </div>
+    </article>
+  
+    <article class="post">
+      <a href="https://star2dust.github.io/post/ndarray-notes/">
+        <h2 class="post-title">ndarray数组基本结构和操作</h2>
+      </a>
+      <div class="post-info">
+        <span>
+          2020-06-24
+        </span>
+        <span>
+          14 min read
+        </span>
+        
+          <a href="https://star2dust.github.io/tag/R0pmglADx/" class="post-tag">
+            # Python
+          </a>
+        
+      </div>
+      
+        <a href="https://star2dust.github.io/post/ndarray-notes/" class="post-feature-image" style="background-image: url('https://star2dust.github.io/post-images/ndarray-notes.png')">
+        </a>
+      
+      <div class="post-abstract">
+        
+      </div>
+    </article>
+  
+    <article class="post">
+      <a href="https://star2dust.github.io/post/pip-packages/">
+        <h2 class="post-title"> pip包管理</h2>
+      </a>
+      <div class="post-info">
+        <span>
+          2020-06-24
+        </span>
+        <span>
+          1 min read
+        </span>
+        
+          <a href="https://star2dust.github.io/tag/R0pmglADx/" class="post-tag">
+            # Python
+          </a>
+        
+      </div>
+      
+        <a href="https://star2dust.github.io/post/pip-packages/" class="post-feature-image" style="background-image: url('https://star2dust.github.io/post-images/pip-packages.png')">
+        </a>
+      
+      <div class="post-abstract">
+        
+      </div>
+    </article>
+  
+    <article class="post">
+      <a href="https://star2dust.github.io/post/python-data-types/">
+        <h2 class="post-title">Python三大数据类型</h2>
+      </a>
+      <div class="post-info">
+        <span>
+          2020-06-24
+        </span>
+        <span>
+          2 min read
+        </span>
+        
+          <a href="https://star2dust.github.io/tag/R0pmglADx/" class="post-tag">
+            # Python
+          </a>
+        
+      </div>
+      
+        <a href="https://star2dust.github.io/post/python-data-types/" class="post-feature-image" style="background-image: url('https://star2dust.github.io/post-images/python-data-types.png')">
+        </a>
+      
+      <div class="post-abstract">
+        
+      </div>
+    </article>
+  
+    <article class="post">
+      <a href="https://star2dust.github.io/post/python-data-structures/">
+        <h2 class="post-title">Python三大数据结构</h2>
+      </a>
+      <div class="post-info">
+        <span>
+          2020-06-24
+        </span>
+        <span>
+          3 min read
+        </span>
+        
+          <a href="https://star2dust.github.io/tag/R0pmglADx/" class="post-tag">
+            # Python
+          </a>
+        
+      </div>
+      
+        <a href="https://star2dust.github.io/post/python-data-structures/" class="post-feature-image" style="background-image: url('https://star2dust.github.io/post-images/python-data-structures.png')">
+        </a>
+      
+      <div class="post-abstract">
+        
+      </div>
+    </article>
+  
+    <article class="post">
+      <a href="https://star2dust.github.io/post/python-grammers/">
+        <h2 class="post-title">Python四大语法</h2>
+      </a>
+      <div class="post-info">
+        <span>
+          2020-06-23
+        </span>
+        <span>
+          4 min read
+        </span>
+        
+          <a href="https://star2dust.github.io/tag/R0pmglADx/" class="post-tag">
+            # Python
+          </a>
+        
+      </div>
+      
+        <a href="https://star2dust.github.io/post/python-grammers/" class="post-feature-image" style="background-image: url('https://star2dust.github.io/post-images/python-grammers.png')">
+        </a>
+      
+      <div class="post-abstract">
+        
+      </div>
+    </article>
+  
 </div>
+
         <div class="pagination-container">
-    
-    
+  
+  
 </div>
 
-        <div class="site-footer gt-c-content-color-first">
-    <div class="slogan gt-c-content-color-first">每天进步一点点</div>
-    <div class="social-container">
-        
-            
-                <a href="https://github.com/star2dust" target="_blank">
-                    <i class="fab fa-github gt-c-content-color-first"></i>
-                </a>
-            
-        
-            
-        
-            
-                <a href="https://weibo.com/u/2473019655" target="_blank">
-                    <i class="fab fa-weibo gt-c-content-color-first"></i>
-                </a>
-            
-        
-            
-                <a href="https://www.zhihu.com/people/dong-nan-che" target="_blank">
-                    <i class="fab fa-zhihu gt-c-content-color-first"></i>
-                </a>
-            
-        
-            
-        
-            
-        
-    </div>
-    <div class="footer-info">
-        Copyright &copy;<span>star2dust</span>
-    </div>
-    <div>
-        Theme by <a href="https://imhanjie.com/" target="_blank">imhanjie</a>, Powered by <a
-                href="https://github.com/getgridea/gridea" target="_blank">Gridea | <a href="https://star2dust.github.io/atom.xml" target="_blank">RSS</a></a>
-    </div>
+        <div class="site-footer">
+  Copyright &copy;<span>star2dust</span>
+  <a class="rss" href="https://star2dust.github.io/atom.xml" target="_blank">
+    <i class="ri-rss-line"></i> RSS
+  </a>
 </div>
 
-<script>
-    hljs.initHighlightingOnLoad()
-</script>
-
+      </div>
     </div>
-</div>
-</body>
+  </body>
 </html>

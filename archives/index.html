@@ -1,925 +1,786 @@
 <html>
-<head>
-    <meta charset="utf-8"/>
-<meta name="description" content=""/>
-<meta name="viewport" content="width=device-width, initial-scale=1"/>
-
+  <head>
+    <meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>star2dust</title>
-
-<link rel="shortcut icon" href="https://star2dust.github.io/favicon.ico?v=1652610309086">
-
-<link href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" rel="stylesheet">
+<link rel="shortcut icon" href="https://star2dust.github.io/favicon.ico?v=1653562569417">
+<link href="https://cdn.jsdelivr.net/npm/remixicon@2.3.0/fonts/remixicon.css" rel="stylesheet">
 <link rel="stylesheet" href="https://star2dust.github.io/styles/main.css">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/css/bootstrap.min.css">
-
-<script src="https://cdn.jsdelivr.net/npm/@highlightjs/cdn-assets/highlight.min.js"></script>
-<script src="https://cdn.bootcss.com/highlight.js/9.15.10/languages/dockerfile.min.js"></script>
-<script src="https://cdn.bootcss.com/highlight.js/9.15.10/languages/dart.min.js"></script>
-
-<script src="https://cdn.jsdelivr.net/npm/moment@2.27.0/moment.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.0/dist/js/bootstrap.min.js"></script>
-
-<!-- DEMO JS -->
-<!--<script src="media/scripts/index.js"></script>-->
+<link rel="alternate" type="application/atom+xml" title="star2dust - Atom Feed" href="https://star2dust.github.io/atom.xml">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Droid+Serif:400,700">
 
 
 
-</head>
-<body>
-<div class="main gt-bg-theme-color-first">
-    <div class="main-content">
-        <nav class="navbar navbar-expand-lg">
-    <div class="navbar-brand">
-        <img class="user-avatar" src="/images/avatar.png" alt="头像">
-        <div class="site-name gt-c-content-color-first">
-            star2dust
-        </div>
-    </div>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <i class="fas fa-bars gt-c-content-color-first" style="font-size: 18px"></i>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <div class="navbar-nav mr-auto" style="text-align: center">
-            
-                <div class="nav-item">
-                    
-                        <a href="/" class="menu gt-a-link">
-                            首页
-                        </a>
-                    
-                </div>
-            
-                <div class="nav-item">
-                    
-                        <a href="/archives" class="menu gt-a-link">
-                            归档
-                        </a>
-                    
-                </div>
-            
-                <div class="nav-item">
-                    
-                        <a href="/tags" class="menu gt-a-link">
-                            标签
-                        </a>
-                    
-                </div>
-            
-                <div class="nav-item">
-                    
-                        <a href="/post/about" class="menu gt-a-link">
-                            关于
-                        </a>
-                    
-                </div>
-            
-                <div class="nav-item">
-                    
-                        <a href="https://blog.csdn.net/u010038790" class="menu gt-a-link" target="_blank">
-                            CSDN博客
-                        </a>
-                    
-                </div>
-            
-                <div class="nav-item">
-                    
-                        <a href="https://github.com/star2dust/paper-simulation" class="menu gt-a-link" target="_blank">
-                            论文复现
-                        </a>
-                    
-                </div>
-            
-                <div class="nav-item">
-                    
-                        <a href="https://github.com/star2dust/Robotics-Toolbox" class="menu gt-a-link" target="_blank">
-                            机器人控制规划库
-                        </a>
-                    
-                </div>
-            
-        </div>
-    </div>
-</nav>
+    <meta name="description" content="每天进步一点点" />
+  </head>
+  <body>
+    <div class="main">
+      <div class="main-content">
+        <div class="site-header">
+  <a href="https://star2dust.github.io">
+  <img class="avatar" src="https://star2dust.github.io/images/avatar.png?v=1653562569417" alt="">
+  </a>
+  <h1 class="site-title">
+    star2dust
+  </h1>
+  <p class="site-description">
+    每天进步一点点
+  </p>
+  <div class="menu-container">
+    
+      
+        <a href="/" class="menu">
+          首页
+        </a>
+      
+    
+      
+        <a href="/archives" class="menu">
+          归档
+        </a>
+      
+    
+      
+        <a href="/tags" class="menu">
+          标签
+        </a>
+      
+    
+      
+        <a href="/post/about" class="menu">
+          关于
+        </a>
+      
+    
+      
+        <a href="https://blog.csdn.net/u010038790" class="menu" target="_blank">
+          博客
+        </a>
+      
+    
+      
+        <a href="https://github.com/star2dust/paper-simulation" class="menu" target="_blank">
+          论文复现
+        </a>
+      
+    
+      
+        <a href="https://github.com/star2dust/Robotics-Toolbox" class="menu" target="_blank">
+          工具箱
+        </a>
+      
+    
+  </div>
+  <div class="social-container">
+    
+      
+        <a href="https://github.com/star2dust" target="_blank">
+          <i class="ri-github-line"></i>
+        </a>
+      
+    
+      
+    
+      
+        <a href="https://weibo.com/u/2473019655/" target="_blank">
+          <i class="ri-weibo-line"></i>
+        </a>
+      
+    
+      
+        <a href="https://www.zhihu.com/people/dong-nan-che" target="_blank">
+          <i class="ri-zhihu-line"></i>
+        </a>
+      
+    
+      
+    
+  </div>
+</div>
 
+    
         
 
 <div class="archives-container">
+  
+    <h2 class="year">2022</h2>
     
-        <h2 class="year gt-c-cotent-color-first">2022</h2>
-        
-            
-                <article class="post">
-                    <a href="https://star2dust.github.io/post/vscode-cmake-tutorials/">
-                        <div class="post-title gt-c-content-color-first">
-                            <small><b>2022-04-16&nbsp;&nbsp;·&nbsp;&nbsp;</b></small>
-                            基于VSCode和CMake进行C/C++开发
-                        </div>
-                    </a>
-                </article>
-            
-        
-            
-                <article class="post">
-                    <a href="https://star2dust.github.io/post/installing-matlab-2018a-in-linux/">
-                        <div class="post-title gt-c-content-color-first">
-                            <small><b>2022-03-16&nbsp;&nbsp;·&nbsp;&nbsp;</b></small>
-                            Installing MATLAB 2018a in Linux
-                        </div>
-                    </a>
-                </article>
-            
-        
-            
-        
-            
-        
-            
-        
-            
-        
-            
-        
-            
-        
-            
-        
-            
-        
-            
-        
-            
-        
-            
-        
-            
-        
-            
-        
-            
-        
-            
-        
-            
-        
-            
-        
-            
-        
-            
-        
-            
-        
-            
-        
-            
-        
-            
-        
-            
-        
-            
-        
-            
-        
-            
-        
-            
-        
-            
-        
-            
-        
-            
-        
-            
-        
-            
-        
-            
-        
-            
-        
-            
-        
-            
-        
-            
-        
-            
-        
-            
-        
-            
-        
-            
-        
-            
-        
-            
-        
-            
-        
-            
-        
-            
-        
-            
-        
+      
+        <a href="https://star2dust.github.io/post/vscode-cmake-tutorials/" class="post">
+          <h2 class="post-title">
+            基于VSCode和CMake进行C/C++开发
+          </h2>
+          <div class="time">2022-04-16</div>
+        </a>
+      
     
-        <h2 class="year gt-c-cotent-color-first">2021</h2>
-        
-            
-        
-            
-        
-            
-                <article class="post">
-                    <a href="https://star2dust.github.io/post/proximal-operator/">
-                        <div class="post-title gt-c-content-color-first">
-                            <small><b>2021-12-02&nbsp;&nbsp;·&nbsp;&nbsp;</b></small>
-                            近端算子求解分布式约束优化问题
-                        </div>
-                    </a>
-                </article>
-            
-        
-            
-                <article class="post">
-                    <a href="https://star2dust.github.io/post/leetcode-sliding-window/">
-                        <div class="post-title gt-c-content-color-first">
-                            <small><b>2021-11-28&nbsp;&nbsp;·&nbsp;&nbsp;</b></small>
-                            【力扣刷题】双指针和滑动窗口
-                        </div>
-                    </a>
-                </article>
-            
-        
-            
-                <article class="post">
-                    <a href="https://star2dust.github.io/post/leetcode-acm-io/">
-                        <div class="post-title gt-c-content-color-first">
-                            <small><b>2021-11-27&nbsp;&nbsp;·&nbsp;&nbsp;</b></small>
-                            【牛客刷题】输入输出练习
-                        </div>
-                    </a>
-                </article>
-            
-        
-            
-                <article class="post">
-                    <a href="https://star2dust.github.io/post/leecode-subarrays-with-odd-sum/">
-                        <div class="post-title gt-c-content-color-first">
-                            <small><b>2021-11-15&nbsp;&nbsp;·&nbsp;&nbsp;</b></small>
-                            【力扣刷题】和为奇数的子数组数目（前缀和）
-                        </div>
-                    </a>
-                </article>
-            
-        
-            
-                <article class="post">
-                    <a href="https://star2dust.github.io/post/leecode-arrange-balls/">
-                        <div class="post-title gt-c-content-color-first">
-                            <small><b>2021-11-10&nbsp;&nbsp;·&nbsp;&nbsp;</b></small>
-                            【力扣刷题】排列小球（DFS）
-                        </div>
-                    </a>
-                </article>
-            
-        
-            
-                <article class="post">
-                    <a href="https://star2dust.github.io/post/leecode-domino/">
-                        <div class="post-title gt-c-content-color-first">
-                            <small><b>2021-09-10&nbsp;&nbsp;·&nbsp;&nbsp;</b></small>
-                            【力扣刷题】推多米诺（双指针）
-                        </div>
-                    </a>
-                </article>
-            
-        
-            
-                <article class="post">
-                    <a href="https://star2dust.github.io/post/turtlebot-stage-slam/">
-                        <div class="post-title gt-c-content-color-first">
-                            <small><b>2021-08-19&nbsp;&nbsp;·&nbsp;&nbsp;</b></small>
-                            Turtlebot+Stage进行SLAM仿真（ROS Kinetic）
-                        </div>
-                    </a>
-                </article>
-            
-        
-            
-                <article class="post">
-                    <a href="https://star2dust.github.io/post/leecode-num-sum/">
-                        <div class="post-title gt-c-content-color-first">
-                            <small><b>2021-08-15&nbsp;&nbsp;·&nbsp;&nbsp;</b></small>
-                            【力扣刷题】求和问题（二分查找+双指针）
-                        </div>
-                    </a>
-                </article>
-            
-        
-            
-                <article class="post">
-                    <a href="https://star2dust.github.io/post/const-ptr-and-ptr-to-const/">
-                        <div class="post-title gt-c-content-color-first">
-                            <small><b>2021-08-14&nbsp;&nbsp;·&nbsp;&nbsp;</b></small>
-                            静态指针与指向静态类型的指针
-                        </div>
-                    </a>
-                </article>
-            
-        
-            
-                <article class="post">
-                    <a href="https://star2dust.github.io/post/leecode-dfs-bfs-template/">
-                        <div class="post-title gt-c-content-color-first">
-                            <small><b>2021-07-26&nbsp;&nbsp;·&nbsp;&nbsp;</b></small>
-                            【力扣刷题】深度/广度优先搜索算法思路解析和标准模板
-                        </div>
-                    </a>
-                </article>
-            
-        
-            
-                <article class="post">
-                    <a href="https://star2dust.github.io/post/leecode-dynamic-programming/">
-                        <div class="post-title gt-c-content-color-first">
-                            <small><b>2021-07-21&nbsp;&nbsp;·&nbsp;&nbsp;</b></small>
-                            【力扣刷题】动态规划问题的思考与总结
-                        </div>
-                    </a>
-                </article>
-            
-        
-            
-                <article class="post">
-                    <a href="https://star2dust.github.io/post/distributed-optimization-projection-free-dynamics/">
-                        <div class="post-title gt-c-content-color-first">
-                            <small><b>2021-07-08&nbsp;&nbsp;·&nbsp;&nbsp;</b></small>
-                            【论文笔记】用无投影动力学解决分布式优化问题
-                        </div>
-                    </a>
-                </article>
-            
-        
-            
-                <article class="post">
-                    <a href="https://star2dust.github.io/post/cooperative-transport-formation/">
-                        <div class="post-title gt-c-content-color-first">
-                            <small><b>2021-07-07&nbsp;&nbsp;·&nbsp;&nbsp;</b></small>
-                            【论文笔记】基于编队控制的协同搬运
-                        </div>
-                    </a>
-                </article>
-            
-        
-            
-                <article class="post">
-                    <a href="https://star2dust.github.io/post/prediction-correction-method/">
-                        <div class="post-title gt-c-content-color-first">
-                            <small><b>2021-06-25&nbsp;&nbsp;·&nbsp;&nbsp;</b></small>
-                            带等式约束的Prediction-Correction Method
-                        </div>
-                    </a>
-                </article>
-            
-        
-            
-                <article class="post">
-                    <a href="https://star2dust.github.io/post/distributed-optimization-weight-balanced-graph/">
-                        <div class="post-title gt-c-content-color-first">
-                            <small><b>2021-06-09&nbsp;&nbsp;·&nbsp;&nbsp;</b></small>
-                            【论文笔记】有向平衡图分布式连续时间优化算法
-                        </div>
-                    </a>
-                </article>
-            
-        
-            
-                <article class="post">
-                    <a href="https://star2dust.github.io/post/finite-time-consensus-tracking/">
-                        <div class="post-title gt-c-content-color-first">
-                            <small><b>2021-06-06&nbsp;&nbsp;·&nbsp;&nbsp;</b></small>
-                            浅谈有限时间分布式一致跟踪算法
-                        </div>
-                    </a>
-                </article>
-            
-        
-            
-                <article class="post">
-                    <a href="https://star2dust.github.io/post/distributed-time-varying-quadratic-optimization/">
-                        <div class="post-title gt-c-content-color-first">
-                            <small><b>2021-04-13&nbsp;&nbsp;·&nbsp;&nbsp;</b></small>
-                            【论文笔记】无向图下的分布式时变二次优化(Quadratic Optimization)
-                        </div>
-                    </a>
-                </article>
-            
-        
-            
-                <article class="post">
-                    <a href="https://star2dust.github.io/post/weighted-centroid-tracking-controller-observer/">
-                        <div class="post-title gt-c-content-color-first">
-                            <small><b>2021-02-25&nbsp;&nbsp;·&nbsp;&nbsp;</b></small>
-                            【论文笔记】分布式加权质心跟踪(Weighted Centroid Tracking)的观测控制器设计
-                        </div>
-                    </a>
-                </article>
-            
-        
-            
-                <article class="post">
-                    <a href="https://star2dust.github.io/post/adaptive-neural-network-control/">
-                        <div class="post-title gt-c-content-color-first">
-                            <small><b>2021-02-20&nbsp;&nbsp;·&nbsp;&nbsp;</b></small>
-                            神经网络自适应反馈控制设计和应用
-                        </div>
-                    </a>
-                </article>
-            
-        
-            
-                <article class="post">
-                    <a href="https://star2dust.github.io/post/gradient-tracking-convergence-analysis/">
-                        <div class="post-title gt-c-content-color-first">
-                            <small><b>2021-02-01&nbsp;&nbsp;·&nbsp;&nbsp;</b></small>
-                            【论文笔记】连续时间梯度跟踪算法收敛性分析
-                        </div>
-                    </a>
-                </article>
-            
-        
-            
-                <article class="post">
-                    <a href="https://star2dust.github.io/post/matlab-dialog-preset/">
-                        <div class="post-title gt-c-content-color-first">
-                            <small><b>2021-01-17&nbsp;&nbsp;·&nbsp;&nbsp;</b></small>
-                            MATLAB小技巧：确认对话框预设项
-                        </div>
-                    </a>
-                </article>
-            
-        
-            
-                <article class="post">
-                    <a href="https://star2dust.github.io/post/gradient-tracking/">
-                        <div class="post-title gt-c-content-color-first">
-                            <small><b>2021-01-05&nbsp;&nbsp;·&nbsp;&nbsp;</b></small>
-                            【论文笔记】利用平滑度加速分布式优化——梯度跟踪法(Gradient Tracking)
-                        </div>
-                    </a>
-                </article>
-            
-        
-            
-        
-            
-        
-            
-        
-            
-        
-            
-        
-            
-        
-            
-        
-            
-        
-            
-        
-            
-        
-            
-        
-            
-        
-            
-        
-            
-        
-            
-        
-            
-        
-            
-        
-            
-        
-            
-        
-            
-        
-            
-        
-            
-        
-            
-        
-            
-        
-            
-        
-            
-        
+      
+        <a href="https://star2dust.github.io/post/installing-matlab-2018a-in-linux/" class="post">
+          <h2 class="post-title">
+            Installing MATLAB 2018a in Linux
+          </h2>
+          <div class="time">2022-03-16</div>
+        </a>
+      
     
-        <h2 class="year gt-c-cotent-color-first">2020</h2>
-        
-            
-        
-            
-        
-            
-        
-            
-        
-            
-        
-            
-        
-            
-        
-            
-        
-            
-        
-            
-        
-            
-        
-            
-        
-            
-        
-            
-        
-            
-        
-            
-        
-            
-        
-            
-        
-            
-        
-            
-        
-            
-        
-            
-        
-            
-        
-            
-        
-            
-                <article class="post">
-                    <a href="https://star2dust.github.io/post/exact-distributed-first-order-method/">
-                        <div class="post-title gt-c-content-color-first">
-                            <small><b>2020-12-26&nbsp;&nbsp;·&nbsp;&nbsp;</b></small>
-                            精确分布式一阶优化方法(Exact Distributed First-Order Method)
-                        </div>
-                    </a>
-                </article>
-            
-        
-            
-                <article class="post">
-                    <a href="https://star2dust.github.io/post/matrix-theory-in-consensus-algorithm/">
-                        <div class="post-title gt-c-content-color-first">
-                            <small><b>2020-12-17&nbsp;&nbsp;·&nbsp;&nbsp;</b></small>
-                            多智能体一致性(Consensus)中的矩阵理论(Matrix Theory)
-                        </div>
-                    </a>
-                </article>
-            
-        
-            
-                <article class="post">
-                    <a href="https://star2dust.github.io/post/matlab-affine-formation-maneuver/">
-                        <div class="post-title gt-c-content-color-first">
-                            <small><b>2020-11-25&nbsp;&nbsp;·&nbsp;&nbsp;</b></small>
-                            用MATLAB仿真仿射队形变换(Affine Formation Maneuver)
-                        </div>
-                    </a>
-                </article>
-            
-        
-            
-                <article class="post">
-                    <a href="https://star2dust.github.io/post/matlab-distributed-optimization-via-interior-method/">
-                        <div class="post-title gt-c-content-color-first">
-                            <small><b>2020-11-10&nbsp;&nbsp;·&nbsp;&nbsp;</b></small>
-                            用MATLAB和内点法实现带有时变不等式约束的分布式优化
-                        </div>
-                    </a>
-                </article>
-            
-        
-            
-                <article class="post">
-                    <a href="https://star2dust.github.io/post/convex-optimization-interior-point-methods/">
-                        <div class="post-title gt-c-content-color-first">
-                            <small><b>2020-11-10&nbsp;&nbsp;·&nbsp;&nbsp;</b></small>
-                            凸优化（三）：不等式约束优化算法（内点法）
-                        </div>
-                    </a>
-                </article>
-            
-        
-            
-                <article class="post">
-                    <a href="https://star2dust.github.io/post/convex-optimization-newton-method/">
-                        <div class="post-title gt-c-content-color-first">
-                            <small><b>2020-11-09&nbsp;&nbsp;·&nbsp;&nbsp;</b></small>
-                            凸优化（二）：无约束和等式约束优化算法（牛顿法）
-                        </div>
-                    </a>
-                </article>
-            
-        
-            
-                <article class="post">
-                    <a href="https://star2dust.github.io/post/convex-optimization-dual-problem/">
-                        <div class="post-title gt-c-content-color-first">
-                            <small><b>2020-11-08&nbsp;&nbsp;·&nbsp;&nbsp;</b></small>
-                            凸优化（一）：凸函数、对偶问题和KKT条件
-                        </div>
-                    </a>
-                </article>
-            
-        
-            
-                <article class="post">
-                    <a href="https://star2dust.github.io/post/control-barrier-function-quadratic-program/">
-                        <div class="post-title gt-c-content-color-first">
-                            <small><b>2020-10-21&nbsp;&nbsp;·&nbsp;&nbsp;</b></small>
-                            【论文笔记】基于Control Barrier Function的二次规划(QP)控制
-                        </div>
-                    </a>
-                </article>
-            
-        
-            
-                <article class="post">
-                    <a href="https://star2dust.github.io/post/matlab-to-exe/">
-                        <div class="post-title gt-c-content-color-first">
-                            <small><b>2020-10-16&nbsp;&nbsp;·&nbsp;&nbsp;</b></small>
-                            MATLAB App Designer生成独立GUI(可执行exe)并添加依赖项
-                        </div>
-                    </a>
-                </article>
-            
-        
-            
-                <article class="post">
-                    <a href="https://star2dust.github.io/post/layered-affine-formation-control/">
-                        <div class="post-title gt-c-content-color-first">
-                            <small><b>2020-10-07&nbsp;&nbsp;·&nbsp;&nbsp;</b></small>
-                            【论文笔记】有向图下的分层仿射队形控制
-                        </div>
-                    </a>
-                </article>
-            
-        
-            
-                <article class="post">
-                    <a href="https://star2dust.github.io/post/affine-formation-maneuver-control/">
-                        <div class="post-title gt-c-content-color-first">
-                            <small><b>2020-09-24&nbsp;&nbsp;·&nbsp;&nbsp;</b></small>
-                            【论文笔记】仿射队形控制原理与stress matrix的构建
-                        </div>
-                    </a>
-                </article>
-            
-        
-            
-                <article class="post">
-                    <a href="https://star2dust.github.io/post/autonomous-optimization/">
-                        <div class="post-title gt-c-content-color-first">
-                            <small><b>2020-09-08&nbsp;&nbsp;·&nbsp;&nbsp;</b></small>
-                            【论文笔记】具有反馈控制的自主优化
-                        </div>
-                    </a>
-                </article>
-            
-        
-            
-                <article class="post">
-                    <a href="https://star2dust.github.io/post/virtual-linkage/">
-                        <div class="post-title gt-c-content-color-first">
-                            <small><b>2020-09-04&nbsp;&nbsp;·&nbsp;&nbsp;</b></small>
-                            机械臂协同搬运中的内力建模
-                        </div>
-                    </a>
-                </article>
-            
-        
-            
-                <article class="post">
-                    <a href="https://star2dust.github.io/post/orthonormal-basis-gram-schmidt/">
-                        <div class="post-title gt-c-content-color-first">
-                            <small><b>2020-09-01&nbsp;&nbsp;·&nbsp;&nbsp;</b></small>
-                            【论文笔记】标准正交基和投影在分布式凸优化中的应用
-                        </div>
-                    </a>
-                </article>
-            
-        
-            
-                <article class="post">
-                    <a href="https://star2dust.github.io/post/optimality-condition/">
-                        <div class="post-title gt-c-content-color-first">
-                            <small><b>2020-08-28&nbsp;&nbsp;·&nbsp;&nbsp;</b></small>
-                            浅谈带约束分布式优化问题的最优性条件
-                        </div>
-                    </a>
-                </article>
-            
-        
-            
-                <article class="post">
-                    <a href="https://star2dust.github.io/post/difference-of-convex-functions/">
-                        <div class="post-title gt-c-content-color-first">
-                            <small><b>2020-08-21&nbsp;&nbsp;·&nbsp;&nbsp;</b></small>
-                            D.C.函数和D.C.集合
-                        </div>
-                    </a>
-                </article>
-            
-        
-            
-                <article class="post">
-                    <a href="https://star2dust.github.io/post/impedance-control/">
-                        <div class="post-title gt-c-content-color-first">
-                            <small><b>2020-08-17&nbsp;&nbsp;·&nbsp;&nbsp;</b></small>
-                            机械臂协同搬运中的阻抗控制
-                        </div>
-                    </a>
-                </article>
-            
-        
-            
-                <article class="post">
-                    <a href="https://star2dust.github.io/post/paddle-notes-boston/">
-                        <div class="post-title gt-c-content-color-first">
-                            <small><b>2020-08-15&nbsp;&nbsp;·&nbsp;&nbsp;</b></small>
-                            飞桨深度学习从零实践（一）：从房价预测看模型构建
-                        </div>
-                    </a>
-                </article>
-            
-        
-            
-                <article class="post">
-                    <a href="https://star2dust.github.io/post/matlab-rtb-two-link/">
-                        <div class="post-title gt-c-content-color-first">
-                            <small><b>2020-08-15&nbsp;&nbsp;·&nbsp;&nbsp;</b></small>
-                            用MATLAB和RTB做二连杆机械臂动力学建模
-                        </div>
-                    </a>
-                </article>
-            
-        
-            
-                <article class="post">
-                    <a href="https://star2dust.github.io/post/about/">
-                        <div class="post-title gt-c-content-color-first">
-                            <small><b>2020-08-01&nbsp;&nbsp;·&nbsp;&nbsp;</b></small>
-                            欢迎来到本站！
-                        </div>
-                    </a>
-                </article>
-            
-        
-            
-                <article class="post">
-                    <a href="https://star2dust.github.io/post/product-of-exponentials/">
-                        <div class="post-title gt-c-content-color-first">
-                            <small><b>2020-07-30&nbsp;&nbsp;·&nbsp;&nbsp;</b></small>
-                            三维刚体运动与机械臂POE运动学建模
-                        </div>
-                    </a>
-                </article>
-            
-        
-            
-                <article class="post">
-                    <a href="https://star2dust.github.io/post/git-tip-synchronize/">
-                        <div class="post-title gt-c-content-color-first">
-                            <small><b>2020-07-28&nbsp;&nbsp;·&nbsp;&nbsp;</b></small>
-                            git使用的几个小tips分享
-                        </div>
-                    </a>
-                </article>
-            
-        
-            
-                <article class="post">
-                    <a href="https://star2dust.github.io/post/feedback-linearization/">
-                        <div class="post-title gt-c-content-color-first">
-                            <small><b>2020-07-23&nbsp;&nbsp;·&nbsp;&nbsp;</b></small>
-                            反馈线性化：具有柔性关节的单连杆操纵臂控制
-                        </div>
-                    </a>
-                </article>
-            
-        
-            
-                <article class="post">
-                    <a href="https://star2dust.github.io/post/parl-notes/">
-                        <div class="post-title gt-c-content-color-first">
-                            <small><b>2020-06-25&nbsp;&nbsp;·&nbsp;&nbsp;</b></small>
-                            飞桨强化学习从零实践（一）：基于价值的方法
-                        </div>
-                    </a>
-                </article>
-            
-        
-            
-                <article class="post">
-                    <a href="https://star2dust.github.io/post/ndarray-notes/">
-                        <div class="post-title gt-c-content-color-first">
-                            <small><b>2020-06-24&nbsp;&nbsp;·&nbsp;&nbsp;</b></small>
-                            ndarray数组基本结构和操作
-                        </div>
-                    </a>
-                </article>
-            
-        
-            
-                <article class="post">
-                    <a href="https://star2dust.github.io/post/pip-packages/">
-                        <div class="post-title gt-c-content-color-first">
-                            <small><b>2020-06-24&nbsp;&nbsp;·&nbsp;&nbsp;</b></small>
-                             pip包管理
-                        </div>
-                    </a>
-                </article>
-            
-        
+      
     
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  
+    <h2 class="year">2021</h2>
+    
+      
+    
+      
+    
+      
+        <a href="https://star2dust.github.io/post/proximal-operator/" class="post">
+          <h2 class="post-title">
+            近端算子求解分布式约束优化问题
+          </h2>
+          <div class="time">2021-12-02</div>
+        </a>
+      
+    
+      
+        <a href="https://star2dust.github.io/post/leetcode-sliding-window/" class="post">
+          <h2 class="post-title">
+            【力扣刷题】双指针和滑动窗口
+          </h2>
+          <div class="time">2021-11-28</div>
+        </a>
+      
+    
+      
+        <a href="https://star2dust.github.io/post/leetcode-acm-io/" class="post">
+          <h2 class="post-title">
+            【牛客刷题】输入输出练习
+          </h2>
+          <div class="time">2021-11-27</div>
+        </a>
+      
+    
+      
+        <a href="https://star2dust.github.io/post/leecode-subarrays-with-odd-sum/" class="post">
+          <h2 class="post-title">
+            【力扣刷题】和为奇数的子数组数目（前缀和）
+          </h2>
+          <div class="time">2021-11-15</div>
+        </a>
+      
+    
+      
+        <a href="https://star2dust.github.io/post/leecode-arrange-balls/" class="post">
+          <h2 class="post-title">
+            【力扣刷题】排列小球（DFS）
+          </h2>
+          <div class="time">2021-11-10</div>
+        </a>
+      
+    
+      
+        <a href="https://star2dust.github.io/post/leecode-domino/" class="post">
+          <h2 class="post-title">
+            【力扣刷题】推多米诺（双指针）
+          </h2>
+          <div class="time">2021-09-10</div>
+        </a>
+      
+    
+      
+        <a href="https://star2dust.github.io/post/turtlebot-stage-slam/" class="post">
+          <h2 class="post-title">
+            Turtlebot+Stage进行SLAM仿真（ROS Kinetic）
+          </h2>
+          <div class="time">2021-08-19</div>
+        </a>
+      
+    
+      
+        <a href="https://star2dust.github.io/post/leecode-num-sum/" class="post">
+          <h2 class="post-title">
+            【力扣刷题】求和问题（二分查找+双指针）
+          </h2>
+          <div class="time">2021-08-15</div>
+        </a>
+      
+    
+      
+        <a href="https://star2dust.github.io/post/const-ptr-and-ptr-to-const/" class="post">
+          <h2 class="post-title">
+            静态指针与指向静态类型的指针
+          </h2>
+          <div class="time">2021-08-14</div>
+        </a>
+      
+    
+      
+        <a href="https://star2dust.github.io/post/leecode-dfs-bfs-template/" class="post">
+          <h2 class="post-title">
+            【力扣刷题】深度/广度优先搜索算法思路解析和标准模板
+          </h2>
+          <div class="time">2021-07-26</div>
+        </a>
+      
+    
+      
+        <a href="https://star2dust.github.io/post/leecode-dynamic-programming/" class="post">
+          <h2 class="post-title">
+            【力扣刷题】动态规划问题的思考与总结
+          </h2>
+          <div class="time">2021-07-21</div>
+        </a>
+      
+    
+      
+        <a href="https://star2dust.github.io/post/distributed-optimization-projection-free-dynamics/" class="post">
+          <h2 class="post-title">
+            【论文笔记】用无投影动力学解决分布式优化问题
+          </h2>
+          <div class="time">2021-07-08</div>
+        </a>
+      
+    
+      
+        <a href="https://star2dust.github.io/post/cooperative-transport-formation/" class="post">
+          <h2 class="post-title">
+            【论文笔记】基于编队控制的协同搬运
+          </h2>
+          <div class="time">2021-07-07</div>
+        </a>
+      
+    
+      
+        <a href="https://star2dust.github.io/post/prediction-correction-method/" class="post">
+          <h2 class="post-title">
+            带等式约束的Prediction-Correction Method
+          </h2>
+          <div class="time">2021-06-25</div>
+        </a>
+      
+    
+      
+        <a href="https://star2dust.github.io/post/distributed-optimization-weight-balanced-graph/" class="post">
+          <h2 class="post-title">
+            【论文笔记】有向平衡图分布式连续时间优化算法
+          </h2>
+          <div class="time">2021-06-09</div>
+        </a>
+      
+    
+      
+        <a href="https://star2dust.github.io/post/finite-time-consensus-tracking/" class="post">
+          <h2 class="post-title">
+            浅谈有限时间分布式一致跟踪算法
+          </h2>
+          <div class="time">2021-06-06</div>
+        </a>
+      
+    
+      
+        <a href="https://star2dust.github.io/post/distributed-time-varying-quadratic-optimization/" class="post">
+          <h2 class="post-title">
+            【论文笔记】无向图下的分布式时变二次优化(Quadratic Optimization)
+          </h2>
+          <div class="time">2021-04-13</div>
+        </a>
+      
+    
+      
+        <a href="https://star2dust.github.io/post/weighted-centroid-tracking-controller-observer/" class="post">
+          <h2 class="post-title">
+            【论文笔记】分布式加权质心跟踪(Weighted Centroid Tracking)的观测控制器设计
+          </h2>
+          <div class="time">2021-02-25</div>
+        </a>
+      
+    
+      
+        <a href="https://star2dust.github.io/post/adaptive-neural-network-control/" class="post">
+          <h2 class="post-title">
+            神经网络自适应反馈控制设计和应用
+          </h2>
+          <div class="time">2021-02-20</div>
+        </a>
+      
+    
+      
+        <a href="https://star2dust.github.io/post/gradient-tracking-convergence-analysis/" class="post">
+          <h2 class="post-title">
+            【论文笔记】连续时间梯度跟踪算法收敛性分析
+          </h2>
+          <div class="time">2021-02-01</div>
+        </a>
+      
+    
+      
+        <a href="https://star2dust.github.io/post/matlab-dialog-preset/" class="post">
+          <h2 class="post-title">
+            MATLAB小技巧：确认对话框预设项
+          </h2>
+          <div class="time">2021-01-17</div>
+        </a>
+      
+    
+      
+        <a href="https://star2dust.github.io/post/gradient-tracking/" class="post">
+          <h2 class="post-title">
+            【论文笔记】利用平滑度加速分布式优化——梯度跟踪法(Gradient Tracking)
+          </h2>
+          <div class="time">2021-01-05</div>
+        </a>
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+  
+    <h2 class="year">2020</h2>
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+    
+      
+        <a href="https://star2dust.github.io/post/exact-distributed-first-order-method/" class="post">
+          <h2 class="post-title">
+            精确分布式一阶优化方法(Exact Distributed First-Order Method)
+          </h2>
+          <div class="time">2020-12-26</div>
+        </a>
+      
+    
+      
+        <a href="https://star2dust.github.io/post/matrix-theory-in-consensus-algorithm/" class="post">
+          <h2 class="post-title">
+            多智能体一致性(Consensus)中的矩阵理论(Matrix Theory)
+          </h2>
+          <div class="time">2020-12-17</div>
+        </a>
+      
+    
+      
+        <a href="https://star2dust.github.io/post/matlab-affine-formation-maneuver/" class="post">
+          <h2 class="post-title">
+            用MATLAB仿真仿射队形变换(Affine Formation Maneuver)
+          </h2>
+          <div class="time">2020-11-25</div>
+        </a>
+      
+    
+      
+        <a href="https://star2dust.github.io/post/matlab-distributed-optimization-via-interior-method/" class="post">
+          <h2 class="post-title">
+            用MATLAB和内点法实现带有时变不等式约束的分布式优化
+          </h2>
+          <div class="time">2020-11-10</div>
+        </a>
+      
+    
+      
+        <a href="https://star2dust.github.io/post/convex-optimization-interior-point-methods/" class="post">
+          <h2 class="post-title">
+            凸优化（三）：不等式约束优化算法（内点法）
+          </h2>
+          <div class="time">2020-11-10</div>
+        </a>
+      
+    
+      
+        <a href="https://star2dust.github.io/post/convex-optimization-newton-method/" class="post">
+          <h2 class="post-title">
+            凸优化（二）：无约束和等式约束优化算法（牛顿法）
+          </h2>
+          <div class="time">2020-11-09</div>
+        </a>
+      
+    
+      
+        <a href="https://star2dust.github.io/post/convex-optimization-dual-problem/" class="post">
+          <h2 class="post-title">
+            凸优化（一）：凸函数、对偶问题和KKT条件
+          </h2>
+          <div class="time">2020-11-08</div>
+        </a>
+      
+    
+      
+        <a href="https://star2dust.github.io/post/control-barrier-function-quadratic-program/" class="post">
+          <h2 class="post-title">
+            【论文笔记】基于Control Barrier Function的二次规划(QP)控制
+          </h2>
+          <div class="time">2020-10-21</div>
+        </a>
+      
+    
+      
+        <a href="https://star2dust.github.io/post/matlab-to-exe/" class="post">
+          <h2 class="post-title">
+            MATLAB App Designer生成独立GUI(可执行exe)并添加依赖项
+          </h2>
+          <div class="time">2020-10-16</div>
+        </a>
+      
+    
+      
+        <a href="https://star2dust.github.io/post/layered-affine-formation-control/" class="post">
+          <h2 class="post-title">
+            【论文笔记】有向图下的分层仿射队形控制
+          </h2>
+          <div class="time">2020-10-07</div>
+        </a>
+      
+    
+      
+        <a href="https://star2dust.github.io/post/affine-formation-maneuver-control/" class="post">
+          <h2 class="post-title">
+            【论文笔记】仿射队形控制原理与stress matrix的构建
+          </h2>
+          <div class="time">2020-09-24</div>
+        </a>
+      
+    
+      
+        <a href="https://star2dust.github.io/post/autonomous-optimization/" class="post">
+          <h2 class="post-title">
+            【论文笔记】具有反馈控制的自主优化
+          </h2>
+          <div class="time">2020-09-08</div>
+        </a>
+      
+    
+      
+        <a href="https://star2dust.github.io/post/virtual-linkage/" class="post">
+          <h2 class="post-title">
+            机械臂协同搬运中的内力建模
+          </h2>
+          <div class="time">2020-09-04</div>
+        </a>
+      
+    
+      
+        <a href="https://star2dust.github.io/post/orthonormal-basis-gram-schmidt/" class="post">
+          <h2 class="post-title">
+            【论文笔记】标准正交基和投影在分布式凸优化中的应用
+          </h2>
+          <div class="time">2020-09-01</div>
+        </a>
+      
+    
+      
+        <a href="https://star2dust.github.io/post/optimality-condition/" class="post">
+          <h2 class="post-title">
+            浅谈带约束分布式优化问题的最优性条件
+          </h2>
+          <div class="time">2020-08-28</div>
+        </a>
+      
+    
+      
+        <a href="https://star2dust.github.io/post/difference-of-convex-functions/" class="post">
+          <h2 class="post-title">
+            D.C.函数和D.C.集合
+          </h2>
+          <div class="time">2020-08-21</div>
+        </a>
+      
+    
+      
+        <a href="https://star2dust.github.io/post/impedance-control/" class="post">
+          <h2 class="post-title">
+            机械臂协同搬运中的阻抗控制
+          </h2>
+          <div class="time">2020-08-17</div>
+        </a>
+      
+    
+      
+        <a href="https://star2dust.github.io/post/paddle-notes-boston/" class="post">
+          <h2 class="post-title">
+            飞桨深度学习从零实践（一）：从房价预测看模型构建
+          </h2>
+          <div class="time">2020-08-15</div>
+        </a>
+      
+    
+      
+        <a href="https://star2dust.github.io/post/matlab-rtb-two-link/" class="post">
+          <h2 class="post-title">
+            用MATLAB和RTB做二连杆机械臂动力学建模
+          </h2>
+          <div class="time">2020-08-15</div>
+        </a>
+      
+    
+      
+        <a href="https://star2dust.github.io/post/about/" class="post">
+          <h2 class="post-title">
+            欢迎来到本站！
+          </h2>
+          <div class="time">2020-08-01</div>
+        </a>
+      
+    
+      
+        <a href="https://star2dust.github.io/post/product-of-exponentials/" class="post">
+          <h2 class="post-title">
+            三维刚体运动与机械臂POE运动学建模
+          </h2>
+          <div class="time">2020-07-30</div>
+        </a>
+      
+    
+      
+        <a href="https://star2dust.github.io/post/git-tip-synchronize/" class="post">
+          <h2 class="post-title">
+            git使用的几个小tips分享
+          </h2>
+          <div class="time">2020-07-28</div>
+        </a>
+      
+    
+      
+        <a href="https://star2dust.github.io/post/feedback-linearization/" class="post">
+          <h2 class="post-title">
+            反馈线性化：具有柔性关节的单连杆操纵臂控制
+          </h2>
+          <div class="time">2020-07-23</div>
+        </a>
+      
+    
+      
+        <a href="https://star2dust.github.io/post/parl-notes/" class="post">
+          <h2 class="post-title">
+            飞桨强化学习从零实践（一）：基于价值的方法
+          </h2>
+          <div class="time">2020-06-25</div>
+        </a>
+      
+    
+      
+        <a href="https://star2dust.github.io/post/ndarray-notes/" class="post">
+          <h2 class="post-title">
+            ndarray数组基本结构和操作
+          </h2>
+          <div class="time">2020-06-24</div>
+        </a>
+      
+    
+      
+        <a href="https://star2dust.github.io/post/pip-packages/" class="post">
+          <h2 class="post-title">
+             pip包管理
+          </h2>
+          <div class="time">2020-06-24</div>
+        </a>
+      
+    
+  
 </div>
 
+    
         <div class="pagination-container">
-    
-    
-        <a href="https://star2dust.github.io/archives/page/2" class="prev-page gt-a-link">下一页</a>
-    
+  
+  
+    <a href="https://star2dust.github.io/archives/page/2" class="next-page">下一页</a>
+  
 </div>
 
-
-        <div class="site-footer gt-c-content-color-first">
-    <div class="slogan gt-c-content-color-first">每天进步一点点</div>
-    <div class="social-container">
-        
-            
-                <a href="https://github.com/star2dust" target="_blank">
-                    <i class="fab fa-github gt-c-content-color-first"></i>
-                </a>
-            
-        
-            
-        
-            
-                <a href="https://weibo.com/u/2473019655" target="_blank">
-                    <i class="fab fa-weibo gt-c-content-color-first"></i>
-                </a>
-            
-        
-            
-                <a href="https://www.zhihu.com/people/dong-nan-che" target="_blank">
-                    <i class="fab fa-zhihu gt-c-content-color-first"></i>
-                </a>
-            
-        
-            
-        
-            
-        
-    </div>
-    <div class="footer-info">
-        Copyright &copy;<span>star2dust</span>
-    </div>
-    <div>
-        Theme by <a href="https://imhanjie.com/" target="_blank">imhanjie</a>, Powered by <a
-                href="https://github.com/getgridea/gridea" target="_blank">Gridea | <a href="https://star2dust.github.io/atom.xml" target="_blank">RSS</a></a>
-    </div>
+    
+        <div class="site-footer">
+  Copyright &copy;<span>star2dust</span>
+  <a class="rss" href="https://star2dust.github.io/atom.xml" target="_blank">
+    <i class="ri-rss-line"></i> RSS
+  </a>
 </div>
 
-<script>
-    hljs.initHighlightingOnLoad()
-</script>
-
+      </div>
     </div>
-</div>
-</body>
+  </body>
 </html>
